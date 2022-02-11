@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    {{ form_start(form) }}
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
                     <div class="form-group row">
                         <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.nom_equipe) }}</label>
                         <div class="col-md-10">

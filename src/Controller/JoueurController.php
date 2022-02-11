@@ -49,7 +49,7 @@ class JoueurController extends AbstractController
     /**
      * @param Request $request
      * @return Response
-     * @route("joueur/ajouter")
+     * @route("joueur/ajouter",name="AjouterJoueur")
      */
     function Ajouter_joueur(Request $request){
         $joueur = new Joueur();

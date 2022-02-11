@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EquipeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EquipeRepository::class)
@@ -19,11 +20,13 @@ class Equipe
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Name is required")
      */
     private $nom_equipe;
 
     /**
      * @ORM\Column(type="date")
+     *
      */
     private $date_creation;
 
