@@ -22,12 +22,24 @@ class UtilisateurController extends AbstractController
     /**
      * @param UtilisateurRepository $repository
      * @return Response
-     * @route("/AfficherUtilisateur", name="AfficheUtilisateur")
+     * @route("/AfficherUtilisateur", name="AfficherUtilisateur")
      */
     public function Affiche(UtilisateurRepository $repository){
         $utilisateur=$repository->findAll();
         return $this->render('utilisateur/afficher.html.twig',
             ['utilisateur'=>$utilisateur]);
     }
+
+    /**
+     * @route("/SupprimerUtilisateur/{id}",name="SupprimerUtilisateur")
+     */
+    function SupprimerUtilisateur($id,UtilisateurRepository $repository){
+        $utilisateur=$repository->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($utilisateur);
+        $em->flush();
+        return $this->redirectToRoute('AfficherUtilisateur');
+    }
+
 
 }
