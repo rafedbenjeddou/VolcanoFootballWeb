@@ -1,0 +1,36 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title">Liste Des Joueurs</h4>
+                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom Joueur</th>
+                            <th>Prenom Joueur</th>
+                            <th>Age</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr {% for j in joueur %}>
+                            <td>{{ j.id }}</td>
+                            <td>{{ j.nomJoueur }}</td>
+                            <td>{{ j.prenomJoueur }}</td>
+                            <td>{{ j.age }}</td>
+                            <td><a href="{{ path('update',{'id':j.id}) }}">Update</a></td>
+                            <td><a href="{{ path('delete',{'id':j.id}) }}">Delete</a></td>
+                        </tr {% endfor %}>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+{% endblock %}
+

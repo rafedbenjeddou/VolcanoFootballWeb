@@ -1,0 +1,32 @@
+
+{% extends 'base-back.html.twig' %}
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          {{ form_start(form) }}
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.nom_joueur) }}</label>
+            <div class="col-md-10">
+              <input class="form-control" {{ form_widget(form.nom_joueur) }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.prenom_joueur) }}</label>
+            <div class="col-md-10">
+              <input class="form-control" {{ form_widget(form.prenom_joueur) }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.age) }}</label>
+            <div class="col-md-10">
+              <input class="form-control" {{ form_widget(form.age) }}
+            </div>
+          </div>
+          {{ form_end(form) }}
+        </div>
+      </div> <!-- end col -->
+    </div>
+  </div>
+{% endblock %}
