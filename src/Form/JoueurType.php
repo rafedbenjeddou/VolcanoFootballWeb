@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Joueur;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,6 +36,22 @@ class JoueurType extends AbstractType
                         'class'=>'age'
                     ]
                 ])
+            ->add('position',TextType::class, [
+                'label'=>'Position Joueur',
+                'attr'=>[
+                    'placeholder'=>'Position du joueur',
+                    'class'=>'position'
+                ]
+            ])
+            ->add('photo-joueur',FileType::class, [
+                'label'=>'Photo Joueur',
+                'attr'=>[
+                    'placeholder'=>'Photo Joueur',
+                    'class'=>'photo'
+                ],
+                'mapped'=>false
+            ])
+
         ;
     }
 

@@ -28,8 +28,15 @@ class EquipeType extends AbstractType
                     'class'=>'date'
                 ]
             ])
+            ->add('nom_entreneur',TextType::class,[
+                'label'=>'Nom Entreneur',
+                'attr'=>[
+                    'placeholder'=>'Nom du Entreneur',
+                    'class'=>'entreneur'
+                ]
+            ])
             ->add('drapeau_equipe',FileType::class, [
-                'label'=>'Darapeau Equipe',
+                'label'=>'Drapeau Equipe',
                 'attr'=>[
                     'placeholder'=>'Drapeau Equipe',
                     'class'=>'drapeau'

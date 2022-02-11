@@ -22,6 +22,7 @@
                         <td>{{ e.id }}</td>
                         <td>{{ e.nomEquipe }}</td>
                         <td>{{ e.dateCreation|date('d-m-Y') }}</td>
+                        <td>{{ e.nomEntreneur }}</td>
                         <td><img src="{{asset(e.drapeauEquipe)}}"/></td>
                         <td><a href="{{ path('modifier',{'id':e.id}) }}">Update</a></td>
                         <td><a href="{{ path('supprimer',{'id':e.id}) }}">Delete</a></td>

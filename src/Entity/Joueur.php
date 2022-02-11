@@ -34,6 +34,19 @@ class Joueur
      * @ORM\Column(type="integer")
      */
     private $age;
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="position is required")
+     */
+    private $position;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $photo;
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Equipe", inversedBy="nom_equipe")
+     */
+    private $equipe;
 
     public function getId(): ?int
     {
@@ -77,4 +90,32 @@ class Joueur
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEquipe()
+    {
+        return $this->equipe;
+    }
+
+    /**
+     * @param mixed $equipe
+     */
+    public function setEquipe($equipe): void
+    {
+        $this->equipe = $equipe;
+    }
+
+
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    public function setPosition($position): void
+    {
+        $this->position = $position;
+    }
+
 }

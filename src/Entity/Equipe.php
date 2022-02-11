@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EquipeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -34,6 +35,17 @@ class Equipe
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $drapeau_equipe;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Name trainer is required")
+     */
+    private $nom_entreneur;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Joueur", mappedBy="equipe")
+     */
+    private $joueur;
 
     public function getId(): ?int
     {
@@ -74,6 +86,30 @@ class Equipe
         $this->drapeau_equipe = $drapeau_equipe;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomEntreneur()
+    {
+        return $this->nom_entreneur;
+    }
+
+    public function setNomEntreneur($nom_entreneur): void
+    {
+        $this->nom_entreneur = $nom_entreneur;
+    }
+    public function __construct()
+    {
+        $this->joueur = new ArrayCollection();
+    }
+    /**
+     * @return mixed
+     */
+    public function getJoueur()
+    {
+        return $this->joueur;
     }
 
 

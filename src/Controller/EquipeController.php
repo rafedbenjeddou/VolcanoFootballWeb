@@ -33,6 +33,16 @@ class EquipeController extends AbstractController
         return $this->render('equipe/Affiche.html.twig',
             ['equipe'=>$equipe]);
     }
+    /**
+     * @param EquipeRepository $repository
+     * @return Response
+     * @route("/AfficheUneE", name="AfficheUneEquipe")
+     */
+    public function Afficheuneequipe(EquipeRepository $repository){
+        $equipe=$repository->findAll();
+        return $this->render('equipe/Afficheruneequipe.html.twig',
+            ['equipe'=>$equipe]);
+    }
 
     /**
      * @route("/delete/{id}",name="supprimer")

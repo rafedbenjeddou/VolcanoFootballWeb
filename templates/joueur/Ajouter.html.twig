@@ -24,6 +24,22 @@
               <input class="form-control" {{ form_widget(form.age) }}
             </div>
           </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">equipe</label>
+            <div class="col-md-10">
+              <select class="form-control">
+                {% for e in equipe %}
+                  <option>{{ e.nomEquipe }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.position) }}</label>
+            <div class="col-md-10">
+              <input class="form-control" {{ form_widget(form.position) }}
+            </div>
+          </div>
           {{ form_end(form) }}
         </div>
       </div> <!-- end col -->
