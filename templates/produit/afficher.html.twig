@@ -41,6 +41,7 @@
                                     <th >Nombre d'Etoiles</th>
                                     <th >Description</th>
                                     <th >Prix</th>
+                                    <th >Photo</th>
                                     <th style="width: 120px;">Action</th>
                                 </tr>
                                 </thead>
@@ -54,9 +55,10 @@
                                     <td>{{ p.nbrEtoiles }}</td>
                                     <td>{{ p.description }}</td>
                                     <td>{{ p.prix }}</td>
+                                    <td><img src="{{ asset(p.photo) }}"/></td>
                                     <td>
                                         <a href="" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="Modifier" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                        <a href="" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                        <a href="{{ path('SupprimerProduit',{'id':p.id}) }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
                                     </td>
                                 </tr {% endfor %}>
                                 </tbody>

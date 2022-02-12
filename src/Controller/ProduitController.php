@@ -24,10 +24,24 @@ class ProduitController extends AbstractController
      * @return Response
      * @route("/AfficherProduit", name="AfficherProduit")
      */
-    public function Affiche(ProduitRepository $repository){
+    public function AfficherProduit(ProduitRepository $repository){
         $produit=$repository->findAll();
         return $this->render('produit/afficher.html.twig',
             ['produit'=>$produit]);
     }
+
+    /**
+     * @route("/SupprimerProduit/{id}",name="SupprimerProduit")
+     */
+    function SupprimerProduit($id, ProduitRepository $repository){
+        $produit=$repository->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($produit);
+        $em->flush();
+        return $this->redirectToRoute('AfficherProduit');
+    }
+
+
+
 
 }
