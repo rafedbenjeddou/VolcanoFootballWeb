@@ -48,7 +48,7 @@ class UtilisateurController extends AbstractController
     /**
      * @param Request $request
      * @return Response
-     * @route("/AjouterUtilisateur")
+     * @route("/AjouterUtilisateur", name="AjouterUtilisateur")
      */
     function AjouterUtilisateur(Request $request){
 
@@ -66,6 +66,26 @@ class UtilisateurController extends AbstractController
             'form'=>$form->createView()
         ]);
     }
+
+    /**
+     * @route ("ModifierUtilisateur/{id}",name="ModifierUtilisateur")
+     */
+    function Update(UtilisateurRepository  $repository, $id, Request $request){
+
+        $utilisateur=$repository->find($id);
+        $form=$this->createForm(UtilisateurType::class, $utilisateur);
+        $form->add('Modifier',SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute("AfficherUtilisateur");
+        }
+        return $this->render('utilisateur/modifier.html.twig',[
+            'form'=>$form->createView()
+        ]);
+    }
+
 
 
 
