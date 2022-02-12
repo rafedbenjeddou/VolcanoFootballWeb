@@ -58,7 +58,7 @@ class EquipeController extends AbstractController
     /**
      * @param Request $request
      * @return Response
-     * @route("equipe/ajouter")
+     * @route("equipe/ajouter", name="AjouterEquipe")
      */
     function Ajouter_equipe(Request $request){
         $equipe = new Equipe();

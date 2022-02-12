@@ -15,7 +15,9 @@
 
                                 <div class=gallery-info><h6> {{ e.nomEquipe }}  </h6>
 
-                                    <p>Date de Création : {{ e.dateCreation|date('d-m-Y') }}</p></div>
+                                    <p>Date de Création : {{ e.dateCreation|date('d-m-Y') }}
+                                        Entreneur : {{ e.nomEntreneur }}
+                                    </p></div>
                             </a></li>
                     {% endfor %}
                 </ul>

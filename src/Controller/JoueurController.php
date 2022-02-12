@@ -63,9 +63,8 @@ class JoueurController extends AbstractController
      * @return Response
      * @route("joueur/ajouter",name="AjouterJoueur")
      */
-    function Ajouter_joueur(EquipeRepository $equipeRepository,Request $request){
+    function Ajouter_joueur(Request $request){
         $joueur = new Joueur();
-        $equipe=$equipeRepository->findAll();
         $form=$this->createForm(JoueurType::class,$joueur);
         $form->add('ajouter',SubmitType::class);
         $form->handleRequest($request);
@@ -76,7 +75,6 @@ class JoueurController extends AbstractController
             return  $this->redirectToRoute('AfficheJoueur');
         }
         return $this->render('joueur/Ajouter.html.twig',[
-            'equipe'=>$equipe,
            'form'=>$form->createView()
         ]);
     }

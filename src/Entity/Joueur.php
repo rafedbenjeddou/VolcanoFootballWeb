@@ -40,13 +40,15 @@ class Joueur
      */
     private $position;
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photo;
+
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Equipe", inversedBy="nom_equipe")
+     * @ORM\ManyToOne(targetEntity=Equipe::class, inversedBy="joueurs")
      */
     private $equipe;
+
 
     public function getId(): ?int
     {
@@ -99,13 +101,6 @@ class Joueur
         return $this->equipe;
     }
 
-    /**
-     * @param mixed $equipe
-     */
-    public function setEquipe($equipe): void
-    {
-        $this->equipe = $equipe;
-    }
 
 
     public function getPosition()
@@ -116,6 +111,13 @@ class Joueur
     public function setPosition($position): void
     {
         $this->position = $position;
+    }
+
+    public function setEquipe(?Equipe $equipe): self
+    {
+        $this->equipe = $equipe;
+
+        return $this;
     }
 
 }

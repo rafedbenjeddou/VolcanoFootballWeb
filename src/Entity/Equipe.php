@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EquipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -43,9 +44,10 @@ class Equipe
     private $nom_entreneur;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Joueur", mappedBy="equipe")
+     * @ORM\OneToMany(targetEntity=Joueur::class, mappedBy="equipe")
      */
-    private $joueur;
+    private $joueurs;
+
 
     public function getId(): ?int
     {
@@ -103,14 +105,39 @@ class Equipe
     public function __construct()
     {
         $this->joueur = new ArrayCollection();
+        $this->joueurs = new ArrayCollection();
     }
+
     /**
-     * @return mixed
+     * @return Collection|Joueur[]
      */
-    public function getJoueur()
+    public function getJoueurs(): Collection
     {
-        return $this->joueur;
+        return $this->joueurs;
     }
+
+    public function addJoueur(Joueur $joueur): self
+    {
+        if (!$this->joueurs->contains($joueur)) {
+            $this->joueurs[] = $joueur;
+            $joueur->setEquipe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJoueur(Joueur $joueur): self
+    {
+        if ($this->joueurs->removeElement($joueur)) {
+            // set the owning side to null (unless already changed)
+            if ($joueur->getEquipe() === $this) {
+                $joueur->setEquipe(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 
 }
