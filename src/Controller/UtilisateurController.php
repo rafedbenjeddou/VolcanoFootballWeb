@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
+use App\Form\UtilisateurType;
 use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -40,6 +44,29 @@ class UtilisateurController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('AfficherUtilisateur');
     }
+
+    /**
+     * @param Request $request
+     * @return Response
+     * @route("/AjouterUtilisateur")
+     */
+    function AjouterUtilisateur(Request $request){
+
+        $utilisateur = new Utilisateur();
+        $form=$this->createForm(UtilisateurType::class,$utilisateur);
+        $form->add('Ajouter',SubmitType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($utilisateur);
+            $em->flush();
+            return  $this->redirectToRoute('AfficherUtilisateur');
+        }
+        return $this->render('utilisateur/ajouter.html.twig',[
+            'form'=>$form->createView()
+        ]);
+    }
+
 
 
 }
