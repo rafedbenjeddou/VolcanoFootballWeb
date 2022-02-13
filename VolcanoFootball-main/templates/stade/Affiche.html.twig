@@ -1,0 +1,55 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+<div class="row"  , style="width: 100%;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Liste Des Stades</h4>
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom </th>
+                        <th>Adresse </th>
+                        <th>Capacite</th>
+                        <th>Date Ouverture</th>
+                        <th>details</th>
+                        <th>update</th>
+                        <th>delete</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr {% for s in stade %}>
+                        <td>{{ s.id }}</td>
+                        <td>{{ s.nom }}</td>
+                        <td>{{ s.adresse }}</td>
+                        <td>{{ s.capacite }}</td>
+                        <td>{{ s.dateouverture | date('d-m-Y') }}</td>
+                        <td><a href>details</a></td>
+                        <td><a href="{{ path('UpdateStade',{'id':s.id})}}"><i class="ri-pencil-fill"></i></a></td>
+                        <td><a href="{{ path('deleteStade',{'id':s.id})}}"><i class="ri-delete-bin-fill"></a></td>
+                    </tr{% endfor %}>
+                    <li><a href="http://127.0.0.1:8000/stade/AddStade">Add Stade</a></li>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+</div>
+<script>
+    $('#datatable-buttons').DataTable();
+    let myForm = document.getElementById('myForm');
+    myForm.addEventListener('submit', function(e)
+    {
+        if (myInput.value.trim()==""){
+            let myError = document.getElementById('nom');
+            myError.innerHTML = "Le Champs nom est requis.";
+            myError.style.color = 'red';
+            e.preventDefault();
+        }
+    })
+</script> 
+{% endblock %}     
