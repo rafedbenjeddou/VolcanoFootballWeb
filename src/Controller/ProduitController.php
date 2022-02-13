@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
+use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class ProduitController extends AbstractController
 {
@@ -41,7 +46,29 @@ class ProduitController extends AbstractController
         return $this->redirectToRoute('AfficherProduit');
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     * @route("/AjouterProduit", name="AjouterProduit")
+     */
+    function AjouterProduit(Request $request){
 
-
+        $produit = new Produit();
+        $form=$this->createForm(ProduitType::class,$produit);
+        $form->add('Ajouter', SubmitType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $file = $produit->getPhoto();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $em=$this->getDoctrine()->getManager();
+            $produit->setPhoto($fileName);
+            $em->persist($produit);
+            $em->flush();
+            return  $this->redirectToRoute('AfficherProduit');
+        }
+        return $this->render('produit/ajouter.html.twig',[
+            'form'=>$form->createView()
+        ]);
+    }
 
 }
