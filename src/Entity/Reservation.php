@@ -28,8 +28,15 @@ class Reservation
     private $dateFin;
 
 
+
+
     /**
-     * @ORM\OneToOne(targetEntity=Hebergement::class, cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $idClient;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Hebergement::class, inversedBy="reservations")
      */
     private $hebergement;
 
@@ -63,6 +70,20 @@ class Reservation
     }
 
     
+   
+
+    public function getIdClient(): ?string
+    {
+        return $this->idClient;
+    }
+
+    public function setIdClient(string $idClient): self
+    {
+        $this->idClient = $idClient;
+
+        return $this;
+    }
+
     public function getHebergement(): ?Hebergement
     {
         return $this->hebergement;
