@@ -22,6 +22,7 @@
                             <th>Prenom Joueur</th>
                             <th>Age</th>
                             <th>Position</th>
+                            <th>Equipe</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -32,6 +33,9 @@
                             <td>{{ j.prenomJoueur }}</td>
                             <td>{{ j.age }}</td>
                             <td>{{ j.position }}</td>
+                            <td> {% if j.equipe %}
+                                    {{ j.equipe.NomEquipe }}
+                                {% endif %}</td>
                             <td><a href="{{ path('update',{'id':j.id}) }}"><i class="ri-pencil-fill"></i></a>
                                 <a href="{{ path('delete',{'id':j.id}) }}"><i class="ri-delete-bin-fill"></i></a>
                             </td>
