@@ -69,6 +69,14 @@ class JoueurController extends AbstractController
         $form->add('ajouter',SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $file =$joueur->getPhoto();
+            $uploads_directory = $this->getParameter('upload_directory');
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $uploads_directory,
+                $fileName
+            );
+            $joueur->setPhoto($fileName);
             $em=$this->getDoctrine()->getManager();
             $em->persist($joueur);
             $em->flush();

@@ -45,13 +45,12 @@ class JoueurType extends AbstractType
                     'class'=>'position'
                 ]
             ])
-            ->add('photo-joueur',FileType::class, [
+            ->add('photo',FileType::class, [
                 'label'=>'Photo Joueur',
                 'attr'=>[
                     'placeholder'=>'Photo Joueur',
                     'class'=>'photo'
-                ],
-                'mapped'=>false
+                ]
             ])
             ->add('equipe', EntityType::class, [
                 'class' =>Equipe::class,

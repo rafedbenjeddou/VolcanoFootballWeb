@@ -78,12 +78,12 @@ class Equipe
         return $this;
     }
 
-    public function getDrapeauEquipe(): ?string
+    public function getDrapeauEquipe()
     {
         return $this->drapeau_equipe;
     }
 
-    public function setDrapeauEquipe(?string $drapeau_equipe): self
+    public function setDrapeauEquipe( $drapeau_equipe): self
     {
         $this->drapeau_equipe = $drapeau_equipe;
 

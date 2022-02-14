@@ -66,6 +66,14 @@ class EquipeController extends AbstractController
         $form->add('ajouter',SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $file =$equipe->getDrapeauEquipe();
+            $uploads_directory = $this->getParameter('upload_directory');
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $uploads_directory,
+                $fileName
+            );
+            $equipe->setDrapeauEquipe($fileName);
             $em=$this->getDoctrine()->getManager();
             $em->persist($equipe);
             $em->flush();

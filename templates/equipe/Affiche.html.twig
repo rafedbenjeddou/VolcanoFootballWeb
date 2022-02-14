@@ -23,9 +23,10 @@
                         <td>{{ e.nomEquipe }}</td>
                         <td>{{ e.dateCreation|date('d-m-Y') }}</td>
                         <td>{{ e.nomEntreneur }}</td>
-                        <td><img src="{{asset(e.drapeauEquipe)}}"/></td>
-                        <td><a href="{{ path('update',{'id':e.id}) }}"><i class="ri-pencil-fill"></i></a>
-                            <a href="{{ path('delete',{'id':e.id}) }}"><i class="ri-delete-bin-fill"></i></a>
+                        <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ e.drapeauEquipe }}"/></td>
+                        <td>
+                            <a href="{{ path('update',{'id':e.id}) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="Modifier" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                            <a href="{{ path('delete',{'id':e.id}) }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
                         </td>
                     </tr {% endfor %}>
                     </tbody>

@@ -92,7 +92,17 @@ class Joueur
 
         return $this;
     }
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
 
+    public function setPhoto( $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
     /**
      * @return mixed
      */
@@ -100,8 +110,6 @@ class Joueur
     {
         return $this->equipe;
     }
-
-
 
     public function getPosition()
     {
@@ -119,5 +127,6 @@ class Joueur
 
         return $this;
     }
+
 
 }

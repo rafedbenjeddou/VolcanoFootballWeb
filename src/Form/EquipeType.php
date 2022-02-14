@@ -41,7 +41,7 @@ class EquipeType extends AbstractType
                     'placeholder'=>'Drapeau Equipe',
                     'class'=>'drapeau'
                 ],
-                'mapped'=>false
+
             ])
         ;
     }
