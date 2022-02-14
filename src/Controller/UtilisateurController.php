@@ -70,7 +70,7 @@ class UtilisateurController extends AbstractController
     /**
      * @route ("ModifierUtilisateur/{id}",name="ModifierUtilisateur")
      */
-    function Update(UtilisateurRepository  $repository, $id, Request $request){
+    function ModifierUtilisateur(UtilisateurRepository  $repository, $id, Request $request){
 
         $utilisateur=$repository->find($id);
         $form=$this->createForm(UtilisateurType::class, $utilisateur);

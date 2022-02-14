@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
+use App\Form\ProduitType2;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\File\File;
 
 
 class ProduitController extends AbstractController
@@ -59,9 +61,16 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $file = $produit->getPhoto();
+            $uploads_directory = $this->getParameter('upload_directory');
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $em=$this->getDoctrine()->getManager();
+            $file->move(
+                $uploads_directory,
+                $fileName
+            );
+
             $produit->setPhoto($fileName);
+            $em=$this->getDoctrine()->getManager();
+
             $em->persist($produit);
             $em->flush();
             return  $this->redirectToRoute('AfficherProduit');
@@ -70,5 +79,25 @@ class ProduitController extends AbstractController
             'form'=>$form->createView()
         ]);
     }
+
+    /**
+     * @route ("ModifierProduit/{id}",name="ModifierProduit")
+     */
+    function ModifierProduit(ProduitRepository  $repository, $id, Request $request){
+
+        $produit=$repository->find($id);
+        $form=$this->createForm(ProduitType2::class, $produit);
+        $form->add('Modifier',SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute("AfficherProduit");
+        }
+        return $this->render('produit/modifier.html.twig',[
+            'form'=>$form->createView()
+        ]);
+    }
+
 
 }

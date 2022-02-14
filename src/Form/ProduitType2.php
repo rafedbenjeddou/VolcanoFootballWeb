@@ -10,8 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-
-class ProduitType extends AbstractType
+class ProduitType2 extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -76,14 +75,16 @@ class ProduitType extends AbstractType
                     'placeholder'=>"Prix",
                 ]
             ])
-            ->add('photo',FileType::class, [
 
+            ->add('photo',FileType::class, [
+                'mapped'=>false,
                 'label'=>'Photo',
                 'attr'=>[
                     'placeholder'=>'Photo',
                 ]
 
             ])
+
         ;
     }
 

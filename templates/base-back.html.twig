@@ -178,7 +178,7 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ path('AfficherProduit') }}">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AjouterProduit') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -371,13 +371,9 @@
         <div class="page-content">
             <div class="container-fluid">
 
+                 {% block content %}
 
-
-                {% block content %}
-
-                {% endblock %}
-
-
+                 {% endblock %}
 
             </div>
         </div>
