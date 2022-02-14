@@ -4,31 +4,42 @@
         <div class=content></div>
         <div class=innerbanner><h2 class=bannerHeadline><span>Joueur</span></h2></div>
     </div>
+    <section class=playerDetails02>
+        <div class=container>
+            <div class=row><h2 class=heading>our <span>player</span></h2>
 
-        <section class=innerpage_all_wrap>
-            <div class=container>
-                <div class=row>
-                    <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
-                        {% for j in joueur %}
-                        <li class=gallery-list><a class=column_g><span class=image_g
-                                                                       style=background:url(front-office/images/gallery/gallery02.jpg)></span>
+                <p class=headParagraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis
+                    consequuntur animi, commodi, voluptatibus labore aperiam fugit maxime quos optio architecto cum?
+                    Laborum nesciunt doloribus expedita atque error rem molestias, ducimus.</p></div>
+            <div class="wrapper-container clearfix"><a class="prv prev"></a> <a class="nxt next"></a>
+                <ul class=player02>
+                    {% for j in joueur %}
+                    <li>
+                        <div class=player02fig>
+                            <div style=background:url({{ asset('front-office/images/player/player01.jpg') }}) class="imgplayer bgimg"></div>
+                        </div>
+                        <div class=player02info>
+                            <div class=clearfix>
+                                <div class=player02info01><h6><span>name</span>{{ j.nomJoueur }} {{ j.prenomJoueur }}</h6><h6><span>position</span>{{ j.position }}
+                                    </h6><h6><span>age</span> {{ j.age }}</h6></div>
+                                <div class=player02info02><img src={{ asset('front-office/images/player/playerT_shirt01.png') }} alt=image></div>
+                            </div>
+                            <h6 class=oswald16>imformation</h6>
 
-                                <div class=gallery-info><h6>{{ j.prenomJoueur }} {{ j.nomJoueur }}</h6>
 
-                                    <p>{{ j.age }}</p></div>
-                            </a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                            <p>{{ j.description}}</p>
+                            <ul class=clearfix>
+
+                            </ul>
+                            </div>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
-        </section>
-
-    <script type=text/javascript>
-        $(function () {
-            $('#da_gallery .gallery-list ').hoverdir();
-        });
-    </script>
+        </div>
+    </section>
 {% endblock %}
+
 
 
 

@@ -16,6 +16,7 @@
                             <th>Age</th>
                             <th>Photo</th>
                             <th>Position</th>
+                            <th>Description</th>
                             <th>Equipe</th>
                             <th>Action</th>
                         </tr>
@@ -28,6 +29,7 @@
                             <td>{{ j.age }}</td>
                             <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ j.photo }}"/></td>
                             <td>{{ j.position }}</td>
+                            <td>{{ j.description }}</td>
                             <td> {% if j.equipe %}
                                     {{ j.equipe.NomEquipe }}
                                 {% endif %}</td>

@@ -45,7 +45,7 @@ class EquipeController extends AbstractController
     }
 
     /**
-     * @route("/delete/{id}",name="supprimer")
+     * @route("/delete/{id}",name="supprimerequipe")
      */
     function Delete_joueur($id,EquipeRepository $repository){
         $equipe=$repository->find($id);
@@ -84,7 +84,7 @@ class EquipeController extends AbstractController
         ]);
     }
     /**
-     * @route ("equipe/update/{id}",name="modifier")
+     * @route ("equipe/update/{id}",name="modifierequipe")
      */
     function Update(EquipeRepository  $repository,$id,Request $request){
         $equipe=$repository->find($id);

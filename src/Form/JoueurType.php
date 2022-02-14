@@ -6,6 +6,7 @@ use App\Entity\Equipe;
 use App\Entity\Joueur;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -45,10 +46,17 @@ class JoueurType extends AbstractType
                     'class'=>'position'
                 ]
             ])
+            ->add('description',TextareaType::class, [
+                'label'=>'Description du Joueur',
+                'attr'=>[
+                    'placeholder'=>'Description du Joueur',
+                    'class'=>'description'
+                ]
+            ])
             ->add('photo',FileType::class, [
                 'label'=>'Photo Joueur',
                 'attr'=>[
-                    'placeholder'=>'Photo Joueur',
+                    'placeholder'=>'Photo Jour',
                     'class'=>'photo'
                 ]
             ])
