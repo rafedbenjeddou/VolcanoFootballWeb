@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
@@ -19,11 +20,27 @@ class Produit
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom du produit est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "10",
+     * minMessage = "Le nom du produit doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le nom du produit ne peut pas être plus long que {{ limit }} caractères"
+     * )
+
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le type est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "10",
+     * minMessage = "Le type du produit doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le type du produit ne peut pas être plus long que {{ limit }} caractères"
+     * )
+
      */
     private $type;
 
@@ -34,6 +51,13 @@ class Produit
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="La couleur est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "15",
+     * minMessage = "La couleur du produit doit faire au moins {{ limit }} caractères",
+     * maxMessage = "La couleur du produit ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $couleur;
 
@@ -44,16 +68,25 @@ class Produit
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le description du produit est obligatoire.")
+     * @Assert\Length(
+     * min = "5",
+     * max = "50",
+     * minMessage = "Le description du produit doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le description du produit ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Le prix du produit est obligatoire.")
      */
     private $prix;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="La photo du produit est obligatoire.")
      */
     private $photo;
 

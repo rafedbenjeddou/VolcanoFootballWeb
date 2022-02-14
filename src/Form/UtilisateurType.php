@@ -42,7 +42,7 @@ class UtilisateurType extends AbstractType
 
                 ],
 
-                'label'=>"Role",
+                'label'=>"Genre",
 
                 'expanded' => false,
                 'multiple' => false

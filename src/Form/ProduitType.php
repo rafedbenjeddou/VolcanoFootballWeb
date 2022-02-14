@@ -58,7 +58,7 @@ class ProduitType extends AbstractType
                     '5' => 5
                 ],
 
-                'label'=>"Taille",
+                'label'=>"Nombre d'Etoiles",
 
                 'expanded' => false,
                 'multiple' => false

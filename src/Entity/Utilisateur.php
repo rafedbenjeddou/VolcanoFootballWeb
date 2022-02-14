@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
@@ -19,51 +20,88 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "10",
+     * minMessage = "Le nom doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le nom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
+
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le prenom est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "10",
+     * minMessage = "Le prenom doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le prenom ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="L'age est obligatoire.")
      */
     private $age;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le pays est obligatoire.")
      */
     private $pays;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="L'email est obligatoire.")
+     * @Assert\Email(message = "Ce e-mail n'est pas valide.")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "15",
+     * minMessage = "Le mot de passe doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le mot de passe ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le role de passe est obligatoire.")
      */
     private $role;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom d'utilisateur est obligatoire.")
      */
     private $username;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le numéro de téléphone est obligatoire.")
+     * @Assert\Length(
+     * min = "5",
+     * max = "30",
+     * minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} nombres.",
+     * maxMessage = "Le numéro de téléphone ne peut pas être plus long que {{ limit }} nombres."
+     * )
+
      */
     private $numTel;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le genre est obligatoire.")
      */
     private $genre;
 
