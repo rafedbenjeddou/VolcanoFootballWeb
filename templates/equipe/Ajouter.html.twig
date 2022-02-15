@@ -1,10 +1,16 @@
 {% extends 'base-back.html.twig' %}
 {% block content %}
 
-
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
     <div class="row " style="width: 100%;">
         <div class="col-12">
             <div class="card">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="#">Equipe</a></li>
+                        <li class="breadcrumb-item active">Ajouter</li>
+                    </ol>
+                </div>
                 <div class="card-body">
                     {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
                     <div class="form-group row">

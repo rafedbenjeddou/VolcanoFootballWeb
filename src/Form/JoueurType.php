@@ -46,7 +46,7 @@ class JoueurType extends AbstractType
                     'class'=>'position'
                 ]
             ])
-            ->add('description',TextareaType::class, [
+            ->add('description',TextType::class, [
                 'label'=>'Description du Joueur',
                 'attr'=>[
                     'placeholder'=>'Description du Joueur',
