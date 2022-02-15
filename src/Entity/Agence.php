@@ -6,6 +6,7 @@ use App\Repository\AgenceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AgenceRepository::class)
@@ -21,16 +22,34 @@ class Agence
 
     /**
      * @ORM\Column(type="string", length=255)
+     * *@Assert\Length(
+     *     min = 5,
+     *    max = 10,
+    *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
+    *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     *)
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *@Assert\Length(
+     *     min = 5,
+     *    max = 50,
+    *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
+    *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     *)
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="integer")
+     * *@Assert\Length(
+     *     min = 5,
+     *    max = 10,
+    *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
+    *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     *)
      */
     private $numTel;
 

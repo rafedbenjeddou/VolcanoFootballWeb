@@ -6,6 +6,8 @@ use App\Repository\HebergementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=HebergementRepository::class)
@@ -21,6 +23,12 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * *@Assert\Length(
+     *     min = 5,
+     *    max = 20,
+    *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
+    *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     *)
      */
     private $nom;
 
@@ -31,6 +39,12 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * *@Assert\Length(
+     *     min = 5,
+     *    max = 50,
+    *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
+    *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     *)
      */
     private $adresse;
 
@@ -114,12 +128,12 @@ class Hebergement
         return $this;
     }
 
-    public function getPhotoH(): ?string
+    public function getPhotoH()
     {
         return $this->photoH;
     }
 
-    public function setPhotoH(?string $photoH): self
+    public function setPhotoH( $photoH): self
     {
         $this->photoH = $photoH;
 

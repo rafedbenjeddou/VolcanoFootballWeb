@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Agence;
 use App\Repository\AgenceRepository;
+use App\Repository\HebergementRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,6 +23,14 @@ class AgenceController extends AbstractController
         return $this->render('agence/index.html.twig', [
             'controller_name' => 'AgenceController',
         ]);
+    }
+     /**
+     * @Route("/AfficheAF", name="AfficheAgenceAF")
+     */
+    public function AfficheAF(AgenceRepository $repo) {
+        $agence=$repo->findAll();
+        return $this->render('agence/AfficheAF.html.twig',
+        ['agence'=>$agence]);
     }
         /**
      * @Route("/AfficheA", name="AfficheAgence")
@@ -77,4 +87,18 @@ class AgenceController extends AbstractController
             'f'=>$form->createView()
         ]);
         }
+        
+     /**
+     * @Route("/ListByAgence/{id}", name="ListByAgence", methods={"GET"})
+     */
+   function ListHebergementByAgence(AgenceRepository $repoA, HebergementRepository $repoH, $id){
+    $agence=$repoA->find($id);
+    $hebergement=$repoH->ListHebergementByAgence($agence->getId());
+    return $this->render("agence/Show.html.twig", [
+        'a'=>$agence, 'hebergement'=>$hebergement
+    ]);
+    
+}
+
+
 }

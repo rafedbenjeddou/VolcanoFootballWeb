@@ -1,0 +1,39 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span>Agence</span></h2></div>
+    </div>
+
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row>
+                    <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
+                        {% for a in agence %}
+                        <td><a href="{{ path('ListByAgence',{'id':a.id}) }}">
+
+                            <li class=gallery-list><a class=column_g><span class=image_g
+                                                                           style=background:url(front-office/images/gallery/masonry/large_01.jpg)></span>
+                
+                                    <div class=gallery-info><h6> {{ a.nom }}  </h6>
+                
+                                        <p><b> Adresse:</b> {{ a.adresse }}<br> <br>
+                                            <b>Numéro de télephone:    </b>   {{ a.numTel }}<br> <br>
+                                            <a  href="{{ path('ListByAgence',{'id':a.id}) }}">Accéder</a>
+                                        </p></div>
+                                </a></li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                
+            </div>
+        </div>
+    </section>
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}
+

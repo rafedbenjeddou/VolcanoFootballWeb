@@ -1,0 +1,67 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div   class=innerbanner><h2 class=bannerHeadline><span>    {{ a.nom }}   </span> </h2></div>
+    </div>
+
+    <section class="matchSchedule countryclub">
+        <div class=container>
+            <div class=row><h2 class="heading small">Agence <span>Description</span></h2>
+
+                <p class=headParagraph>Accommodation will be a key part of your time in Qatar and a broad range of options will be ready to host you in 2022. This includes hotels, apartments and villas, as well as Fan Village desert camping and rooms aboard cruise ships. Whether you stay in downtown Doha, at an urban island residence or by the incredible beaches, everything is within easy reach. You’ll even have the possibility to attend more than one match a day during the group stage as all our stadiums are only a short distance away from one another, with no need to change accommodation throughout the tournament.
+
+                    Accommodation sales will commence soon. Qatar looks forward to welcoming you to a land where the old blends seamlessly with the new, where nature meets the city and where pristine waters lap desert sands..</p></div>
+        </div>
+    </section>
+    <section class=players>
+        <div class=container>
+            <div class=row><h2 class=heading>board <span>hotels</span></h2>
+                <p class=headParagraph>Qatar has something for everyone with its vast range of hotels and world-renowned hospitality. Most of the hotels are located in the capital Doha but there are several out-of-town retreats for visitors looking for something different.</p>
+
+                    <div class="wrapplayer clearfix"><a class="prv prev-player"></a> <a class="nxt next-player"></a>
+                        <ul class="boardmember clearfix">
+                            {% for h in hebergement %}
+
+                            <li class=clearfix>
+                                <div>
+                                    <div>
+                                        <div class=fig01>
+                                            <div class=memberimg
+                                                 style=background:url("{{ asset('uploads/images/') ~ h.photoH }} ") no-repeat top center></div>
+                    
+                                        </div>
+                                        
+
+                                        <div class="bg-black01 fig02">
+                                            <h6 class=paragraph02>{{ h.nom }} </h6>
+                    
+                                            <p class="uppercaseheading red"> <p>Type : {{ h.type }}</p></p>
+                    
+                                            <p>The FIFA World Cup Qatar 2022™ is less than a year away. Your host country, Qatar, offers an exciting range of accommodation – available to book soon..</p></div>
+                                        <div class="bg-black fig02"><p>Experience a FIFA World Cup™
+                                            like no other.</p>
+                                        </div>
+                                        <div class="bg-redcolor fig02"><p>Adresse : {{ h.adresse }}</p></div>
+
+                                    </div>
+                                </div>
+                             
+                            
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}
+

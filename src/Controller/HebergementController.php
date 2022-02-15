@@ -31,6 +31,15 @@ class HebergementController extends AbstractController
         return $this->render('hebergement/Affiche.html.twig',
         ['hebergement'=>$hebergement]);
     }
+           /**
+     * @Route("/AfficheHF/{id}", name="AfficheHF")
+     */
+    public function AfficheHF(HebergementRepository $repo, $id) {
+       
+        $hebergement=$repo->find($id);
+        return $this->render('hebergement/AfficheHF.html.twig',
+        ['hebergement'=>$hebergement]);
+    }
         /**
      * @param Request $request
      * @Route("/AddH",name="AddH")
@@ -40,7 +49,17 @@ class HebergementController extends AbstractController
         $form=$this->createForm(HebergementType::class,$hebergement);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+
+            $file =$hebergement->getPhotoH();
+            $uploads_directory = $this->getParameter('upload_directory');
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $uploads_directory,
+                $fileName
+            );
+            $hebergement->setPhotoH($fileName);
             $em=$this->getDoctrine()->getManager();
+
             $em->persist($hebergement);
             $em->flush();
             return $this->redirectToRoute('AfficheH');
