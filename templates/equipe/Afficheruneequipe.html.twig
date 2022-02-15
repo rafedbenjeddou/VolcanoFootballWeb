@@ -12,13 +12,15 @@
                     {% for e in equipe %}
                         <li class=gallery-list><a class=column_g><span class=image_g
                                                                        style=background:url("{{ asset('uploads/images/') ~ e.drapeauEquipe }}")></span>
-
                                 <div class=gallery-info><h6> {{ e.nomEquipe }}  </h6>
 
                                     <p>Date de Création : {{ e.dateCreation|date('d-m-Y') }}
-                                        <br>Entreneur : {{ e.nomEntreneur }}
-                                    </p></div>
-                            </a></li>
+                                        <br>Entreneur : {{ e.nomEntreneur }}<br>
+                                    </p>
+                                </div>
+                            </a>
+                            <a  href="{{ path('ListByEquipe',{'id':e.id}) }}">Détail</a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>

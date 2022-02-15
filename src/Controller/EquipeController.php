@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Equipe;
 use App\Form\EquipeType;
 use App\Repository\EquipeRepository;
+use App\Repository\JoueurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -99,5 +100,16 @@ class EquipeController extends AbstractController
         return $this->render('equipe/Update.html.twig',[
             'form'=>$form->createView()
         ]);
+    }
+    /**
+     * @Route("/ListByEquipe/{id}", name="ListByEquipe", methods={"GET"})
+     */
+    function ListJoueurByEquipe(JoueurRepository  $repoJ, EquipeRepository $repoE, $id){
+        $equipe=$repoE->find($id);
+        $joueur=$repoJ->ListJoueurByEquipe($equipe->getId());
+        return $this->render("equipe/Show.html.twig", [
+            'equipe'=>$equipe, 'joueur'=>$joueur
+        ]);
+
     }
 }
