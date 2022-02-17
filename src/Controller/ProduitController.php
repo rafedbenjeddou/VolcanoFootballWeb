@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
-use App\Form\ProduitType2;
+use App\Form\ProduitEditType;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -86,7 +86,7 @@ class ProduitController extends AbstractController
     function ModifierProduit(ProduitRepository  $repository, $id, Request $request){
 
         $produit=$repository->find($id);
-        $form=$this->createForm(ProduitType2::class, $produit);
+        $form=$this->createForm(ProduitEditType::class, $produit);
         $form->add('Modifier',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){

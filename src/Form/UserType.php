@@ -2,18 +2,20 @@
 
 namespace App\Form;
 
-use App\Entity\Utilisateur;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class UtilisateurType extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
 
             ->add("username",TextType::class,[
                 "label"=>"Nom d'Utilisateur",
@@ -67,39 +69,45 @@ class UtilisateurType extends AbstractType
                     'placeholder'=>"Email",
                 ]
             ])
-            ->add('password',TextType::class,[
-                'label'=>"Password",
+            ->add('password',PasswordType::class,[
+                'label'=>"Mot de passe",
                 'attr'=>[
-                    'placeholder'=>"Password",
+                    'placeholder'=>"Mot de passe",
                 ]
             ])
+            ->add('confirmePassword',PasswordType::class,[
+                'label'=>"Confirmer Mot de passe",
+                'attr'=>[
+                    'placeholder'=>"Confirmer Mot de passe",
+                ]
+            ])
+
             ->add('numTel',TextType::class,[
                 'label'=>"Numéro de Téléphone",
                 'attr'=>[
                     'placeholder'=>"Numéro de Téléphone",
                 ]
             ])
-            ->add('role',ChoiceType::class,[
+            ->add('roles',ChoiceType::class,[
                 'choices'  => [
-                    'Utilisateur' => 'utilisateur',
-                    'Administrateur' => 'administrateur'
+                    'Utilisateur' => 'ROLE_USER',
+                    'Administrateur' => 'ROLE_ADMIN'
 
                 ],
 
                 'label'=>"Role",
 
-                'expanded' => false,
-                'multiple' => false
+                'expanded' => true,
+                'multiple' => true
 
             ])
-
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Utilisateur::class,
+            'data_class' => User::class,
         ]);
     }
 }
