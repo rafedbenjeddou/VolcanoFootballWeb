@@ -51,6 +51,10 @@ class BilletController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($billet);
         $em->flush();
+        $this->addFlash(
+            'info',
+            'Deleted Successfully'
+        );
         return $this->redirectToRoute('AfficheBillet');
     }
 
@@ -68,6 +72,10 @@ class BilletController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($billet);
             $em->flush();
+            $this->addFlash(
+                'info',
+                'Added Successfully'
+            );
             return  $this->redirectToRoute('AfficheBillet');
         }
         return $this->render('billet/Ajouter.html.twig',[
@@ -85,6 +93,10 @@ class BilletController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
             $em->flush();
+            $this->addFlash(
+                'info',
+                'Updated Successfully'
+            );
             return $this->redirectToRoute("AfficheBillet");
         }
         return $this->render('billet/Update.html.twig',[

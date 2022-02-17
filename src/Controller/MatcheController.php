@@ -52,6 +52,10 @@ function Delete_matche($id,MatcheRepository $repository){
     $em=$this->getDoctrine()->getManager();
     $em->remove($matche);
     $em->flush();
+    $this->addFlash(
+        'info',
+        'Deleted Successfully'
+    );
     return $this->redirectToRoute('AfficheMatche');
 }
 
@@ -69,6 +73,10 @@ function Ajouter_matche(Request $request){
         $em=$this->getDoctrine()->getManager();
         $em->persist($matche);
         $em->flush();
+        $this->addFlash(
+            'info',
+            'Added Successfully'
+        );
         return  $this->redirectToRoute('AfficheMatche');
     }
     return $this->render('matche/Ajouter.html.twig',[
@@ -86,6 +94,10 @@ function Update(MatcheRepository  $repository,$id,Request $request){
     if ($form->isSubmitted() && $form->isValid()){
         $em=$this->getDoctrine()->getManager();
         $em->flush();
+        $this->addFlash(
+            'info',
+            'Updated Successfully'
+        );
         return $this->redirectToRoute("AfficheMatche");
     }
     return $this->render('matche/Update.html.twig',[
