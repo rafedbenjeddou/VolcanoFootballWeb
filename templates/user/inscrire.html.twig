@@ -1,0 +1,60 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>créer <span>un compte</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>veuillez entrer <span>les informations suivantes</span></h2>
+
+                <p class=headParagraph></p>
+
+                    <form data-parsley-validate="" name=contact class="feedbackContact-open formcontact clearfix">
+                        <div class=form-group><input type=text class=form-control name=username placeholder="Nom d'utilisateur" required=""
+                                                     data-parsley-required-message="Veuillez insérer le username"></div>
+                        <div class=form-group><input type=text class=form-control name=nom placeholder=Nom
+                                                     required="" data-parsley-required-message="Veuillez insérer votre nom">
+                        </div>
+                        <div class=form-group><input type=text class=form-control name=prenom placeholder=Prenom
+                                                     required="" data-parsley-required-message="Veuillez insérer votre prenom">
+                        </div>
+                        <div class=form-group><input type=number class=form-control name=age placeholder=Age
+                                                     required="" data-parsley-required-message="Veuillez insérer votre age'">
+                        </div>
+                        <div class=form-group><input type=text class=form-control name=pays placeholder=Pays
+                                                     required="" data-parsley-required-message="Veuillez insérer votre pays'">
+                        </div>
+                        <div class=form-group><input type=text class=form-control name=pays placeholder=Pays
+                                                     required="" data-parsley-required-message="Veuillez insérer votre pays'">
+                        </div>
+                        <div class=form-group><input type=text class=form-control name=email placeholder=Email
+                                                     required="" data-parsley-required-message="Veuillez insérer votre email'">
+                        </div>
+                        <div class=form-group><input type=number class=form-control name=numTel placeholder="Numéro du Téléphone"
+                                                     required="" data-parsley-required-message="Veuillez insérer votre numéro du téléphone'">
+                        </div>
+
+                        <div class=form-group>
+                            <select class=form-control>
+                                <option class=form-control name="genre" value="homme">Homme</option>
+                                <option class=form-control name="genre" value="femme" >Femme</option>
+                            </select>
+                        </div>
+
+
+
+
+                        <button type=submit class=btn-blackLight id=send>submit</button>
+                        <div class=form-message></div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

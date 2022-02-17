@@ -16,15 +16,6 @@ use Symfony\Component\HttpFoundation\File\File;
 
 class ProduitController extends AbstractController
 {
-    /**
-     * @Route("/produit", name="produit")
-     */
-    public function index(): Response
-    {
-        return $this->render('produit/index.html.twig', [
-            'controller_name' => 'ProduitController',
-        ]);
-    }
 
     /**
      * @param ProduitRepository $repository
@@ -97,6 +88,20 @@ class ProduitController extends AbstractController
         return $this->render('produit/modifier.html.twig',[
             'form'=>$form->createView()
         ]);
+    }
+
+
+    //---------------------------------------------------------------------------------------------------------
+
+    /**
+     * @param ProduitRepository $repository
+     * @return Response
+     * @route("/AfficherProduitsFront", name="AfficherProduitsFront")
+     */
+    public function AfficherProduitsFront(ProduitRepository $repository){
+        $produit=$repository->findAll();
+        return $this->render('produit/afficherFront.html.twig',
+            ['produit'=>$produit]);
     }
 
 

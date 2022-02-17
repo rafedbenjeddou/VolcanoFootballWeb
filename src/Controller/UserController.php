@@ -93,6 +93,19 @@ class UserController extends AbstractController
     }
 
 
+    //---------------------------------------------------------------------------------------------------
+
+    /**
+     * @Route("/inscrire", name="inscrire")
+     */
+    public function inscrire(): Response
+    {
+        return $this->render('user/inscrire.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
+
+
 
 
 }
