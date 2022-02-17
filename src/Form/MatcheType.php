@@ -20,8 +20,9 @@ class MatcheType extends AbstractType
             ->add('NomArbitre')
             ->add('tour')
             ->add('date')
+            ->add('time')
             ->add('IdStade')
-
+            ->add('NomMatche')
         ;
     }
 

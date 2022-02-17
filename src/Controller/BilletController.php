@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Billet;
 use App\Form\BilletType;
 use App\Repository\BilletRepository;
+use App\Repository\MatcheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +33,16 @@ class BilletController extends AbstractController
         return $this->render('billet/Affiche.html.twig',
             ['billet'=>$billet]);
     }
-
+    /**
+     * @param BilletRepository $repository
+     * @return Response
+     * @route("/AfficheUnB", name="AfficheUnBillet")
+     */
+    public function Afficheunbillet(BilletRepository $repository){
+        $billet=$repository->findAll();
+        return $this->render('billet/AfficherUnBillet.html.twig',
+            ['billet'=>$billet]);
+    }
     /**
      * @route("/delete/{id}",name="supprimerbillet")
      */

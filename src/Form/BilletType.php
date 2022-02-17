@@ -3,6 +3,7 @@
 namespace App\Form;
 use App\Entity\Billet;
 use App\Entity\Matche;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -19,6 +20,10 @@ class BilletType extends AbstractType
             ->add('categorie')
             ->add('IdMatch')
             ->add('dateAchat')
+            ->add('matche' , EntityType::class, [
+                'class'=>Matche::class,
+                'choice_label'=>'NomMatche'
+            ])
         ;
     }
 

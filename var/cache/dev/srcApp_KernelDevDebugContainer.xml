@@ -148,6 +148,7 @@
     <parameter key="twig.exception_listener.controller">null</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_4_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">C:\Users\DeLL\Desktop\VolcanoFootball-main/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -5356,10 +5357,11 @@
         <argument key="repository" type="service_closure" id="App\Repository\MatcheRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.xyFqgV0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.qJVPm5i" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\BilletController::Affiche" type="service_closure" id=".service_locator.76m_nzL"/>
+        <argument key="App\Controller\BilletController::Afficheunbillet" type="service_closure" id=".service_locator.76m_nzL"/>
         <argument key="App\Controller\BilletController::Delete_billet" type="service_closure" id=".service_locator.76m_nzL"/>
         <argument key="App\Controller\BilletController::Update" type="service_closure" id=".service_locator.76m_nzL"/>
         <argument key="App\Controller\EquipeController::Affiche" type="service_closure" id=".service_locator.OV4VApf"/>
@@ -5369,9 +5371,11 @@
         <argument key="App\Controller\JoueurController::Delete_joueur" type="service_closure" id=".service_locator.m2kXqfa"/>
         <argument key="App\Controller\JoueurController::Update" type="service_closure" id=".service_locator.m2kXqfa"/>
         <argument key="App\Controller\MatcheController::Affiche" type="service_closure" id=".service_locator.Uk5jy4r"/>
+        <argument key="App\Controller\MatcheController::Afficheunmatche" type="service_closure" id=".service_locator.Uk5jy4r"/>
         <argument key="App\Controller\MatcheController::Delete_matche" type="service_closure" id=".service_locator.Uk5jy4r"/>
         <argument key="App\Controller\MatcheController::Update" type="service_closure" id=".service_locator.Uk5jy4r"/>
         <argument key="App\Controller\BilletController:Affiche" type="service_closure" id=".service_locator.76m_nzL"/>
+        <argument key="App\Controller\BilletController:Afficheunbillet" type="service_closure" id=".service_locator.76m_nzL"/>
         <argument key="App\Controller\BilletController:Delete_billet" type="service_closure" id=".service_locator.76m_nzL"/>
         <argument key="App\Controller\BilletController:Update" type="service_closure" id=".service_locator.76m_nzL"/>
         <argument key="App\Controller\EquipeController:Affiche" type="service_closure" id=".service_locator.OV4VApf"/>
@@ -5381,6 +5385,7 @@
         <argument key="App\Controller\JoueurController:Delete_joueur" type="service_closure" id=".service_locator.m2kXqfa"/>
         <argument key="App\Controller\JoueurController:Update" type="service_closure" id=".service_locator.m2kXqfa"/>
         <argument key="App\Controller\MatcheController:Affiche" type="service_closure" id=".service_locator.Uk5jy4r"/>
+        <argument key="App\Controller\MatcheController:Afficheunmatche" type="service_closure" id=".service_locator.Uk5jy4r"/>
         <argument key="App\Controller\MatcheController:Delete_matche" type="service_closure" id=".service_locator.Uk5jy4r"/>
         <argument key="App\Controller\MatcheController:Update" type="service_closure" id=".service_locator.Uk5jy4r"/>
       </argument>
@@ -5894,12 +5899,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.xyFqgV0"/>
+      <argument type="service" id=".service_locator.qJVPm5i"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.xyFqgV0"/>
+      <argument type="service" id=".service_locator.qJVPm5i"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6299,7 +6304,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.xyFqgV0"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.qJVPm5i"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

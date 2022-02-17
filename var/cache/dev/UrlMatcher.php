@@ -17,6 +17,7 @@ return [
         '/artiste' => [[['_route' => 'artiste', '_controller' => 'App\\Controller\\ArtisteController::index'], null, null, null, false, false, null]],
         '/billet' => [[['_route' => 'billet', '_controller' => 'App\\Controller\\BilletController::index'], null, null, null, false, false, null]],
         '/AfficheB' => [[['_route' => 'AfficheBillet', '_controller' => 'App\\Controller\\BilletController::Affiche'], null, null, null, false, false, null]],
+        '/AfficheUnB' => [[['_route' => 'AfficheUnBillet', '_controller' => 'App\\Controller\\BilletController::Afficheunbillet'], null, null, null, false, false, null]],
         '/billet/ajouter' => [[['_route' => 'app_billet_ajouter_billet', '_controller' => 'App\\Controller\\BilletController::Ajouter_billet'], null, null, null, false, false, null]],
         '/equipe' => [[['_route' => 'equipe', '_controller' => 'App\\Controller\\EquipeController::index'], null, null, null, false, false, null]],
         '/AfficheE' => [[['_route' => 'AfficheEquipe', '_controller' => 'App\\Controller\\EquipeController::Affiche'], null, null, null, false, false, null]],
@@ -29,6 +30,7 @@ return [
         '/kiosque' => [[['_route' => 'kiosque', '_controller' => 'App\\Controller\\KiosqueController::index'], null, null, null, false, false, null]],
         '/matche' => [[['_route' => 'matche', '_controller' => 'App\\Controller\\MatcheController::index'], null, null, null, false, false, null]],
         '/AfficheM' => [[['_route' => 'AfficheMatche', '_controller' => 'App\\Controller\\MatcheController::Affiche'], null, null, null, false, false, null]],
+        '/AfficheUnM' => [[['_route' => 'AfficheUnMatche', '_controller' => 'App\\Controller\\MatcheController::Afficheunmatche'], null, null, null, false, false, null]],
         '/matche/ajouter' => [[['_route' => 'app_matche_ajouter_matche', '_controller' => 'App\\Controller\\MatcheController::Ajouter_matche'], null, null, null, false, false, null]],
         '/stade' => [[['_route' => 'stade', '_controller' => 'App\\Controller\\StadeController::index'], null, null, null, false, false, null]],
     ],
@@ -59,7 +61,8 @@ return [
                     .'|/([^/]++)(*:243)'
                     .'|match/([^/]++)(*:265)'
                 .')'
-                .'|/joueur/update/([^/]++)(*:297)'
+                .'|/equipe/update/([^/]++)(*:297)'
+                .'|/joueur/update/([^/]++)(*:328)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -77,8 +80,9 @@ return [
         ],
         215 => [[['_route' => 'deleteMatche', '_controller' => 'App\\Controller\\MatcheController::Delete_matche'], ['id'], null, null, false, true, null]],
         243 => [[['_route' => 'modifierbillet', '_controller' => 'App\\Controller\\BilletController::Update'], ['id'], null, null, false, true, null]],
-        265 => [[['_route' => 'modifier', '_controller' => 'App\\Controller\\MatcheController::Update'], ['id'], null, null, false, true, null]],
-        297 => [
+        265 => [[['_route' => 'modifierMatche', '_controller' => 'App\\Controller\\MatcheController::Update'], ['id'], null, null, false, true, null]],
+        297 => [[['_route' => 'modifier', '_controller' => 'App\\Controller\\EquipeController::Update'], ['id'], null, null, false, true, null]],
+        328 => [
             [['_route' => 'update', '_controller' => 'App\\Controller\\JoueurController::Update'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

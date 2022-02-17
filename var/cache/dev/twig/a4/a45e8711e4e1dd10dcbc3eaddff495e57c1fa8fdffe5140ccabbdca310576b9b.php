@@ -58,7 +58,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/favicon.ico"), "html", null, true);
         echo "\">
-  ";
+    ";
         // line 13
         $this->displayBlock('css', $context, $blocks);
         // line 30
@@ -182,7 +182,10 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
     </header>
 
     <!-- ========== Left Sidebar Start ========== -->
+
     <div class=\"vertical-menu\">
+
+
 
         <div data-simplebar class=\"h-100\">
 
@@ -199,217 +202,173 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                         </a>
                     </li>
 
+                    <!-- Module Khairi -->
                     <li>
-                        <a href=\"calendar.html\" class=\" waves-effect\">
-                            <i class=\"ri-calendar-2-line\"></i>
-                            <span>Calendar</span>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Utilisateur</span>
                         </a>
-                    </li>
-
-                    <li>
-                        <a href=\"apps-chat.html\" class=\" waves-effect\">
-                            <i class=\"ri-chat-1-line\"></i>
-                            <span>Chat</span>
-                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
+                        </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
                             <i class=\"ri-store-2-line\"></i>
-                            <span>Ecommerce</span>
+                            <span>Produit</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"ecommerce-products.html\">Products</a></li>
-                            <li><a href=\"ecommerce-product-detail.html\">Product Detail</a></li>
-                            <li><a href=\"ecommerce-orders.html\">Orders</a></li>
-                            <li><a href=\"ecommerce-customers.html\">Customers</a></li>
-                            <li><a href=\"ecommerce-cart.html\">Cart</a></li>
-                            <li><a href=\"ecommerce-checkout.html\">Checkout</a></li>
-                            <li><a href=\"ecommerce-shops.html\">Shops</a></li>
-                            <li><a href=\"ecommerce-add-product.html\">Add Product</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-mail-send-line\"></i>
-                            <span>Email</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Commande</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"email-inbox.html\">Inbox</a></li>
-                            <li><a href=\"email-read.html\">Read Email</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
-                    <li>
-                        <a href=\"apps-kanban-board.html\" class=\" waves-effect\">
-                            <i class=\"ri-artboard-2-line\"></i>
-                            <span>Kanban Board</span>
-                        </a>
-                    </li>
+
+                    <!-- END Module Khairi -->
+
+
+                    <!-- Module Yassine -->
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-layout-3-line\"></i>
-                            <span>Layouts</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Joueur</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"layouts-horizontal.html\">Horizontal</a></li>
-                            <li><a href=\"layouts-light-sidebar.html\">Light Sidebar</a></li>
-                            <li><a href=\"layouts-compact-sidebar.html\">Compact Sidebar</a></li>
-                            <li><a href=\"layouts-icon-sidebar.html\">Icon Sidebar</a></li>
-                            <li><a href=\"layouts-boxed.html\">Boxed Layout</a></li>
-                            <li><a href=\"layouts-preloader.html\">Preloader</a></li>
-                        </ul>
-                    </li>
-
-                    <li class=\"menu-title\">Pages</li>
-
-                    <li>
-                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-account-circle-line\"></i>
-                            <span>Authentication</span>
-                        </a>
-                        <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"auth-login.html\">Login</a></li>
-                            <li><a href=\"auth-register.html\">Register</a></li>
-                            <li><a href=\"auth-recoverpw.html\">Recover Password</a></li>
-                            <li><a href=\"auth-lock-screen.html\">Lock Screen</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-profile-line\"></i>
-                            <span>Utility</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Equipe</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"pages-starter.html\">Starter Page</a></li>
-                            <li><a href=\"pages-maintenance.html\">Maintenance</a></li>
-                            <li><a href=\"pages-comingsoon.html\">Coming Soon</a></li>
-                            <li><a href=\"pages-timeline.html\">Timeline</a></li>
-                            <li><a href=\"pages-faqs.html\">FAQs</a></li>
-                            <li><a href=\"pages-pricing.html\">Pricing</a></li>
-                            <li><a href=\"pages-404.html\">Error 404</a></li>
-                            <li><a href=\"pages-500.html\">Error 500</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
-                    <li class=\"menu-title\">Components</li>
+                    <!-- END Module Yassine -->
+
+                    <!-- Module Rafed -->
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-pencil-ruler-2-line\"></i>
-                            <span>UI Elements</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Agence</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"ui-alerts.html\">Alerts</a></li>
-                            <li><a href=\"ui-buttons.html\">Buttons</a></li>
-                            <li><a href=\"ui-cards.html\">Cards</a></li>
-                            <li><a href=\"ui-carousel.html\">Carousel</a></li>
-                            <li><a href=\"ui-dropdowns.html\">Dropdowns</a></li>
-                            <li><a href=\"ui-grid.html\">Grid</a></li>
-                            <li><a href=\"ui-images.html\">Images</a></li>
-                            <li><a href=\"ui-lightbox.html\">Lightbox</a></li>
-                            <li><a href=\"ui-modals.html\">Modals</a></li>
-                            <li><a href=\"ui-rangeslider.html\">Range Slider</a></li>
-                            <li><a href=\"ui-roundslider.html\">Round Slider</a></li>
-                            <li><a href=\"ui-session-timeout.html\">Session Timeout</a></li>
-                            <li><a href=\"ui-progressbars.html\">Progress Bars</a></li>
-                            <li><a href=\"ui-sweet-alert.html\">Sweet Alerts</a></li>
-                            <li><a href=\"ui-tabs-accordions.html\">Tabs & Accordions</a></li>
-                            <li><a href=\"ui-typography.html\">Typography</a></li>
-                            <li><a href=\"ui-video.html\">Video</a></li>
-                            <li><a href=\"ui-general.html\">General</a></li>
-                            <li><a href=\"ui-rating.html\">Rating</a></li>
-                            <li><a href=\"ui-notifications.html\">Notifications</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href=\"javascript: void(0);\" class=\"waves-effect\">
-                            <i class=\"ri-eraser-fill\"></i>
-                            <span class=\"badge badge-pill badge-danger float-right\">6</span>
-                            <span>Forms</span>
-                        </a>
-                        <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"form-elements.html\">Elements</a></li>
-                            <li><a href=\"form-validation.html\">Validation</a></li>
-                            <li><a href=\"form-advanced.html\">Advanced Plugins</a></li>
-                            <li><a href=\"form-editors.html\">Editors</a></li>
-                            <li><a href=\"form-uploads.html\">File Upload</a></li>
-                            <li><a href=\"form-xeditable.html\">X-editable</a></li>
-                            <li><a href=\"form-wizard.html\">Wizard</a></li>
-                            <li><a href=\"form-mask.html\">Mask</a></li>
+                            <li><a href=\"AfficheA\">Afficher</a></li>
+                            <li><a href=\"agence/Add\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-table-2\"></i>
-                            <span>Tables</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Hebergement</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"tables-basic.html\">Basic Tables</a></li>
-                            <li><a href=\"tables-datatable.html\">Data Tables</a></li>
-                            <li><a href=\"tables-responsive.html\">Responsive Table</a></li>
-                            <li><a href=\"tables-editable.html\">Editable Table</a></li>
+                            <li><a href=\"AfficheH\">Afficher</a></li>
+                            <li><a href=\"hebergement/AddH\">Ajouter</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- END Module Rafed -->
+
+                    <!-- Module Yosra -->
+
+                    <li>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Match</span>
+                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"/AfficheM\">Afficher</a></li>
+                            <li><a href=\"matche/ajouter\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-bar-chart-line\"></i>
-                            <span>Charts</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Billet</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"charts-apex.html\">Apexcharts</a></li>
-                            <li><a href=\"charts-chartjs.html\">Chartjs</a></li>
-                            <li><a href=\"charts-flot.html\">Flot</a></li>
-                            <li><a href=\"charts-knob.html\">Jquery Knob</a></li>
-                            <li><a href=\"charts-sparkline.html\">Sparkline</a></li>
+                            <li><a href=\"/AfficheB\">Afficher</a></li>
+                            <li><a href=\"billet/ajouter\">Ajouter</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- END Module Yosra -->
+
+                    <!-- Module Jasser -->
+
+                    <li>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Stade</span>
+                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-brush-line\"></i>
-                            <span>Icons</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Restaurent</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"icons-remix.html\">Remix Icons</a></li>
-                            <li><a href=\"icons-materialdesign.html\">Material Design</a></li>
-                            <li><a href=\"icons-dripicons.html\">Dripicons</a></li>
-                            <li><a href=\"icons-fontawesome.html\">Font awesome 5</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- END Module Jasser -->
+
+                    <!-- Module Khalil -->
+
+                    <li>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Evenement</span>
+                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-map-pin-line\"></i>
-                            <span>Maps</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Artiste</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"maps-google.html\">Google Maps</a></li>
-                            <li><a href=\"maps-vector.html\">Vector Maps</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
-                    <li>
-                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-share-line\"></i>
-                            <span>Multi Level</span>
-                        </a>
-                        <ul class=\"sub-menu\" aria-expanded=\"true\">
-                            <li><a href=\"javascript: void(0);\">Level 1.1</a></li>
-                            <li><a href=\"javascript: void(0);\" class=\"has-arrow\">Level 1.2</a>
-                                <ul class=\"sub-menu\" aria-expanded=\"true\">
-                                    <li><a href=\"javascript: void(0);\">Level 2.1</a></li>
-                                    <li><a href=\"javascript: void(0);\">Level 2.2</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    <!-- END Module Khalil -->
 
                 </ul>
             </div>
@@ -420,17 +379,17 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
 </div>
 ";
-        // line 372
+        // line 331
         $this->displayBlock('js', $context, $blocks);
-        // line 400
+        // line 359
         echo "<div class=\"main-content\">
     <div class=\"page-content\">
         <div class=\"container-fluid\">
             <div class=\"row\">
                 ";
-        // line 404
+        // line 363
         $this->displayBlock('content', $context, $blocks);
-        // line 406
+        // line 365
         echo "            </div>
         </div>
     </div>
@@ -454,7 +413,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         <div class=\"p-4\">
             <div class=\"mb-2\">
                 <img src=\"";
-        // line 428
+        // line 387
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/layouts/layout-1.jpg"), "html", null, true);
         echo "\" class=\"img-fluid img-thumbnail\" alt=\"\">
             </div>
@@ -465,7 +424,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
             <div class=\"mb-2\">
                 <img src=\"";
-        // line 436
+        // line 395
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/layouts/layout-2.jpg"), "html", null, true);
         echo "\" class=\"img-fluid img-thumbnail\" alt=\"\">
             </div>
@@ -476,7 +435,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
             <div class=\"mb-2\">
                 <img src=\"";
-        // line 444
+        // line 403
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/layouts/layout-3.jpg"), "html", null, true);
         echo "\" class=\"img-fluid img-thumbnail\" alt=\"\">
             </div>
@@ -517,40 +476,40 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "css"));
 
         // line 14
-        echo "    <!-- jquery.vectormap css -->
-    <link href=\"";
+        echo "        <!-- jquery.vectormap css -->
+        <link href=\"";
         // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
 
-    <!-- DataTables -->
-    <link href=\"";
+        <!-- DataTables -->
+        <link href=\"";
         // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css"), "html", null, true);
         echo " \" rel=\"stylesheet\" type=\"text/css\" />
 
-    <!-- Responsive datatable examples -->
-    <link href=\"";
+        <!-- Responsive datatable examples -->
+        <link href=\"";
         // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"), "html", null, true);
         echo " \" rel=\"stylesheet\" type=\"text/css\" />
 
-    <!-- Bootstrap Css -->
-    <link href=\"";
+        <!-- Bootstrap Css -->
+        <link href=\"";
         // line 24
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/css/bootstrap.min.css"), "html", null, true);
         echo "\" id=\"bootstrap-style\" rel=\"stylesheet\" type=\"text/css\" />
-    <!-- Icons Css -->
-    <link href=\"";
+        <!-- Icons Css -->
+        <link href=\"";
         // line 26
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/css/icons.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
-    <!-- App Css-->
-    <link href=\"";
+        <!-- App Css-->
+        <link href=\"";
         // line 28
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/css/app.min.css"), "html", null, true);
         echo "\" id=\"app-style\" rel=\"stylesheet\" type=\"text/css\" />
-";
+    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -559,7 +518,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
     }
 
-    // line 372
+    // line 331
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -569,73 +528,73 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 373
+        // line 332
         echo "    <!-- JAVASCRIPT -->
     <script src=\"";
-        // line 374
+        // line 333
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 375
+        // line 334
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/bootstrap/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 376
+        // line 335
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/metismenu/metisMenu.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 377
+        // line 336
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/simplebar/simplebar.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 378
+        // line 337
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/node-waves/waves.min.js"), "html", null, true);
         echo "\"></script>
 
 
     <!-- apexcharts -->
     <script src=\"";
-        // line 382
+        // line 341
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/apexcharts/apexcharts.min.js"), "html", null, true);
         echo "\"></script>
 
     <!-- jquery.vectormap map -->
     <script src=\"";
-        // line 385
+        // line 344
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 386
+        // line 345
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Required datatable js -->
     <script src=\"";
-        // line 389
+        // line 348
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 390
+        // line 349
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Responsive examples -->
     <script src=\"";
-        // line 393
+        // line 352
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 394
+        // line 353
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"), "html", null, true);
         echo "\"></script>
 
     <script src=\"";
-        // line 396
+        // line 355
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/js/pages/dashboard.init.js"), "html", null, true);
         echo "\"></script>
 
     <script src=\"";
-        // line 398
+        // line 357
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/js/app.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -647,7 +606,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
     }
 
-    // line 404
+    // line 363
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -657,7 +616,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 405
+        // line 364
         echo "                ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -679,7 +638,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
     public function getDebugInfo()
     {
-        return array (  661 => 405,  651 => 404,  639 => 398,  634 => 396,  629 => 394,  625 => 393,  619 => 390,  615 => 389,  609 => 386,  605 => 385,  599 => 382,  592 => 378,  588 => 377,  584 => 376,  580 => 375,  576 => 374,  573 => 373,  563 => 372,  551 => 28,  546 => 26,  541 => 24,  535 => 21,  529 => 18,  523 => 15,  520 => 14,  510 => 13,  480 => 444,  469 => 436,  458 => 428,  434 => 406,  432 => 404,  426 => 400,  424 => 372,  157 => 108,  102 => 56,  96 => 53,  87 => 47,  81 => 44,  65 => 30,  63 => 13,  59 => 12,  46 => 1,);
+        return array (  620 => 364,  610 => 363,  598 => 357,  593 => 355,  588 => 353,  584 => 352,  578 => 349,  574 => 348,  568 => 345,  564 => 344,  558 => 341,  551 => 337,  547 => 336,  543 => 335,  539 => 334,  535 => 333,  532 => 332,  522 => 331,  510 => 28,  505 => 26,  500 => 24,  494 => 21,  488 => 18,  482 => 15,  479 => 14,  469 => 13,  439 => 403,  428 => 395,  417 => 387,  393 => 365,  391 => 363,  385 => 359,  383 => 331,  157 => 108,  102 => 56,  96 => 53,  87 => 47,  81 => 44,  65 => 30,  63 => 13,  59 => 12,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -696,23 +655,23 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
     <meta content=\"Themesdesign\" name=\"author\" />
     <!-- App favicon -->
     <link rel=\"shortcut icon\" href=\"{{ asset ('back-office/assets/images/favicon.ico')}}\">
-  {% block css %}
-    <!-- jquery.vectormap css -->
-    <link href=\"{{ asset('back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}\" rel=\"stylesheet\" type=\"text/css\" />
+    {% block css %}
+        <!-- jquery.vectormap css -->
+        <link href=\"{{ asset('back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}\" rel=\"stylesheet\" type=\"text/css\" />
 
-    <!-- DataTables -->
-    <link href=\"{{ asset ('back-office/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }} \" rel=\"stylesheet\" type=\"text/css\" />
+        <!-- DataTables -->
+        <link href=\"{{ asset ('back-office/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }} \" rel=\"stylesheet\" type=\"text/css\" />
 
-    <!-- Responsive datatable examples -->
-    <link href=\"{{ asset ('back-office/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }} \" rel=\"stylesheet\" type=\"text/css\" />
+        <!-- Responsive datatable examples -->
+        <link href=\"{{ asset ('back-office/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }} \" rel=\"stylesheet\" type=\"text/css\" />
 
-    <!-- Bootstrap Css -->
-    <link href=\"{{ asset ('back-office/assets/css/bootstrap.min.css')}}\" id=\"bootstrap-style\" rel=\"stylesheet\" type=\"text/css\" />
-    <!-- Icons Css -->
-    <link href=\"{{ asset ('back-office/assets/css/icons.min.css')}}\" rel=\"stylesheet\" type=\"text/css\" />
-    <!-- App Css-->
-    <link href=\"{{ asset ('back-office/assets/css/app.min.css')}}\" id=\"app-style\" rel=\"stylesheet\" type=\"text/css\" />
-{% endblock %}
+        <!-- Bootstrap Css -->
+        <link href=\"{{ asset ('back-office/assets/css/bootstrap.min.css')}}\" id=\"bootstrap-style\" rel=\"stylesheet\" type=\"text/css\" />
+        <!-- Icons Css -->
+        <link href=\"{{ asset ('back-office/assets/css/icons.min.css')}}\" rel=\"stylesheet\" type=\"text/css\" />
+        <!-- App Css-->
+        <link href=\"{{ asset ('back-office/assets/css/app.min.css')}}\" id=\"app-style\" rel=\"stylesheet\" type=\"text/css\" />
+    {% endblock %}
 </head>
 
 <body data-sidebar=\"dark\">
@@ -818,7 +777,10 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
     </header>
 
     <!-- ========== Left Sidebar Start ========== -->
+
     <div class=\"vertical-menu\">
+
+
 
         <div data-simplebar class=\"h-100\">
 
@@ -835,217 +797,173 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                         </a>
                     </li>
 
+                    <!-- Module Khairi -->
                     <li>
-                        <a href=\"calendar.html\" class=\" waves-effect\">
-                            <i class=\"ri-calendar-2-line\"></i>
-                            <span>Calendar</span>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Utilisateur</span>
                         </a>
-                    </li>
-
-                    <li>
-                        <a href=\"apps-chat.html\" class=\" waves-effect\">
-                            <i class=\"ri-chat-1-line\"></i>
-                            <span>Chat</span>
-                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
+                        </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
                             <i class=\"ri-store-2-line\"></i>
-                            <span>Ecommerce</span>
+                            <span>Produit</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"ecommerce-products.html\">Products</a></li>
-                            <li><a href=\"ecommerce-product-detail.html\">Product Detail</a></li>
-                            <li><a href=\"ecommerce-orders.html\">Orders</a></li>
-                            <li><a href=\"ecommerce-customers.html\">Customers</a></li>
-                            <li><a href=\"ecommerce-cart.html\">Cart</a></li>
-                            <li><a href=\"ecommerce-checkout.html\">Checkout</a></li>
-                            <li><a href=\"ecommerce-shops.html\">Shops</a></li>
-                            <li><a href=\"ecommerce-add-product.html\">Add Product</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-mail-send-line\"></i>
-                            <span>Email</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Commande</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"email-inbox.html\">Inbox</a></li>
-                            <li><a href=\"email-read.html\">Read Email</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
-                    <li>
-                        <a href=\"apps-kanban-board.html\" class=\" waves-effect\">
-                            <i class=\"ri-artboard-2-line\"></i>
-                            <span>Kanban Board</span>
-                        </a>
-                    </li>
+
+                    <!-- END Module Khairi -->
+
+
+                    <!-- Module Yassine -->
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-layout-3-line\"></i>
-                            <span>Layouts</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Joueur</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"layouts-horizontal.html\">Horizontal</a></li>
-                            <li><a href=\"layouts-light-sidebar.html\">Light Sidebar</a></li>
-                            <li><a href=\"layouts-compact-sidebar.html\">Compact Sidebar</a></li>
-                            <li><a href=\"layouts-icon-sidebar.html\">Icon Sidebar</a></li>
-                            <li><a href=\"layouts-boxed.html\">Boxed Layout</a></li>
-                            <li><a href=\"layouts-preloader.html\">Preloader</a></li>
-                        </ul>
-                    </li>
-
-                    <li class=\"menu-title\">Pages</li>
-
-                    <li>
-                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-account-circle-line\"></i>
-                            <span>Authentication</span>
-                        </a>
-                        <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"auth-login.html\">Login</a></li>
-                            <li><a href=\"auth-register.html\">Register</a></li>
-                            <li><a href=\"auth-recoverpw.html\">Recover Password</a></li>
-                            <li><a href=\"auth-lock-screen.html\">Lock Screen</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-profile-line\"></i>
-                            <span>Utility</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Equipe</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"pages-starter.html\">Starter Page</a></li>
-                            <li><a href=\"pages-maintenance.html\">Maintenance</a></li>
-                            <li><a href=\"pages-comingsoon.html\">Coming Soon</a></li>
-                            <li><a href=\"pages-timeline.html\">Timeline</a></li>
-                            <li><a href=\"pages-faqs.html\">FAQs</a></li>
-                            <li><a href=\"pages-pricing.html\">Pricing</a></li>
-                            <li><a href=\"pages-404.html\">Error 404</a></li>
-                            <li><a href=\"pages-500.html\">Error 500</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
-                    <li class=\"menu-title\">Components</li>
+                    <!-- END Module Yassine -->
+
+                    <!-- Module Rafed -->
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-pencil-ruler-2-line\"></i>
-                            <span>UI Elements</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Agence</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"ui-alerts.html\">Alerts</a></li>
-                            <li><a href=\"ui-buttons.html\">Buttons</a></li>
-                            <li><a href=\"ui-cards.html\">Cards</a></li>
-                            <li><a href=\"ui-carousel.html\">Carousel</a></li>
-                            <li><a href=\"ui-dropdowns.html\">Dropdowns</a></li>
-                            <li><a href=\"ui-grid.html\">Grid</a></li>
-                            <li><a href=\"ui-images.html\">Images</a></li>
-                            <li><a href=\"ui-lightbox.html\">Lightbox</a></li>
-                            <li><a href=\"ui-modals.html\">Modals</a></li>
-                            <li><a href=\"ui-rangeslider.html\">Range Slider</a></li>
-                            <li><a href=\"ui-roundslider.html\">Round Slider</a></li>
-                            <li><a href=\"ui-session-timeout.html\">Session Timeout</a></li>
-                            <li><a href=\"ui-progressbars.html\">Progress Bars</a></li>
-                            <li><a href=\"ui-sweet-alert.html\">Sweet Alerts</a></li>
-                            <li><a href=\"ui-tabs-accordions.html\">Tabs & Accordions</a></li>
-                            <li><a href=\"ui-typography.html\">Typography</a></li>
-                            <li><a href=\"ui-video.html\">Video</a></li>
-                            <li><a href=\"ui-general.html\">General</a></li>
-                            <li><a href=\"ui-rating.html\">Rating</a></li>
-                            <li><a href=\"ui-notifications.html\">Notifications</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href=\"javascript: void(0);\" class=\"waves-effect\">
-                            <i class=\"ri-eraser-fill\"></i>
-                            <span class=\"badge badge-pill badge-danger float-right\">6</span>
-                            <span>Forms</span>
-                        </a>
-                        <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"form-elements.html\">Elements</a></li>
-                            <li><a href=\"form-validation.html\">Validation</a></li>
-                            <li><a href=\"form-advanced.html\">Advanced Plugins</a></li>
-                            <li><a href=\"form-editors.html\">Editors</a></li>
-                            <li><a href=\"form-uploads.html\">File Upload</a></li>
-                            <li><a href=\"form-xeditable.html\">X-editable</a></li>
-                            <li><a href=\"form-wizard.html\">Wizard</a></li>
-                            <li><a href=\"form-mask.html\">Mask</a></li>
+                            <li><a href=\"AfficheA\">Afficher</a></li>
+                            <li><a href=\"agence/Add\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-table-2\"></i>
-                            <span>Tables</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Hebergement</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"tables-basic.html\">Basic Tables</a></li>
-                            <li><a href=\"tables-datatable.html\">Data Tables</a></li>
-                            <li><a href=\"tables-responsive.html\">Responsive Table</a></li>
-                            <li><a href=\"tables-editable.html\">Editable Table</a></li>
+                            <li><a href=\"AfficheH\">Afficher</a></li>
+                            <li><a href=\"hebergement/AddH\">Ajouter</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- END Module Rafed -->
+
+                    <!-- Module Yosra -->
+
+                    <li>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Match</span>
+                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"/AfficheM\">Afficher</a></li>
+                            <li><a href=\"matche/ajouter\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-bar-chart-line\"></i>
-                            <span>Charts</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Billet</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"charts-apex.html\">Apexcharts</a></li>
-                            <li><a href=\"charts-chartjs.html\">Chartjs</a></li>
-                            <li><a href=\"charts-flot.html\">Flot</a></li>
-                            <li><a href=\"charts-knob.html\">Jquery Knob</a></li>
-                            <li><a href=\"charts-sparkline.html\">Sparkline</a></li>
+                            <li><a href=\"/AfficheB\">Afficher</a></li>
+                            <li><a href=\"billet/ajouter\">Ajouter</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- END Module Yosra -->
+
+                    <!-- Module Jasser -->
+
+                    <li>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Stade</span>
+                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-brush-line\"></i>
-                            <span>Icons</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Restaurent</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"icons-remix.html\">Remix Icons</a></li>
-                            <li><a href=\"icons-materialdesign.html\">Material Design</a></li>
-                            <li><a href=\"icons-dripicons.html\">Dripicons</a></li>
-                            <li><a href=\"icons-fontawesome.html\">Font awesome 5</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- END Module Jasser -->
+
+                    <!-- Module Khalil -->
+
+                    <li>
+                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Evenement</span>
+                        </a>
+                        <ul class=\"sub-menu\" aria-expanded=\"false\">
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-map-pin-line\"></i>
-                            <span>Maps</span>
+                            <i class=\"ri-store-2-line\"></i>
+                            <span>Artiste</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"maps-google.html\">Google Maps</a></li>
-                            <li><a href=\"maps-vector.html\">Vector Maps</a></li>
+                            <li><a href=\"#\">Afficher</a></li>
+                            <li><a href=\"#\">Ajouter</a></li>
                         </ul>
                     </li>
 
-                    <li>
-                        <a href=\"javascript: void(0);\" class=\"has-arrow waves-effect\">
-                            <i class=\"ri-share-line\"></i>
-                            <span>Multi Level</span>
-                        </a>
-                        <ul class=\"sub-menu\" aria-expanded=\"true\">
-                            <li><a href=\"javascript: void(0);\">Level 1.1</a></li>
-                            <li><a href=\"javascript: void(0);\" class=\"has-arrow\">Level 1.2</a>
-                                <ul class=\"sub-menu\" aria-expanded=\"true\">
-                                    <li><a href=\"javascript: void(0);\">Level 2.1</a></li>
-                                    <li><a href=\"javascript: void(0);\">Level 2.2</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    <!-- END Module Khalil -->
 
                 </ul>
             </div>

@@ -70,71 +70,80 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
             <div class=\"card\">
                 <div class=\"card-body\">
 
-                    <h4 class=\"card-title\">Liste Des Matches</h4>
+                    <h4  class=\"card-title\">Liste Des Matchs</h4>
                     <table id=\"datatable-buttons\" class=\"table table-striped table-bordered dt-responsive nowrap\" style=\"border-collapse: collapse; border-spacing: 0; width: 100%;\">
 
                         <thead class=\"thead-dark\">
                         <tr>
                             <th>ID</th>
-                            <th>idEquipe1</th>
+                            <th>NomMatche</th>
                             <th>IdEquipe1</th>
+                            <th>IdEquipe2</th>
                             <th>NomArbitre</th>
                             <th>IdStade</th>
-                            <th>date</th>
+                            <th>Date</th>
+                            <th>Time</th>
                             <th>Tour</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th>Action</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         <tr ";
-        // line 25
+        // line 27
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["matche"]) || array_key_exists("matche", $context) ? $context["matche"] : (function () { throw new RuntimeError('Variable "matche" does not exist.', 25, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["matche"]) || array_key_exists("matche", $context) ? $context["matche"] : (function () { throw new RuntimeError('Variable "matche" does not exist.', 27, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["m"]) {
             echo ">
                             <td>";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 26), "html", null, true);
-            echo "</td>
-                            <td>";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "idEquipe1", [], "any", false, false, false, 27), "html", null, true);
-            echo "</td>
-                            <td>";
             // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "IdEquipe2", [], "any", false, false, false, 28), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 28), "html", null, true);
             echo "</td>
                             <td>";
             // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "NomArbitre", [], "any", false, false, false, 29), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "NomMatche", [], "any", false, false, false, 29), "html", null, true);
             echo "</td>
                             <td>";
             // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "IdEquipe2", [], "any", false, false, false, 30), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "idEquipe1", [], "any", false, false, false, 30), "html", null, true);
             echo "</td>
                             <td>";
             // line 31
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "date", [], "any", false, false, false, 31), "d-m-Y"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "IdEquipe2", [], "any", false, false, false, 31), "html", null, true);
             echo "</td>
                             <td>";
             // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "tour", [], "any", false, false, false, 32), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "NomArbitre", [], "any", false, false, false, 32), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 33
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "IdStade", [], "any", false, false, false, 33), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 34
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "date", [], "any", false, false, false, 34), "d-m-Y"), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 35
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "time", [], "any", false, false, false, 35), "H:i:s"), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 36
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "tour", [], "any", false, false, false, 36), "html", null, true);
             echo "</td>
                             <td><a href=\"";
-            // line 33
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("modifier", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 33)]), "html", null, true);
-            echo "\">Update</a></td>
-                            <td><a href=\"";
-            // line 34
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteMatche", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 34)]), "html", null, true);
-            echo "\">Delete</a></td>
+            // line 37
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("modifierMatche", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+            echo "\"><i class=\"ri-pencil-fill\"></i></a><a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteMatche", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+            echo "\"><i class=\"ri-delete-bin-fill\"></i></a></td>
+
                         </tr ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['m'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 35
+        // line 39
         echo ">
                         </tbody>
                     </table>
@@ -166,7 +175,7 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
 
     public function getDebugInfo()
     {
-        return array (  138 => 35,  130 => 34,  126 => 33,  122 => 32,  118 => 31,  114 => 30,  110 => 29,  106 => 28,  102 => 27,  98 => 26,  92 => 25,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  147 => 39,  136 => 37,  132 => 36,  128 => 35,  124 => 34,  120 => 33,  116 => 32,  112 => 31,  108 => 30,  104 => 29,  100 => 28,  94 => 27,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -178,33 +187,37 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
             <div class=\"card\">
                 <div class=\"card-body\">
 
-                    <h4 class=\"card-title\">Liste Des Matches</h4>
+                    <h4  class=\"card-title\">Liste Des Matchs</h4>
                     <table id=\"datatable-buttons\" class=\"table table-striped table-bordered dt-responsive nowrap\" style=\"border-collapse: collapse; border-spacing: 0; width: 100%;\">
 
                         <thead class=\"thead-dark\">
                         <tr>
                             <th>ID</th>
-                            <th>idEquipe1</th>
+                            <th>NomMatche</th>
                             <th>IdEquipe1</th>
+                            <th>IdEquipe2</th>
                             <th>NomArbitre</th>
                             <th>IdStade</th>
-                            <th>date</th>
+                            <th>Date</th>
+                            <th>Time</th>
                             <th>Tour</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th>Action</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         <tr {% for m in matche %}>
                             <td>{{ m.id }}</td>
+                            <td>{{ m.NomMatche }}</td>
                             <td>{{ m.idEquipe1 }}</td>
                             <td>{{ m.IdEquipe2 }}</td>
                             <td>{{ m.NomArbitre }}</td>
-                            <td>{{ m.IdEquipe2 }}</td>
+                            <td>{{ m.IdStade }}</td>
                             <td>{{ m.date|date('d-m-Y') }}</td>
+                            <td>{{ m.time|date(\"H:i:s\")}}</td>
                             <td>{{ m.tour }}</td>
-                            <td><a href=\"{{ path('modifier',{'id':m.id}) }}\">Update</a></td>
-                            <td><a href=\"{{ path('deleteMatche',{'id':m.id}) }}\">Delete</a></td>
+                            <td><a href=\"{{ path('modifierMatche',{'id':m.id}) }}\"><i class=\"ri-pencil-fill\"></i></a><a href=\"{{ path('deleteMatche',{'id':m.id}) }}\"><i class=\"ri-delete-bin-fill\"></i></a></td>
+
                         </tr {% endfor %}>
                         </tbody>
                     </table>

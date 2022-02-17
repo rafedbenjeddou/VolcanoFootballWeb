@@ -33,6 +33,16 @@ public function Affiche(MatcheRepository $repository){
     return $this->render('matche/Affiche.html.twig',
         ['matche'=>$matche]);
 }
+    /**
+     * @param MatcheRepository $repository
+     * @return Response
+     * @route("/AfficheUnM", name="AfficheUnMatche")
+     */
+    public function Afficheunmatche(MatcheRepository $repository){
+        $matche=$repository->findAll();
+        return $this->render('matche/AfficherUnMatch.html.twig',
+            ['matche'=>$matche]);
+    }
 
 /**
  * @route("/deleteMatche/{id}",name="deleteMatche")
@@ -66,7 +76,7 @@ function Ajouter_matche(Request $request){
     ]);
 }
 /**
- * @route ("updatematch/{id}",name="modifier")
+ * @route ("updatematch/{id}",name="modifierMatche")
  */
 function Update(MatcheRepository  $repository,$id,Request $request){
     $matche=$repository->find($id);
