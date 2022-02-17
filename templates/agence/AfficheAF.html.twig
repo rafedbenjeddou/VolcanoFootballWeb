@@ -2,7 +2,7 @@
 {% block content %}
     <div class=innerbannerwrap>
         <div class=content></div>
-        <div class=innerbanner><h2 class=bannerHeadline><span>Agence</span></h2></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span>Nos Agences</span></h2></div>
     </div>
 
     <section class=innerpage_all_wrap>
@@ -12,14 +12,14 @@
                         {% for a in agence %}
                         <td><a href="{{ path('ListByAgence',{'id':a.id}) }}">
 
-                            <li class=gallery-list><a class=column_g><span class=image_g
-                                                                           style=background:url(front-office/images/gallery/masonry/large_01.jpg)></span>
+                            <li class=gallery-list><a class=column_g><span class=image_g style=background:url(front-office/images/gallery/masonry/cercle.PNG)></span>
                 
-                                    <div class=gallery-info><h6> {{ a.nom }}  </h6>
-                
-                                        <p><b> Adresse:</b> {{ a.adresse }}<br> <br>
-                                            <b>Numéro de télephone:    </b>   {{ a.numTel }}<br> <br>
-                                            <a  href="{{ path('ListByAgence',{'id':a.id}) }}">Accéder</a>
+                                        <div class=gallery-info>
+                                            <div class="headline01 clearfix"><span> {{ a.nom }} </span></div>
+
+                                            <p class=match_dtls>{{ a.adresse }}</span></p>
+                                            <div class="ticketInner_info paragraph02 clearfix"><span>   {{ a.numTel }}</span></div>
+                                            <a  href={{ path('ListByAgence',{'id':a.id}) }} class="btn-small01 btn-blue">Accéder</a>
                                         </p></div>
                                 </a></li>
                             </a>

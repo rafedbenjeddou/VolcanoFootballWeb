@@ -24,7 +24,7 @@ class Agence
      * @ORM\Column(type="string", length=255)
      * *@Assert\Length(
      *     min = 5,
-     *    max = 10,
+     *    max = 50,
     *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
     *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
      *)

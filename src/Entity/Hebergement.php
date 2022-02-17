@@ -25,12 +25,12 @@ class Hebergement
      * @ORM\Column(type="string", length=255)
      * *@Assert\Length(
      *     min = 5,
-     *    max = 20,
+     *    max = 50,
     *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
     *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
      *)
      */
-    private $nom;
+    private $nomH;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -78,14 +78,14 @@ class Hebergement
     
 
 
-    public function getNom(): ?string
+    public function getNomH(): ?string
     {
-        return $this->nom;
+        return $this->nomH;
     }
 
-    public function setNom(string $nom): self
+    public function setNomH(string $nomH): self
     {
-        $this->nom = $nom;
+        $this->nomH = $nomH;
 
         return $this;
     }

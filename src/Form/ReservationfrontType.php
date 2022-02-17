@@ -12,34 +12,35 @@ use App\Entity\Hebergement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 
-class ReservationType extends AbstractType
+
+class ReservationfrontType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
 
         ->add('dateDebut',DateType::class, [
-            'label'=>'dateDebut',
+            'label'=>'Check in',
             'attr'=>[
                 'placeholder'=>'dateDebut',
                 'class'=>'date'
                 ]  
             ])
             ->add('dateFin',DateType::class, [
-                'label'=>'dateFin',
+                'label'=>'Check out',
                 'attr'=>[
                     'placeholder'=>'dateFin',
                     'class'=>'date'
                     ]  
                     ])
-            ->add('hebergement' , EntityType::class, [
-                'class'=>Hebergement::class,
-                'choice_label'=>'nomH'
-            ])
+
+
             ->add('idClient')
         ;
     }
+   
 
     public function configureOptions(OptionsResolver $resolver): void
     {

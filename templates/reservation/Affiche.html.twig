@@ -21,7 +21,7 @@
         <td>{{ r.id }}</td>
         <td>{{ r.dateDebut|date('d-m-Y') }}</td>
         <td>{{ r.dateFin|date('d-m-Y') }}</td>
-        <td>{{ r.hebergement.Nom }}</td>
+        <td>{{ r.hebergement.NomH }}</td>
         <td>{{ r.idClient }}</td>
         <td><a href="{{ path('UpdateR',{'id':r.id}) }}">Update</a></td>
         <td><a href="{{ path('deleteR',{'id':r.id}) }}">Delete</a></td>

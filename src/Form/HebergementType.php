@@ -23,7 +23,7 @@ class HebergementType extends AbstractType
                 'placeholder'=>'photoH',
                 'class'=>'photoH' ]
             ])
-            ->add('nom')
+            ->add('nomH')
             ->add('type', ChoiceType::class, [
                 'choices' => [
                     'Type' => [

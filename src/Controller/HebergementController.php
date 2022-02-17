@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Hebergement;
+use App\Entity\Reservation;
+use App\Entity\Agence;
+use App\Form\ReservationfrontType;
 use App\Form\HebergementType;
 use App\Repository\HebergementRepository;
+use App\Repository\ReservationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -107,4 +111,31 @@ class HebergementController extends AbstractController
         ['hebergement'=>$hebergement]);
         
     }
+
+  /**
+     * @Route("/AddByHebergement/{id}", name="AddByHebergement" )
+     */
+    
+    function AddReservationByHebergement(HebergementRepository $repoH, ReservationRepository $repoR, $id,Request $request){
+        $hebergement=$repoH->find($id);
+        $reservation=new Reservation();
+
+      
+        $form=$this->createForm(ReservationfrontType::class,$reservation);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $reservation->setHebergement($hebergement);
+            $em->persist($reservation);
+            $em->flush();
+            return $this->redirectToRoute('AfficheR');
+        }
+        return $this->render('hebergement/AddRF.html.twig',[
+            'form1'=>$form->createView()
+        ]);
+        
+    }  
+ 
 }

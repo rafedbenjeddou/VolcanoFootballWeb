@@ -51,6 +51,27 @@ class ReservationController extends AbstractController
         ]);
     
     }
+    /**
+     * @param Request $request
+     * @Route("/AddRF",name="AddRF")
+     */
+    /*
+    function AddRF(Request $request){
+        $reservation=new Reservation();
+        $form=$this->createForm(ReservationType::class,$reservation);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($reservation);
+            $em->flush();
+            return $this->redirectToRoute('AfficheR');
+        }
+        return $this->render('reservation/AddRF.html.twig',[
+            'form'=>$form->createView()
+        ]);
+    
+    }
+    */
         /**
      * @Route("/UpdateR/{id}", name="UpdateR")
      */
@@ -78,6 +99,7 @@ class ReservationController extends AbstractController
     $em->flush();
     return $this->redirectToRoute('AfficheR');
         }
+
 }
 
 

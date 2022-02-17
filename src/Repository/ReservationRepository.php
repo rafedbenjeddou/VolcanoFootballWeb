@@ -36,7 +36,7 @@ class ReservationRepository extends ServiceEntityRepository
     }
     */
 
-    /*
+    
     public function findOneBySomeField($value): ?Reservation
     {
         return $this->createQueryBuilder('r')
@@ -46,5 +46,14 @@ class ReservationRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+    
+     
+    function findReservationByHebergement($id){ // function by QueryBuilder 
+    $entityManager = $this->getEntityManager();
+    $query = $entityManager->createQuery("SELECT r FROM  App\Entity\Reservation r JOIN r.hebergement h WHERE h.id=:id" )
+    ->setParameter('id',$id);
+    return $query->getResult();
+    }
+    
+    
 }
