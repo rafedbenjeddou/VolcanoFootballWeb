@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Equipe;
+use App\Form\EquipeEditType;
 use App\Form\EquipeType;
 use App\Repository\EquipeRepository;
 use App\Repository\JoueurRepository;
@@ -89,10 +90,18 @@ class EquipeController extends AbstractController
      */
     function Update(EquipeRepository  $repository,$id,Request $request){
         $equipe=$repository->find($id);
-        $form=$this->createForm(EquipeType::class,$equipe);
+        $form=$this->createForm(EquipeEditType::class,$equipe);
         $form->add('Update',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+            $file =$equipe->getDrapeauEquipe();
+            $uploads_directory = $this->getParameter('upload_directory');
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $uploads_directory,
+                $fileName
+            );
+            $equipe->setDrapeauEquipe($fileName);
             $em=$this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute("AfficheEquipe");

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Joueur;
+use App\Form\JoueurEditType;
 use App\Form\JoueurType;
 use App\Repository\EquipeRepository;
 use App\Repository\JoueurRepository;
@@ -91,10 +92,18 @@ class JoueurController extends AbstractController
      */
     function Update(JoueurRepository  $repository,$id,Request $request){
         $joueur=$repository->find($id);
-        $form=$this->createForm(JoueurType::class,$joueur);
+        $form=$this->createForm(JoueurEditType::class,$joueur);
         $form->add('Update',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+            $file =$joueur->getPhoto();
+            $uploads_directory = $this->getParameter('upload_directory');
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $uploads_directory,
+                $fileName
+            );
+            $joueur->setPhoto($fileName);
             $em=$this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute("AfficheJoueur");
