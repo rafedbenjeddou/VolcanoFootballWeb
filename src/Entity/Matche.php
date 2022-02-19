@@ -83,6 +83,11 @@ class Matche
      */
     private $time;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Stade::class, inversedBy="matches")
+     */
+    private $stade;
+
     public function __construct()
     {
         $this->billets = new ArrayCollection();
@@ -215,6 +220,18 @@ class Matche
     public function setTime(\DateTimeInterface $time): self
     {
         $this->time = $time;
+
+        return $this;
+    }
+
+    public function getStade(): ?Stade
+    {
+        return $this->stade;
+    }
+
+    public function setStade(?Stade $stade): self
+    {
+        $this->stade = $stade;
 
         return $this;
     }

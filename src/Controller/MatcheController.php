@@ -6,6 +6,7 @@ use App\Entity\Matche;
 use App\Form\MatcheType;
 use App\Repository\BilletRepository;
 use App\Repository\MatcheRepository;
+use App\Repository\StadeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
