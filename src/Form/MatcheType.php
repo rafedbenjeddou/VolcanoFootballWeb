@@ -23,7 +23,6 @@ class MatcheType extends AbstractType
             ->add('tour')
             ->add('date')
             ->add('time')
-            ->add('IdStade')
             ->add('stade' , EntityType::class, [
                 'class'=>Stade::class,
                 'choice_label'=>'nom'

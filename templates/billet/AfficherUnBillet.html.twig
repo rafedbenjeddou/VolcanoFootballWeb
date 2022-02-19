@@ -39,7 +39,7 @@
                                     <div class="headline01 clearfix"><span>{{ b.matche.NomMatche }}</span></div>
                                     <div class="ticketInner_info paragraph02 clearfix"><span>Prix: {{ b.prix }}</span>
                                         <div class="ticketInner_info paragraph02 clearfix"><span>{{ b.matche.date|date('d-m-Y') }}</span>
-                                            <span>{{ b.matche.time|date("H:i:s")}} pm </span> <span class=capitalize01>{{ b.stade.nom }}</span>
+                                            <span>{{ b.matche.time|date("H:i:s")}} pm </span>
                                         </div>
                                 </li>
                                 <li><a href={{path(('AfficheUnBillet')) }} class="btn-small01 btn-green">Réserver</a></li>

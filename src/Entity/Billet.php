@@ -41,6 +41,7 @@ class Billet
      */
     private $matche;
 
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -117,4 +118,6 @@ class Billet
 
         return $this;
     }
+
+
 }

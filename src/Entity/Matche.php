@@ -49,11 +49,6 @@ class Matche
      */
     private $tour;
 
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Id Stade is required")
-     */
-    private $IdStade;
 
     /**
      * @ORM\Column(type="date")

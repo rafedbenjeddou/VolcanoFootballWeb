@@ -54,6 +54,11 @@ class Stade
      */
     private $matches;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Billet::class, mappedBy="stade")
+     */
+    private $billets;
+
 
 
 
@@ -61,6 +66,7 @@ class Stade
     {
         $this->kiosque = new ArrayCollection();
         $this->matches = new ArrayCollection();
+        $this->billets = new ArrayCollection();
 
     }
 
@@ -181,6 +187,36 @@ class Stade
             // set the owning side to null (unless already changed)
             if ($match->getStade() === $this) {
                 $match->setStade(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Billet[]
+     */
+    public function getBillets(): Collection
+    {
+        return $this->billets;
+    }
+
+    public function addBillet(Billet $billet): self
+    {
+        if (!$this->billets->contains($billet)) {
+            $this->billets[] = $billet;
+            $billet->setStade($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBillet(Billet $billet): self
+    {
+        if ($this->billets->removeElement($billet)) {
+            // set the owning side to null (unless already changed)
+            if ($billet->getStade() === $this) {
+                $billet->setStade(null);
             }
         }
 
