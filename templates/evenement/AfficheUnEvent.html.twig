@@ -1,0 +1,34 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span>Evenement</span></h2></div>
+    </div>
+
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row>
+                <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
+                    {% for E in evenement %}
+                        <li class=gallery-list><a class=column_g><span class=image_g
+                                                                       style=background:url(front-office/images/gallery/images.jpg)></span>
+
+                                <div class=gallery-info><h6>{{ E.nomMatch }} </h6>
+                                    <p><b> Nom Evenement:</b>  {{ E.NomEvent }} <br> <br>
+                                        <b>Description:    </b>              {{ E.Description }} <br> <br>
+                                        <button type="button" class="btn btn-danger">Detail</button>
+
+                                    </p></div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}

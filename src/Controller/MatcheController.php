@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Matche;
 use App\Form\MatcheType;
+use App\Repository\BilletRepository;
 use App\Repository\MatcheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -104,5 +105,16 @@ function Update(MatcheRepository  $repository,$id,Request $request){
         'form'=>$form->createView()
     ]);
 }
+    /**
+     * @Route("/ListByMatche/{id}", name="ListByMatche", methods={"GET"})
+     */
+    function ListHebergementByAgence(MatcheRepository $repoM, BilletRepository $repoB, $id){
+        $matche=$repoM->find($id);
+        $billet=$repoB->ListBilletByMatche($matche->getId());
+        return $this->render("matche/Show.html.twig", [
+            'a'=>$matche, 'billet'=>$billet
+        ]);
+
+    }
 }
 

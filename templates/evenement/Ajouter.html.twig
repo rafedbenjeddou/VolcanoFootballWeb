@@ -1,0 +1,59 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+    <div class="row" style="width: 100%;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Ajouter un Evenement : </h4>
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.idMatch) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control" {{ form_widget(form.idMatch) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.nomMatch) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control" {{ form_widget(form.nomMatch) }}
+                        </div>
+                    </div> <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.NomEvent) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control" {{ form_widget(form.NomEvent) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.idArtiste) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control" {{ form_widget(form.idArtiste) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">{{ form_label(form.Description) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control"  {{ form_widget(form.Description) }}
+                        </div>
+                    </div>
+
+
+
+
+                    {{ form_widget(form.idMatch) }}
+                    {{ form_widget(form.nomMatch) }}
+                    {{ form_widget(form.NomEvent) }}
+                    {{ form_widget(form.idArtiste) }}
+                    {{ form_widget(form.Description) }}
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div> <!-- end col -->
+        </div>
+    </div>
+{% endblock %}

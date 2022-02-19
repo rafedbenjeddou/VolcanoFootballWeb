@@ -18,8 +18,6 @@ class BilletType extends AbstractType
         $builder
             ->add('prix')
             ->add('categorie')
-            ->add('IdMatch')
-            ->add('dateAchat')
             ->add('matche' , EntityType::class, [
                 'class'=>Matche::class,
                 'choice_label'=>'NomMatche'

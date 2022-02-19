@@ -41,7 +41,9 @@ class BilletController extends AbstractController
     public function Afficheunbillet(BilletRepository $repository){
         $billet=$repository->findAll();
         return $this->render('billet/AfficherUnBillet.html.twig',
-            ['billet'=>$billet]);
+            ['billet'=>$billet]
+        );
+
     }
     /**
      * @route("/delete/{id}",name="supprimerbillet")
@@ -103,5 +105,17 @@ class BilletController extends AbstractController
             'form'=>$form->createView()
         ]);
     }
+
+    /**
+     * @Route("/ListByBillet/{id}", name="ListByBillet", methods={"GET"})
+     */
+   /** function ListCategorieByBillet( BilletRepository $repoH,CategorieRepository $repC ,$id){
+        $billet=$repoH->find($id);
+        $categorie=$repC->ListCategorieByBillet($billet->getId());
+        return $this->render("billet/Show1.html.twig", [
+            'b'=>$billet, 'categorie'=>$categorie
+        ]);
+
+    } **/
 }
 
