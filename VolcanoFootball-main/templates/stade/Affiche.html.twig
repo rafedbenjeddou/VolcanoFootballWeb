@@ -1,5 +1,6 @@
 {% extends 'base-back.html.twig' %}
 {% block content %}
+ 
 <div class="row"  , style="width: 100%;">
     <div class="col-12">
         <div class="card">
@@ -14,9 +15,12 @@
                         <th>Adresse </th>
                         <th>Capacite</th>
                         <th>Date Ouverture</th>
+                        <th>Photo</th>
                         <th>details</th>
                         <th>update</th>
                         <th>delete</th>
+
+                        
                        
                     </tr>
                 </thead>
@@ -27,6 +31,7 @@
                         <td>{{ s.adresse }}</td>
                         <td>{{ s.capacite }}</td>
                         <td>{{ s.dateouverture | date('d-m-Y') }}</td>
+                        <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ s .photo }}"/></td>
                         <td><a href>details</a></td>
                         <td><a href="{{ path('UpdateStade',{'id':s.id})}}"><i class="ri-pencil-fill"></i></a></td>
                         <td><a href="{{ path('deleteStade',{'id':s.id})}}"><i class="ri-delete-bin-fill"></a></td>
@@ -41,15 +46,6 @@
 </div>
 <script>
     $('#datatable-buttons').DataTable();
-    let myForm = document.getElementById('myForm');
-    myForm.addEventListener('submit', function(e)
-    {
-        if (myInput.value.trim()==""){
-            let myError = document.getElementById('nom');
-            myError.innerHTML = "Le Champs nom est requis.";
-            myError.style.color = 'red';
-            e.preventDefault();
-        }
-    })
+    
 </script> 
 {% endblock %}     

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Homesoft\Bundle\MonitorBundle\Entity\NonPersistent\Path;
+use Symfony\Component\HttpFoundation\File\File;
 class StadeController extends AbstractController
 {
     /**
@@ -32,14 +33,23 @@ class StadeController extends AbstractController
         ['stade'=>$stade]);
     }
     /**
-     * @param Request $request
      * @Route("stade/AddStade", name="AddStade")
      */
     function Add(Request $request){
         $stade=new Stade();
         $form=$this->createForm(StadeType::class,$stade);
+        $form->add('ajouter',SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $file = $stade->getPhoto();
+            $uploads_directory = $this->getParameter('upload_directory');
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $uploads_directory,
+                $fileName
+            );
+
+            $stade->setPhoto($fileName);
             $em=$this->getDoctrine()->getManager();
             $em->persist($stade);
             $em->flush();
@@ -79,4 +89,15 @@ class StadeController extends AbstractController
             'f'=>$form->createView()]);
      
         }
+        
+    
+     /**
+     * @route("/AfficheUnStade", name="AfficheUnStade")
+     */
+    public function AfficheunStade(StadeRepository $repository){
+        $stade=$repository->findAll();
+
+        return $this->render('stade/AfficheUnStade.html.twig',
+            ['stade'=>$stade]);
+    }
 }

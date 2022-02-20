@@ -1,5 +1,9 @@
 {% extends 'base-back.html.twig' %}
 {% block content %}
+
+
+ 
+ 
 <div class="row" , style="width: 100%;">
     <div class="col-12">
         <div class="card">
@@ -10,29 +14,31 @@
                     <thead>
                     <tr>
                         <th>id</th>
-                        <th>IdStade </th>
+                        <th>Stade</th>
                         <th>Nom </th>
                         <th>Type</th>                       
-                        <th>details</th>
-                        <th>update</th>
-                        <th>delete</th>
+
+                        <th>U/D</th>
+
                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr {% for k in kiosque %}>
                         <td>{{ k.id }}</td>
-                        <td>{{ k.IdStade }}</td>
+                        <td>{{ k.getStade().getNom() }}</td>
                         <td>{{ k.Nom }}</td>
                         <td>{{ k.Type }}</td>
-                        <td><a href>details</a></td>
-                        <td><a href="{{ path('UpdateKiosque',{'id':k.id})}}"><i class="ri-pencil-fill"></a></td>
-                        <td><a href="{{ path('deleteKiosque',{'id':k.id})}}"><i class="ri-delete-bin-fill"></a></td>
+
+
+                        <td><a href="{{ path('UpdateKiosque',{'id':k.id})}}"><i class="ri-pencil-fill"></a>
+                            <a href="{{ path('deleteKiosque',{'id':k.id})}}"><i class="ri-delete-bin-fill"></a></td>
+
                     </tr{% endfor %}>
                     <li><a href="http://127.0.0.1:8000/kiosque/AddKiosque">Add Kiosque</a></li>
 
                 </tbody>
-            </table>
+              </table>
         </div>
     </div>
 </div> <!-- end col -->

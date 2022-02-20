@@ -19,13 +19,7 @@ class StadeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('nom',TextType::class,[
-            'label'=>'Nom ',
-            'attr'=>[
-                'placeholder'=>'Nom du Stade',
-                'class'=>'nom'
-            ]
-        ])
+        ->add('Nom')
         ->add('Adresse')
         ->add('Capacite')
         ->add('date_ouverture',DateType::class, [
@@ -35,6 +29,16 @@ class StadeType extends AbstractType
                 'class'=>'date'
             ]
         ])
+            ->add('photo',FileType::class, [
+
+                'label'=>'Photo',
+                'attr'=>[
+                    'placeholder'=>'Photo',
+                ]
+
+            ])
+
+        
 ;
     }
                         

@@ -284,8 +284,8 @@
                             <span>Stade</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="#">Afficher</a></li>
-                            <li><a href="#">Ajouter</a></li>
+                            <li><a href="{{ path('AfficheStade') }}">Afficher</a></li>
+                            <li><a href="{{ path('AddStade') }}">Ajouter</a></li>
                         </ul>
                     </li>
 
@@ -295,8 +295,8 @@
                             <span>Restaurent</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="#">Afficher</a></li>
-                            <li><a href="#">Ajouter</a></li>
+                            <li><a href="{{ path('AfficheKiosque') }}">Afficher</a></li>
+                            <li><a href="{{ path('AddKiosque') }}">Ajouter</a></li>
                         </ul>
                     </li>
 
@@ -336,7 +336,34 @@
     <!-- Left Sidebar End -->
 
 </div>
+{% block js %}
+        <!-- JAVASCRIPT -->
+        <script src="{{ asset ('back-office/assets/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{ asset ('back-office/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{ asset ('back-office/assets/libs/metismenu/metisMenu.min.js')}}"></script>
+        <script src="{{ asset ('back-office/assets/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{ asset ('back-office/assets/libs/node-waves/waves.min.js')}}"></script>
 
+
+        <!-- apexcharts -->
+        <script src="{{ asset ('back-office/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+
+        <!-- jquery.vectormap map -->
+        <script src="{{ asset ('back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+        <script src="{{ asset ('back-office/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js')}}"></script>
+
+        <!-- Required datatable js -->
+        <script src="{{ asset ('back-office/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{ asset ('back-office/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+
+        <!-- Responsive examples -->
+        <script src="{{ asset ('back-office/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+        <script src="{{ asset ('back-office/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+
+        <script src="{{ asset ('back-office/assets/js/pages/dashboard.init.js')}}"></script>
+
+        <script src="{{ asset ('back-office/assets/js/app.js')}}"></script>
+    {% endblock %}
 
 <div class="main-content">
     <div class="page-content">
@@ -366,34 +393,7 @@
         <h6 class="text-center mb-0">Choose Layouts</h6>
 
         <div class="p-4">
-            {% block js %}
-        <!-- JAVASCRIPT -->
-        <script src="{{ asset ('back-office/assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{ asset ('back-office/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{ asset ('back-office/assets/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{ asset ('back-office/assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{ asset ('back-office/assets/libs/node-waves/waves.min.js')}}"></script>
-
-
-        <!-- apexcharts -->
-        <script src="{{ asset ('back-office/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
-
-        <!-- jquery.vectormap map -->
-        <script src="{{ asset ('back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-        <script src="{{ asset ('back-office/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js')}}"></script>
-
-        <!-- Required datatable js -->
-        <script src="{{ asset ('back-office/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-        <script src="{{ asset ('back-office/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-
-        <!-- Responsive examples -->
-        <script src="{{ asset ('back-office/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-        <script src="{{ asset ('back-office/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
-
-        <script src="{{ asset ('back-office/assets/js/pages/dashboard.init.js')}}"></script>
-
-        <script src="{{ asset ('back-office/assets/js/app.js')}}"></script>
-    {% endblock %}
+            
             <div class="mb-2">
                 <img src="{{ asset ('back-office/assets/images/layouts/layout-1.jpg')}}" class="img-fluid img-thumbnail" alt="">
             </div>

@@ -31,11 +31,13 @@ class Stade
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Adresse est obligatoire")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Capacite est obligatoire")
      */
     private $capacite;
 
@@ -48,8 +50,12 @@ class Stade
      * @ORM\OneToMany(targetEntity=Kiosque::class, mappedBy="stade" , cascade={"all"},orphanRemoval=true)
      */
     private $kiosque;
-    
-    
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $photo;
+
 
 
     public function __construct()
@@ -150,5 +156,24 @@ class Stade
 
         return $this;
     }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto( $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+
+    public function _toString(): string
+    {
+        return $this;
+    }
+
     
 }

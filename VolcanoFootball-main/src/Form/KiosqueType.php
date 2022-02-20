@@ -21,7 +21,6 @@ class KiosqueType extends AbstractType
     {
         $builder
         ->add('ID')
-        ->add('IdStade')
         ->add('Nom')
         ->add('Stade' , EntityType::class, [
             'class'=>stade::class,

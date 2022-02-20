@@ -1,5 +1,6 @@
 {% extends 'base-back.html.twig' %}
 {% block content %}
+{% form_theme f 'bootstrap_4_layout.html.twig' %}
     <div class="row" , style="width: 100%;">
         <div class="col-12">
             <div class="card">
@@ -9,18 +10,6 @@
                         <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(f.Nom) }}</label>
                         <div class="col-md-10">
                             <input class="form-control" {{ form_widget(f.Nom) }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(f.IdStade) }}</label>
-                        <div class="col-md-10">
-                            <input class="form-control" {{ form_widget(f.IdStade) }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(f.ID) }}</label>
-                        <div class="col-md-10">
-                            <input class="form-control" {{ form_widget(f.ID) }}
                         </div>
                     </div>
                     {{ form_end(f) }}
