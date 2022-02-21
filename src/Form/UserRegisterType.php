@@ -48,7 +48,8 @@ class UserRegisterType extends AbstractType
                 ],
 
                 'attr'=>[
-                    "style"=>"height: 60px"
+                    "style"=>"height: 60px",
+                    "disabled"
                 ],
 
                 'expanded' => false,

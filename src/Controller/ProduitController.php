@@ -7,6 +7,7 @@ use App\Form\ProduitType;
 use App\Form\ProduitEditType;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -46,7 +47,6 @@ class ProduitController extends AbstractController
      * @route("/AjouterProduit", name="AjouterProduit")
      */
     function AjouterProduit(Request $request){
-
         $produit = new Produit();
         $form=$this->createForm(ProduitType::class,$produit);
         $form->add('Ajouter', SubmitType::class);
@@ -82,6 +82,24 @@ class ProduitController extends AbstractController
         $form->add('Modifier',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
+
+            $file = $form['photo']->getData();
+
+            if($file)
+            {
+                $uploads_directory = $this->getParameter('upload_directory');
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $uploads_directory,
+                    $fileName
+                );
+
+                $produit->setPhoto($fileName);
+            }
+            else
+            {
+                $produit->setPhoto($produit->getPhoto());
+            }
             $em=$this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute("AfficherProduit");

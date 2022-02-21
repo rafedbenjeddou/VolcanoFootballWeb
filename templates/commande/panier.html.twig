@@ -1,7 +1,19 @@
 {% extends 'base-front.html.twig' %}
+
+{% block panier %}
+
+    <li><a href="{{ path('EnrichirPanier') }}"><i class="fa fa-shopping-cart"></i> <span>cart(<span>
+                    {% if panier|length > 0 %}
+                        {{ panier|length }}
+                    {% else %}
+                        0
+                    {% endif %}
+            </span>)</span></a></li>
+
+{% endblock %}
+
+
 {% block content %}
-
-
     <div class=innerbannerwrap>
         <div class=content></div>
         <div class=innerbanner><h2 class=bannerHeadline>notre <span>boutique</span></h2></div>
@@ -23,14 +35,14 @@
                         </div>
                         <div class="card-item clearfix">
                             <div>
-                                <div class=big-content><h4>Nom du produit</h4></div>
+                                <div class="big-content medium-content"><h4>Nom du produit</h4></div>
                                 <div class="big-content medium-content"><h4>Quantité</h4></div>
                                 <div class="big-content small-content"><h4>Prix</h4></div>
                             </div>
                             <div>
                                 {% for p in panier %}
                                     <div class="clearfix">
-                                        <div class="big-content">
+                                        <div class="big-content medium-content">
                                             <div class="product-cart-wrap">
                                                 <figure>
                                                     <img src="{{ asset('uploads/images/') ~ p.produit.photo }}">
@@ -47,6 +59,14 @@
                                         <div class="big-content small-content">
                                             <h5>{{ p.produit.prix * p.quantite }}$</h5>
                                         </div>
+
+                                        <div class="big-content small-content" style="margin-top: 20px; ">
+                                            <a href="{{ path('SupprimerDuPanier',{'id':p.produit.id}) }}" style="color: red">
+                                                Supprimer
+                                            </a>
+                                        </div>
+
+
                                     </div>
                                 {% endfor %}
                             </div>

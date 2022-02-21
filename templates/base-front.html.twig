@@ -22,9 +22,14 @@
             <div class=container>
                 <div class=row>
                     <ul>
-                        <li><a href="{{ path('app_login') }}">S'INSCRIRE/SE CONNECTER</a></li>
+                        <li>
+                            {% if is_granted('ROLE_USER') %}
+                                <a href="{{ path('app_logout') }}">déconnecter</a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}">S'INSCRIRE/SE CONNECTER</a>
+                            {% endif %}
+                        </li>
                         {% block panier %}{% endblock %}
-
                     </ul>
                 </div>
             </div>
@@ -32,7 +37,6 @@
         <div class="header-lower clearfix">
             <div class=container>
                 <div class=row><h1 class=logo><a href=index-2.html><img src={{ asset('front-office/images/logo.png') }} alt=image></a></h1>
-
                     <div class=menubar>
                         <nav class=navbar>
                             <div class=nav-wrapper>
@@ -42,29 +46,32 @@
                                 </div>
                                 <div class=nav-menu style="margin-left: 20px; margin-bottom:2px">
                                     <ul class="nav navbar-nav menu-bar">
-                                        <li><a href="#" class=active>Accueil <span></span> <span></span>
+                                        <li><a href="#" {% block activeAccueil %}{% endblock %}>Accueil <span></span> <span></span>
                                                 <span></span> <span></span></a></li>
-                                        <li><a href="#">Equipes <span></span> <span></span> <span></span>
+                                        <li><a href="#" {% block activeEquipes %}{% endblock %}>Equipes <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#">Matches <span></span> <span></span> <span></span>
+                                        <li><a href="#" {% block activeMatches %}{% endblock %}>Matches <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#">Stades <span></span> <span></span> <span></span>
+                                        <li><a href="#" {% block activeStades %}{% endblock %}>Stades <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#">Hébergements <span></span> <span></span> <span></span>
+                                        <li><a href="#" {% block activeHebergements %}{% endblock %}>Hébergements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#">Evenements <span></span> <span></span> <span></span>
+                                        <li><a href="#" {% block activeEvenements %}{% endblock %}>Evenements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="{{ path('AfficherProduitsFront') }}">Boutique <span></span> <span></span> <span></span>
+                                        <li><a {% block activeBoutique %}{% endblock %} href="{{ path('AfficherProduitsFront') }}">Boutique <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#">Contact <span></span> <span></span> <span></span>
-                                                <span></span></a></li>
+                                        {% if is_granted('ROLE_USER') %}
+                                            <li><a href="{{ path('Profil',{'id':app.user.id}) }}" {% block activeProfil %}{% endblock %}>Profil <span></span> <span></span> <span></span>
+                                                    <span></span></a></li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                             </div>
                         </nav>
                     </div>
+                </div>
             </div>
-        </div>
+      </div>
     </header>
 
     {% block js %}

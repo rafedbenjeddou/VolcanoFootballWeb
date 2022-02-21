@@ -40,11 +40,11 @@ class UserController extends AbstractController
     /**
      * @param UserRepository $repository
      * @return Response
-     * @route("/Profil/{id}", name="Profil")
+     * @route("/ProfilBack/{id}", name="ProfilBack")
      */
-    public function Profil($id, UserRepository $repository){
+    public function ProfilBack($id, UserRepository $repository){
         $profil=$repository->find($id);
-        return $this->render('user/profil.html.twig',
+        return $this->render('user/profilBack.html.twig',
             ['profil'=>$profil, 'user' => $this->getUser()->getUsername() ]);
     }
 
@@ -58,7 +58,6 @@ class UserController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('AfficherUsers');
     }
-
 
     /**
      * @param Request $request
@@ -137,8 +136,43 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * @param UserRepository $repository
+     * @return Response
+     * @route("/Profil/{id}", name="Profil")
+     */
+    public function Profil($id, UserRepository $repository){
+        $profil=$repository->find($id);
+        return $this->render('user/profilFront.html.twig',[
+            'profil'=>$profil
+        ]);
+    }
 
+    /**
+     * @route ("ModifierProfil/{id}",name="ModifierProfil")
+     */
+    function ModifierProfil(UserRepository  $repository, $id, Request $request, UserPasswordEncoderInterface $encoder){
 
+        $user=$repository->find($id);
+        $form=$this->createForm(UserRegisterType::class, $user);
+        $form->add("modifier",SubmitType::class, [
+            'attr'=>[
+                'class'=>'btn btn-red'
+            ]
+        ]);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute("AfficherProduitsFront");
+        }
+        return $this->render('user/modifierProfil.html.twig',[
+            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
+        ]);
+    }
 
 
 }

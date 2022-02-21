@@ -130,8 +130,6 @@ class CommandeController extends AbstractController
             ];
         }
 
-        $session->set('panierEnrichie', $panierEnrichie);
-
         $coutTotal = 0;
         foreach ($panierEnrichie as $pro) {
             $total = $pro['produit']->getPrix() * $pro['quantite'];
@@ -143,6 +141,8 @@ class CommandeController extends AbstractController
         return $this->render('commande/panier.html.twig', [
             'panier' => $panierEnrichie, 'coutTotal' => $coutTotal
         ]);
+
+
 
     }
 
@@ -175,6 +175,29 @@ class CommandeController extends AbstractController
         return $this->redirectToRoute('AfficherProduitsFront');
 
     }
+
+    /**
+     * @return Response
+     * @route("/SupprimerDuPanier/{id}", name="SupprimerDuPanier")
+     */
+    public function SupprimerDuPanier($id, SessionInterface $session)
+    {
+
+        $panier = $session->get('panier', []);
+
+        //dd($panierEnrichie);
+
+        if(!empty($panier[$id]))
+        {
+            unset($panier[$id]);
+        }
+
+        $session->set('panier', $panier);
+
+        return $this->redirectToRoute('EnrichirPanier');
+
+    }
+
 
 }
 

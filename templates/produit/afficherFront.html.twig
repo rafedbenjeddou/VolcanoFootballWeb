@@ -1,5 +1,9 @@
 {% extends 'base-front.html.twig' %}
 
+{% block activeBoutique %}
+class=active
+{% endblock %}
+
 {% block panier %}
 
     <li><a href="{{ path('EnrichirPanier') }}"><i class="fa fa-shopping-cart"></i> <span>cart(<span>
