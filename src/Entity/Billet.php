@@ -21,6 +21,7 @@ class Billet
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Categorie is required")
      * @Assert\NotEqualTo(
      *      value = 0,
      *     message = "le prix d'un billet ne doit pas étre égale à 0 "

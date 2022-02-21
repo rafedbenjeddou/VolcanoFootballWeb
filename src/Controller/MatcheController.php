@@ -72,14 +72,29 @@ function Ajouter_matche(Request $request){
     $form->add('ajouter',SubmitType::class);
     $form->handleRequest($request);
     if($form->isSubmitted() && $form->isValid()){
-        $em=$this->getDoctrine()->getManager();
-        $em->persist($matche);
-        $em->flush();
-        $this->addFlash(
-            'info',
-            'Added Successfully'
-        );
-        return  $this->redirectToRoute('AfficheMatche');
+        $date= new \DateTime('now');
+        $datematch=$matche->getDate();
+        $nbJours =$datematch->diff($date)->days;
+        if($nbJours >= 1 && $datematch > $date) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($matche);
+            $em->flush();
+            $this->addFlash(
+                'info',
+                'Added Successfully'
+            );
+            return $this->redirectToRoute('AfficheMatche');
+        }
+        $erreur="Changer la date ";
+        return $this->render('matche/AjouterErreur.html.twig',[
+            'form'=>$form->createView(),
+            'error'=>$erreur,
+            'nbjours'=>$nbJours,
+            'date'=>$date,
+            'datematch'=>$datematch,
+        ]);
+
     }
     return $this->render('matche/Ajouter.html.twig',[
         'form'=>$form->createView()

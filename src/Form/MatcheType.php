@@ -17,8 +17,6 @@ class MatcheType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('idEquipe1')
-            ->add('IdEquipe2')
             ->add('NomArbitre')
             ->add('tour')
             ->add('date')

@@ -20,25 +20,15 @@ class Matche
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="IdEquipe 2 is required")
-     */
-    private $idEquipe1;
-
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="IdEquipe 2 is required")
-     */
-    private $IdEquipe2;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Assert\NotBlank(message="Nom Arbitre is required")
      * *@Assert\Length(
      *    min = 4,
      *     max =20,
-     *     minMessage = "Le nom d'un article doit comporter au moins {{ limit }} caractéres",
-     *      minMessage = "Le nom d'un article doit comporter au plus {{ limit }} caractéres"
+     *     minMessage = "Le nom d'un Arbitre doit comporter au moins {{ limit }} caractéres",
+     *      minMessage = "Le nom d'un Arbitre doit comporter au plus {{ limit }} caractéres"
      *     )
      */
     private $NomArbitre;
@@ -63,11 +53,12 @@ class Matche
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NomMatche is required")
      * @Assert\Length(
      *    min = 10,
      *     max =50,
-     *     minMessage = "Le nom d'un article doit comporter au moins {{ limit }} caractéres",
-     *      minMessage = "Le nom d'un article doit comporter au plus {{ limit }} caractéres"
+     *     minMessage = "Le nom d'un Nom Matche doit comporter au moins {{ limit }} caractéres",
+     *      minMessage = "Le nom d'un Nom Matche doit comporter au plus {{ limit }} caractéres"
      *     )
      */
     private $NomMatche;
@@ -91,30 +82,6 @@ class Matche
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdEquipe1(): ?int
-    {
-        return $this->idEquipe1;
-    }
-
-    public function setIdEquipe1(int $idEquipe1): self
-    {
-        $this->idEquipe1 = $idEquipe1;
-
-        return $this;
-    }
-
-    public function getIdEquipe2(): ?int
-    {
-        return $this->IdEquipe2;
-    }
-
-    public function setIdEquipe2(int $IdEquipe2): self
-    {
-        $this->IdEquipe2 = $IdEquipe2;
-
-        return $this;
     }
 
     public function getNomArbitre(): ?string
