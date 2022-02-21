@@ -42,12 +42,24 @@ class ProduitEditType extends AbstractType
                 'multiple' => false
 
             ])
-            ->add('couleur',TextType::class,[
-                'label'=>'Couleur',
-                'attr'=>[
-                    'placeholder'=>'Couleur',
-                ]
+
+            ->add('couleur',ChoiceType::class,[
+                'choices'  => [
+                    'Noir' => 'noir',
+                    'Blanc' => 'blanc',
+                    'Rouge' => 'rouge',
+                    'Jaune' => 'jaune',
+                    'Bleu' => 'bleu',
+                    'Vert' => 'vert'
+                ],
+
+                'label'=>"Couleur",
+
+                'expanded' => false,
+                'multiple' => false
+
             ])
+
             ->add('nbrEtoiles',ChoiceType::class,[
                 'choices'  => [
                     '1' => 1,

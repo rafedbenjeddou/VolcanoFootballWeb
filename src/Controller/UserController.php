@@ -30,9 +30,20 @@ class UserController extends AbstractController
      * @route("/AfficherUsers", name="AfficherUsers")
      */
     public function AfficherUsers(UserRepository $repository){
-        $user=$repository->findAll();
+        $users=$repository->findAll();
         return $this->render('user/afficher.html.twig',
-            ['users'=>$user]);
+            ['users'=>$users, 'user' => $this->getUser()->getUsername() ]);
+    }
+
+    /**
+     * @param UserRepository $repository
+     * @return Response
+     * @route("/Profil/{id}", name="Profil")
+     */
+    public function Profil($id, UserRepository $repository){
+        $profil=$repository->find($id);
+        return $this->render('user/profil.html.twig',
+            ['profil'=>$profil, 'user' => $this->getUser()->getUsername() ]);
     }
 
     /**
@@ -67,7 +78,7 @@ class UserController extends AbstractController
             return  $this->redirectToRoute('AfficherUsers');
         }
         return $this->render('user/ajouter.html.twig',[
-            'form'=>$form->createView()
+            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
         ]);
     }
 
@@ -88,7 +99,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute("AfficherUsers");
         }
         return $this->render('user/modifier.html.twig',[
-            'form'=>$form->createView()
+            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
         ]);
     }
 
@@ -101,7 +112,7 @@ class UserController extends AbstractController
     public function inscrire(): Response
     {
         return $this->render('user/inscrire.html.twig', [
-            'controller_name' => 'UserController',
+            'controller_name' => 'UserController'
         ]);
     }
 

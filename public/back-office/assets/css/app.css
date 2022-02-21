@@ -2740,8 +2740,7 @@ div.dt-button-info {
 
 .authentication-bg {
   background-image: url("../images/authentication-bg.jpg");
-  height: 100vh;
-  background-size: cover;
+  background-size: initial;
   background-position: center; }
   .authentication-bg .bg-overlay {
     background-color: #292626; }

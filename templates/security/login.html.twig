@@ -35,17 +35,17 @@
                                 <div>
                                     <div class="text-center">
                                         <div>
-                                            <a href="" class="logo"><img src="{{ asset('back-office/assets/images/logo-dark.png') }}" height="20" alt="logo"></a>
+                                            <a href="" class="logo" ><img src="{{ asset('back-office/assets/images/logo-dark.png') }}" height="70" alt="logo"></a>
                                         </div>
 
-                                        <h4 class="font-size-18 mt-4">Welcome Back !</h4>
-                                        <p class="text-muted">Sign in to continue to Nazox.</p>
+                                        <h4 class="font-size-18 mt-4">Content de te revoir !</h4>
+                                        <p class="text-muted">Connectez-vous pour continuer</p>
                                     </div>
 
                                     <div class="p-2 mt-5">
                                         <form class="form-horizontal" action="" method="post">
                                             {% if error %}
-                                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                                <div class="alert alert-danger">les informations d'identification invalides !</div>
                                             {% endif %}
 
                                             {% if app.user %}
@@ -56,13 +56,13 @@
 
                                             <div class="form-group auth-form-group-custom mb-4">
                                                 <i class="ri-user-2-line auti-custom-input-icon"></i>
-                                                <label for="username">Username</label>
+                                                <label for="username">Nom d'utilisateur</label>
                                                 <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
                                             </div>
 
                                             <div class="form-group auth-form-group-custom mb-4">
                                                 <i class="ri-lock-2-line auti-custom-input-icon"></i>
-                                                <label for="userpassword">Password</label>
+                                                <label for="userpassword">Mot de passe</label>
                                                 <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                                             </div>
 
@@ -83,19 +83,17 @@
 
 
                                             <div class="mt-4 text-center">
-                                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
+                                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Connexion</button>
                                             </div>
 
+                                            {#
                                             <div class="mt-4 text-center">
                                                 <a href="" class="text-muted"><i class="mdi mdi-lock mr-1"></i> Forgot your password?</a>
                                             </div>
+                                            #}
                                         </form>
                                     </div>
 
-                                    <div class="mt-5 text-center">
-                                        <p>Don't have an account ? <a href="" class="font-weight-medium text-primary"> Register </a> </p>
-                                        <p>© 2020 Nazox. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
-                                    </div>
                                 </div>
 
                             </div>

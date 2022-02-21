@@ -60,7 +60,7 @@
                                     <img src="{{ asset ('back-office/assets/images/logo-sm-light.png')}}" alt="" height="22">
                                 </span>
                             <span class="logo-lg">
-                                    <img src="{{ asset ('back-office/assets/images/logo-light.png')}}" alt="" height="20">
+                                    <img src="{{ asset ('back-office/assets/images/logo-light.png')}}" alt="" height="58">
                                 </span>
                         </a>
                     </div>
@@ -114,25 +114,24 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle header-profile-user" src="{{ asset ('back-office/assets/images/users/avatar-2.jpg')}}"
                                  alt="Header Avatar">
-                            <span class="d-none d-xl-inline-block ml-1">Kevin</span>
+                            <span class="d-none d-xl-inline-block ml-1">{% block user %}{% endblock %}</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="ri-user-line align-middle mr-1"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle mr-1"></i> My Wallet</a>
-                            <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right mt-1">11</span><i class="ri-settings-2-line align-middle mr-1"></i> Settings</a>
-                            <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle mr-1"></i> Lock screen</a>
+                            <a class="dropdown-item" href="{{ path('Profil',{'id':app.user.id}) }}"><i class="ri-user-line align-middle mr-1"></i> Profil</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="{{ path('app_logout') }}"><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Logout</a>
+                            <a class="dropdown-item text-danger" href="{{ path('app_logout') }}"><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Se Déconnecter</a>
                         </div>
                     </div>
 
+                    {#
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                             <i class="ri-settings-2-line"></i>
                         </button>
                     </div>
+                    #}
 
                 </div>
             </div>
@@ -152,17 +151,19 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li class="menu-title">Menu</li>
 
+                        {#
                         <li>
                             <a href="index.html" class="waves-effect">
                                 <i class="ri-dashboard-line"></i><span class="badge badge-pill badge-success float-right">3</span>
                                 <span>Dashboard</span>
                             </a>
                         </li>
+                        #}
 
                         <!-- Module Khairi -->
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ri-store-2-line"></i>
+                                <i class="ri-account-circle-line"></i>
                                 <span>Utilisateur</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
@@ -188,8 +189,8 @@
                                 <span>Commande</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficherCommandes') }}">Afficher</a></li>
+                                <li><a href="{{ path('AjouterCommande') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -381,6 +382,7 @@
 
     <!-- END layout-wrapper -->
 
+    {#
     <!-- Right Sidebar -->
     <div class="right-bar">
         <div data-simplebar class="h-100">
@@ -433,9 +435,10 @@
 
     <!-- /Right-bar -->
 
+
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
-
+    #}
 {% endblock %}
 
 

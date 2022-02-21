@@ -1,0 +1,69 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>notre <span>boutique</span></h2></div>
+    </div>
+    <section class=cartwrap>
+        <div class=cartshop>
+            <div class=bg-red></div>
+            <div class=container>
+                <div class=row>
+                    <div class=modal-body>
+                        <div class="cartHeader clearfix">
+                            <div class=header01><h4>Votre Panier</h4></div>
+                            <div class=header02><h4><span>Vous Avez Sélectionné <span >{{ panier|length }}</span> Produits</span>
+                                    <a><i class="fa fa-cart-plus"></i> <span >{{ panier|length }}</span></a></h4>
+
+                                <p></p>
+
+                                <p class=datetime></p></div>
+                        </div>
+                        <div class="card-item clearfix">
+                            <div>
+                                <div class=big-content><h4>Nom du produit</h4></div>
+                                <div class="big-content medium-content"><h4>Quantité</h4></div>
+                                <div class="big-content small-content"><h4>Prix</h4></div>
+                            </div>
+                            <div>
+                                {% for p in panier %}
+                                    <div class="clearfix">
+                                        <div class="big-content">
+                                            <div class="product-cart-wrap">
+                                                <figure>
+                                                    <img src="{{ asset('uploads/images/') ~ p.produit.photo }}">
+                                                </figure>
+
+                                                <h5>{{ p.produit.nom }}</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="big-content medium-content productQuantity">
+                                            <h5>{{ p.quantite }}</h5>
+                                        </div>
+
+                                        <div class="big-content small-content">
+                                            <h5>{{ p.produit.prix * p.quantite }}$</h5>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="card-item cart-total clearfix">
+                                <div class="big-content medium-content"><h4>Coût Total</h4></div>
+                                <div class="big-content small-content"><h4 >{{ coutTotal }}$</h4></div>
+                            </div>
+                        </div>
+                        <div class=modal-footer>
+
+                            <a href="{{ path('AjouterCommandeFront') }}" class=btn-red>Commandez maintenant</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

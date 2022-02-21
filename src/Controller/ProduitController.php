@@ -9,6 +9,7 @@ use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\File;
@@ -25,7 +26,7 @@ class ProduitController extends AbstractController
     public function AfficherProduit(ProduitRepository $repository){
         $produit=$repository->findAll();
         return $this->render('produit/afficher.html.twig',
-            ['produit'=>$produit]);
+            ['produit'=>$produit, 'user' => $this->getUser()->getUsername() ]);
     }
 
     /**
@@ -67,7 +68,7 @@ class ProduitController extends AbstractController
             return  $this->redirectToRoute('AfficherProduit');
         }
         return $this->render('produit/ajouter.html.twig',[
-            'form'=>$form->createView()
+            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
         ]);
     }
 
@@ -86,7 +87,7 @@ class ProduitController extends AbstractController
             return $this->redirectToRoute("AfficherProduit");
         }
         return $this->render('produit/modifier.html.twig',[
-            'form'=>$form->createView()
+            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
         ]);
     }
 
@@ -98,10 +99,11 @@ class ProduitController extends AbstractController
      * @return Response
      * @route("/AfficherProduitsFront", name="AfficherProduitsFront")
      */
-    public function AfficherProduitsFront(ProduitRepository $repository){
+    public function AfficherProduitsFront(ProduitRepository $repository, SessionInterface $session){
         $produit=$repository->findAll();
+        $panier = $session->get('panier', []);
         return $this->render('produit/afficherFront.html.twig',
-            ['produit'=>$produit]);
+            ['produit'=>$produit, 'panier'=>$panier]  );
     }
 
 

@@ -29,7 +29,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Tableau Des Produits</h4>
+                    <h4 class="card-title">Tableau des Commandes</h4>
                     <p class="card-title-desc"></p>
 
                     <div class="table-rep-plugin">
@@ -38,31 +38,23 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th >Nom</th>
-                                    <th >Type</th>
-                                    <th >Taille</th>
-                                    <th >Couleur</th>
-                                    <th >Nombre d'Etoiles</th>
-                                    <th >Description</th>
-                                    <th >Prix</th>
-                                    <th >Photo</th>
+                                    <th >Nom d'Utilisateur</th>
+                                    <th >Nom de Produit</th>
+                                    <th >Quantité</th>
+                                    <th >Date d'ajout</th>
                                     <th style="width: 120px;">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr {% for p in produit %}>
-                                    <td>{{ p.id }}</td>
-                                    <td>{{ p.nom }}</td>
-                                    <td>{{ p.type }}</td>
-                                    <td>{{ p.taille }}</td>
-                                    <td>{{ p.couleur }}</td>
-                                    <td>{{ p.nbrEtoiles }}</td>
-                                    <td>{{ p.description }}</td>
-                                    <td>{{ p.prix }}</td>
-                                    <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ p.photo }}"/></td>
+                                <tr {% for c in commandes %}>
+                                    <td>{{ c.id }}</td>
+                                    <td>{{ c.user.username }}</td>
+                                    <td>{{ c.produit.nom }}</td>
+                                    <td>{{ c.quantite }}</td>
+                                    <td>{{ c.dateAjout|date('Y-m-d H:i:s') }}</td>
                                     <td>
-                                        <a href="{{ path('ModifierProduit',{'id':p.id}) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="Modifier" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                        <a href="{{ path('SupprimerProduit',{'id':p.id}) }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                        <a href="{{ path('ModifierCommande',{'id':c.id}) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="Modifier" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                        <a href="{{ path('SupprimerCommande',{'id':c.id}) }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
                                     </td>
                                 </tr {% endfor %}>
                                 </tbody>

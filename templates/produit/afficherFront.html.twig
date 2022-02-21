@@ -1,4 +1,19 @@
 {% extends 'base-front.html.twig' %}
+
+{% block panier %}
+
+    <li><a href="{{ path('EnrichirPanier') }}"><i class="fa fa-shopping-cart"></i> <span>cart(<span>
+                        {% if panier|length > 0 %}
+                            {{ panier|length }}
+                        {% else %}
+                            0
+                        {% endif %}
+                </span>)</span></a></li>
+
+{% endblock %}
+
+
+
 {% block content %}
 
     <div class=innerbannerwrap>
@@ -40,25 +55,22 @@
                                 {% for p in produit %}
 
                                     <div class="shop01 clearfix">
-                                    <div class=shop-img>
-                                        <div class=bgimg style=background:url({{ asset('uploads/images/') ~ p.photo }})></div>
-                                    </div>
-                                    <div class=shop_info><h4 class=headline01><a href=product-details.html>{{ p.nom }}</a></h4>
-
-                                        <div class=star>
-                                            {% for i in 0..p.nbrEtoiles %}
-                                                <i class="fa fa-star"></i>
-                                            {% endfor %}
+                                        <div class=shop-img>
+                                            <div class=bgimg style=background:url({{ asset('uploads/images/') ~ p.photo }})></div>
                                         </div>
-                                        <p>{{ p.description }}</p>
+                                        <div class=shop_info><h4 class=headline01><a href='#'>{{ p.nom }}</a></h4>
 
-                                        <div class=headline01>${{ p.prix }}</div>
-                                        <div class=addcart-wrap><a href="#" class="btn-addcart addToCart"
-                                                                   data-productid=1 data-productname="soccer club"
-                                                                   data-productprice=199
-                                                                   data-productimage={{ asset('uploads/images/') ~ p.photo }}>Ajouter au panier</a> <a href=# class=btn-fav>Ajouter à la liste de souhaits</a></div>
+                                            <div class=star>
+                                                {% for i in 0..p.nbrEtoiles %}
+                                                    <i class="fa fa-star"></i>
+                                                {% endfor %}
+                                            </div>
+                                            <p>{{ p.description }}</p>
+
+                                            <div class=headline01>${{ p.prix }}</div>
+                                            <a href="{{ path('AjouterAuPanier',{'id':p.id}) }}" class="btn-addcart">Ajouter au panier</a>
+                                        </div>
                                     </div>
-                                </div>
 
                                 {% endfor %}
                             </div>

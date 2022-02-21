@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -89,6 +91,16 @@ class Produit
      * @Assert\NotBlank(message="La photo du produit est obligatoire.")
      */
     private $photo;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="produit", cascade={"all"}, orphanRemoval=true)
+     */
+    private $commandes;
+
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -187,6 +199,36 @@ class Produit
     public function setPhoto( $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getProduit() === $this) {
+                $commande->setProduit(null);
+            }
+        }
 
         return $this;
     }
