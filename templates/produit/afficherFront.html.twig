@@ -1,0 +1,88 @@
+{% extends 'base-front.html.twig' %}
+
+{% block panier %}
+
+    <li><a href="{{ path('EnrichirPanier') }}"><i class="fa fa-shopping-cart"></i> <span>cart(<span>
+                        {% if panier|length > 0 %}
+                            {{ panier|length }}
+                        {% else %}
+                            0
+                        {% endif %}
+                </span>)</span></a></li>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>Notre <span>Magasin</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>Meilleur Magasin <span>d'Accessoires de Football</span></h2>
+
+                <p class=headParagraph></p>
+
+                <div class=innerWrapper>
+                    <aside class="widgetinner clearfix">
+                        <div class=widgetinfowrap>
+                            <div class=bg-blackimg>Chercher par Couleur</div>
+                            <div class=sizepic><a href=# class=bg-bluecolor></a> <a href=# class=bg-redcolor></a> <a
+                                        href=# class=bg-green></a> <a href=# class=bg-lblack01></a></div>
+                        </div>
+                        <div class=widgetinfowrap>
+                            <div class=bg-blackimg>Chercher par Taille</div>
+                            <div class=sizepic><a href=#>XS</a> <a href=#>S</a> <a href=#>M</a> <a href=#>L</a></div>
+                        </div>
+                    </aside>
+                    <aside class=contentinner>
+                        <div class="bg-red shop_select clearfix">
+                            <div class=select_shopping>
+                                <form>
+                                    <div class=form-group><label class=headline01>Trier par</label><select
+                                                class=form-control>
+                                            <option>Prix</option>
+                                            <option>Nombre d'Étoiles</option>
+                                        </select></div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="shop-wrap-slider clearfix">
+                            <div class=shop_detais>
+                                {% for p in produit %}
+
+                                    <div class="shop01 clearfix">
+                                        <div class=shop-img>
+                                            <div class=bgimg style=background:url({{ asset('uploads/images/') ~ p.photo }})></div>
+                                        </div>
+                                        <div class=shop_info><h4 class=headline01><a href='#'>{{ p.nom }}</a></h4>
+
+                                            <div class=star>
+                                                {% for i in 0..p.nbrEtoiles %}
+                                                    <i class="fa fa-star"></i>
+                                                {% endfor %}
+                                            </div>
+                                            <p>{{ p.description }}</p>
+
+                                            <div class=headline01>${{ p.prix }}</div>
+                                            <a href="{{ path('AjouterAuPanier',{'id':p.id}) }}" class="btn-addcart">Ajouter au panier</a>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+
+

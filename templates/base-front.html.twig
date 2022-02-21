@@ -1,0 +1,106 @@
+<!doctype html>
+<html class=no-js lang="">
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+    <meta charset=utf-8>
+    <meta name=description content="">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>VolcanoFootBall</title>
+    <link rel="shortcut icon" href=favicon.ico>
+    {% block css %}
+        <link rel=stylesheet href="{{ asset('front-office/vendor.css') }}">
+        <link rel=stylesheet href="{{ asset('front-office/style.css') }}">
+        <link rel=stylesheet type=text/css href="{{ asset('front-office/css/layerslider.css') }}">
+    {% endblock %}
+    <script src={{ asset('front-office/js/vendor/modernizr.js') }}></script>
+</head>
+<body>
+<div class=wrapper>
+    <header class=header-main>
+        <div class=header-upper>
+            <div class=container>
+                <div class=row>
+                    <ul>
+                        <li><a href="{{ path('inscrire') }}">S'INSCRIRE/SE CONNECTER</a></li>
+                        {% block panier %}{% endblock %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-lower clearfix">
+            <div class=container>
+                <div class=row><h1 class=logo><a href=index-2.html><img src={{ asset('front-office/images/logo.png') }} alt=image></a></h1>
+
+                    <div class=menubar>
+                        <nav class=navbar>
+                            <div class=nav-wrapper>
+                                <div class=navbar-header>
+                                    <button type=button class=navbar-toggle><span class=sr-only>Toggle navigation</span>
+                                        <span class=icon-bar></span></button>
+                                </div>
+                                <div class=nav-menu style="margin-left: 20px ">
+                                    <ul class="nav navbar-nav menu-bar">
+                                        <li><a href="#" class=active>Accueil <span></span> <span></span>
+                                                <span></span> <span></span></a></li>
+                                        <li><a href="#">Equipes <span></span> <span></span> <span></span>
+                                                <span></span></a></li>
+                                        <li><a href="#">Matches <span></span> <span></span> <span></span>
+                                                <span></span></a></li>
+                                        <li><a href="#">Stades <span></span> <span></span> <span></span>
+                                                <span></span></a></li>
+                                        <li><a href="#">Hébergements <span></span> <span></span> <span></span>
+                                                <span></span></a></li>
+                                        <li><a href="#">Evenements <span></span> <span></span> <span></span>
+                                                <span></span></a></li>
+                                        <li><a href="{{ path('AfficherProduitsFront') }}">Boutique <span></span> <span></span> <span></span>
+                                                <span></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class=social><a href=https://www.facebook.com/templatespoint.net class=facebook><i
+                                    class="fa fa-facebook"></i></a> <a href=https://twitter.com/itobuztech class=twitter><i
+                                    class="fa fa-twitter"></i></a> <a href=https://www.behance.net/ class=behance><i
+                                    class="fa fa-behance"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block js %}
+        <script src={{ asset('front-office/js/vendor/vendor.js') }}></script>
+        <script src={{ asset('front-office/js/main.js') }}></script>
+    {% endblock %}
+    {% block content %}
+
+    {% endblock %}
+    <footer class=footer-type01>
+        <div class=footer-type02>
+            <div class=container>
+                <div class=row><a href=index-2.html class=footer-logo><img src={{ asset('front-office/images/logo.png') }} alt=image></a>
+
+                    <div class=footer-container>
+                        <ul class=clearfix>
+                            <li><a href="" class=bigsocial-link><i
+                                            class="fa fa-facebook"></i></a></li>
+                            <li><a href="" class=bigsocial-link target=_blank><i
+                                            class="fa fa-twitter"></i></a></li>
+                        </ul>
+                        <p><a target="_blank" href=""></a></p></div>
+                    <div class=footer-appstore>
+                        <figure><a ><img src={{ asset('front-office/images/appstore/apple.png') }} alt=image></a></figure>
+                        <figure><a ><img src={{ asset('front-office/images/appstore/google.png') }} alt=image></a></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+
+</html>
