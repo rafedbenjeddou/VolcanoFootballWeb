@@ -1,0 +1,51 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+<div class=innerbannerwrap>
+    <div class=content></div>
+    <div   class=innerbanner><h2 class=bannerHeadline><span>    Mes Réservations  </span> </h2></div>
+</div>
+    <section class="matchSchedule countryclub">
+    <div class=container>
+        <div class=row>
+                <div class="matchSchedule_details row">
+                    <div class=match_next>
+                        <div class="wrap_match_next right-triangle">
+                            <div class=right-padding><h4 class=headline03> table de Reservation</h4>
+
+                                <p>Dans ce tableau on vous affiche tous vos réservation, vous pouvez aussi modifier ou annuler vos réservation</p></div>
+                        </div>
+                    </div>
+                    <div class=match_versus-wrap>
+                        <div class=wrap_match-innerdetails>
+                            <ul class="point_table scrollable">
+                                {% for r in reservation %}
+                                <li class=clearfix>
+                                    <div class=subPoint_table>
+                                        <div class="ticketInner_info paragraph02 clearfix"><b> {{ r.idClient }} </b> <b> Resrevé à</b> {{ r.hebergement.NomH }} <b> du :  </b><b> {{ r.dateDebut|date('d-m-Y') }}   </b><b>  jusqu'a :   </b> <b> {{ r.dateFin|date('d-m-Y') }}   </b></div>
+                                       
+
+
+                                        <div class="ticketInner_info paragraph02 clearfix"><a href="{{ path('UpdateRF',{'id':r.id}) }}"class="uppercaseheading red">Modifier</a></div>
+                                        <div class="ticketInner_info paragraph02 clearfix"><a href="{{ path('deleteRF',{'id':r.id}) }}"class="uppercaseheading red">Annuler</a></div>
+
+                                    </div>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                        
+        
+        
+        </section>
+        <script type=text/javascript>
+            $(function () {
+                $('#da_gallery .gallery-list ').hoverdir();
+            });
+        </script>
+{% endblock %}

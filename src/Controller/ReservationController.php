@@ -32,6 +32,8 @@ class ReservationController extends AbstractController
         return $this->render('reservation/Affiche.html.twig',
         ['reservation'=>$reservation]);
     }
+
+       
     /**
      * @param Request $request
      * @Route("/AddR",name="AddR")
@@ -39,6 +41,8 @@ class ReservationController extends AbstractController
     function Add(Request $request){
         $reservation=new Reservation();
         $form=$this->createForm(ReservationType::class,$reservation);
+        $form->add('Ajouter', SubmitType::class);
+
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
@@ -51,34 +55,15 @@ class ReservationController extends AbstractController
         ]);
     
     }
-    /**
-     * @param Request $request
-     * @Route("/AddRF",name="AddRF")
-     */
-    /*
-    function AddRF(Request $request){
-        $reservation=new Reservation();
-        $form=$this->createForm(ReservationType::class,$reservation);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($reservation);
-            $em->flush();
-            return $this->redirectToRoute('AfficheR');
-        }
-        return $this->render('reservation/AddRF.html.twig',[
-            'form'=>$form->createView()
-        ]);
     
-    }
-    */
+
         /**
      * @Route("/UpdateR/{id}", name="UpdateR")
      */
     function Update(ReservationRepository $repo, $id,Request $request){
         $reservation=$repo->find($id);
         $form=$this->createForm(ReservationType::class,$reservation);
-        $form->add('Update', SubmitType::class);
+        $form->add('Modifier', SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
@@ -99,7 +84,34 @@ class ReservationController extends AbstractController
     $em->flush();
     return $this->redirectToRoute('AfficheR');
         }
-
+        
+     /**
+ * @Route("/deleteRF/{id}",name="deleteRF")
+ */
+ function deleteRF($id, ReservationRepository $repo){
+    $reservation=$repo->find($id);
+    $em=$this->getDoctrine()->getManager();
+    $em->remove($reservation);
+    $em->flush();
+    return $this->redirectToRoute('AfficheRF');
+        }
+         /**
+     * @Route("/UpdateRF/{id}", name="UpdateRF")
+     */
+    function UpdateRF(ReservationRepository $repo, $id,Request $request){
+        $reservation=$repo->find($id);
+        $form=$this->createForm(ReservationType::class,$reservation);
+        $form->add('Modifier', SubmitType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('AfficheRF');
+        }
+        return $this->render('reservation/UpdateRF.html.twig',[
+            'f'=>$form->createView()
+        ]);
+        }  
 }
 
 

@@ -46,6 +46,8 @@ class AgenceController extends AbstractController
     function Add(Request $request){
         $agence=new Agence();
         $form=$this->createForm(AgenceType::class,$agence);
+        $form->add('Ajouter', SubmitType::class);
+
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();

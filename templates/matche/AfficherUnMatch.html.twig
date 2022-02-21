@@ -1,0 +1,51 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span>Match</span></h2></div>
+    </div>
+
+    <section class=innerpage_all_wrap>
+
+        <div class=container>
+            <div class=row><h2 class=heading>match <span>Coupe du Monde Qatar 2022™ </span></h2>
+                {% for m in matche %}
+                <div class="matchSchedule_details row">
+                    <div class="match_next right-triangle">
+                        <div class="wrap_match_next right-triangle">
+                            <div class=right-padding><h4 class=headline03>{{ m.NomMatche }} </h4>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
+                        </div>
+                    </div>
+                    <div class=match_versus>
+                        <div class="bg-blackimg match_versus02">
+                            <div class=nextmatchDetails>
+                                <div class="wrap-logo clearfix">
+                                    <div class=logo-match><img src=front-office/images/matchResult/tunn.png alt=image></div>
+                                    <div class=match_vs>vs</div>
+                                    <div class=logo-match><img src=front-office/images/matchResult/algé.png alt=image></div>
+                                </div>
+                                <p class=match_dtls><b> Date :</b>{{ m.date|date('d-m-Y') }}</p>
+                                <p class=match_dtls><b> Time :</b>{{ m.time|date("H:i:s")}} PM</p>
+                                <p class=match_dtls><b> Nom Arbitre Principal :</b>{{ m.NomArbitre }}</p>
+                                <p class=match_dtls><b> Stade :</b> <br> <li><a href={{path('ListByMatche',{'id':m.id}) }} class="btn-small01 btn-green">Billet</a></li></p></div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                    {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}

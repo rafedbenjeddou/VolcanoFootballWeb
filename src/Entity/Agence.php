@@ -63,6 +63,11 @@ class Agence
      */
     private $photoA;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $NbEtoiles;
+
     public function __construct()
     {
         $this->hebergements = new ArrayCollection();
@@ -147,6 +152,18 @@ class Agence
     public function setPhotoA(?string $photoA): self
     {
         $this->photoA = $photoA;
+
+        return $this;
+    }
+
+    public function getNbEtoiles(): ?int
+    {
+        return $this->NbEtoiles;
+    }
+
+    public function setNbEtoiles(?int $NbEtoiles): self
+    {
+        $this->NbEtoiles = $NbEtoiles;
 
         return $this;
     }

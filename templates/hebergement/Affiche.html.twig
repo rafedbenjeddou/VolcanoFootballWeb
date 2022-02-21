@@ -9,7 +9,7 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Produit</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hebergement</a></li>
                         <li class="breadcrumb-item active">Afficher</li>
                     </ol>
                 </div>
@@ -24,6 +24,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <p class="card-title-desc"></p>
 
                     <h4 class="card-title">Tableau Des Hebergements</h4>
                     <p class="card-title-desc"></p>
@@ -31,17 +32,17 @@
                     <div class="table-rep-plugin">
                         <div class="table-responsive mb-0" data-pattern="priority-columns">
                             <table id="tech-companies-1" class="table">
-                                <thead>
+                                <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>photo hebergement</th>
-                        <th>Nom hebergement</th>
-                        <th>type hebergement</th>
-                        <th>adresse hebergement</th>
-                        <th>agence</th>
+                        <th>photo </th>
+                        <th>Nom </th>
+                        <th>type </th>
+                        <th>adresse </th>
+                        <th style="width: 120px;">agence</th>
 
-                        <th>update</th>
-                        <th>delete</th>
+                        <th>Actions</th>
+            
                        
                     </tr>
                 </thead>
@@ -54,9 +55,8 @@
                         <td>{{ h.adresse }}</td>
                         <td>{{ h.agence.Nom }}</td>
 
-                       
-                        <td><a href="{{ path('UpdateH',{'id':h.id}) }}">Update</a></td>
-                        <td><a href="{{ path('deleteH',{'id':h.id}) }}">Delete</a></td>
+                        <td><a href="{{ path('UpdateH',{'id':h.id}) }}"><i class="ri-pencil-fill"></i></a>     <a href="{{ path('deleteH',{'id':h.id}) }}"><i class="ri-delete-bin-fill"></i></a></td>
+
                     </tr{% endfor %}>
 
                 </tbody>

@@ -47,12 +47,7 @@ class HebergementRepository extends ServiceEntityRepository
         ;
     }
     */
-    function SearchNSC($nomH){
-        return $this->createQueryBuilder('h')
-        ->where('h.nomH LIKE :nomH')
-        ->setParameter('nomH', '%'.$nomH.'%')
-        ->getQuery()->getResult();
-    }
+
     function ListHebergementByAgence($id){ // function by QueryBuilder 
         return $this-> createQueryBuilder('h')
         ->join('h.agence' , 'a')

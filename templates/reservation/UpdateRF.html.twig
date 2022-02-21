@@ -1,7 +1,6 @@
- 
 {% extends 'base-front.html.twig' %}
 {% block content %}
-{% form_theme form1 'bootstrap_4_layout.html.twig' %}
+{% form_theme f 'bootstrap_4_layout.html.twig' %}
 
 <section class=innerpage_all_wrap >
     <div class=container>
@@ -11,10 +10,10 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-<h1>Je Reserve</h1>
-{{ form_start(form1) }}
- {{ form_widget(form1) }}
-{{ form_end(form1) }}
+<h1>Je Modifie</h1>
+{{ form_start(f) }}
+ {{ form_widget(f) }}
+{{ form_end(f) }}
 </div>
 </div>
 </div> <!-- end col -->

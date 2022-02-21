@@ -4,6 +4,8 @@ namespace App\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Agence;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,6 +18,21 @@ class AgenceType extends AbstractType
             ->add('nom')
             ->add('adresse')
             ->add('numTel')
+            ->add('NbEtoiles',ChoiceType::class,[
+                'choices'  => [
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5
+                ],
+
+                'label'=>"Nombre des Etoiles",
+
+                'expanded' => false,
+                'multiple' => false
+
+            ])
             
         ;
     }

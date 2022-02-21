@@ -347,36 +347,7 @@
 
 </div>
 
-
-<div class="main-content">
-    <div class="page-content">
-        <div class="container-fluid">
-            <div class="row">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END layout-wrapper -->
-
-<!-- Right Sidebar -->
-<div class="right-bar">
-    <div data-simplebar class="h-100">
-        <div class="rightbar-title px-3 py-4">
-            <a href="javascript:void(0);" class="right-bar-toggle float-right">
-                <i class="mdi mdi-close noti-icon"></i>
-            </a>
-            <h5 class="m-0">Settings</h5>
-        </div>
-        
-
-        <!-- Settings -->
-        <hr class="mt-0" />
-        <h6 class="text-center mb-0">Choose Layouts</h6>
-
-        <div class="p-4">
-            {% block js %}
+{% block js %}
         <!-- JAVASCRIPT -->
         <script src="{{ asset ('back-office/assets/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{ asset ('back-office/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -404,6 +375,37 @@
 
         <script src="{{ asset ('back-office/assets/js/app.js')}}"></script>
     {% endblock %}
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Right Sidebar -->
+<div class="right-bar">
+    <div data-simplebar class="h-100">
+        <div class="rightbar-title px-3 py-4">
+            <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                <i class="mdi mdi-close noti-icon"></i>
+            </a>
+            <h5 class="m-0">Settings</h5>
+        </div>
+        
+
+        <!-- Settings -->
+        <hr class="mt-0" />
+        <h6 class="text-center mb-0">Choose Layouts</h6>
+
+        <div class="p-4">
+            
             <div class="mb-2">
                 <img src="{{ asset ('back-office/assets/images/layouts/layout-1.jpg')}}" class="img-fluid img-thumbnail" alt="">
             </div>

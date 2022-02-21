@@ -7,6 +7,8 @@ use App\Entity\Reservation;
 use App\Entity\Agence;
 use App\Form\ReservationfrontType;
 use App\Form\HebergementType;
+use App\Form\HebergementUpType;
+
 use App\Repository\HebergementRepository;
 use App\Repository\ReservationRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,6 +53,8 @@ class HebergementController extends AbstractController
     function Add(Request $request){
         $hebergement=new Hebergement();
         $form=$this->createForm(HebergementType::class,$hebergement);
+        $form->add('Ajouter', SubmitType::class);
+
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
 
@@ -89,10 +93,27 @@ class HebergementController extends AbstractController
      */
     function Update(HebergementRepository $repo, $id,Request $request){
         $hebergement=$repo->find($id);
-        $form=$this->createForm(HebergementType::class,$hebergement);
+        $form=$this->createForm(HebergementUpType::class,$hebergement);
         $form->add('Update', SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $file = $form['photoH']->getData();
+
+            if($file)
+            {
+                $uploads_directory = $this->getParameter('upload_directory');
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $uploads_directory,
+                    $fileName
+                );
+
+                $hebergement->setPhotoH($fileName);
+            }
+            else
+            {
+                $hebergement->setPhotoH($hebergement->getPhotoH());
+            }
             $em=$this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('AfficheH');
@@ -101,16 +122,6 @@ class HebergementController extends AbstractController
             'f'=>$form->createView()
         ]);
         }
-                    /**
-     * @Route("/SearchNSC", name="SearchNSC")
-     */
-    function SearchNSC(HebergementRepository $repo, Request $request){
-        $nsc=$request->get('SearchNSC');
-        $hebergement=$repo->SearchNSC($nsc);
-        return $this->render('hebergement/Affiche.html.twig',
-        ['hebergement'=>$hebergement]);
-        
-    }
 
   /**
      * @Route("/AddByHebergement/{id}", name="AddByHebergement" )
@@ -122,6 +133,7 @@ class HebergementController extends AbstractController
 
       
         $form=$this->createForm(ReservationfrontType::class,$reservation);
+        $form->add('Reserver', SubmitType::class);
 
         $form->handleRequest($request);
 
@@ -130,12 +142,50 @@ class HebergementController extends AbstractController
             $reservation->setHebergement($hebergement);
             $em->persist($reservation);
             $em->flush();
-            return $this->redirectToRoute('AfficheR');
+            return $this->redirectToRoute('AfficheRF');
         }
         return $this->render('hebergement/AddRF.html.twig',[
             'form1'=>$form->createView()
         ]);
         
     }  
- 
+    /**
+     * @Route("/UpdateByHebergement/{id}", name="UpdateByHebergement" )
+     */
+     
+    function UpdateReservationByHebergement(HebergementRepository $repoH, ReservationRepository $repoR, $id,Request $request){
+        $hebergement=$repoH->find($id);
+        $reservation=$repoR->find($id);
+
+      
+        $form=$this->createForm(ReservationfrontType::class,$reservation);
+        $form->add('Modifier', SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $reservation->setHebergement($hebergement);
+            $em->persist($reservation);
+            $em->flush();
+            return $this->redirectToRoute('AfficheRF');
+        }
+        return $this->render('hebergement/UpdateRF.html.twig',[
+            'f1'=>$form->createView()
+        ]);
+        
+    }  
+    
+                /**
+     * @Route("/AfficheRF", name="AfficheRF")
+     */
+     
+    public function AfficheRF(ReservationRepository $repo) {
+       
+        $reservation=$repo->findAll();
+        return $this->render('hebergement/AfficheRF.html.twig',
+        ['reservation'=>$reservation]);
+    }
+       
+
 }

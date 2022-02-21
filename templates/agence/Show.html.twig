@@ -18,7 +18,7 @@
     </section>
     <section class=players>
         <div class=container>
-            <div class=row><h2 class=heading>board <span>hotels</span></h2>
+            <div class=row><h2 class=heading>List Of <span> Accommodations </span></h2>
                 <p class=headParagraph>Qatar has something for everyone with its vast range of hotels and world-renowned hospitality. Most of the hotels are located in the capital Doha but there are several out-of-town retreats for visitors looking for something different.</p>
 
                     <div class="wrapplayer clearfix"><a class="prv prev-player"></a> <a class="nxt next-player"></a>
@@ -38,21 +38,21 @@
                                         <div class="bg-black01 fig02">
                                             <h6 class=paragraph02>{{ h.nomH }} </h6>
                     
-                                            <p class="uppercaseheading red"> <p>Type : {{ h.type }}</p></p>
+                                           <div class="uppercaseheading red"> {{ h.type }} </div>   
+
                     
                                             <p>The FIFA World Cup Qatar 2022™ is less than a year away. Your host country, Qatar, offers an exciting range of accommodation – available to book soon..</p></div>
                                         <div class="bg-black fig02"><p>Experience a FIFA World Cup™
                                             like no other.</p>
                                         </div>
                                         <div class="bg-redcolor fig02"><p>Adresse : {{ h.adresse }}</p></div>
-                                        
-                                        <a  href="{{ path('AddByHebergement',{'id':h.id}) }}"class="btn-small01 btn-red"> Je Reserve</a>
 
                                     </div>
                                 </div>
-                             
-                            
+                                <a  href="{{ path('AddByHebergement',{'id':h.id}) }}"class="uppercaseheading red"> Je Reserve</a>
+
                             </li>
+
                             {% endfor %}
 
                         </ul>
@@ -61,11 +61,15 @@
             </div>
         </div>
     </section>
-
+    <section class="map_wrapper clearfix">
+        <div id=map-section></div>
     <script type=text/javascript>
         $(function () {
             $('#da_gallery .gallery-list ').hoverdir();
         });
     </script>
+    <script src=js/vendor/vendor.js></script>
+    <script src=js/main.js></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 {% endblock %}
 
