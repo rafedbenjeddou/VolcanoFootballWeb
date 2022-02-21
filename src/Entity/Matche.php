@@ -42,7 +42,6 @@ class Matche
 
     /**
      * @ORM\Column(type="date")
-     *  @Assert\NotBlank(message="Date Stade is required")
      */
     private $date;
 
