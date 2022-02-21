@@ -10,45 +10,57 @@
             <div class=row><h2 class=heading>veuillez entrer <span>les informations suivantes</span></h2>
 
                 <p class=headParagraph></p>
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    <div  class="feedbackContact-open formcontact clearfix">
 
-                    <form data-parsley-validate="" name=contact class="feedbackContact-open formcontact clearfix">
-                        <div class=form-group><input type=text class=form-control name=username placeholder="Nom d'utilisateur" required=""
-                                                     data-parsley-required-message="Veuillez insérer le username"></div>
-                        <div class=form-group><input type=text class=form-control name=nom placeholder=Nom
-                                                     required="" data-parsley-required-message="Veuillez insérer votre nom">
+                        <div class=form-group>
+                            {{ form_label(form.username) }}
+                            <input type=text class=form-control {{ form_widget(form.username) }}
                         </div>
-                        <div class=form-group><input type=text class=form-control name=prenom placeholder=Prenom
-                                                     required="" data-parsley-required-message="Veuillez insérer votre prenom">
+                        <div class=form-group>
+                            {{ form_label(form.nom) }}
+                            <input type=text class=form-control {{ form_widget(form.nom) }}
                         </div>
-                        <div class=form-group><input type=number class=form-control name=age placeholder=Age
-                                                     required="" data-parsley-required-message="Veuillez insérer votre age'">
+                        <div class=form-group>
+                            {{ form_label(form.prenom) }}
+                            <input type=text class=form-control {{ form_widget(form.prenom) }}
                         </div>
-                        <div class=form-group><input type=text class=form-control name=pays placeholder=Pays
-                                                     required="" data-parsley-required-message="Veuillez insérer votre pays'">
-                        </div>
-                        <div class=form-group><input type=text class=form-control name=pays placeholder=Pays
-                                                     required="" data-parsley-required-message="Veuillez insérer votre pays'">
-                        </div>
-                        <div class=form-group><input type=text class=form-control name=email placeholder=Email
-                                                     required="" data-parsley-required-message="Veuillez insérer votre email'">
-                        </div>
-                        <div class=form-group><input type=number class=form-control name=numTel placeholder="Numéro du Téléphone"
-                                                     required="" data-parsley-required-message="Veuillez insérer votre numéro du téléphone'">
+                        <div class=form-group>
+                            {{ form_label(form.genre) }}
+                            {{ form_widget(form.genre) }}
                         </div>
 
                         <div class=form-group>
-                            <select class=form-control>
-                                <option class=form-control name="genre" value="homme">Homme</option>
-                                <option class=form-control name="genre" value="femme" >Femme</option>
-                            </select>
+                            {{ form_label(form.age) }}
+                            <input type=number class=form-control {{ form_widget(form.age) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.pays) }}
+                            <input type=text class=form-control {{ form_widget(form.pays) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.email) }}
+                            <input type=text class=form-control {{ form_widget(form.email) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.numTel) }}
+                            <input type=number class=form-control {{ form_widget(form.numTel) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.password) }}
+                            <input type=password class=form-control {{ form_widget(form.password) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.confirmePassword) }}
+                            <input type=password class=form-control {{ form_widget(form.confirmePassword) }}
                         </div>
 
 
+                        {{ form_widget(form.inscrire) }}
+                    </div>
 
+                {{ form_end(form) }}
 
-                        <button type=submit class=btn-blackLight id=send>submit</button>
-                        <div class=form-message></div>
-                    </form>
                 </div>
 
 

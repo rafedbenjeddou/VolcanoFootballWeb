@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserRegisterType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Controller\SecurityController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -107,14 +109,34 @@ class UserController extends AbstractController
     //---------------------------------------------------------------------------------------------------
 
     /**
-     * @Route("/inscrire", name="inscrire")
+     * @param Request $request
+     * @return Response
+     * @route("/inscrire", name="inscrire")
      */
-    public function inscrire(): Response
-    {
-        return $this->render('user/inscrire.html.twig', [
-            'controller_name' => 'UserController'
+    function Inscrire(Request $request, UserPasswordEncoderInterface $encoder){
+
+        $user = new User();
+        $form=$this->createForm(UserRegisterType::class,$user);
+        $form->add("inscrire",SubmitType::class, [
+            'attr'=>[
+                'class'=>'btn btn-red'
+            ]
+        ]);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+            $user->setRoles(['ROLE_USER']);
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return  $this->redirectToRoute('app_login');
+        }
+        return $this->render('user/inscrire.html.twig',[
+            'form'=>$form->createView()
         ]);
     }
+
 
 
 
