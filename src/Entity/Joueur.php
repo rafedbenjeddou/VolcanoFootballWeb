@@ -26,12 +26,18 @@ class Joueur
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="name is required")
+     * @Assert\Length(
+     *    min = 4,
+     *     max =20,
+     *     minMessage = "Le prenom d'un joueur doit comporter au moins {{ limit }} caractéres",
+     *      minMessage = "Le prenom d'un joueur doit comporter au plus {{ limit }} caractéres"
+     *     )
      */
     private $prenom_joueur;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="age is required")
      */
     private $age;
     /**
@@ -47,6 +53,7 @@ class Joueur
 
     /**
      * @ORM\ManyToOne(targetEntity=Equipe::class, inversedBy="joueurs")
+     * @Assert\NotBlank(message="photo is required")
      */
     private $equipe;
 

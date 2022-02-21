@@ -54,6 +54,10 @@ class EquipeController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($equipe);
         $em->flush();
+        $this->addFlash(
+            'info',
+            'Deleted Successfully'
+        );
         return $this->redirectToRoute('AfficheEquipe');
     }
 
@@ -79,6 +83,10 @@ class EquipeController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($equipe);
             $em->flush();
+            $this->addFlash(
+                'info',
+                'Added Successfully'
+            );
             return  $this->redirectToRoute('AfficheEquipe');
         }
         return $this->render('equipe/Ajouter.html.twig',[
@@ -94,16 +102,28 @@ class EquipeController extends AbstractController
         $form->add('Update',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-            $file =$equipe->getDrapeauEquipe();
-            $uploads_directory = $this->getParameter('upload_directory');
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $uploads_directory,
-                $fileName
-            );
-            $equipe->setDrapeauEquipe($fileName);
+            $file = $form['drapeau_equipe']->getData();
+
+            if($file)
+            {
+                $uploads_directory = $this->getParameter('upload_directory');
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $uploads_directory,
+                    $fileName
+                );
+
+                $equipe->setDrapeauEquipe($fileName);
+            }
+            else {
+                $equipe->setDrapeauEquipe($equipe.getDrapeauEquipe());
+            }
             $em=$this->getDoctrine()->getManager();
             $em->flush();
+            $this->addFlash(
+                'info',
+                'Updated Successfully'
+            );
             return $this->redirectToRoute("AfficheEquipe");
         }
         return $this->render('equipe/Update.html.twig',[

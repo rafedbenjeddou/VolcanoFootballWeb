@@ -10,7 +10,8 @@
             <div class=row>
                 <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
                     {% for e in equipe %}
-                        <li class=gallery-list><a class=column_g><span class=image_g
+                        <li class=gallery-list>
+                            <a class=column_g><span class=image_g
                                                                        style=background:url("{{ asset('uploads/images/') ~ e.drapeauEquipe }}")></span>
                                 <div class=gallery-info><h6> {{ e.nomEquipe }}  </h6>
 

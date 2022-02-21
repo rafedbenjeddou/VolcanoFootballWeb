@@ -56,6 +56,10 @@ class JoueurController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($joueur);
         $em->flush();
+        $this->addFlash(
+            'info',
+            'Deleted Successfully'
+        );
         return $this->redirectToRoute('AfficheJoueur');
     }
 
@@ -81,6 +85,10 @@ class JoueurController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($joueur);
             $em->flush();
+            $this->addFlash(
+                'info',
+                'Added Successfully'
+            );
             return  $this->redirectToRoute('AfficheJoueur');
         }
         return $this->render('joueur/Ajouter.html.twig',[
@@ -96,16 +104,28 @@ class JoueurController extends AbstractController
         $form->add('Update',SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
-            $file =$joueur->getPhoto();
-            $uploads_directory = $this->getParameter('upload_directory');
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $uploads_directory,
-                $fileName
-            );
-            $joueur->setPhoto($fileName);
+            $file = $form['photo']->getData();
+
+            if($file)
+            {
+                $uploads_directory = $this->getParameter('upload_directory');
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                $file->move(
+                    $uploads_directory,
+                    $fileName
+                );
+
+                $joueur->setPhoto($fileName);
+            }
+            else {
+                $joueur->setPhoto($joueur.getPhoto());
+            }
             $em=$this->getDoctrine()->getManager();
             $em->flush();
+            $this->addFlash(
+                'info',
+                'Updated Successfully'
+            );
             return $this->redirectToRoute("AfficheJoueur");
         }
         return $this->render('joueur/Update.html.twig',[
