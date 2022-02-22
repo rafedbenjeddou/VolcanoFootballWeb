@@ -124,7 +124,7 @@ function Update(MatcheRepository  $repository,$id,Request $request){
     /**
      * @Route("/ListByMatche/{id}", name="ListByMatche", methods={"GET"})
      */
-    function ListHebergementByAgence(MatcheRepository $repoM, BilletRepository $repoB, $id){
+    function ListBilletByMatche(MatcheRepository $repoM, BilletRepository $repoB, $id){
         $matche=$repoM->find($id);
         $billet=$repoB->ListBilletByMatche($matche->getId());
         return $this->render("matche/Show.html.twig", [
