@@ -46,7 +46,7 @@ class Matche
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=Billet::class, mappedBy="matche")
+     * @ORM\OneToMany(targetEntity=Billet::class, mappedBy="matche",cascade={"all"}, orphanRemoval=true)
      */
     private $billets;
 

@@ -24,14 +24,16 @@ class MatcheController extends AbstractController
             'controller_name' => 'MatcheController',
         ]);
     }
-
+//Route d'annotation
+//Response correspond a la reponse retournée par le controleur
+// render methode de retourner une interface
 /**
  * @param MatcheRepository $repository
  * @return Response
  * @route("/AfficheM", name="AfficheMatche")
  */
 public function Affiche(MatcheRepository $repository){
-    $matche=$repository->findAll();
+    $matche=$repository->findAll(); //retourner toutes les objets
     return $this->render('matche/Affiche.html.twig',
         ['matche'=>$matche]);
 }
@@ -45,7 +47,8 @@ public function Affiche(MatcheRepository $repository){
         return $this->render('matche/AfficherUnMatch.html.twig',
             ['matche'=>$matche]);
     }
-
+//repository- l'entité
+//Manger- base
 /**
  * @route("/deleteMatche/{id}",name="deleteMatche")
  */
@@ -53,7 +56,7 @@ function Delete_matche($id,MatcheRepository $repository){
     $matche=$repository->find($id);
     $em=$this->getDoctrine()->getManager();
     $em->remove($matche);
-    $em->flush();
+    $em->flush(); //
     $this->addFlash(
         'info',
         'Deleted Successfully'
@@ -107,8 +110,8 @@ function Update(MatcheRepository  $repository,$id,Request $request){
     $matche=$repository->find($id);
     $form=$this->createForm(MatcheType::class,$matche);
     $form->add('Update',SubmitType::class);
-    $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()){
+    $form->handleRequest($request);                                                                                            //pour envoyer la requete
+    if ($form->isSubmitted() && $form->isValid()){                                                                             //si la requete tsabet ta3ml MAJ
         $em=$this->getDoctrine()->getManager();
         $em->flush();
         $this->addFlash(
@@ -118,7 +121,7 @@ function Update(MatcheRepository  $repository,$id,Request $request){
         return $this->redirectToRoute("AfficheMatche");
     }
     return $this->render('matche/Update.html.twig',[
-        'form'=>$form->createView()
+        'form'=>$form->createView()    //pour afficher les champs de la forme type
     ]);
 }
     /**
