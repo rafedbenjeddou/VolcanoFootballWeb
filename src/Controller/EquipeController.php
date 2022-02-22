@@ -7,6 +7,7 @@ use App\Form\EquipeEditType;
 use App\Form\EquipeType;
 use App\Repository\EquipeRepository;
 use App\Repository\JoueurRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,8 +41,12 @@ class EquipeController extends AbstractController
      * @return Response
      * @route("/AfficheUneE", name="AfficheUneEquipe")
      */
-    public function Afficheuneequipe(EquipeRepository $repository){
-        $equipe=$repository->findAll();
+    public function Afficheuneequipe(EquipeRepository $repository,PaginatorInterface $paginator,Request $request){
+        $equipe=$paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page',1),
+            9
+        );
         return $this->render('equipe/Afficheruneequipe.html.twig',
             ['equipe'=>$equipe]);
     }

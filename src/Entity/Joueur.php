@@ -53,12 +53,17 @@ class Joueur
 
     /**
      * @ORM\ManyToOne(targetEntity=Equipe::class, inversedBy="joueurs")
-     * @Assert\NotBlank(message="photo is required")
      */
     private $equipe;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *    min = 10,
+     *     max =100,
+     *     minMessage = "La description d'un joueur doit comporter au moins {{ limit }} caractéres",
+     *     minMessage = "La description d'un joueur doit comporter au plus {{ limit }} caractéres"
+     *     )
      */
     private $Description;
 

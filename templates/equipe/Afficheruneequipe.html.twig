@@ -5,7 +5,7 @@
         <div class=innerbanner><h2 class=bannerHeadline><span>Equipe</span></h2></div>
     </div>
 
-    <section class=innerpage_all_wrap>
+    <section class="latest_news bg-white">
         <div class=container>
             <div class=row>
                 <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
@@ -20,10 +20,16 @@
                                     </p>
                                 </div>
                             </a>
-                            <a  href="{{ path('ListByEquipe',{'id':e.id}) }}">Détail</a>
+                            <p><br></p>
+                            <div style="text-align: center">
+                            <a  href="{{ path('ListByEquipe',{'id':e.id}) }}" class="btn-small btn-red" >En savoir plus</a>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>
+            </div>
+            <div class="navigation " style="text-align: center;">
+                {{ knp_pagination_render(equipe) }}
             </div>
         </div>
     </section>

@@ -44,7 +44,7 @@ class Equipe
     private $nom_entreneur;
 
     /**
-     * @ORM\OneToMany(targetEntity=Joueur::class, mappedBy="equipe",cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Joueur::class, mappedBy="equipe", cascade={"all"}, orphanRemoval=true)
      */
     private $joueurs;
 
