@@ -31,20 +31,35 @@ class CommandeController extends AbstractController
      * @route("/AfficherCommandes", name="AfficherCommandes")
      */
     public function AfficherCommandes(CommandeRepository $repository){
-        $commandes=$repository->findAll();
-        return $this->render('commande/afficher.html.twig',
-            ['commandes'=>$commandes, 'user' => $this->getUser()->getUsername() ]);
+
+        if($this->getUser()->isAdmin())
+        {
+            $commandes=$repository->findAll();
+            return $this->render('commande/afficher.html.twig',
+                ['commandes'=>$commandes, 'user' => $this->getUser()->getUsername() ]);
+        }
+
+        return $this->redirectToRoute('app_login');
+
     }
 
     /**
      * @route("/SupprimerCommande/{id}",name="SupprimerCommande")
      */
     function SupprimerCommande($id, CommandeRepository $repository){
-        $commandes=$repository->find($id);
-        $em=$this->getDoctrine()->getManager();
-        $em->remove($commandes);
-        $em->flush();
-        return $this->redirectToRoute('AfficherCommandes');
+
+        if($this->getUser()->isAdmin())
+        {
+            $commandes=$repository->find($id);
+            $em=$this->getDoctrine()->getManager();
+            $em->remove($commandes);
+            $em->flush();
+            return $this->redirectToRoute('AfficherCommandes');
+        }
+
+        return $this->redirectToRoute('app_login');
+
+
     }
 
     /**
@@ -54,19 +69,26 @@ class CommandeController extends AbstractController
      */
     function AjouterCommande(Request $request){
 
-        $commande = new Commande();
-        $form=$this->createForm(CommandeType::class,$commande);
-        $form->add('Ajouter', SubmitType::class);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($commande);
-            $em->flush();
-            return  $this->redirectToRoute('AfficherCommandes');
+        if($this->getUser()->isAdmin())
+        {
+            $commande = new Commande();
+            $form=$this->createForm(CommandeType::class,$commande);
+            $form->add('Ajouter', SubmitType::class);
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                $em=$this->getDoctrine()->getManager();
+                $em->persist($commande);
+                $em->flush();
+                return  $this->redirectToRoute('AfficherCommandes');
+            }
+            return $this->render('commande/ajouter.html.twig',[
+                'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
+            ]);
         }
-        return $this->render('commande/ajouter.html.twig',[
-            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
-        ]);
+
+        return $this->redirectToRoute('app_login');
+
+
     }
 
     /**
@@ -74,19 +96,28 @@ class CommandeController extends AbstractController
      */
     function ModifierCommande(CommandeRepository  $repository, $id, Request $request){
 
-        $commande=$repository->find($id);
-        $form=$this->createForm(CommandeType::class, $commande);
-        $form->add('Modifier',SubmitType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
-            $em=$this->getDoctrine()->getManager();
-            $em->flush();
-            return $this->redirectToRoute("AfficherCommandes");
+        if($this->getUser()->isAdmin())
+        {
+            $commande=$repository->find($id);
+            $form=$this->createForm(CommandeType::class, $commande);
+            $form->add('Modifier',SubmitType::class);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()){
+                $em=$this->getDoctrine()->getManager();
+                $em->flush();
+                return $this->redirectToRoute("AfficherCommandes");
+            }
+            return $this->render('commande/modifier.html.twig',[
+                'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
+            ]);
         }
-        return $this->render('commande/modifier.html.twig',[
-            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
-        ]);
+
+        return $this->redirectToRoute('app_login');
+
+
     }
+
+    //---------------------------------------------------------------------------------------------------------
 
 
     /**
@@ -97,6 +128,7 @@ class CommandeController extends AbstractController
      */
     public function AjouterAuPanier($id, SessionInterface $session)
     {
+
         $panier = $session->get('panier', []);
 
         if (!empty($panier[$id])) {
@@ -130,6 +162,8 @@ class CommandeController extends AbstractController
             ];
         }
 
+        $session->set('panierEnrichieFinal', $panierEnrichie);
+
         $coutTotal = 0;
         foreach ($panierEnrichie as $pro) {
             $total = $pro['produit']->getPrix() * $pro['quantite'];
@@ -153,11 +187,11 @@ class CommandeController extends AbstractController
     public function AjouterCommandeFront(Request $request, SessionInterface $session)
     {
 
-        $panierEnrichie = $session->get('panierEnrichie', []);
+        $panierEnrichieFinal = $session->get('panierEnrichieFinal', []);
 
         //dd($panierEnrichie);
 
-        foreach ($panierEnrichie as $panier) {
+        foreach ($panierEnrichieFinal as $panier) {
             $commande = new Commande();
             $commande->setUser($this->getUser());
             $commande->setProduit($panier['produit']);

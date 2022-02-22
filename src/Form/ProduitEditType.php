@@ -45,12 +45,18 @@ class ProduitEditType extends AbstractType
 
             ->add('couleur',ChoiceType::class,[
                 'choices'  => [
-                    'Noir' => 'noir',
-                    'Blanc' => 'blanc',
-                    'Rouge' => 'rouge',
-                    'Jaune' => 'jaune',
-                    'Bleu' => 'bleu',
-                    'Vert' => 'vert'
+                    'Noir' => 'Noir',
+                    'Marron' => 'Marron',
+                    'Beige' => 'Beige',
+                    'Gris' => 'Gris',
+                    'Vert' => 'Vert',
+                    'Bleu' => 'Bleu',
+                    'Violet' => 'Violet',
+                    'Rose' => 'Rose',
+                    'Rouge' => 'Rouge',
+                    'Orange' => 'Orange',
+                    'Jaune' => 'Jaune',
+                    'Blanc' => 'Blanc'
                 ],
 
                 'label'=>"Couleur",
@@ -87,6 +93,8 @@ class ProduitEditType extends AbstractType
                     'placeholder'=>"Prix",
                 ]
             ])
+
+
 
             ->add('photo',FileType::class, [
                 'mapped'=>false,

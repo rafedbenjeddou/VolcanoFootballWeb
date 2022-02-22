@@ -37,6 +37,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\NotBlank(message="Le role est obligatoire.")
      */
     private $roles = [];
 

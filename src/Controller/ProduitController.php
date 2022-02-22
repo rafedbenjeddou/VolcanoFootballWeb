@@ -25,20 +25,35 @@ class ProduitController extends AbstractController
      * @route("/AfficherProduit", name="AfficherProduit")
      */
     public function AfficherProduit(ProduitRepository $repository){
-        $produit=$repository->findAll();
-        return $this->render('produit/afficher.html.twig',
-            ['produit'=>$produit, 'user' => $this->getUser()->getUsername() ]);
+
+        if($this->getUser()->isAdmin())
+        {
+            $produit=$repository->findAll();
+            return $this->render('produit/afficher.html.twig',
+                ['produit'=>$produit, 'user' => $this->getUser()->getUsername() ]);
+        }
+
+        return $this->redirectToRoute('app_login');
+
     }
 
     /**
      * @route("/SupprimerProduit/{id}",name="SupprimerProduit")
      */
     function SupprimerProduit($id, ProduitRepository $repository){
-        $produit=$repository->find($id);
-        $em=$this->getDoctrine()->getManager();
-        $em->remove($produit);
-        $em->flush();
-        return $this->redirectToRoute('AfficherProduit');
+
+        if($this->getUser()->isAdmin())
+        {
+            $produit=$repository->find($id);
+            $em=$this->getDoctrine()->getManager();
+            $em->remove($produit);
+            $em->flush();
+            return $this->redirectToRoute('AfficherProduit');
+        }
+
+        return $this->redirectToRoute('app_login');
+
+
     }
 
     /**
@@ -47,46 +62,15 @@ class ProduitController extends AbstractController
      * @route("/AjouterProduit", name="AjouterProduit")
      */
     function AjouterProduit(Request $request){
-        $produit = new Produit();
-        $form=$this->createForm(ProduitType::class,$produit);
-        $form->add('Ajouter', SubmitType::class);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $file = $produit->getPhoto();
-            $uploads_directory = $this->getParameter('upload_directory');
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $uploads_directory,
-                $fileName
-            );
 
-            $produit->setPhoto($fileName);
-            $em=$this->getDoctrine()->getManager();
-
-            $em->persist($produit);
-            $em->flush();
-            return  $this->redirectToRoute('AfficherProduit');
-        }
-        return $this->render('produit/ajouter.html.twig',[
-            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
-        ]);
-    }
-
-    /**
-     * @route ("ModifierProduit/{id}",name="ModifierProduit")
-     */
-    function ModifierProduit(ProduitRepository  $repository, $id, Request $request){
-
-        $produit=$repository->find($id);
-        $form=$this->createForm(ProduitEditType::class, $produit);
-        $form->add('Modifier',SubmitType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
-
-            $file = $form['photo']->getData();
-
-            if($file)
-            {
+        if($this->getUser()->isAdmin())
+        {
+            $produit = new Produit();
+            $form=$this->createForm(ProduitType::class,$produit);
+            $form->add('Ajouter', SubmitType::class);
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                $file = $produit->getPhoto();
                 $uploads_directory = $this->getParameter('upload_directory');
                 $fileName = md5(uniqid()).'.'.$file->guessExtension();
                 $file->move(
@@ -95,18 +79,65 @@ class ProduitController extends AbstractController
                 );
 
                 $produit->setPhoto($fileName);
+                $em=$this->getDoctrine()->getManager();
+
+                $em->persist($produit);
+                $em->flush();
+                return  $this->redirectToRoute('AfficherProduit');
             }
-            else
-            {
-                $produit->setPhoto($produit->getPhoto());
-            }
-            $em=$this->getDoctrine()->getManager();
-            $em->flush();
-            return $this->redirectToRoute("AfficherProduit");
+            return $this->render('produit/ajouter.html.twig',[
+                'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
+            ]);
         }
-        return $this->render('produit/modifier.html.twig',[
-            'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
-        ]);
+
+        return $this->redirectToRoute('app_login');
+
+
+    }
+
+    /**
+     * @route ("ModifierProduit/{id}",name="ModifierProduit")
+     */
+    function ModifierProduit(ProduitRepository  $repository, $id, Request $request){
+
+
+        if($this->getUser()->isAdmin())
+        {
+            $produit=$repository->find($id);
+            $form=$this->createForm(ProduitEditType::class, $produit);
+            $form->add('Modifier',SubmitType::class);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()){
+
+                $file = $form['photo']->getData();
+
+                if($file)
+                {
+                    $uploads_directory = $this->getParameter('upload_directory');
+                    $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                    $file->move(
+                        $uploads_directory,
+                        $fileName
+                    );
+
+                    $produit->setPhoto($fileName);
+                }
+                else
+                {
+                    $produit->setPhoto($produit->getPhoto());
+                }
+                $em=$this->getDoctrine()->getManager();
+                $em->flush();
+                return $this->redirectToRoute("AfficherProduit");
+            }
+            return $this->render('produit/modifier.html.twig',[
+                'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
+            ]);
+        }
+
+        return $this->redirectToRoute('app_login');
+
+
     }
 
 
