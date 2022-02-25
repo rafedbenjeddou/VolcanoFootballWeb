@@ -1,0 +1,62 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+    <div class="row" style="width: 100%;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title">Modifier un Match : </h4>
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    {% if nbjours==0 or date>datematch%}
+                        <div class="alert alert-danger">{{ error}}</div>
+
+                    {% endif %}
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.NomMatche) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control" {{ form_widget(form.NomMatche) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">{{ form_label(form.NomArbitre) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control"  {{ form_widget(form.NomArbitre) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">{{ form_label(form.tour) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control"  {{ form_widget(form.tour) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">{{ form_label(form.date) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control"  {{ form_widget(form.date) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-md-2 col-form-label">{{ form_label(form.time) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control"  {{ form_widget(form.time) }}
+                        </div>
+                    </div>
+
+
+
+
+                    {{ form_widget(form.NomArbitre) }}
+                    {{ form_widget(form.tour) }}
+                    {{ form_widget(form.date) }}
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div> <!-- end col -->
+        </div>
+    </div>
+{% endblock %}

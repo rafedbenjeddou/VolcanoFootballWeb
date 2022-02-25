@@ -111,7 +111,12 @@ function Update(MatcheRepository  $repository,$id,Request $request){
     $form=$this->createForm(MatcheType::class,$matche);
     $form->add('Update',SubmitType::class);
     $form->handleRequest($request);                                                                                            //pour envoyer la requete
-    if ($form->isSubmitted() && $form->isValid()){                                                                             //si la requete tsabet ta3ml MAJ
+    if ($form->isSubmitted() && $form->isValid()){
+        //si la requete tsabet
+        $date= new \DateTime('now');
+        $datematch=$matche->getDate();
+        $nbJours =$datematch->diff($date)->days;
+        if($nbJours >= 1 && $datematch > $date) {
         $em=$this->getDoctrine()->getManager();
         $em->flush();
         $this->addFlash(
@@ -119,6 +124,16 @@ function Update(MatcheRepository  $repository,$id,Request $request){
             'Updated Successfully'
         );
         return $this->redirectToRoute("AfficheMatche");
+    }
+        $erreur="Changer la date ";
+        return $this->render('matche/UpdateErreur.html.twig',[
+            'form'=>$form->createView(),
+            'error'=>$erreur,
+            'nbjours'=>$nbJours,
+            'date'=>$date,
+            'datematch'=>$datematch,
+        ]);
+
     }
     return $this->render('matche/Update.html.twig',[
         'form'=>$form->createView()    //pour afficher les champs de la forme type
