@@ -20,27 +20,27 @@ class UserRegisterType extends AbstractType
 
 
             ->add("username",TextType::class,[
-                "label"=>"Nom d'Utilisateur",
+                "label"=>" ",
                 'attr'=>[
                     'placeholder'=>"Nom d'Utilisateur",
                 ]
             ])
 
             ->add('nom',TextType::class,[
-                'label'=>"Nom",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Nom",
                 ]
             ])
             ->add('prenom',TextType::class,[
-                'label'=>"Prenom",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Prenom",
                 ]
             ])
 
             ->add('genre',ChoiceType::class,[
-                'label'=>"Genre",
+                'label'=>" ",
                 'choices'  => [
                     'Homme' => 'homme',
                     'Femme' => 'femme'
@@ -58,38 +58,38 @@ class UserRegisterType extends AbstractType
             ])
 
             ->add('age',TextType::class,[
-                'label'=>"Age",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Age",
                 ]
             ])
             ->add('pays',TextType::class,[
-                'label'=>"Pays",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Pays",
                 ]
             ])
             ->add('email',TextType::class,[
-                'label'=>"Email",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Email",
                 ]
             ])
             ->add('password',PasswordType::class,[
-                'label'=>"Mot de passe",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Mot de passe",
                 ]
             ])
             ->add('confirmePassword',PasswordType::class,[
-                'label'=>"Confirmer Mot de passe",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Confirmer Mot de passe",
                 ]
             ])
 
             ->add('numTel',TextType::class,[
-                'label'=>"Numéro de Téléphone",
+                'label'=>" ",
                 'attr'=>[
                     'placeholder'=>"Numéro de Téléphone",
                 ]
