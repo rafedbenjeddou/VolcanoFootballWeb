@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserRegisterType;
 use App\Form\UserType;
+use App\Form\ForgotPasswordType;
 use App\Repository\UserRepository;
 use App\Controller\SecurityController;
+use App\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +27,12 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+
+    public function __construct(Mailer $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
 
     /**
      * @param UserRepository $repository
@@ -96,6 +104,8 @@ class UserController extends AbstractController
             if($form->isSubmitted() && $form->isValid()){
                 $hash = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($hash);
+                $user->setToken(null);
+                $user->setEnabled(true);
                 $em=$this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
@@ -160,15 +170,49 @@ class UserController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
+            $user->setToken($this->generateToken());
             $user->setRoles(['ROLE_USER']);
+            $user->setEnabled(false);
             $em=$this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->mailer->sendEmail($user->getEmail(), $user->getToken());
+            $this->addFlash("success", "Inscription réussie! Merci de confirmer votre compte");
             return  $this->redirectToRoute('app_login');
         }
         return $this->render('user/inscrire.html.twig',[
             'form'=>$form->createView()
         ]);
+    }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    private function generateToken()
+    {
+        return rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
+    }
+
+    /**
+     * @Route("/ConfirmerCompte/{token}", name="ConfirmerCompte")
+     */
+    public function confirmerCompte(string $token, UserRepository $repository)
+    {
+        $user = $repository->findOneBy(["token" => $token]);
+
+        if($user) {
+            $user->setToken(null);
+            $user->setEnabled(true);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            $this->addFlash("success", "Compte actif!");
+            return $this->redirectToRoute("app_login");
+        }
+
+        return $this->redirectToRoute('inscrire');
+
     }
 
     /**
@@ -208,6 +252,8 @@ class UserController extends AbstractController
             'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
         ]);
     }
+
+
 
 
 }

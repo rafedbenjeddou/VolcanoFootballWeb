@@ -37,7 +37,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="json")
-     * @Assert\NotBlank(message="Le role est obligatoire.")
      */
     private $roles = [];
 
@@ -128,6 +127,16 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user", cascade={"all"}, orphanRemoval=true)
      */
     private $commandes;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
 
     public function __construct()
     {
@@ -327,6 +336,30 @@ class User implements UserInterface
     public function isAdmin(): bool
     {
         return in_array(self::ROLE_ADMIN,$this->getRoles());
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
+
+        return $this;
     }
 
 }

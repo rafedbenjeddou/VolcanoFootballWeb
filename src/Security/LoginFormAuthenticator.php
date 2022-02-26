@@ -95,12 +95,19 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        if($token->getUser()->isAdmin())
+        if($token->getUser()->getEnabled() == false)
         {
-            return new RedirectResponse($this->urlGenerator->generate('AfficherUsers'));
+            return new RedirectResponse($this->urlGenerator->generate('app_logout'));
         }
+        else
+        {
+            if($token->getUser()->isAdmin())
+            {
+                return new RedirectResponse($this->urlGenerator->generate('AfficherUsers'));
+            }
 
-        return new RedirectResponse($this->urlGenerator->generate('AfficherProduitsFront'));
+            return new RedirectResponse($this->urlGenerator->generate('AfficherProduitsFront'));
+        }
 
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
