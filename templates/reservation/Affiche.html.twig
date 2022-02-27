@@ -38,7 +38,7 @@
         <th>date debut</th>
         <th>date fin</th>
         <th>hebergement</th>
-        <th>idClient</th>
+        <th>NomClient</th>
         <th>Actions</th>
         
     </tr>
@@ -49,7 +49,7 @@
         <td>{{ r.dateDebut|date('d-m-Y') }}</td>
         <td>{{ r.dateFin|date('d-m-Y') }}</td>
         <td>{{ r.hebergement.NomH }}</td>
-        <td>{{ r.idClient }}</td>
+        <td>{{ r.user.nom }}</td>
         <td><a href="{{ path('UpdateR',{'id':r.id}) }}"><i class="ri-pencil-fill"></i></a>     <a href="{{ path('deleteR',{'id':r.id}) }}"><i class="ri-delete-bin-fill"></i></a></td>
 
 

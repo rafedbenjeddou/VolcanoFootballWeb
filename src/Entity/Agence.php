@@ -33,6 +33,8 @@ class Agence
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Nom Arbitre is required")
+
      *@Assert\Length(
      *     min = 5,
      *    max = 50,
@@ -44,6 +46,8 @@ class Agence
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Nom Arbitre is required")
+
      * *@Assert\Length(
      *     min = 5,
      *    max = 10,

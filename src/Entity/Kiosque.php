@@ -32,7 +32,6 @@ class Kiosque
      */
     private $type;
 
-    
     public function getId(): ?int
     {
         return $this->id;
@@ -73,6 +72,4 @@ class Kiosque
 
         return $this;
     }
-
-   
 }

@@ -23,6 +23,8 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Nom Arbitre is required")
+
      * *@Assert\Length(
      *     min = 5,
      *    max = 50,
@@ -39,6 +41,8 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Nom Arbitre is required")
+
      * *@Assert\Length(
      *     min = 5,
      *    max = 50,
@@ -62,7 +66,7 @@ class Hebergement
     private $photoH;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="hebergement")
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="hebergement",cascade={"all"},orphanRemoval=true)
      */
     private $reservations;
 

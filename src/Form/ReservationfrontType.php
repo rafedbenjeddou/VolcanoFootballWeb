@@ -37,7 +37,7 @@ class ReservationfrontType extends AbstractType
                     ])
 
 
-            ->add('idClient')
+            
         ;
     }
    

@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\StadeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,24 +37,10 @@ class Stade
      */
     private $dateouverture;
 
-
-
-
-
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
-       public function setId(string $nom): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
- 
 
     public function getNom(): ?string
     {
@@ -69,7 +53,6 @@ class Stade
 
         return $this;
     }
-
 
     public function getAdresse(): ?string
     {
@@ -106,5 +89,4 @@ class Stade
 
         return $this;
     }
-    
 }

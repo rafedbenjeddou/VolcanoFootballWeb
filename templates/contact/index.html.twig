@@ -1,0 +1,35 @@
+ 
+{% extends 'base-front.html.twig' %}
+{% block content %}
+{% form_theme contactform 'bootstrap_4_layout.html.twig' %}
+
+<section class=innerpage_all_wrap >
+    <div class=container>
+        <div class=row>
+ <ul class="gallery
+<div class="row" style="width: 100%;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+<h1>Nous contact</h1>
+{{ form_start(contactform) }}
+ {{ form_widget(contactform) }}
+{{ form_end(contactform) }}
+</div>
+</div>
+</div> <!-- end col -->
+</ul>
+</div>
+</div>
+
+                
+
+
+</section>
+<script type=text/javascript>
+    $(function () {
+        $('#da_gallery .gallery-list ').hoverdir();
+    });
+</script>
+
+{% endblock %}

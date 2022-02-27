@@ -29,17 +29,19 @@ class Reservation
     private $dateFin;
 
 
-
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $idClient;
+    
 
     /**
      * @ORM\ManyToOne(targetEntity=Hebergement::class, inversedBy="reservations")
      */
     private $hebergement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
+     */
+    private $user;
+    
+
 
     public function getId(): ?int
     {
@@ -71,19 +73,6 @@ class Reservation
     }
 
     
-   
-
-    public function getIdClient(): ?string
-    {
-        return $this->idClient;
-    }
-
-    public function setIdClient(string $idClient): self
-    {
-        $this->idClient = $idClient;
-
-        return $this;
-    }
 
     public function getHebergement(): ?Hebergement
     {
@@ -96,4 +85,18 @@ class Reservation
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+    
 }
+

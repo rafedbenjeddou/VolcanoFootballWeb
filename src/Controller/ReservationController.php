@@ -45,12 +45,33 @@ class ReservationController extends AbstractController
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $date= new \DateTime('now');
+        $dateDebut=$reservation->getDateDebut();
+        $dateFin=$reservation->getDateFin();
+
+        $nbJoursD =$dateDebut->diff($date)->days;
+        $nbJoursF =$dateFin->diff($date)->days;
+        if($nbJoursF >= 1 && $nbJoursD >= 1 && $dateDebut > $date && $dateFin > $date &&  $dateFin > $dateDebut) {
+
             $em=$this->getDoctrine()->getManager();
             $em->persist($reservation);
             $em->flush();
             return $this->redirectToRoute('AfficheR');
         }
-        return $this->render('reservation/Add.html.twig',[
+        $erreur="Changer la date ";
+        return $this->render('reservation/Erreur.html.twig',[
+            'form'=>$form->createView(),
+            'error'=>$erreur,
+            'nbjoursD'=>$nbJoursD,
+            'nbjoursF'=>$nbJoursF,
+            'date'=>$date,
+            'dateDebut'=>$dateDebut,
+            'dateFin'=>$dateFin,
+
+        ]);
+
+    }   
+         return $this->render('reservation/Add.html.twig',[
             'form'=>$form->createView()
         ]);
     
@@ -66,14 +87,34 @@ class ReservationController extends AbstractController
         $form->add('Modifier', SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $date= new \DateTime('now');
+            $dateDebut=$reservation->getDateDebut();
+            $dateFin=$reservation->getDateFin();
+    
+            $nbJoursD =$dateDebut->diff($date)->days;
+            $nbJoursF =$dateFin->diff($date)->days;
+            if($nbJoursF >= 1 && $nbJoursF >= 1 && $dateDebut > $date && $dateFin > $date &&  $dateFin > $dateDebut) {
             $em=$this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('AfficheR');
         }
-        return $this->render('reservation/Update.html.twig',[
-            'f'=>$form->createView()
+        $erreur="Changer la date ";
+        return $this->render('reservation/Erreur.html.twig',[
+            'form'=>$form->createView(),
+            'error'=>$erreur,
+            'nbjoursD'=>$nbJoursD,
+            'nbjoursF'=>$nbJoursF,
+            'date'=>$date,
+            'dateDebut'=>$dateDebut,
+            'dateFin'=>$dateFin,
+
         ]);
-        }
+
+    }   
+     return $this->render('reservation/Update.html.twig',[
+         'f'=>$form->createView()
+     ]);
+     }
          /**
  * @Route("/deleteR/{id}",name="deleteR")
  */
@@ -108,10 +149,20 @@ class ReservationController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('AfficheRF');
         }
+        
         return $this->render('reservation/UpdateRF.html.twig',[
             'f'=>$form->createView()
         ]);
         }  
+        /**
+     * @Route("/AfficheRF/{id}", name="AfficheRI")
+     */
+     
+    public function AfficheRFById(ReservationRepository $repo,$id) {
+        $reservation=$repo->find($id);
+        return $this->render('reservation/AfficheBI.html.twig',
+        ['reservation'=>$reservation]);
+    }
 }
 
 

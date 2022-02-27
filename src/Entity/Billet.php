@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BilletRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass=BilletRepository::class)
  */
@@ -19,27 +19,23 @@ class Billet
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\NotEqualTo(
-     *      value = 0,
-     *     message = "le prix d'un billet ne doit pas étre égale à 0 "
-     * )
      */
     private $prix;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Categorie is required")
      */
     private $categorie;
 
-  
-
- 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $idMatch;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Matche::class, inversedBy="billets")
+     * @ORM\Column(type="date")
      */
-    private $matche;
+    private $dateAchat;
 
     public function getId(): ?int
     {
@@ -70,18 +66,26 @@ class Billet
         return $this;
     }
 
-    
-
-    
-
-    public function getMatche(): ?Matche
+    public function getIdMatch(): ?int
     {
-        return $this->matche;
+        return $this->idMatch;
     }
 
-    public function setMatche(?Matche $matche): self
+    public function setIdMatch(int $idMatch): self
     {
-        $this->matche = $matche;
+        $this->idMatch = $idMatch;
+
+        return $this;
+    }
+
+    public function getDateAchat(): ?\DateTimeInterface
+    {
+        return $this->dateAchat;
+    }
+
+    public function setDateAchat(\DateTimeInterface $dateAchat): self
+    {
+        $this->dateAchat = $dateAchat;
 
         return $this;
     }

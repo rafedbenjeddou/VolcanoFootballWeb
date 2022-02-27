@@ -2,8 +2,7 @@
 {% block content %}
     <div class=innerbannerwrap>
         <div class=content></div>
-        <div class=innerbanner><h2 class=bannerHeadline>Nos <span>Agences</span></h2></div>
-
+        <div class=innerbanner><h2 class=bannerHeadline>Nos <span>Agences</span></h2> </div>
     </div>
 
     <section class=innerpage_all_wrap>
@@ -25,6 +24,8 @@
                                             {% endfor %}</span></div>
 
                                             <a  href={{ path('ListByAgence',{'id':a.id}) }} class="btn-small01 btn-blue">Accéder</a>
+                                            <a  href={{ path('contact') }} class="btn-small01 btn-blue">contact</a> 
+
                                         </p></div>
                                 </a></li>
                             </a>

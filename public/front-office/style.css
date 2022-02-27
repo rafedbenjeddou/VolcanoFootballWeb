@@ -6579,7 +6579,7 @@ h6 {
   @media (min-width: 992px) {
     .header-main .menubar {
       float: left;
-      width: 66.6666666667%; } }
+      width: 100%; } }
 
 .header-main .sub-menu {
   list-style-type: none;

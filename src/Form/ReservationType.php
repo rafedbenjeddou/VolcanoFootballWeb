@@ -3,12 +3,16 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
+
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Reservation;
 use App\Entity\Hebergement;
+use App\Entity\User;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,14 +23,18 @@ class ReservationType extends AbstractType
     {
         $builder
 
-        ->add('dateDebut',DateType::class, [
+        ->add('dateDebut',DateTimeType::class, [
+            'date_widget' => 'single_text',
+
             'label'=>'dateDebut',
             'attr'=>[
                 'placeholder'=>'dateDebut',
                 'class'=>'date'
                 ]  
             ])
-            ->add('dateFin',DateType::class, [
+            ->add('dateFin',DateTimeType::class, [
+                'date_widget' => 'single_text',
+
                 'label'=>'dateFin',
                 'attr'=>[
                     'placeholder'=>'dateFin',
@@ -37,7 +45,12 @@ class ReservationType extends AbstractType
                 'class'=>Hebergement::class,
                 'choice_label'=>'nomH'
             ])
-            ->add('idClient')
+            ->add('user' , EntityType::class, [
+                'class'=>User::class,
+                'choice_label'=>'nom'
+            ])
+          
+
         ;
     }
 

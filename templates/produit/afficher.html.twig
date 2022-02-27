@@ -1,0 +1,84 @@
+{% extends 'base-back.html.twig' %}
+
+{% block user %}
+    {{ user }}
+{% endblock %}
+
+{% block content %}
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <!--<h4 class="mb-0">Responsive Table</h4>-->
+
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Produit</a></li>
+                        <li class="breadcrumb-item active">Afficher</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Tableau Des Produits</h4>
+                    <p class="card-title-desc"></p>
+
+                    <div class="table-rep-plugin">
+                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                            <table id="tech-companies-1" class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th >Nom</th>
+                                    <th >Type</th>
+                                    <th >Taille</th>
+                                    <th >Couleur</th>
+                                    <th >Nombre d'Etoiles</th>
+                                    <th >Description</th>
+                                    <th >Prix</th>
+                                    <th >Photo</th>
+                                    <th style="width: 120px;">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr {% for p in produit %}>
+                                    <td>{{ p.id }}</td>
+                                    <td>{{ p.nom }}</td>
+                                    <td>{{ p.type }}</td>
+                                    <td>{{ p.taille }}</td>
+                                    <td>{{ p.couleur }}</td>
+                                    <td>{{ p.nbrEtoiles }}</td>
+                                    <td>{{ p.description }}</td>
+                                    <td>{{ p.prix }}</td>
+                                    <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ p.photo }}"/></td>
+                                    <td>
+                                        <a href="{{ path('ModifierProduit',{'id':p.id}) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="Modifier" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                        <a href="{{ path('SupprimerProduit',{'id':p.id}) }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                    </td>
+                                </tr {% endfor %}>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+    <script>
+        $('#tech-companies-1').DataTable();
+    </script>
+
+{% endblock %}

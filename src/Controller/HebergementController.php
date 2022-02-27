@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Hebergement;
 use App\Entity\Reservation;
 use App\Entity\Agence;
+use App\Entity\User;
+
 use App\Form\ReservationfrontType;
 use App\Form\HebergementType;
 use App\Form\HebergementUpType;
@@ -37,15 +39,7 @@ class HebergementController extends AbstractController
         return $this->render('hebergement/Affiche.html.twig',
         ['hebergement'=>$hebergement]);
     }
-           /**
-     * @Route("/AfficheHF/{id}", name="AfficheHF")
-     */
-    public function AfficheHF(HebergementRepository $repo, $id) {
-       
-        $hebergement=$repo->find($id);
-        return $this->render('hebergement/AfficheHF.html.twig',
-        ['hebergement'=>$hebergement]);
-    }
+
         /**
      * @param Request $request
      * @Route("/AddH",name="AddH")
@@ -140,6 +134,8 @@ class HebergementController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
             $reservation->setHebergement($hebergement);
+            $reservation->setUser($this->getUser());
+
             $em->persist($reservation);
             $em->flush();
             return $this->redirectToRoute('AfficheRF');
@@ -149,32 +145,7 @@ class HebergementController extends AbstractController
         ]);
         
     }  
-    /**
-     * @Route("/UpdateByHebergement/{id}", name="UpdateByHebergement" )
-     */
-     
-    function UpdateReservationByHebergement(HebergementRepository $repoH, ReservationRepository $repoR, $id,Request $request){
-        $hebergement=$repoH->find($id);
-        $reservation=$repoR->find($id);
-
-      
-        $form=$this->createForm(ReservationfrontType::class,$reservation);
-        $form->add('Modifier', SubmitType::class);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-            $em=$this->getDoctrine()->getManager();
-            $reservation->setHebergement($hebergement);
-            $em->persist($reservation);
-            $em->flush();
-            return $this->redirectToRoute('AfficheRF');
-        }
-        return $this->render('hebergement/UpdateRF.html.twig',[
-            'f1'=>$form->createView()
-        ]);
-        
-    }  
+   
     
                 /**
      * @Route("/AfficheRF", name="AfficheRF")
@@ -187,5 +158,5 @@ class HebergementController extends AbstractController
         ['reservation'=>$reservation]);
     }
        
-
+ 
 }
