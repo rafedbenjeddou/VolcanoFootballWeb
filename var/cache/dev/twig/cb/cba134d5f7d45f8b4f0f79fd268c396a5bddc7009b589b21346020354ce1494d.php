@@ -63,6 +63,6 @@ class __TwigTemplate_dc10dfb972f688fc5b750188a18826e586944feb3ea3345876fc6d43a76
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'form_widget_simple', ['type' => \$type ?? 'email']) ?>
-", "@Framework/Form/email_widget.html.php", "C:\\xampp\\htdocs\\VolcanoFootball\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\email_widget.html.php");
+", "@Framework/Form/email_widget.html.php", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\email_widget.html.php");
     }
 }

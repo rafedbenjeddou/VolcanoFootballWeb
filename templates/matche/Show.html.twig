@@ -6,6 +6,7 @@
         <div class=content></div>
         <div class=innerbanner><h2 class=bannerHeadline>book <span>ticket</span></h2></div>
     </div>
+
     <section class="innerpage_all_wrap bg-white">
         <div class=container>
             <div class=row><h2 class=heading>Coupe du Monde Qatar 2022™ <span>Billets </span></h2>
@@ -67,8 +68,9 @@
                                                 <div class="ticketInner_info paragraph02 clearfix"><span>{{ b.matche.date|date('d-m-Y') }}</span>
                                                     <span>{{ b.matche.time|date("H:i:s")}} pm </span>
                                                 </div>
+                                            </div>
                                         </li>
-                                        <li><a href={{path(('AfficheUnBillet')) }} class="btn-small01 btn-green">Réserver</a></li>
+                                        <li><a href="{{ path(('ReserverTicket')) }}" class="btn-small01 btn-green">Réserver</a></li>
                                     </ul>
                                 </li>
 

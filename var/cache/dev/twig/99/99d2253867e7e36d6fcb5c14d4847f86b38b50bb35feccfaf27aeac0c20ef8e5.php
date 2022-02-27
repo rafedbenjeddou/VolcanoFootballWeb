@@ -71,16 +71,32 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
                 <div class=\"card-body\">
 
                     <h4  class=\"card-title\">Liste Des Matchs</h4>
-                    <table id=\"datatable-buttons\" class=\"table table-striped table-bordered dt-responsive nowrap\" style=\"border-collapse: collapse; border-spacing: 0; width: 100%;\">
+                    ";
+        // line 9
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 9, $this->source); })()), "flashes", [0 => "info"], "method", false, false, false, 9));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 10
+            echo "                        <div class=\"alert alert-success\">
+                            ";
+            // line 11
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+                        </div>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 14
+        echo "                    <table id=\"datatable-buttons\" class=\"table table-striped table-bordered dt-responsive nowrap\" style=\"border-collapse: collapse; border-spacing: 0; width: 100%;\">
 
                         <thead class=\"thead-dark\">
                         <tr>
                             <th>ID</th>
                             <th>NomMatche</th>
-                            <th>IdEquipe1</th>
-                            <th>IdEquipe2</th>
                             <th>NomArbitre</th>
-                            <th>IdStade</th>
+                            <th>Stade</th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Tour</th>
@@ -90,63 +106,60 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
                         </thead>
                         <tbody>
                         <tr ";
-        // line 27
+        // line 30
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["matche"]) || array_key_exists("matche", $context) ? $context["matche"] : (function () { throw new RuntimeError('Variable "matche" does not exist.', 27, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["matche"]) || array_key_exists("matche", $context) ? $context["matche"] : (function () { throw new RuntimeError('Variable "matche" does not exist.', 30, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["m"]) {
             echo ">
                             <td>";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 28), "html", null, true);
-            echo "</td>
-                            <td>";
-            // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "NomMatche", [], "any", false, false, false, 29), "html", null, true);
-            echo "</td>
-                            <td>";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "idEquipe1", [], "any", false, false, false, 30), "html", null, true);
-            echo "</td>
-                            <td>";
             // line 31
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "IdEquipe2", [], "any", false, false, false, 31), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 31), "html", null, true);
             echo "</td>
                             <td>";
             // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "NomArbitre", [], "any", false, false, false, 32), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "NomMatche", [], "any", false, false, false, 32), "html", null, true);
             echo "</td>
                             <td>";
             // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "IdStade", [], "any", false, false, false, 33), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "NomArbitre", [], "any", false, false, false, 33), "html", null, true);
             echo "</td>
                             <td>";
             // line 34
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "date", [], "any", false, false, false, 34), "d-m-Y"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["m"], "stade", [], "any", false, false, false, 34), "nom", [], "any", false, false, false, 34), "html", null, true);
             echo "</td>
                             <td>";
             // line 35
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "time", [], "any", false, false, false, 35), "H:i:s"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "date", [], "any", false, false, false, 35), "d-m-Y"), "html", null, true);
             echo "</td>
                             <td>";
             // line 36
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "tour", [], "any", false, false, false, 36), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "time", [], "any", false, false, false, 36), "H:i:s"), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 37
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["m"], "tour", [], "any", false, false, false, 37), "html", null, true);
             echo "</td>
                             <td><a href=\"";
-            // line 37
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("modifierMatche", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+            // line 38
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("modifierMatche", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 38)]), "html", null, true);
             echo "\"><i class=\"ri-pencil-fill\"></i></a><a href=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteMatche", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteMatche", ["id" => twig_get_attribute($this->env, $this->source, $context["m"], "id", [], "any", false, false, false, 38)]), "html", null, true);
             echo "\"><i class=\"ri-delete-bin-fill\"></i></a></td>
+
 
                         </tr ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['m'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 41
         echo ">
                         </tbody>
                     </table>
+                    <td><a href=\"";
+        // line 44
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("ListeM");
+        echo "\">Imprimer</a></td>
                 </div>
             </div>
         </div> <!-- end col -->
@@ -175,7 +188,7 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
 
     public function getDebugInfo()
     {
-        return array (  147 => 39,  136 => 37,  132 => 36,  128 => 35,  124 => 34,  120 => 33,  116 => 32,  112 => 31,  108 => 30,  104 => 29,  100 => 28,  94 => 27,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  161 => 44,  156 => 41,  144 => 38,  140 => 37,  136 => 36,  132 => 35,  128 => 34,  124 => 33,  120 => 32,  116 => 31,  110 => 30,  92 => 14,  83 => 11,  80 => 10,  76 => 9,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -188,16 +201,19 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
                 <div class=\"card-body\">
 
                     <h4  class=\"card-title\">Liste Des Matchs</h4>
+                    {% for message in app.flashes('info') %}
+                        <div class=\"alert alert-success\">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
                     <table id=\"datatable-buttons\" class=\"table table-striped table-bordered dt-responsive nowrap\" style=\"border-collapse: collapse; border-spacing: 0; width: 100%;\">
 
                         <thead class=\"thead-dark\">
                         <tr>
                             <th>ID</th>
                             <th>NomMatche</th>
-                            <th>IdEquipe1</th>
-                            <th>IdEquipe2</th>
                             <th>NomArbitre</th>
-                            <th>IdStade</th>
+                            <th>Stade</th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Tour</th>
@@ -209,18 +225,18 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
                         <tr {% for m in matche %}>
                             <td>{{ m.id }}</td>
                             <td>{{ m.NomMatche }}</td>
-                            <td>{{ m.idEquipe1 }}</td>
-                            <td>{{ m.IdEquipe2 }}</td>
                             <td>{{ m.NomArbitre }}</td>
-                            <td>{{ m.IdStade }}</td>
+                            <td>{{ m.stade.nom }}</td>
                             <td>{{ m.date|date('d-m-Y') }}</td>
                             <td>{{ m.time|date(\"H:i:s\")}}</td>
                             <td>{{ m.tour }}</td>
                             <td><a href=\"{{ path('modifierMatche',{'id':m.id}) }}\"><i class=\"ri-pencil-fill\"></i></a><a href=\"{{ path('deleteMatche',{'id':m.id}) }}\"><i class=\"ri-delete-bin-fill\"></i></a></td>
 
+
                         </tr {% endfor %}>
                         </tbody>
                     </table>
+                    <td><a href=\"{{ path('ListeM') }}\">Imprimer</a></td>
                 </div>
             </div>
         </div> <!-- end col -->
@@ -229,6 +245,6 @@ class __TwigTemplate_9dc3ad1056fac185f357277be88c13dda9b42b4edbf0da09845284e281d
         \$('#datatable-buttons').DataTable()
     </script>
 {% endblock %}
-", "matche/Affiche.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-main\\templates\\matche\\Affiche.html.twig");
+", "matche/Affiche.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\templates\\matche\\Affiche.html.twig");
     }
 }

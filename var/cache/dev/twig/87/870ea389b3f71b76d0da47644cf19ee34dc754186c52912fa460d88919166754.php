@@ -124,12 +124,12 @@ class __TwigTemplate_6b93902b3eeedd7e9c11a2f0f79298ef4a30514185d56ee8bf49198283f
                                             <span>";
             // line 42
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["b"], "matche", [], "any", false, false, false, 42), "time", [], "any", false, false, false, 42), "H:i:s"), "html", null, true);
-            echo " pm </span> <span class=capitalize01>Stade..</span>
+            echo " pm </span>
                                         </div>
                                 </li>
                                 <li><a href=";
             // line 45
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("AfficheUnBillet");
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("ReserverTicket");
             echo " class=\"btn-small01 btn-green\">Réserver</a></li>
                             </ul>
                         </li>
@@ -220,10 +220,10 @@ class __TwigTemplate_6b93902b3eeedd7e9c11a2f0f79298ef4a30514185d56ee8bf49198283f
                                     <div class=\"headline01 clearfix\"><span>{{ b.matche.NomMatche }}</span></div>
                                     <div class=\"ticketInner_info paragraph02 clearfix\"><span>Prix: {{ b.prix }}</span>
                                         <div class=\"ticketInner_info paragraph02 clearfix\"><span>{{ b.matche.date|date('d-m-Y') }}</span>
-                                            <span>{{ b.matche.time|date(\"H:i:s\")}} pm </span> <span class=capitalize01>Stade..</span>
+                                            <span>{{ b.matche.time|date(\"H:i:s\")}} pm </span>
                                         </div>
                                 </li>
-                                <li><a href={{path(('AfficheUnBillet')) }} class=\"btn-small01 btn-green\">Réserver</a></li>
+                                <li><a href={{path(('ReserverTicket')) }} class=\"btn-small01 btn-green\">Réserver</a></li>
                             </ul>
                         </li>
 
@@ -245,6 +245,6 @@ class __TwigTemplate_6b93902b3eeedd7e9c11a2f0f79298ef4a30514185d56ee8bf49198283f
 
 
 
-", "billet/AfficherUnBillet.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-main\\templates\\billet\\AfficherUnBillet.html.twig");
+", "billet/AfficherUnBillet.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\templates\\billet\\AfficherUnBillet.html.twig");
     }
 }

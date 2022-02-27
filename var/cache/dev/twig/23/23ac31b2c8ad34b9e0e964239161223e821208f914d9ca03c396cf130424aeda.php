@@ -104,6 +104,6 @@ class __TwigTemplate_17cd918dd622aaac693b5b4a8fe8466ba8738675d8a89a13867599749c0
   {{ include('@Twig/Exception/trace.txt.twig', { trace: trace }, with_context = false) }}
 {% endfor %}
 {% endif %}
-", "@Twig/Exception/traces.txt.twig", "C:\\xampp\\htdocs\\VolcanoFootball\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.txt.twig");
+", "@Twig/Exception/traces.txt.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces.txt.twig");
     }
 }

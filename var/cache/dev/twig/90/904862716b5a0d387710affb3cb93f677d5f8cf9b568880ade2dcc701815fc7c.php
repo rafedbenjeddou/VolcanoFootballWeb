@@ -161,6 +161,6 @@ class __TwigTemplate_a4414743365bfbf509211323245c705670ee5b63a3bba1ef3eb1827e478
         </tr>
     </tbody>
 </table>
-", "@Twig/Exception/traces_text.html.twig", "C:\\xampp\\htdocs\\VolcanoFootball\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces_text.html.twig");
+", "@Twig/Exception/traces_text.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\traces_text.html.twig");
     }
 }

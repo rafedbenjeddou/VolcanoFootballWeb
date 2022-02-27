@@ -83,6 +83,6 @@ class __TwigTemplate_ef64647639a582c50f7a628a21bc5b7dafa94a040d0b33635cfa8267bf6
 <?xml version=\"1.0\" encoding=\"{{ _charset }}\" ?>
 
 <error code=\"{{ status_code }}\" message=\"{{ status_text }}\" />
-", "@Twig/Exception/error.xml.twig", "C:\\xampp\\htdocs\\VolcanoFootball\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.xml.twig");
+", "@Twig/Exception/error.xml.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.xml.twig");
     }
 }

@@ -1007,7 +1007,7 @@ $(document).ready(function () {
               size: '0px',
           });
         }  
-      }   
+      }
 
     /*--------------- Countdown Timer - Homepage ------------------*/
 

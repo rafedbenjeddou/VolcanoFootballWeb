@@ -100,7 +100,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                                     <img src=\"";
         // line 56
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/logo-light.png"), "html", null, true);
-        echo "\" alt=\"\" height=\"20\">
+        echo "\" alt=\"\" height=\"58\">
                                 </span>
                     </a>
                 </div>
@@ -316,6 +316,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                         </ul>
                     </li>
 
+
                     <!-- END Module Yosra -->
 
                     <!-- Module Jasser -->
@@ -326,8 +327,8 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                             <span>Stade</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"#\">Afficher</a></li>
-                            <li><a href=\"#\">Ajouter</a></li>
+                            <li><a href=\"AfficheStade\">Afficher</a></li>
+                            <li><a href=\"AddStade\">Ajouter</a></li>
                         </ul>
                     </li>
 
@@ -352,8 +353,8 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                             <span>Evenement</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"#\">Afficher</a></li>
-                            <li><a href=\"#\">Ajouter</a></li>
+                            <li><a href=\"/AfficheEv\">Afficher</a></li>
+                            <li><a href=\"evenement/ajouter\">Ajouter</a></li>
                         </ul>
                     </li>
 
@@ -379,17 +380,17 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
 </div>
 ";
-        // line 331
+        // line 332
         $this->displayBlock('js', $context, $blocks);
-        // line 359
+        // line 360
         echo "<div class=\"main-content\">
     <div class=\"page-content\">
         <div class=\"container-fluid\">
             <div class=\"row\">
                 ";
-        // line 363
+        // line 364
         $this->displayBlock('content', $context, $blocks);
-        // line 365
+        // line 366
         echo "            </div>
         </div>
     </div>
@@ -413,7 +414,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         <div class=\"p-4\">
             <div class=\"mb-2\">
                 <img src=\"";
-        // line 387
+        // line 388
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/layouts/layout-1.jpg"), "html", null, true);
         echo "\" class=\"img-fluid img-thumbnail\" alt=\"\">
             </div>
@@ -424,7 +425,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
             <div class=\"mb-2\">
                 <img src=\"";
-        // line 395
+        // line 396
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/layouts/layout-2.jpg"), "html", null, true);
         echo "\" class=\"img-fluid img-thumbnail\" alt=\"\">
             </div>
@@ -435,7 +436,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
             <div class=\"mb-2\">
                 <img src=\"";
-        // line 403
+        // line 404
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/images/layouts/layout-3.jpg"), "html", null, true);
         echo "\" class=\"img-fluid img-thumbnail\" alt=\"\">
             </div>
@@ -518,7 +519,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
     }
 
-    // line 331
+    // line 332
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -528,73 +529,73 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 332
+        // line 333
         echo "    <!-- JAVASCRIPT -->
     <script src=\"";
-        // line 333
+        // line 334
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 334
+        // line 335
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/bootstrap/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 335
+        // line 336
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/metismenu/metisMenu.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 336
+        // line 337
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/simplebar/simplebar.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 337
+        // line 338
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/node-waves/waves.min.js"), "html", null, true);
         echo "\"></script>
 
 
     <!-- apexcharts -->
     <script src=\"";
-        // line 341
+        // line 342
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/apexcharts/apexcharts.min.js"), "html", null, true);
         echo "\"></script>
 
     <!-- jquery.vectormap map -->
     <script src=\"";
-        // line 344
+        // line 345
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 345
+        // line 346
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Required datatable js -->
     <script src=\"";
-        // line 348
+        // line 349
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 349
+        // line 350
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Responsive examples -->
     <script src=\"";
-        // line 352
+        // line 353
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 353
+        // line 354
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"), "html", null, true);
         echo "\"></script>
 
     <script src=\"";
-        // line 355
+        // line 356
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/js/pages/dashboard.init.js"), "html", null, true);
         echo "\"></script>
 
     <script src=\"";
-        // line 357
+        // line 358
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/assets/js/app.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -606,7 +607,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
     }
 
-    // line 363
+    // line 364
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -616,7 +617,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 364
+        // line 365
         echo "                ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -638,7 +639,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
     public function getDebugInfo()
     {
-        return array (  620 => 364,  610 => 363,  598 => 357,  593 => 355,  588 => 353,  584 => 352,  578 => 349,  574 => 348,  568 => 345,  564 => 344,  558 => 341,  551 => 337,  547 => 336,  543 => 335,  539 => 334,  535 => 333,  532 => 332,  522 => 331,  510 => 28,  505 => 26,  500 => 24,  494 => 21,  488 => 18,  482 => 15,  479 => 14,  469 => 13,  439 => 403,  428 => 395,  417 => 387,  393 => 365,  391 => 363,  385 => 359,  383 => 331,  157 => 108,  102 => 56,  96 => 53,  87 => 47,  81 => 44,  65 => 30,  63 => 13,  59 => 12,  46 => 1,);
+        return array (  621 => 365,  611 => 364,  599 => 358,  594 => 356,  589 => 354,  585 => 353,  579 => 350,  575 => 349,  569 => 346,  565 => 345,  559 => 342,  552 => 338,  548 => 337,  544 => 336,  540 => 335,  536 => 334,  533 => 333,  523 => 332,  511 => 28,  506 => 26,  501 => 24,  495 => 21,  489 => 18,  483 => 15,  480 => 14,  470 => 13,  440 => 404,  429 => 396,  418 => 388,  394 => 366,  392 => 364,  386 => 360,  384 => 332,  157 => 108,  102 => 56,  96 => 53,  87 => 47,  81 => 44,  65 => 30,  63 => 13,  59 => 12,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -698,7 +699,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                                     <img src=\"{{ asset ('back-office/assets/images/logo-sm-light.png')}}\" alt=\"\" height=\"22\">
                                 </span>
                         <span class=\"logo-lg\">
-                                    <img src=\"{{ asset ('back-office/assets/images/logo-light.png')}}\" alt=\"\" height=\"20\">
+                                    <img src=\"{{ asset ('back-office/assets/images/logo-light.png')}}\" alt=\"\" height=\"58\">
                                 </span>
                     </a>
                 </div>
@@ -911,6 +912,7 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                         </ul>
                     </li>
 
+
                     <!-- END Module Yosra -->
 
                     <!-- Module Jasser -->
@@ -921,8 +923,8 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                             <span>Stade</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"#\">Afficher</a></li>
-                            <li><a href=\"#\">Ajouter</a></li>
+                            <li><a href=\"AfficheStade\">Afficher</a></li>
+                            <li><a href=\"AddStade\">Ajouter</a></li>
                         </ul>
                     </li>
 
@@ -947,8 +949,8 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
                             <span>Evenement</span>
                         </a>
                         <ul class=\"sub-menu\" aria-expanded=\"false\">
-                            <li><a href=\"#\">Afficher</a></li>
-                            <li><a href=\"#\">Ajouter</a></li>
+                            <li><a href=\"/AfficheEv\">Afficher</a></li>
+                            <li><a href=\"evenement/ajouter\">Ajouter</a></li>
                         </ul>
                     </li>
 
@@ -1064,6 +1066,6 @@ class __TwigTemplate_40371e6b83b4093f83f51ac12de5fc84fc31e3cc65d579a9197b7c481b8
 
 </body>
 </html>
-", "base-back.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-main\\templates\\base-back.html.twig");
+", "base-back.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\templates\\base-back.html.twig");
     }
 }

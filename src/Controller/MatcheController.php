@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class MatcheController extends AbstractController
 {
@@ -46,6 +48,42 @@ public function Affiche(MatcheRepository $repository){
         $matche=$repository->findAll();
         return $this->render('matche/AfficherUnMatch.html.twig',
             ['matche'=>$matche]);
+    }
+    /**
+     * @param MatcheRepository $repository
+     * @return Response
+     * @route("/ListeM", name="ListeM", methods={"GET"})
+     */
+    public function ListeM(MatcheRepository $repository): Response
+    {    // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        $matche=$repository->findAll(); //retourner toutes les objets
+
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('matche/ListeM.html.twig',
+            ['matche'=>$matche]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (inline view)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
+        ]);
+
+
+
     }
 //repository- l'entité
 //Manger- base

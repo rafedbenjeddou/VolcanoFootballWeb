@@ -67,10 +67,10 @@ class Matche extends \App\Entity\Matche implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'idEquipe1', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'IdEquipe2', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'IdStade', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'stade'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'idEquipe1', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'IdEquipe2', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'IdStade', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'stade'];
     }
 
     /**
@@ -190,50 +190,6 @@ class Matche extends \App\Entity\Matche implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getIdEquipe1(): ?int
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdEquipe1', []);
-
-        return parent::getIdEquipe1();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setIdEquipe1(int $idEquipe1): \App\Entity\Matche
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdEquipe1', [$idEquipe1]);
-
-        return parent::setIdEquipe1($idEquipe1);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getIdEquipe2(): ?int
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdEquipe2', []);
-
-        return parent::getIdEquipe2();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setIdEquipe2(int $IdEquipe2): \App\Entity\Matche
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdEquipe2', [$IdEquipe2]);
-
-        return parent::setIdEquipe2($IdEquipe2);
     }
 
     /**
@@ -399,6 +355,28 @@ class Matche extends \App\Entity\Matche implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTime', [$time]);
 
         return parent::setTime($time);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStade(): ?\App\Entity\Stade
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStade', []);
+
+        return parent::getStade();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStade(?\App\Entity\Stade $stade): \App\Entity\Matche
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStade', [$stade]);
+
+        return parent::setStade($stade);
     }
 
 }

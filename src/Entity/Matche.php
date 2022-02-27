@@ -73,9 +73,11 @@ class Matche
      */
     private $stade;
 
+
     public function __construct()
     {
         $this->billets = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,4 +198,6 @@ class Matche
 
         return $this;
     }
+
+
 }

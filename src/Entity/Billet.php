@@ -38,7 +38,7 @@ class Billet
 
 
     /**
-     * @ORM\ManyToOne(targetEntity=Matche::class, inversedBy="billets",cascade={"all"}, orphanRemoval=true)
+     * @ORM\ManyToOne(targetEntity=Matche::class, inversedBy="billets")
      */
     private $matche;
 

@@ -91,35 +91,24 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
                                 </div>
                                 <div class=nav-menu>
                                     <ul class=\"nav navbar-nav menu-bar\">
-                                        <li><a href=index-2.html class=active>Home <span></span> <span></span>
+                                        <li><a href=\"";
+        // line 45
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("AfficheUnMatche");
+        echo "\" class=active>Match <span></span> <span></span>
                                                 <span></span> <span></span></a></li>
-                                        <li><a href=about.html>about <span></span> <span></span> <span></span>
+                                        <li><a href=about.html>Equipe <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a>gallery <span></span> <span></span> <span></span> <span></span></a>
-                                            <ul class=sub-menu>
-                                                <li><a href=gallerypage01.html>masonry</a></li>
-                                                <li><a href=gallery02.html>gallery column two</a></li>
-                                                <li><a href=gallery03.html>gallery column 03</a></li>
-                                            </ul>
+                                        <li><a>Stade <span></span> <span></span> <span></span> <span></span></a>
+
                                         </li>
-                                        <li><a href=blog.html>blog <span></span> <span></span> <span></span>
+                                        <li><a href=blog.html>Hébergements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href=bookTicket.html>book Tickets <span></span> <span></span>
+                                        <li><a href=bookTicket.html>Evenements <span></span> <span></span>
                                                 <span></span> <span></span></a></li>
-                                        <li><a href=shop.html>shop <span></span> <span></span> <span></span>
+                                        <li><a href=shop.html>Boutique <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
                                         <li><a href=contact.html>contact <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a>error <span></span> <span></span> <span></span> <span></span></a>
-                                            <ul class=sub-menu>
-                                                <li><a href=400.html>400 page</a></li>
-                                                <li><a href=401.html>401 page</a></li>
-                                                <li><a href=403.html>403 page</a></li>
-                                                <li><a href=404.html>404 page</a></li>
-                                                <li><a href=500.html>500 page</a></li>
-                                                <li><a href=503.html>503 page</a></li>
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -135,17 +124,17 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
     </header>
 
     ";
-        // line 88
+        // line 74
         $this->displayBlock('js', $context, $blocks);
-        // line 92
+        // line 78
         echo "    ";
         $this->displayBlock('content', $context, $blocks);
-        // line 95
+        // line 81
         echo "    <footer class=footer-type01>
         <div class=footer-type02>
             <div class=container>
                 <div class=row><a href=index-2.html class=footer-logo><img src=";
-        // line 98
+        // line 84
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/images/logo.png"), "html", null, true);
         echo " alt=image></a>
 
@@ -160,11 +149,11 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
                         </ul>
                     <div class=footer-appstore>
                         <figure><a href=#><img src=";
-        // line 110
+        // line 96
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/images/appstore/apple.png"), "html", null, true);
         echo " alt=image></a></figure>
                         <figure><a href=#><img src=";
-        // line 111
+        // line 97
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/images/appstore/google.png"), "html", null, true);
         echo " alt=image></a></figure>
                     </div>
@@ -216,7 +205,7 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
 
     }
 
-    // line 88
+    // line 74
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -226,12 +215,12 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 89
+        // line 75
         echo "        <script src=";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/js/vendor/vendor.js"), "html", null, true);
         echo "></script>
         <script src=";
-        // line 90
+        // line 76
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("front-office/js/main.js"), "html", null, true);
         echo "></script>
     ";
@@ -243,7 +232,7 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
 
     }
 
-    // line 92
+    // line 78
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -253,7 +242,7 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 93
+        // line 79
         echo "
     ";
         
@@ -276,7 +265,7 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
 
     public function getDebugInfo()
     {
-        return array (  257 => 93,  247 => 92,  235 => 90,  230 => 89,  220 => 88,  208 => 14,  204 => 13,  199 => 12,  189 => 11,  168 => 111,  164 => 110,  149 => 98,  144 => 95,  141 => 92,  139 => 88,  82 => 34,  60 => 16,  58 => 11,  46 => 1,);
+        return array (  246 => 79,  236 => 78,  224 => 76,  219 => 75,  209 => 74,  197 => 14,  193 => 13,  188 => 12,  178 => 11,  157 => 97,  153 => 96,  138 => 84,  133 => 81,  130 => 78,  128 => 74,  96 => 45,  82 => 34,  60 => 16,  58 => 11,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -325,35 +314,21 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
                                 </div>
                                 <div class=nav-menu>
                                     <ul class=\"nav navbar-nav menu-bar\">
-                                        <li><a href=index-2.html class=active>Home <span></span> <span></span>
+                                        <li><a href=\"{{ path('AfficheUnMatche') }}\" class=active>Match <span></span> <span></span>
                                                 <span></span> <span></span></a></li>
-                                        <li><a href=about.html>about <span></span> <span></span> <span></span>
+                                        <li><a href=about.html>Equipe <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a>gallery <span></span> <span></span> <span></span> <span></span></a>
-                                            <ul class=sub-menu>
-                                                <li><a href=gallerypage01.html>masonry</a></li>
-                                                <li><a href=gallery02.html>gallery column two</a></li>
-                                                <li><a href=gallery03.html>gallery column 03</a></li>
-                                            </ul>
+                                        <li><a>Stade <span></span> <span></span> <span></span> <span></span></a>
+
                                         </li>
-                                        <li><a href=blog.html>blog <span></span> <span></span> <span></span>
+                                        <li><a href=blog.html>Hébergements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href=bookTicket.html>book Tickets <span></span> <span></span>
+                                        <li><a href=bookTicket.html>Evenements <span></span> <span></span>
                                                 <span></span> <span></span></a></li>
-                                        <li><a href=shop.html>shop <span></span> <span></span> <span></span>
+                                        <li><a href=shop.html>Boutique <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
                                         <li><a href=contact.html>contact <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a>error <span></span> <span></span> <span></span> <span></span></a>
-                                            <ul class=sub-menu>
-                                                <li><a href=400.html>400 page</a></li>
-                                                <li><a href=401.html>401 page</a></li>
-                                                <li><a href=403.html>403 page</a></li>
-                                                <li><a href=404.html>404 page</a></li>
-                                                <li><a href=500.html>500 page</a></li>
-                                                <li><a href=503.html>503 page</a></li>
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -401,6 +376,6 @@ class __TwigTemplate_f446d0f2225d8f5652f798b18accc5648c20f38fe41b22a25fcd50c81d6
 
 </body>
 
-</html>", "base-front.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-main\\templates\\base-front.html.twig");
+</html>", "base-front.html.twig", "C:\\Users\\DeLL\\Desktop\\VolcanoFootball-Match-Billet\\templates\\base-front.html.twig");
     }
 }

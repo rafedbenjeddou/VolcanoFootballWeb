@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Billet;
 use App\Form\BilletType;
+use App\Service\Mailer;
 use App\Repository\BilletRepository;
 use App\Repository\MatcheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -107,15 +108,13 @@ class BilletController extends AbstractController
     }
 
     /**
-     * @Route("/ListByBillet/{id}", name="ListByBillet", methods={"GET"})
+     * @route("/ReserverTicket", name="ReserverTicket")
      */
-   /** function ListCategorieByBillet( BilletRepository $repoH,CategorieRepository $repC ,$id){
-        $billet=$repoH->find($id);
-        $categorie=$repC->ListCategorieByBillet($billet->getId());
-        return $this->render("billet/Show1.html.twig", [
-            'b'=>$billet, 'categorie'=>$categorie
-        ]);
+    function ReserverTicket(Mailer $mailer){
 
-    } **/
+        $mailer->sendEmailTicket("yosra.mekaoui@esprit.tn");
+        $this->addFlash("success", "Réservation effectuée avec succès! Merci de consulter votre mail");
+        return  $this->redirectToRoute('AfficheUnMatche');
+    }
 }
 

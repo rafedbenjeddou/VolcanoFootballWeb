@@ -37,9 +37,11 @@
                             <td>{{ m.tour }}</td>
                             <td><a href="{{ path('modifierMatche',{'id':m.id}) }}"><i class="ri-pencil-fill"></i></a><a href="{{ path('deleteMatche',{'id':m.id}) }}"><i class="ri-delete-bin-fill"></i></a></td>
 
+
                         </tr {% endfor %}>
                         </tbody>
                     </table>
+                    <td><a href="{{ path('ListeM') }}">Imprimer</a></td>
                 </div>
             </div>
         </div> <!-- end col -->

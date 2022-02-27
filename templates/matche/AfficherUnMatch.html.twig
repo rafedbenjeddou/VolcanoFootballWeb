@@ -1,9 +1,15 @@
 {% extends 'base-front.html.twig' %}
 {% block content %}
+
     <div class=innerbannerwrap>
         <div class=content></div>
         <div class=innerbanner><h2 class=bannerHeadline><span>Match</span></h2></div>
     </div>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
     <section class=innerpage_all_wrap>
 
@@ -48,4 +54,5 @@
             $('#da_gallery .gallery-list ').hoverdir();
         });
     </script>
+
 {% endblock %}

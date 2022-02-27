@@ -19,10 +19,14 @@ return [
         '/AfficheB' => [[['_route' => 'AfficheBillet', '_controller' => 'App\\Controller\\BilletController::Affiche'], null, null, null, false, false, null]],
         '/AfficheUnB' => [[['_route' => 'AfficheUnBillet', '_controller' => 'App\\Controller\\BilletController::Afficheunbillet'], null, null, null, false, false, null]],
         '/billet/ajouter' => [[['_route' => 'app_billet_ajouter_billet', '_controller' => 'App\\Controller\\BilletController::Ajouter_billet'], null, null, null, false, false, null]],
+        '/ReserverTicket' => [[['_route' => 'ReserverTicket', '_controller' => 'App\\Controller\\BilletController::ReserverTicket'], null, null, null, false, false, null]],
         '/equipe' => [[['_route' => 'equipe', '_controller' => 'App\\Controller\\EquipeController::index'], null, null, null, false, false, null]],
         '/AfficheE' => [[['_route' => 'AfficheEquipe', '_controller' => 'App\\Controller\\EquipeController::Affiche'], null, null, null, false, false, null]],
         '/equipe/ajouter' => [[['_route' => 'app_equipe_ajouter_equipe', '_controller' => 'App\\Controller\\EquipeController::Ajouter_equipe'], null, null, null, false, false, null]],
         '/evenement' => [[['_route' => 'evenement', '_controller' => 'App\\Controller\\EvenementController::index'], null, null, null, false, false, null]],
+        '/AfficheEv' => [[['_route' => 'AfficheEvenement', '_controller' => 'App\\Controller\\EvenementController::Affiche'], null, null, null, false, false, null]],
+        '/AfficheUnEv' => [[['_route' => 'AfficheUnEvenement', '_controller' => 'App\\Controller\\EvenementController::AfficheUnEvenement'], null, null, null, false, false, null]],
+        '/evenement/ajouter' => [[['_route' => 'app_evenement_ajouter', '_controller' => 'App\\Controller\\EvenementController::Ajouter'], null, null, null, false, false, null]],
         '/hebergement' => [[['_route' => 'hebergement', '_controller' => 'App\\Controller\\HebergementController::index'], null, null, null, false, false, null]],
         '/joueur' => [[['_route' => 'joueur', '_controller' => 'App\\Controller\\JoueurController::index'], null, null, null, false, false, null]],
         '/AfficheJ' => [[['_route' => 'AfficheJoueur', '_controller' => 'App\\Controller\\JoueurController::Affiche'], null, null, null, false, false, null]],
@@ -31,8 +35,11 @@ return [
         '/matche' => [[['_route' => 'matche', '_controller' => 'App\\Controller\\MatcheController::index'], null, null, null, false, false, null]],
         '/AfficheM' => [[['_route' => 'AfficheMatche', '_controller' => 'App\\Controller\\MatcheController::Affiche'], null, null, null, false, false, null]],
         '/AfficheUnM' => [[['_route' => 'AfficheUnMatche', '_controller' => 'App\\Controller\\MatcheController::Afficheunmatche'], null, null, null, false, false, null]],
+        '/ListeM' => [[['_route' => 'ListeM', '_controller' => 'App\\Controller\\MatcheController::ListeM'], null, ['GET' => 0], null, false, false, null]],
         '/matche/ajouter' => [[['_route' => 'app_matche_ajouter_matche', '_controller' => 'App\\Controller\\MatcheController::Ajouter_matche'], null, null, null, false, false, null]],
         '/stade' => [[['_route' => 'stade', '_controller' => 'App\\Controller\\StadeController::index'], null, null, null, false, false, null]],
+        '/AfficheStade' => [[['_route' => 'AfficheStade', '_controller' => 'App\\Controller\\StadeController::Affiche'], null, null, null, false, false, null]],
+        '/stade/AddStade' => [[['_route' => 'AddStade', '_controller' => 'App\\Controller\\StadeController::Add'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -61,8 +68,16 @@ return [
                     .'|/([^/]++)(*:243)'
                     .'|match/([^/]++)(*:265)'
                 .')'
-                .'|/equipe/update/([^/]++)(*:297)'
-                .'|/joueur/update/([^/]++)(*:328)'
+                .'|/e(?'
+                    .'|quipe/update/([^/]++)(*:300)'
+                    .'|venement/update/([^/]++)(*:332)'
+                .')'
+                .'|/joueur/update/([^/]++)(*:364)'
+                .'|/ListByMatche/([^/]++)(*:394)'
+                .'|/stade/(?'
+                    .'|deleteStade/([^/]++)(*:432)'
+                    .'|UpdateStade/([^/]++)(*:460)'
+                .')'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -76,14 +91,19 @@ return [
         191 => [
             [['_route' => 'supprimerbillet', '_controller' => 'App\\Controller\\BilletController::Delete_billet'], ['id'], null, null, false, true, null],
             [['_route' => 'supprimer', '_controller' => 'App\\Controller\\EquipeController::Delete_joueur'], ['id'], null, null, false, true, null],
+            [['_route' => 'deleteEvenement', '_controller' => 'App\\Controller\\EvenementController::Delete'], ['id'], null, null, false, true, null],
             [['_route' => 'delete', '_controller' => 'App\\Controller\\JoueurController::Delete_joueur'], ['id'], null, null, false, true, null],
         ],
         215 => [[['_route' => 'deleteMatche', '_controller' => 'App\\Controller\\MatcheController::Delete_matche'], ['id'], null, null, false, true, null]],
         243 => [[['_route' => 'modifierbillet', '_controller' => 'App\\Controller\\BilletController::Update'], ['id'], null, null, false, true, null]],
         265 => [[['_route' => 'modifierMatche', '_controller' => 'App\\Controller\\MatcheController::Update'], ['id'], null, null, false, true, null]],
-        297 => [[['_route' => 'modifier', '_controller' => 'App\\Controller\\EquipeController::Update'], ['id'], null, null, false, true, null]],
-        328 => [
-            [['_route' => 'update', '_controller' => 'App\\Controller\\JoueurController::Update'], ['id'], null, null, false, true, null],
+        300 => [[['_route' => 'modifier', '_controller' => 'App\\Controller\\EquipeController::Update'], ['id'], null, null, false, true, null]],
+        332 => [[['_route' => 'modifierEvenement', '_controller' => 'App\\Controller\\EvenementController::Update'], ['id'], null, null, false, true, null]],
+        364 => [[['_route' => 'update', '_controller' => 'App\\Controller\\JoueurController::Update'], ['id'], null, null, false, true, null]],
+        394 => [[['_route' => 'ListByMatche', '_controller' => 'App\\Controller\\MatcheController::ListBilletByMatche'], ['id'], ['GET' => 0], null, false, true, null]],
+        432 => [[['_route' => 'deleteStade', '_controller' => 'App\\Controller\\StadeController::deleteS'], ['id'], null, null, false, true, null]],
+        460 => [
+            [['_route' => 'UpdateStade', '_controller' => 'App\\Controller\\StadeController::Update'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
