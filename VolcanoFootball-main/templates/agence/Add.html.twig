@@ -1,0 +1,19 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+<h1>Ajouter agence</h1>
+{{ form_start(form) }}
+ {{ form_widget(form) }}
+ 
+<button type="button" class="btn btn-outline-success">Ajouter</button>
+{{ form_end(form) }}
+</div>
+</div> <!-- end col -->
+</div>
+</div>
+{% endblock %}
