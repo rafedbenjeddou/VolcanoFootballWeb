@@ -1,0 +1,66 @@
+{% extends 'base-front.html.twig' %}
+
+{% block activeProfil %}
+    class=active
+{% endblock %}
+
+
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span>Profil</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>Voici Votre <span>Informations</span></h2>
+
+                <p class=headParagraph></p>
+                <div  class="feedbackContact-open formcontact clearfix">
+
+                    <div class=form-group>
+                        Votre Nom d'utilisateur
+                        <div type=text class="form-control">{{ profil.username }}</div>
+                    </div>
+                    <div class=form-group>
+                        Votre Nom
+                        <div type=text class=form-control>{{ profil.nom }}</div>
+                    </div>
+                    <div class=form-group>
+                        Votre Prénom
+                        <div type=text class=form-control>{{ profil.prenom }}</div>
+                    </div>
+                    <div class=form-group>
+                        Votre Genre
+                        <div type=text class=form-control>{{ profil.genre }}</div>
+                    </div>
+                    <div class=form-group>
+                        Votre Age
+                        <div type=number class=form-control>{{ profil.age }}</div>
+                    </div>
+                    <div class=form-group>
+                        Votre Pays
+                        <div type=text class=form-control>{{ profil.pays }}</div>
+                    </div>
+                    <div class=form-group>
+                        Votre Email
+                        <div type=text class=form-control>{{ profil.email }}</div>
+                    </div>
+                    <div class=form-group>
+                        Votre Numéro de Téléphone
+                        <div type=number class=form-control>{{ profil.numTel }}</div>
+                    </div>
+
+                    <a class="btn" href="{{ path('ModifierProfil',{'id':profil.id}) }}">Modifier Profil</a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+
+
+{% endblock %}

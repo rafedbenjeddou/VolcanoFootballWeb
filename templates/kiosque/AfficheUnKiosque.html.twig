@@ -1,0 +1,31 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span> Kiosque </span></h2></div>
+    </div>
+
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row>
+                <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
+                    {% for k in stade.getKiosque() %}
+                        <li class=gallery-list><a class=column_g><span class=image_g
+                                                                       style=background:url({{ asset('uploads/images/') ~ k.photo  }})></span>
+                                <div class=gallery-info>
+                                    <h6>{{ k.type }}</h6>
+                                    <p>You Are Welcome</p></div>
+                            </a></li>
+                        <div class=center> <a  class="btn-small01 btn-green" href="{{ path('offre',{'id':k.id}) }}">Reserver</a> </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}

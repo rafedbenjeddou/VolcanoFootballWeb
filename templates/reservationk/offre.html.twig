@@ -1,0 +1,177 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Our Offres{% endblock %}
+
+{% block content %}
+
+    <section class=social-media>
+        <div class="container">
+            <div class="social-media">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="monthly_tab" role="tabpanel">
+                        <div class="plans150">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="plan_item">
+                                        <div class="plan_icon">
+                                            <i class="far fa-dot-circle"></i>
+                                        </div>
+                                        <h4>BASIC</h4>
+                                        <div class="headline01 largepoint">
+                                            <span>50 TND</span>
+                                        </div>
+                                        <ul class="plan_dt">
+                                            <li><p>Bouteille D'eau</p></li>
+                                            <li><p>Sandwich</p></li>
+                                            <li><p>On espere que notre service est a la hauteur , Vous Etes Le bienvenue</p></li>
+                                        </ul>
+                                        <div class="btn btn-info">
+                                            <a href="{{path('reservationk', {'id': id , 'type':'BASIC'})}}">Purchase Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="plan_item">
+                                        <div class="plan_icon">
+                                            <i class="far fa-moon"></i>
+                                        </div>
+                                        <h4>STANDARD</h4>
+                                        <div class="headline01 largepoint">
+                                            <span>80 TND</span>
+                                        </div>
+                                        <ul class="plan_dt">
+                                            <li><p>Bouteille D'eau</p></li>
+                                            <li><p>Boissons</p></li>
+                                            <li><p>Plats</p></li>
+                                            <li><p>On espere que notre service est a la hauteur , Vous Etes Le bienvenue.</p></li>
+                                        </ul>
+                                        <div class="btn btn-info">
+                                            <a href="{{path('reservationk', {'id': id , 'type':'STANDARD'})}}">Purchase Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="plan_item">
+                                        <div class="plan_icon">
+                                            <i class="far fa-gem"></i>
+                                        </div>
+                                        <h4>VIP</h4>
+                                        <div class="headline01 largepoint">
+                                            <span>200 TND</span>
+                                        </div>
+                                        <ul class="plan_dt">
+                                            <li><p>Bouteille D'eau</p></li>
+                                            <li><p>Boissons</p></li>
+                                            <li><p>Couscous</p></li>
+                                            <li><p>Paquet De Cigarette</p></li>
+                                            <li><p>On espere que notre service est a la hauteur , Vous Etes Le bienvenue.</p></li>
+                                        </ul>
+                                        <div class="btn btn-info">
+                                            <a href="{{path('reservationk', {'id': id , 'type':'VIP'})}}">Purchase Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="yearly_tab" role="tabpanel">
+                        <div class="plans150">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="plan_item">
+                                        <div class="plan_icon">
+                                            <i class="far fa-dot-circle"></i>
+                                        </div>
+                                        <h4>BASIC PLANS</h4>
+                                        <div class="plan_price">
+                                            <span>$500.00</span><ins>Yearly</ins>
+                                        </div>
+                                        <ul class="plan_dt">
+                                            <li><p>500 Listing</p></li>
+                                            <li><p>365 days visibility</p></li>
+                                            <li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+                                        </ul>
+                                        <div class="btn btn-info">
+                                            <a href="checkout.html">Purchase Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="plan_item">
+                                        <div class="plan_icon">
+                                            <i class="far fa-moon"></i>
+                                        </div>
+                                        <h4>STANDARD PLANS</h4>
+                                        <div class="plan_price">
+                                            <span>$1000.00</span><ins>Yearly</ins>
+                                        </div>
+                                        <ul class="plan_dt">
+                                            <li><p>1000 Listing</p></li>
+                                            <li><p>365 days visibility</p></li>
+                                            <li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+                                        </ul>
+                                        <div class="btn btn-info">
+                                            <a href="checkout.html">Purchase Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="plan_item">
+                                        <div class="plan_icon">
+                                            <i class="far fa-gem"></i>
+                                        </div>
+                                        <h4>PROFESSNIONAL PLANS</h4>
+                                        <div class="plan_price">
+                                            <span>$2000.00</span><ins>Yearly</ins>
+                                        </div>
+                                        <ul class="plan_dt">
+                                            <li><p>Unlimited Listing</p></li>
+                                            <li><p>365 days visibility</p></li>
+                                            <li><p>Suspendisse id odio lobortis, molestie dui a, aliquam risus. Praesent pulvinar, lectus a pharetra congue.</p></li>
+                                        </ul>
+                                        <div class="btn btn-info">
+                                            <a href="checkout.html">Purchase Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn btn-info" >
+                <li class="nav-item">
+                    <a class="nav-link active" href="#monthly_tab" id="monthly-tab" data-toggle="tab">Les Type De Reservation</a>
+                </li>
+            </div>
+        </div>
+    </section>
+    <section class=social-media>
+        <div class=container>
+            <div class=row>
+                <ul class=socialinfo>
+                    <li><a href="#">
+                            <div class=sociallink><i class="fa fa-twitter"></i></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur aperiam ut necessitatibus,
+                                assumenda a maxime eos nulla maiores perspiciatis deleniti! A ratione ipsam magnam accusamus
+                                assumenda consectetur reiciendis hic obcaecati.</p></a></li>
+                    <li><a href="#">
+                            <div class=sociallink><i class="fa fa-facebook"></i></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur aperiam ut necessitatibus,
+                                assumenda a maxime eos nulla maiores perspiciatis deleniti! A ratione ipsam magnam accusamus
+                                assumenda consectetur reiciendis hic obcaecati.</p></a></li>
+                    <li><a href="#">
+                            <div class=sociallink><i class="fa fa-behance"></i></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur aperiam ut necessitatibus,
+                                assumenda a maxime eos nulla maiores perspiciatis deleniti! A ratione ipsam magnam accusamus
+                                assumenda consectetur reiciendis hic obcaecati.</p></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Title Start -->
+    <!-- Body Start -->
+
+
+{% endblock %}
