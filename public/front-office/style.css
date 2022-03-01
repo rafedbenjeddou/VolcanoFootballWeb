@@ -2352,9 +2352,10 @@ output {
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.428571429;
-  color: #555555;
-  background-color: #fff;
+  color: #979da0;
+  background-color: transparent;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -10166,7 +10167,9 @@ ul.slick-dots {
         top: 8px; }
   .player02fig {
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    height: 636px;
+    width: 6px;}
     .player02fig .imgplayer {
       transition: all 0.4s ease-in-out; }
   .player02 .playersocial {

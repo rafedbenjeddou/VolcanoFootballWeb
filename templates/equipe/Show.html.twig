@@ -13,7 +13,8 @@
                 <div class="wrapplayer clearfix"><a class="prv prev-player"></a> <a class="nxt next-player"></a>
                     <ul class="slideHeroes clearfix">
                         {% for j in joueur %}
-                        <li><a href="#">
+                        <li>
+                            <a href="#">
                                 <div class=playerFig>
                                     <div class=playerpic>
                                         <div style=background:url({{ asset('uploads/images/') ~ j.photo }}) class=bgimg></div>
@@ -22,10 +23,15 @@
                                             <li><span>{{ j.nomJoueur }} {{ j.prenomJoueur }}</span> <span><img src={{ asset('front-office/images/player/playerT_shirt01.png') }}
                                                                                                                alt=image></span></li>
                                             <li class=playinfodetails>age {{ j.age }}</li>
-                                            <li class=playerInfo><span>{{ j.position }}</span>
+                                        <li class=playerInfo><span>{{ j.position }}</span></li>
                                     </ul>
+                                    <p><br></p>
+                                    <div style="text-align: center">
+                                        <a  href="{{ path('mail',{'id':j.id}) }}" class="btn-small btn-red" >contacter</a>
+                                    </div>
                                 </div>
-                            </a></li>
+                            </a>
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>

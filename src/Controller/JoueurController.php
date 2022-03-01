@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\ContactJoueur;
 use App\Entity\Joueur;
+use App\Form\ContactJoueurType;
 use App\Form\JoueurEditType;
 use App\Form\JoueurType;
 use App\Repository\EquipeRepository;
@@ -132,4 +134,6 @@ class JoueurController extends AbstractController
             'form'=>$form->createView()
         ]);
     }
+
+
 }
