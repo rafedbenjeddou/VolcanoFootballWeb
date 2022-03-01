@@ -138,7 +138,7 @@ class HebergementController extends AbstractController
 
             $em->persist($reservation);
             $em->flush();
-            return $this->redirectToRoute('AfficheRF');
+            return $this->redirectToRoute('sendEmailHebergement');
         }
         return $this->render('hebergement/AddRF.html.twig',[
             'form1'=>$form->createView()

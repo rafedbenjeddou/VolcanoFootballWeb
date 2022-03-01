@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Stylesheets -->
+    <link href="{{ asset('Facture/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/css/datepicker.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/css/jquery.range.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/OwlCarousel/assets/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/OwlCarousel/assets/owl.theme.default.min.css')}}" rel="stylesheet">
+
+    <!-- Semantic Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Facture/vendor/semantic/semantic.min.css')}}">
+
+</head>
+<body class="main_invoice">
+<!-- Header Start -->
+<div class="invc_header">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 col-sm-12">
+                <div class="">
+                    <div class="header_logo">
+                        <img src="{{ asset('Facture/images/logo.PNG')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Invoice Body Start -->
+<section class="invoice_section">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8">
+                <div class="invoice_body">
+                    <div class="nvdate_dt">
+                        <div class="nvde_dt45">
+
+                        </div>
+                        <div class="nvde_dt46">
+                            <ul class="in11448">
+                               
+                                <li><div class="vdt-list"><span>Agence :</span> {{ reservation.hebergement.agence.Nom }}</div></li>
+                                <li><div class="vdt-list"><span>Numéro :</span> {{ reservation.hebergement.agence.NumTel }}</div></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <h3 class="dff474">Voucher</h3>
+                    <div class="jike145">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="vhls140">
+                                    <h4>Client</h4>
+                                    <ul>
+                                        <li><div class="vdt-list"> Nom : {{ reservation.user.nom }}</div></li>
+                                        <li><div class="vdt-list"> Prénom : {{ reservation.user.prenom }}</div></li>
+                                        <li><div class="vdt-list"> ID : {{ reservation.user.id }} </div></li>
+                                        <li><div class="vdt-list"> Email : {{ reservation.user.email }}</div></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID de Redeseravtion</th>
+                                    <th scope="col">Check-in</th>
+                                    <th scope="col">check-out</th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="user_dt_trans">
+                                            <p>{{ reservation.id }}</p>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="user_dt_trans">
+                                            <p>{{ reservation.dateDebut|date('d-m-Y') }}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="user_dt_trans">
+                                            <p>{{ reservation.dateFin|date('d-m-Y') }}</p>
+                                        </div>
+                                    </td>
+                                  
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td colspan="3">
+                                        <div class="user_dt_trans jsk1145">
+                                            <div class="totalinv2">{{ reservation.hebergement.NomH }}</div>
+                                            <p>{{ reservation.hebergement.adresse }}</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        
+                    <div class="invoice_footer">
+                        <div class="leftfooter">
+                           
+                        </div>
+                        <div class="righttfooter">
+                            <a class="print_btn" href="javascript:window.print();">Print</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Invoice Body End -->
+
+<!-- Scroll to Top Button Start -->
+<button onclick="topFunction()" id="pageup" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+<!-- Scroll to Top Button End -->
+
+<!-- Scripts js -->
+<script src="{{ asset('Facture/js/jquery.min.js')}}"></script>
+<script src="{{ asset('Facture/js/datepicker.min.js')}}"></script>
+<script src="{{ asset('Facture/js/i18n/datepicker.en.js')}}"></script>
+<script src="{{ asset('Facture/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('Facture/vendor/OwlCarousel/owl.carousel.js')}}"></script>
+<script src={{ asset('Facture/"vendor/semantic/semantic.min.js"')}}></script>
+<script src="{{ asset('Facture/js/jquery.range-min.js')}}"></script>
+<script src="{{ asset('Facture/js/custom1.js')}}"></script>
+
+
+</body>
+
+</html>

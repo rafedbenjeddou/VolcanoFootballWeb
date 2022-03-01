@@ -21,13 +21,11 @@
                                 {% for r in reservation %}
                                 <li class=clearfix>
                                     <div class=subPoint_table>
-                                        <div class="ticketInner_info paragraph02 clearfix"><b> {{ r.user.nom }} </b> <b> Resrevé à</b> {{ r.hebergement.NomH }} <b> du :  </b><b> {{ r.dateDebut|date('d-m-Y') }}   </b><b>  jusqu'a :   </b> <b> {{ r.dateFin|date('d-m-Y') }}   </b></div>
+                                        <div class="ticketInner_info paragraph02 clearfix"><b> Mr {{ r.user.nom }} </b> <b> Vous avez Resrevé à</b> {{ r.hebergement.NomH }} <b> du :  </b><b> {{ r.dateDebut|date('d-m-Y') }}   </b><b>  jusqu'a :   </b> <b> {{ r.dateFin|date('d-m-Y') }}   </b></div>
                                        
 
 
-                                        <div class="ticketInner_info paragraph02 clearfix"><a href="{{ path('UpdateRF',{'id':r.id}) }}"class="uppercaseheading red">Modifier</a></div>
-                                        <div class="ticketInner_info paragraph02 clearfix"><a href="{{ path('deleteRF',{'id':r.id}) }}"class="uppercaseheading red">Annuler</a></div>
-                                        <div class="ticketInner_info paragraph02 clearfix"><a href="{{ path('AfficheRI',{'id':r.id}) }}"class="uppercaseheading red">Imprimer</a></div>
+                                        <div > <b> <a type="button" class="btn btn-outline-light"  href="{{ path('UpdateRF',{'id':r.id}) }}" >Modifier</a> </b> <b><a type="button" class="btn btn-outline-light" href="{{ path('deleteRF',{'id':r.id}) }}">Annuler</a> </b> <b> <a type="button" class="btn btn-outline-light" href="{{ path('AfficheRI',{'id':r.id}) }}">Imprimer</a> </b></div>
 
                                     </div>
                                 </li>

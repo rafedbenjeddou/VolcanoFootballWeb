@@ -6,7 +6,10 @@ use App\Entity\Reservation;
 use App\Repository\ReservationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\ReservationType;
+use App\Form\ReservationUpType;
+
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Service\Mailer;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -141,11 +144,12 @@ class ReservationController extends AbstractController
      */
     function UpdateRF(ReservationRepository $repo, $id,Request $request){
         $reservation=$repo->find($id);
-        $form=$this->createForm(ReservationType::class,$reservation);
+        $form=$this->createForm(ReservationUpType::class,$reservation);
         $form->add('Modifier', SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
+            $reservation->setUser($this->getUser());
             $em->flush();
             return $this->redirectToRoute('AfficheRF');
         }
@@ -160,8 +164,17 @@ class ReservationController extends AbstractController
      
     public function AfficheRFById(ReservationRepository $repo,$id) {
         $reservation=$repo->find($id);
-        return $this->render('reservation/AfficheBI.html.twig',
+        return $this->render('reservation/Voucher.html.twig',
         ['reservation'=>$reservation]);
+    }
+    /**
+     * @route("/sendEmailHebergement", name="sendEmailHebergement")
+     */
+    function sendEmailHebergement(Mailer $mailer){
+
+        $mailer->sendEmailHebergement($this->getUser()->getEmail());
+        $this->addFlash("success", "Réservation effectuée avec succès! Merci de consulter votre mail");
+        return  $this->redirectToRoute('AfficheRF');
     }
 }
 

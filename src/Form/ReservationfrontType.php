@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -21,15 +21,18 @@ class ReservationfrontType extends AbstractType
     {
         $builder
 
-        ->add('dateDebut',DateType::class, [
-            'label'=>'Check in',
+        ->add('dateDebut',DateTimeType::class, [
+            'date_widget' => 'single_text',
+            'label'=>'CheckIn',
             'attr'=>[
                 'placeholder'=>'dateDebut',
                 'class'=>'date'
                 ]  
             ])
-            ->add('dateFin',DateType::class, [
-                'label'=>'Check out',
+            ->add('dateFin',DateTimeType::class, [
+                'date_widget' => 'single_text',
+
+                'label'=>'CheckOut',
                 'attr'=>[
                     'placeholder'=>'dateFin',
                     'class'=>'date'
