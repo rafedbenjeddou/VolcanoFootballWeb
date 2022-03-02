@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Liste des Equipes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset('table/images/icons/favicon.ico') }}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/css/main.css') }}">
+    <!--===============================================================================================-->
+</head>
+<body>
+<!--===============================================================================================-->
+<script src="{{ asset('table/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('table/vendor/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('table/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('table/vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('table/js/main.js') }}"></script>
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column1">ID</th>
+                        <th class="column2">Nom Equipe</th>
+                        <th class="column3">Prenom Equipe</th>
+                        <th class="column4">Entreneur</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr {% for e in equipe %}>
+                        <td class="column1">{{ e.id }}</td>
+                        <td class="column2">{{ e.nomEquipe }}</td>
+                        <td class="column3">{{ e.dateCreation|date('d-m-Y') }}</td>
+                        <td class="column4">{{ e.nomEntreneur }}</td>
+                    </tr {% endfor %}>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class EquipeController extends AbstractController
 {
@@ -145,5 +147,38 @@ class EquipeController extends AbstractController
             'equipe'=>$equipe, 'joueur'=>$joueur
         ]);
 
+    }
+    /**
+     * @param EquipeRepository $repository
+     * @return Response
+     * @route("/ImprimerE", name="ImprimerEquipe", methods={"GET"})
+     */
+    public function Imprimer(EquipeRepository $repository): Response
+    {    // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        $equipe=$repository->findAll(); //retourner toutes les objets
+
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('equipe/ImprimerEquipe.html.twig',
+            ['equipe'=>$equipe]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (inline view)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
+        ]);
     }
 }
