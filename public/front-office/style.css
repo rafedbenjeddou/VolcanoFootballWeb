@@ -8862,11 +8862,18 @@ section {
 .logo-match {
   position: relative;
   float: left;
-  width: 41.6666666667%;
+  width: 28%;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   text-align: center; }
+.bgimg {
+  width: 102%;
+  height: 100%;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  margin-top: 50px;
+}
 
 .match_vs {
   position: relative;

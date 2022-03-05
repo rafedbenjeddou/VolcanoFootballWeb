@@ -22,6 +22,8 @@
                             <th>Date</th>
                             <th>Time</th>
                             <th>Tour</th>
+                            <th>Logo1</th>
+                            <th>Logo2</th>
                             <th>Action</th>
 
                         </tr>
@@ -35,13 +37,16 @@
                             <td>{{ m.date|date('d-m-Y') }}</td>
                             <td>{{ m.time|date("H:i:s")}}</td>
                             <td>{{ m.tour }}</td>
+                            <td>{{ m.image1 }}</td>
+                            <td>{{ m.image2 }}</td>
                             <td><a href="{{ path('modifierMatche',{'id':m.id}) }}"><i class="ri-pencil-fill"></i></a><a href="{{ path('deleteMatche',{'id':m.id}) }}"><i class="ri-delete-bin-fill"></i></a></td>
 
 
                         </tr {% endfor %}>
                         </tbody>
                     </table>
-                    <td><a href="{{ path('ListeM') }}">Imprimer</a></td>
+                    <button type="button" class="btn btn-dark"><a href="{{ path('ListeM') }}">Imprimer</a></button>
+
                 </div>
             </div>
         </div> <!-- end col -->

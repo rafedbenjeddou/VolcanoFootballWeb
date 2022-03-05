@@ -21,16 +21,24 @@
                             <div class="wrap_match_next right-triangle">
                                 <div class=right-padding><h4 class=headline03>{{ m.NomMatche }} </h4>
 
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
+                                    <p>Un Match Fort a ne pas rater.
+                                        <b>réservez vous...</b>
+
+                                    </p></div>
                             </div>
                         </div>
                         <div class=match_versus>
                             <div class="bg-blackimg match_versus02">
                                 <div class=nextmatchDetails>
                                     <div class="wrap-logo clearfix">
-                                        <div class=logo-match><img src=front-office/images/matchResult/tunn.png alt=image></div>
+                                        <div class=logo-match >
+                                            <div class=bgimg style=background:url("{{ asset('upload/') ~ m.image1 }}")></div>
+                                        </div>
                                         <div class=match_vs>vs</div>
-                                        <div class=logo-match><img src=front-office/images/matchResult/algé.png alt=image></div>
+                                        <div class=logo-match >
+                                            <div class=bgimg style=background:url("{{ asset('upload/') ~ m.image2 }}")></div>
+                                        </div>
+
                                     </div>
                                     <p class=match_dtls><b> Date :</b>{{ m.date|date('d-m-Y') }}</p>
                                     <p class=match_dtls><b> Time :</b>{{ m.time|date("H:i:s")}} PM</p>

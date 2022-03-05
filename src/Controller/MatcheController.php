@@ -29,16 +29,16 @@ class MatcheController extends AbstractController
 //Route d'annotation
 //Response correspond a la reponse retournée par le controleur
 // render methode de retourner une interface
-/**
- * @param MatcheRepository $repository
- * @return Response
- * @route("/AfficheM", name="AfficheMatche")
- */
-public function Affiche(MatcheRepository $repository){
-    $matche=$repository->findAll(); //retourner toutes les objets
-    return $this->render('matche/Affiche.html.twig',
-        ['matche'=>$matche]);
-}
+    /**
+     * @param MatcheRepository $repository
+     * @return Response
+     * @route("/AfficheM", name="AfficheMatche")
+     */
+    public function Affiche(MatcheRepository $repository){
+        $matche=$repository->findAll(); //retourner toutes les objets
+        return $this->render('matche/Affiche.html.twig',
+            ['matche'=>$matche]);
+    }
     /**
      * @param MatcheRepository $repository
      * @return Response
@@ -51,10 +51,9 @@ public function Affiche(MatcheRepository $repository){
     }
     /**
      * @param MatcheRepository $repository
-     * @return Response
      * @route("/ListeM", name="ListeM", methods={"GET"})
      */
-    public function ListeM(MatcheRepository $repository): Response
+    public function ListeM(MatcheRepository $repository)
     {    // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
@@ -85,98 +84,165 @@ public function Affiche(MatcheRepository $repository){
 
 
     }
+
 //repository- l'entité
 //Manger- base
-/**
- * @route("/deleteMatche/{id}",name="deleteMatche")
- */
-function Delete_matche($id,MatcheRepository $repository){
-    $matche=$repository->find($id);
-    $em=$this->getDoctrine()->getManager();
-    $em->remove($matche);
-    $em->flush(); //
-    $this->addFlash(
-        'info',
-        'Deleted Successfully'
-    );
-    return $this->redirectToRoute('AfficheMatche');
-}
-
-/**
- * @param Request $request
- * @return Response
- * @route("matche/ajouter")
- */
-function Ajouter_matche(Request $request){
-    $matche = new Matche();
-    $form=$this->createForm(MatcheType::class,$matche);
-    $form->add('ajouter',SubmitType::class);
-    $form->handleRequest($request);
-    if($form->isSubmitted() && $form->isValid()){
-        $date= new \DateTime('now');
-        $datematch=$matche->getDate();
-        $nbJours =$datematch->diff($date)->days;
-        if($nbJours >= 1 && $datematch > $date) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($matche);
-            $em->flush();
-            $this->addFlash(
-                'info',
-                'Added Successfully'
-            );
-            return $this->redirectToRoute('AfficheMatche');
-        }
-        $erreur="Changer la date ";
-        return $this->render('matche/AjouterErreur.html.twig',[
-            'form'=>$form->createView(),
-            'error'=>$erreur,
-            'nbjours'=>$nbJours,
-            'date'=>$date,
-            'datematch'=>$datematch,
-        ]);
-
-    }
-    return $this->render('matche/Ajouter.html.twig',[
-        'form'=>$form->createView()
-    ]);
-}
-/**
- * @route ("updatematch/{id}",name="modifierMatche")
- */
-function Update(MatcheRepository  $repository,$id,Request $request){
-    $matche=$repository->find($id);
-    $form=$this->createForm(MatcheType::class,$matche);
-    $form->add('Update',SubmitType::class);
-    $form->handleRequest($request);                                                                                            //pour envoyer la requete
-    if ($form->isSubmitted() && $form->isValid()){
-        //si la requete tsabet
-        $date= new \DateTime('now');
-        $datematch=$matche->getDate();
-        $nbJours =$datematch->diff($date)->days;
-        if($nbJours >= 1 && $datematch > $date) {
+    /**
+     * @route("/deleteMatche/{id}",name="deleteMatche")
+     */
+    function Delete_matche($id,MatcheRepository $repository){
+        $matche=$repository->find($id);
         $em=$this->getDoctrine()->getManager();
-        $em->flush();
+        $em->remove($matche);
+        $em->flush(); //
         $this->addFlash(
             'info',
-            'Updated Successfully'
+            'Deleted Successfully'
         );
-        return $this->redirectToRoute("AfficheMatche");
+        return $this->redirectToRoute('AfficheMatche');
     }
-        $erreur="Changer la date ";
-        return $this->render('matche/UpdateErreur.html.twig',[
-            'form'=>$form->createView(),
-            'error'=>$erreur,
-            'nbjours'=>$nbJours,
-            'date'=>$date,
-            'datematch'=>$datematch,
-        ]);
 
+    /**
+     * @param Request $request
+     * @return Response
+     * @route("matche/ajouter")
+     */
+    function Ajouter_matche(Request $request){
+        $matche = new Matche();
+        $form=$this->createForm(MatcheType::class,$matche);
+        $form->add('ajouter',SubmitType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $date= new \DateTime('now');
+            $datematch=$matche->getDate();
+            $nbJours =$datematch->diff($date)->days;
+            if($nbJours >= 1 && $datematch > $date) {
+
+                $em = $this->getDoctrine()->getManager();
+                //image hatitha houni
+
+                $uploadedFile = ($form['imageFile']->getData());
+
+
+                if ($uploadedFile) {
+                        $destination = $this->getParameter('kernel.project_dir') . '/public/upload';
+                        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                        $newFilename = $originalFilename. '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+                        $uploadedFile->move(
+                            $destination,
+                            $newFilename
+                        );
+                        $matche->setImage1($newFilename);
+
+
+                }
+                $uploadedFile = ($form['imageFile2']->getData());
+
+
+                if ($uploadedFile) {
+                    $destination = $this->getParameter('kernel.project_dir') . '/public/upload';
+                    $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilename = $originalFilename. '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+                    $uploadedFile->move(
+                        $destination,
+                        $newFilename
+                    );
+
+                    $matche->setImage2($newFilename);
+
+                }
+
+
+                $em->persist($matche);
+                $em->flush();
+                $this->addFlash(
+                    'info',
+                    'Added Successfully'
+                );
+                return $this->redirectToRoute('AfficheMatche');
+            }
+            $erreur="Changer la date ";
+            return $this->render('matche/AjouterErreur.html.twig',[
+                'form'=>$form->createView(),
+                'error'=>$erreur,
+                'nbjours'=>$nbJours,
+                'date'=>$date,
+                'datematch'=>$datematch,
+            ]);
+
+        }
+        return $this->render('matche/Ajouter.html.twig',[
+            'form'=>$form->createView()
+        ]);
     }
-    return $this->render('matche/Update.html.twig',[
-        'form'=>$form->createView()    //pour afficher les champs de la forme type
-    ]);
-}
+    /**
+     * @route ("updatematch/{id}",name="modifierMatche")
+     */
+    function Update(MatcheRepository  $repository,$id,Request $request){
+        $matche=$repository->find($id);
+        $form=$this->createForm(MatcheType::class,$matche);
+        $form->add('Update',SubmitType::class);
+        $form->handleRequest($request);                                                                                            //pour envoyer la requete
+        if ($form->isSubmitted() && $form->isValid()){
+            //si la requete tsabet
+            $date= new \DateTime('now');
+            $datematch=$matche->getDate();
+            $nbJours =$datematch->diff($date)->days;
+            if($nbJours >= 1 && $datematch > $date) {
+                $em=$this->getDoctrine()->getManager();
+                //image hatitha houni
+
+                $uploadedFile = ($form['imageFile']->getData());
+
+
+                if ($uploadedFile) {
+                    $destination = $this->getParameter('kernel.project_dir') . '/public/upload';
+                    $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilename = $originalFilename. '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+                    $uploadedFile->move(
+                        $destination,
+                        $newFilename
+                    );
+                    $matche->setImage1($newFilename);
+
+
+                }
+                $uploadedFile = ($form['imageFile2']->getData());
+
+
+                if ($uploadedFile) {
+                    $destination = $this->getParameter('kernel.project_dir') . '/public/upload';
+                    $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilename = $originalFilename. '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+                    $uploadedFile->move(
+                        $destination,
+                        $newFilename
+                    );
+
+                    $matche->setImage2($newFilename);
+
+                }
+                $em->flush();
+                $this->addFlash(
+                    'info',
+                    'Updated Successfully'
+                );
+                return $this->redirectToRoute("AfficheMatche");
+            }
+            $erreur="Changer la date ";
+            return $this->render('matche/UpdateErreur.html.twig',[
+                'form'=>$form->createView(),
+                'error'=>$erreur,
+                'nbjours'=>$nbJours,
+                'date'=>$date,
+                'datematch'=>$datematch,
+            ]);
+
+        }
+        return $this->render('matche/Update.html.twig',[
+            'form'=>$form->createView()    //pour afficher les champs de la forme type
+        ]);
+    }
     /**
      * @Route("/ListByMatche/{id}", name="ListByMatche", methods={"GET"})
      */
@@ -189,4 +255,3 @@ function Update(MatcheRepository  $repository,$id,Request $request){
 
     }
 }
-

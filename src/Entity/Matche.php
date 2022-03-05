@@ -73,6 +73,17 @@ class Matche
      */
     private $stade;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image2;
+
+
 
     public function __construct()
     {
@@ -198,6 +209,33 @@ class Matche
 
         return $this;
     }
+
+    public function getImage1(): ?string
+    {
+        return $this->image1;
+    }
+
+    public function setImage1(?string $image1): self
+    {
+        $this->image1 = $image1;
+
+        return $this;
+    }
+
+    public function getImage2(): ?string
+    {
+        return $this->image2;
+    }
+
+    public function setImage2(?string $image2): self
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
+
+
+
 
 
 }
