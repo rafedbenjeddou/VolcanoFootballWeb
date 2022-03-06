@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\JoueurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=JoueurRepository::class)
@@ -15,25 +16,64 @@ class Joueur
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("equipe")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="name is required")
+     * @Groups("equipe")
      */
     private $nom_joueur;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="name is required")
+     * @Assert\Length(
+     *    min = 4,
+     *     max =20,
+     *     minMessage = "Le prenom d'un joueur doit comporter au moins {{ limit }} caractéres",
+     *      minMessage = "Le prenom d'un joueur doit comporter au plus {{ limit }} caractéres"
+     *     )
+     * @Groups("equipe")
      */
     private $prenom_joueur;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="age is required")
+     * @Groups("equipe")
      */
     private $age;
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="position is required")
+     * @Groups("equipe")
+     */
+    private $position;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("equipe")
+     */
+    private $photo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Equipe::class, inversedBy="joueurs")
+     */
+    private $equipe;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *    min = 10,
+     *     max =100,
+     *     minMessage = "La description d'un joueur doit comporter au moins {{ limit }} caractéres",
+     *     minMessage = "La description d'un joueur doit comporter au plus {{ limit }} caractéres"
+     *     )
+     * @Groups("equipe")
+     */
+    private $Description;
+
 
     public function getId(): ?int
     {
@@ -77,4 +117,53 @@ class Joueur
 
         return $this;
     }
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto( $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getEquipe()
+    {
+        return $this->equipe;
+    }
+
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    public function setPosition($position): void
+    {
+        $this->position = $position;
+    }
+
+    public function setEquipe(?Equipe $equipe): self
+    {
+        $this->equipe = $equipe;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->Description;
+    }
+
+    public function setDescription(?string $Description): self
+    {
+        $this->Description = $Description;
+
+        return $this;
+    }
+
+
 }

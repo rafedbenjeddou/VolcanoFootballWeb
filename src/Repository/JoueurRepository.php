@@ -18,6 +18,14 @@ class JoueurRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Joueur::class);
     }
+    function ListJoueurByEquipe($id){ // function by QueryBuilder
+        return $this-> createQueryBuilder('joueur')
+            ->join('joueur.equipe' , 'equipe')
+            ->addSelect('equipe')
+            ->where('equipe.id=:id')
+            ->setParameter('id',$id)
+            ->getQuery()->getResult();
+    }
 
     // /**
     //  * @return Joueur[] Returns an array of Joueur objects

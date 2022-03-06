@@ -49,7 +49,7 @@
                                     <ul class="nav navbar-nav menu-bar">
                                         <li><a href="{{ path('home') }}" {% block activeAccueil %}{% endblock %}>Accueil <span></span> <span></span>
                                                 <span></span> <span></span></a></li>
-                                        <li><a href="#" {% block activeEquipes %}{% endblock %}>Equipes <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheUneEquipe') }}" {% block activeEquipes %}{% endblock %}>Equipes <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
                                         <li><a href="#" {% block activeMatches %}{% endblock %}>Matches <span></span> <span></span> <span></span>
                                                 <span></span></a></li>

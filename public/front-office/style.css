@@ -2353,8 +2353,8 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #555555;
-  background-color: #fff;
+  color: #979da0;
+  background-color: transparent;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -4304,7 +4304,7 @@ tbody.collapse.in {
       padding: 6px 12px;
       line-height: 1.428571429;
       text-decoration: none;
-      color: #337ab7;
+      color: #b81e20;
       background-color: #fff;
       border: 1px solid #ddd;
       margin-left: -1px; }
@@ -4322,7 +4322,7 @@ tbody.collapse.in {
   .pagination > li > span:hover,
   .pagination > li > span:focus {
     z-index: 3;
-    color: #23527c;
+    color: #b81e20;
     background-color: #eeeeee;
     border-color: #ddd; }
   .pagination > .active > a,
@@ -4333,8 +4333,8 @@ tbody.collapse.in {
   .pagination > .active > span:focus {
     z-index: 2;
     color: #fff;
-    background-color: #337ab7;
-    border-color: #337ab7;
+    background-color: #b81e20;
+    border-color: #b81e20;
     cursor: default; }
   .pagination > .disabled > span,
   .pagination > .disabled > span:hover,
