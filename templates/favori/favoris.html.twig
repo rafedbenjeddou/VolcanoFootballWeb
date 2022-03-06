@@ -1,0 +1,48 @@
+{% extends 'base-front.html.twig' %}
+
+{% block activeSouhaits %}
+    class=active
+{% endblock %}
+
+
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>liste <span>des souhaits</span></h2></div>
+    </div>
+    <section class="players homeplayer">
+        <div class=container>
+            <div class=row><h2 class=heading>mes <span>souhaits <i class="fa fa-heart"></i></span></h2>
+
+                <p class=headParagraph></p>
+
+                <div class="wrapplayer clearfix"><a class="prv prev-player"></a> <a class="nxt next-player"></a>
+                    <ul class="slideHeroes clearfix">
+                        {% for f in favoris %}
+                            <li>
+                                    <div class=playerFig>
+                                        <div class=playerpic>
+                                            <div style=background:url({{ asset('uploads/images/') ~ f.produit.photo }}) class=bgimg></div>
+                                        </div>
+                                        <ul class="playerDetails clearfix">
+                                            <li><span>{{ f.produit.nom }}</span></li>
+                                            <li class=playinfodetails>Taille: {{ f.produit.taille }}</li>
+                                            <li class=playerInfo><span>Prix: ${{ f.produit.prix }}</span> <span><i
+                                                            class="fa fa-heart"></i></span></li>
+                                            <li class=playerInfo style="padding: 7px 0; text-align: center"><a href="{{ path('SupprimerFavori',{'id':f.id}) }}" class="br">Supprimer</a></li>
+                                        </ul>
+
+                                    </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+

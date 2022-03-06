@@ -1,0 +1,61 @@
+{% extends 'base-back.html.twig' %}
+
+{% block user %}
+    {{ app.user.nom }}
+{% endblock %}
+
+{% block content %}
+
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                        <h4 class="card-title">Modifier Commande</h4>
+                        <p class="card-title-desc"></p>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.user) }}</label>
+                        <div class="col-md-10">
+                            {{ form_widget(form.user) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.produit) }}</label>
+                        <div class="col-md-10">
+                            {{ form_widget(form.produit) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.quantite) }}</label>
+                        <div class="col-md-10">
+                            <input type="number" class="form-control" {{ form_widget(form.quantite) }}
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

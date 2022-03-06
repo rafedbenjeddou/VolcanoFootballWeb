@@ -1,0 +1,32 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>RÉINITIALISER VOTRE  <span>MOT DE PASSE</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>RÉINITIALISER VOTRE <span>MOT DE PASSE</span></h2>
+
+                <p class=headParagraph></p>
+
+                {{ form_start(resetForm) }}
+
+                    {{ form_row(resetForm.plainPassword) }}
+                    <button class="btn btn-red">Réinitialiser le mot de passe</button>
+
+                {{ form_end(resetForm) }}
+
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+

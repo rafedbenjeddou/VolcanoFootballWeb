@@ -1,0 +1,65 @@
+{% extends 'base-front.html.twig' %}
+
+{% block activeProfil %}
+    class=active
+{% endblock %}
+
+
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span>Profil</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>Voici Votre <span>Informations</span></h2>
+
+                <p class=headParagraph></p>
+                <div  class="feedbackContact-open formcontact clearfix">
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Nom d'utilisateur:</h4>
+                        <h4 style="display: inline">{{ profil.username }}</h4>
+                    </div>
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Nom:</h4>
+                        <h4 style="display: inline">{{ profil.nom }}</h4>
+                    </div>
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Prenom:</h4>
+                        <h4 style="display: inline">{{ profil.prenom }}</h4>
+                    </div>
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Genre:</h4>
+                        <h4 style="display: inline">{{ profil.genre }}</h4>
+                    </div>
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Age:</h4>
+                        <h4 style="display: inline">{{ profil.age }}</h4>
+                    </div>
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Pays:</h4>
+                        <h4 style="display: inline">{{ profil.pays }}</h4>
+                    </div>
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Email:</h4>
+                        <h4 style="display: inline">{{ profil.email }}</h4>
+                    </div>
+                    <div class=form-group>
+                        <h4 style="display: inline;color: black">Votre Numéro du Téléphone:</h4>
+                        <h4 style="display: inline">{{ profil.numTel }}</h4>
+                    </div>
+
+                    <a class="btn" style="margin-top: 50px" href="{{ path('ModifierProfil',{'id':profil.id}) }}">Modifier mes Informations</a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau des Produits</title>
+</head>
+<body >
+<h1 style="text-align: center; color: red">Volcano Football Services</h1>
+<h2 style="text-align: center">Tableau des Produits</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th >Nom</th>
+        <th >Type</th>
+        <th >Taille</th>
+        <th >Couleur</th>
+        <th >Nombre d'Etoiles</th>
+        <th >Description</th>
+        <th >Prix</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in produits %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.nom }}</td>
+            <td>{{ p.type }}</td>
+            <td>{{ p.taille }}</td>
+            <td>{{ p.couleur }}</td>
+            <td>{{ p.nbrEtoiles }}</td>
+            <td>{{ p.description }}</td>
+            <td>{{ p.prix }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

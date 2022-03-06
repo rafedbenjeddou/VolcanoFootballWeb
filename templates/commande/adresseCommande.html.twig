@@ -1,0 +1,31 @@
+{% extends 'base-front.html.twig' %}
+
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>passer  <span>commande</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>passer <span>la commande</span></h2>
+
+                <p class=headParagraph></p>
+
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    {{ form_label(form.adresse) }}
+                    <input style="height: 60px" {{ form_widget(form.adresse) }}
+
+                    <h5 style="margin: 15px 0px">Entrez l'adresse à laquelle vous voulez que la commande vous parvienne.</h5>
+
+                {{ form_end(form) }}
+
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+
+{% endblock %}

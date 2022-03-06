@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau des Utilisateurs</title>
+</head>
+<body >
+<h1 style="text-align: center; color: red">Volcano Football Services</h1>
+<h2 style="text-align: center">Tableau des Utilisateurs</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th >Username</th>
+            <th >Nom</th>
+            <th >Prenom</th>
+            <th >Genre</th>
+            <th >Age</th>
+            <th >Pays</th>
+            <th >Email</th>
+            <th >Numéro de Téléphone</th>
+            <th >Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.username }}</td>
+                <td>{{ u.nom }}</td>
+                <td>{{ u.prenom }}</td>
+                <td>{{ u.genre }}</td>
+                <td>{{ u.age }}</td>
+                <td>{{ u.pays }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.numTel }}</td>
+                <td>
+                    {% for role in u.roles %}
+                        {% if role == "ROLE_USER" %}
+                            Utilisateur
+                        {% elseif role == "ROLE_ADMIN" %}
+                            Administrateur
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

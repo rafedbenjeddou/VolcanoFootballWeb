@@ -1,0 +1,99 @@
+{% extends 'base-back.html.twig' %}
+
+{% block user %}
+    {{ app.user.nom }}
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <!--<h4 class="mb-0">Responsive Table</h4>-->
+
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Utilisateur</a></li>
+                        <li class="breadcrumb-item active">Afficher</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title">Tableau des Utilisateurs</h4>
+                    <a href="{{ path('DownloadUsersData') }}" class="btn btn-dark waves-effect waves-light">Download PDF</a>
+                    <p class="card-title-desc"></p>
+
+                    <div class="table-rep-plugin">
+                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                            <table id="tech-companies-1" class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th >Username</th>
+                                    <th >Nom</th>
+                                    <th >Prenom</th>
+                                    <th >Genre</th>
+                                    <th >Age</th>
+                                    <th >Pays</th>
+                                    <th >Email</th>
+                                    <th >Numéro de Téléphone</th>
+                                    <th >Role</th>
+                                    <th style="width: 120px;">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr {% for u in users %}>
+                                    <td>{{ u.id }}</td>
+                                    <td>{{ u.username }}</td>
+                                    <td>{{ u.nom }}</td>
+                                    <td>{{ u.prenom }}</td>
+                                    <td>{{ u.genre }}</td>
+                                    <td>{{ u.age }}</td>
+                                    <td>{{ u.pays }}</td>
+                                    <td>{{ u.email }}</td>
+                                    <td>{{ u.numTel }}</td>
+                                    <td>
+
+                                        {% for role in u.roles %}
+                                            {% if role == "ROLE_USER" %}
+                                                Utilisateur
+                                            {% elseif role == "ROLE_ADMIN" %}
+                                                Administrateur
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('ModifierUser',{'id':u.id}) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="Modifier" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                        <a href="{{ path('SupprimerUser',{'id':u.id}) }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                    </td>
+                                </tr {% endfor %}>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+    <script>
+        $('#tech-companies-1').DataTable();
+    </script>
+
+{% endblock %}
