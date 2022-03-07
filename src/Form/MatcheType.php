@@ -17,7 +17,6 @@ class MatcheType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('NomMatche')
             ->add('NomArbitre')
             ->add('tour')
             ->add('date')
@@ -26,15 +25,7 @@ class MatcheType extends AbstractType
                 'class'=>Stade::class,
                 'choice_label'=>'nom'
             ])
-
-            ->add('imageFile', FileType::class, [
-                'mapped'=>false,
-                'required'=>false,
-            ])
-            ->add('imageFile2', FileType::class, [
-                'mapped'=>false,
-                'required'=>false,
-            ])
+            ->add('NomMatche')
         ;
     }
 

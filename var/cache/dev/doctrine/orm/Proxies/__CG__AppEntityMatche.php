@@ -67,10 +67,10 @@ class Matche extends \App\Entity\Matche implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'stade'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'stade', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'image1', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'image2'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'stade'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomArbitre', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'tour', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'date', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'billets', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'NomMatche', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'time', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'stade', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'image1', '' . "\0" . 'App\\Entity\\Matche' . "\0" . 'image2'];
     }
 
     /**
@@ -377,6 +377,50 @@ class Matche extends \App\Entity\Matche implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStade', [$stade]);
 
         return parent::setStade($stade);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getImage1(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage1', []);
+
+        return parent::getImage1();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setImage1(?string $image1): \App\Entity\Matche
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImage1', [$image1]);
+
+        return parent::setImage1($image1);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getImage2(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage2', []);
+
+        return parent::getImage2();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setImage2(?string $image2): \App\Entity\Matche
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImage2', [$image2]);
+
+        return parent::setImage2($image2);
     }
 
 }

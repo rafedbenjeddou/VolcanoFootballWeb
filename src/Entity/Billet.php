@@ -30,7 +30,7 @@ class Billet
     private $prix;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Categorie is required")
      */
     private $categorie;
@@ -43,7 +43,10 @@ class Billet
     private $matche;
 
 
-
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -62,12 +65,12 @@ class Billet
         return $this;
     }
 
-    public function getCategorie(): ?string
+    public function getCategorie(): ?int
     {
         return $this->categorie;
     }
 
-    public function setCategorie(string $categorie): self
+    public function setCategorie(int $categorie): self
     {
         $this->categorie = $categorie;
 
@@ -87,6 +90,35 @@ class Billet
         return $this;
     }
 
-   
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categorie $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->setBillet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categorie $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getBillet() === $this) {
+                $category->setBillet(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 }

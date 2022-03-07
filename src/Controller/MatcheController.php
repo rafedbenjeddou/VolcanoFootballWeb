@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Avis;
 use App\Entity\Matche;
+use App\Entity\Reclamation;
+use App\Form\AvisType;
 use App\Form\MatcheType;
 use App\Repository\BilletRepository;
 use App\Repository\MatcheRepository;
@@ -12,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -29,43 +33,57 @@ class MatcheController extends AbstractController
 //Route d'annotation
 //Response correspond a la reponse retournée par le controleur
 // render methode de retourner une interface
-    /**
-     * @param MatcheRepository $repository
-     * @return Response
-     * @route("/AfficheM", name="AfficheMatche")
-     */
-    public function Affiche(MatcheRepository $repository){
-        $matche=$repository->findAll(); //retourner toutes les objets
-        return $this->render('matche/Affiche.html.twig',
-            ['matche'=>$matche]);
-    }
+/**
+ * @param MatcheRepository $repository
+ * @return Response
+ * @route("/AfficheM", name="AfficheMatche")
+ */
+public function Affiche(MatcheRepository $repository){
+    $matche=$repository->findAll(); //retourner toutes les objets
+    return $this->render('matche/Affiche.html.twig',
+        ['matche'=>$matche]);
+}
     /**
      * @param MatcheRepository $repository
      * @return Response
      * @route("/AfficheUnM", name="AfficheUnMatche")
      */
-    public function Afficheunmatche(MatcheRepository $repository){
+    public function Afficheunmatche(MatcheRepository $repository,Request $request){
+        $avis = new Avis();
+        $form=$this->createForm(AvisType::class,$avis);
         $matche=$repository->findAll();
+        $form->handleRequest($request);
+        if($form->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($avis);
+            $em->flush();
+            $this->addFlash(
+                'info',
+                'Merci pour votre avis'
+            );
+            return $this->redirectToRoute('AfficheUnMatche');
+        }
         return $this->render('matche/AfficherUnMatch.html.twig',
-            ['matche'=>$matche]);
+            ['matche'=>$matche,'form'=>$form->createView()]);
     }
     /**
      * @param MatcheRepository $repository
+     * @return Response
      * @route("/ListeM", name="ListeM", methods={"GET"})
      */
-    public function ListeM(MatcheRepository $repository)
+    public function ListeM(MatcheRepository $repository): Response
     {    // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
-        $matche=$repository->findAll(); //retourner toutes les objets
+        $matche = $repository->findAll(); //retourner toutes les objets
 
 
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('matche/ListeM.html.twig',
-            ['matche'=>$matche]);
+            ['matche' => $matche]);
 
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
@@ -84,24 +102,22 @@ class MatcheController extends AbstractController
 
 
     }
-
 //repository- l'entité
 //Manger- base
-    /**
-     * @route("/deleteMatche/{id}",name="deleteMatche")
-     */
-    function Delete_matche($id,MatcheRepository $repository){
-        $matche=$repository->find($id);
-        $em=$this->getDoctrine()->getManager();
-        $em->remove($matche);
-        $em->flush(); //
-        $this->addFlash(
-            'info',
-            'Deleted Successfully'
-        );
-        return $this->redirectToRoute('AfficheMatche');
-    }
-
+/**
+ * @route("/deleteMatche/{id}",name="deleteMatche")
+ */
+function Delete_matche($id,MatcheRepository $repository){
+    $matche=$repository->find($id);
+    $em=$this->getDoctrine()->getManager();
+    $em->remove($matche);
+    $em->flush(); //
+    $this->addFlash(
+        'info',
+        'Deleted Successfully'
+    );
+    return $this->redirectToRoute('AfficheMatche');
+}
     /**
      * @param Request $request
      * @return Response
@@ -125,14 +141,14 @@ class MatcheController extends AbstractController
 
 
                 if ($uploadedFile) {
-                        $destination = $this->getParameter('kernel.project_dir') . '/public/upload';
-                        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-                        $newFilename = $originalFilename. '-' . uniqid() . '.' . $uploadedFile->guessExtension();
-                        $uploadedFile->move(
-                            $destination,
-                            $newFilename
-                        );
-                        $matche->setImage1($newFilename);
+                    $destination = $this->getParameter('kernel.project_dir') . '/public/upload';
+                    $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilename = $originalFilename. '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+                    $uploadedFile->move(
+                        $destination,
+                        $newFilename
+                    );
+                    $matche->setImage1($newFilename);
 
 
                 }
@@ -254,4 +270,127 @@ class MatcheController extends AbstractController
         ]);
 
     }
+
+
+    /**
+     * @Route("/AffMatcheAjax", name="AffMatchAjax", methods={"POST"})
+     */
+    public function AffAjaxMatch(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+
+        $entities =  $em->getRepository(Matche::class)->findAll();
+
+        if(!$entities) {
+            $result['entities']['error'] = "Aucun matche trouvée";
+        } else {
+            $result['entities'] = $this->getRealEntities($entities);
+        }
+
+        return new Response(json_encode($result));
+    }
+
+    /**
+     * @Route("/RechercheMatche", name="rechMatch", methods={"POST"})
+     */
+    public function RechercheAjaxMatch(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $requestString = $request->get('q');
+
+        $entities =  $em->getRepository(Matche::class)->Recherche($requestString);
+
+        if(!$entities) {
+            $result['entities']['error'] = "Aucun matche trouvée";
+        } else {
+            $result['entities'] = $this->getRealEntities($entities);
+        }
+
+        return new Response(json_encode($result));
+    }
+
+    /**
+     * @Route("/RechercheMatcheDate", name="rechMatchDate", methods={"POST"})
+     */
+    public function RechercheAjaxMatchDate(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $requestString = $request->get('q');
+
+        $entities =  $em->getRepository(Matche::class)->RechercheDate($requestString);
+
+        if(!$entities) {
+            $result['entities']['error'] = "Aucun matche trouvée";
+        } else {
+            $result['entities'] = $this->getRealEntities($entities);
+        }
+
+        return new Response(json_encode($result));
+    }
+
+    public function getRealEntities($matches){
+
+        foreach ($matches as $m){
+
+            $realEntities[$m->getId()] = [$m->getNomMatche(),$m->getDate()->format('d'),$m->getDate()->format('m'),$m->getDate()->format('y'),$m->getTime()->format('h'),$m->getNomArbitre(),$m->getStade()->getNom(),$m->getImage1(),$m->getImage2(),];
+        }
+
+        return $realEntities;
+    }
+    /**
+     * @Route("/stat", name="/stat")
+     */
+    public function indexAction(){
+        $repository = $this->getDoctrine()->getRepository(Matche::class);
+        $matche = $repository->findAll();
+        $em = $this->getDoctrine()->getManager();
+
+        $Marcbatta=0;
+        $MikaelLesage=0;
+        $FrançoisLetexier=0;
+        $EducationCityStadium=0;
+
+
+
+
+        foreach ($matche as $matche)
+        {
+            if (  $matche->getNomArbitre()=="Marc batta")  :
+
+                $Marcbatta+=1;
+            elseif ($matche->getNomArbitre()=="Mikael Lesage"):
+
+                $MikaelLesage+=1;
+            elseif ($matche->getNomArbitre()=="François Letexier"):
+                $FrançoisLetexier +=1;
+
+
+            endif;
+
+        }
+        $pieChart = new PieChart();
+        $pieChart->getData()->setArrayToDataTable(
+            [['stade', 'nombres'],
+                ['Marc batta',     $Marcbatta],
+                ['Mikael Lesage', $MikaelLesage],
+                ['François Letexier',   $FrançoisLetexier]
+
+            ]
+        );
+        $pieChart->getOptions()->setTitle('Statistique Matche Arbitre:');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+        return $this->render('matche/Stat.html.twig', array('piechart' => $pieChart));
+    }
+
 }
+
