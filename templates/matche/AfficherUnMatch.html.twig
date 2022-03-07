@@ -5,21 +5,16 @@
         <div class=content></div>
         <div class=innerbanner><h2 class=bannerHeadline><span>Match</span></h2></div>
     </div>
-
-    <!-- Flash success mailing -->
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
-
-    <!-- Button bch y5rjli el Modal -->
         </div>
-             <div class="row">
-                <button type="button" class="btn btn-primary bg-red center-block col order-5" data-toggle="modal" data-target="#exampleModal">
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Donnez votre Avis
-           </button>
-        </div>
+        </button>
 
-    <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -45,7 +40,7 @@
                         </div>
                         <div class="save-stngs pd3">
                             <ul>
-
+                                <!--<li><button type="submit">Envoyer</button></li>-->
                                 <li> {{ form_widget(form.Envoyer) }}</li>
                             </ul>
                         </div>
@@ -53,7 +48,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-
                     </div>
                 </div>
             </div>
@@ -61,9 +55,6 @@
 
 
     {% endfor %}
-    <!-- Fin Modal -->
-
-    <!-- debut Page d'affichage normal -->
 
     <section class=innerpage_all_wrap>
 
@@ -72,9 +63,6 @@
                 <h2 class=heading>
                     match <span>Coupe du Monde Qatar 2022™ </span>
                 </h2>
-
-  <!--  Barre de recherche Selon NomMatche & Date -->
-
                 <div class="bg-red shop_select clearfix">
                     <div class="select_shopping">
                         <form>
@@ -82,7 +70,7 @@
                                 <label class="headline01">Sort by match</label>
                                 <select class="form-control" id="match">
                                     {% for m in matche %}
-                                    <option value="{{m.NomMatche}}">{{m.NomMatche}}</option>
+                                        <option value="{{m.NomMatche}}">{{m.NomMatche}}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -102,15 +90,15 @@
             </div>
         </div>
     </section>
-    <!--  Hajet tb3ina template -->
+
     <script type=text/javascript>
         $(function () {
             $('#da_gallery .gallery-list ').hoverdir();
         });
     </script>
-    <!--  3aytet lel library ta3 ajax -->
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!--  Selon NomMatche -->
+
     <script type="text/javascript">
         jQuery(document).ready(function() {
             var searchRequest = null;
@@ -138,19 +126,19 @@
                                         var img1={{ asset('upload/') }}+value[7];
                                         var img2={{ asset('upload/')  }}+value[8];
                                         entitySelector.append(
-                                        '<div class="matchSchedule_details row"> <div class="match_next right-triangle"> <div class="wrap_match_next right-triangle"><div class=right-padding><h4 class=headline03>'+value[0]+ '</h4>'+
+                                            '<div class="matchSchedule_details row"> <div class="match_next right-triangle"> <div class="wrap_match_next right-triangle"><div class=right-padding><h4 class=headline03>'+value[0]+ '</h4>'+
                                             '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>'+
-                                        '</div></div>'+
-                                        '<div class=match_versus><div class="bg-blackimg match_versus02"><div class=nextmatchDetails><div class="wrap-logo clearfix">'+
+                                            '</div></div>'+
+                                            '<div class=match_versus><div class="bg-blackimg match_versus02"><div class=nextmatchDetails><div class="wrap-logo clearfix">'+
                                             '<div class=logo-match><img src="'+img1+'" alt=image></div>'+
                                             '<div class=match_vs>vs</div>'+
                                             '<div class=logo-match><img src="'+img2+'" alt=image></div>'+
                                             '</div>'+
                                             '<p class=match_dtls><b> Date :</b>'+value[1]+'/'+value[2]+'/'+value[3]+'</p>'+
-                                        '<p class=match_dtls><b> Time :</b>'+value[4]+ 'PM</p>'+
-                                        '<p class=match_dtls><b> Nom Arbitre Principal :</b>'+value[5]+'</p>'+
-                                        '<p class=match_dtls><b> Stade :</b>'+value[6]+'<br> <li><a href="ListByMatche/'+id+'" class="btn-small01 btn-green">Billet</a></li></p></div>'+
-                                        '</div></div></div>'
+                                            '<p class=match_dtls><b> Time :</b>'+value[4]+ 'PM</p>'+
+                                            '<p class=match_dtls><b> Nom Arbitre Principal :</b>'+value[5]+'</p>'+
+                                            '<p class=match_dtls><b> Stade :</b>'+value[6]+'<br> <li><a href="ListByMatche/'+id+'" class="btn-small01 btn-green">Billet</a></li></p></div>'+
+                                            '</div></div></div>'
                                         );
                                     } else {
                                         entitySelector.append('<div class="error">'+value+'</div>');
@@ -163,7 +151,7 @@
             });
         });
     </script>
-    <!--  Selon Date -->
+
     <script type="text/javascript">
         jQuery(document).ready(function() {
             var searchRequest = null;
@@ -218,54 +206,51 @@
         });
     </script>
 
-    <!--  Pour afficher au debut la page de garde sans recherche -->
     <script type="text/javascript">
         jQuery(document).ready(function() {
             var searchRequest = null;
-
-                var entitySelector = $("#result").html('');
-                if (searchRequest != null)
-                    searchRequest.abort();
-                searchRequest = $.ajax({
-                    type: "POST",
-                    url: "{{ path('AffMatchAjax') }}",
-                    data: {
-                        'q' : 0
-                    },
-                    dataType: "text",
-                    success: function(msg){
-                        console.log(msg);
-                        var result = JSON.parse(msg);
-                        $.each(result, function(key, arr) {
-                            $.each(arr, function(id, value) {
-                                if (key === 'entities') {
-                                    if (id !== 'error') {
-                                        var img1={{ asset('upload/') }}+value[7];
-                                        var img2={{ asset('upload/')  }}+value[8];
-                                        entitySelector.append(
-                                            '<div class="matchSchedule_details row"> <div class="match_next right-triangle"> <div class="wrap_match_next right-triangle"><div class=right-padding><h4 class=headline03>'+value[0]+ '</h4>'+
-                                            '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>'+
-                                            '</div></div>'+
-                                            '<div class=match_versus><div class="bg-blackimg match_versus02"><div class=nextmatchDetails><div class="wrap-logo clearfix">'+
-                                            '<div class=logo-match><img src="'+img1+'" alt=image></div>'+
-                                            '<div class=match_vs>vs</div>'+
-                                            '<div class=logo-match><img src="'+img2+'" alt=image></div>'+
-                                            '</div>'+
-                                            '<p class=match_dtls><b> Date :</b>'+value[1]+'/'+value[2]+'/'+value[3]+'</p>'+
-                                            '<p class=match_dtls><b> Time :</b>'+value[4]+ 'PM</p>'+
-                                            '<p class=match_dtls><b> Nom Arbitre Principal :</b>'+value[5]+'</p>'+
-                                            '<p class=match_dtls><b> Stade :</b>'+value[6]+'<br> <li><a href="ListByMatche/'+id+'" class="btn-small01 btn-green">Billet</a></li></p></div>'+
-                                            '</div></div></div>'
-                                        );
-                                    } else {
-                                        entitySelector.append('<div class="error">'+value+'</div>');
-                                    }
+            var entitySelector = $("#result").html('');
+            if (searchRequest != null)
+                searchRequest.abort();
+            searchRequest = $.ajax({
+                type: "POST",
+                url: "{{ path('AffMatchAjax') }}",
+                data: {
+                    'q' : 0
+                },
+                dataType: "text",
+                success: function(msg){
+                    console.log(msg);
+                    var result = JSON.parse(msg);
+                    $.each(result, function(key, arr) {
+                        $.each(arr, function(id, value) {
+                            if (key === 'entities') {
+                                if (id !== 'error') {
+                                    var img1={{ asset('upload/') }}+value[7];
+                                    var img2={{ asset('upload/')  }}+value[8];
+                                    entitySelector.append(
+                                        '<div class="matchSchedule_details row"> <div class="match_next right-triangle"> <div class="wrap_match_next right-triangle"><div class=right-padding><h4 class=headline03>'+value[0]+ '</h4>'+
+                                        '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>'+
+                                        '</div></div>'+
+                                        '<div class=match_versus><div class="bg-blackimg match_versus02"><div class=nextmatchDetails><div class="wrap-logo clearfix">'+
+                                        '<div class=logo-match><img src="'+img1+'" alt=image></div>'+
+                                        '<div class=match_vs>vs</div>'+
+                                        '<div class=logo-match><img src="'+img2+'" alt=image></div>'+
+                                        '</div>'+
+                                        '<p class=match_dtls><b> Date :</b>'+value[1]+'/'+value[2]+'/'+value[3]+'</p>'+
+                                        '<p class=match_dtls><b> Time :</b>'+value[4]+ 'PM</p>'+
+                                        '<p class=match_dtls><b> Nom Arbitre Principal :</b>'+value[5]+'</p>'+
+                                        '<p class=match_dtls><b> Stade :</b>'+value[6]+'<br> <li><a href="ListByMatche/'+id+'" class="btn-small01 btn-green">Billet</a></li></p></div>'+
+                                        '</div></div></div>'
+                                    );
+                                } else {
+                                    entitySelector.append('<div class="error">'+value+'</div>');
                                 }
-                            });
+                            }
                         });
-                    }
-                });
-
+                    });
+                }
+            });
         });
     </script>
 
