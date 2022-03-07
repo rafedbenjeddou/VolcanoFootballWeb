@@ -99,6 +99,6 @@ class __TwigTemplate_84c02750ef3d6c2485e3406422a7d19642415754ee2bb98d35d9d19cae4
 .container.body_default {
     border-top: 8px solid #aaaaaa;
 }
-", "@email/zurb_2/notification/local.css", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\vendor\\symfony\\twig-bridge\\Resources\\views\\Email\\zurb_2\\notification\\local.css");
+", "@email/zurb_2/notification/local.css", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\vendor\\symfony\\twig-bridge\\Resources\\views\\Email\\zurb_2\\notification\\local.css");
     }
 }

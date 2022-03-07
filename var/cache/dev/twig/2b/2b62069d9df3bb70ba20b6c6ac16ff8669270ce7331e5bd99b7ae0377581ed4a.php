@@ -83,6 +83,6 @@ class __TwigTemplate_10f221b4cf620fa3a9a96512d86d42e53ab7bce7f296c885e08d1fb3521
 {{ status_code }} {{ status_text }}
 
 */
-", "@Twig/Exception/error.js.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.js.twig");
+", "@Twig/Exception/error.js.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\vendor\\symfony\\twig-bundle\\Resources\\views\\Exception\\error.js.twig");
     }
 }

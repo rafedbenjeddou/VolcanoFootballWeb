@@ -330,6 +330,6 @@ class __TwigTemplate_f0fbda68270f0857f3fc19d7ddec60d35e44f710306fb527612e646de15
     </section>
 
 
-{% endblock %}", "commande/panier.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\templates\\commande\\panier.html.twig");
+{% endblock %}", "commande/panier.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\templates\\commande\\panier.html.twig");
     }
 }

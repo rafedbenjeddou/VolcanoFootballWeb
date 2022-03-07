@@ -71,6 +71,6 @@ class __TwigTemplate_768b9d4f156e55b6cf364d7fcb096a4f137fb74ff3e99a3e3ec9c2c363a
 <?php else: ?>
 <?php echo \$view['form']->block(\$form, 'choice_widget_collapsed') ?>
 <?php endif ?>
-", "@Framework/Form/choice_widget.html.php", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\choice_widget.html.php");
+", "@Framework/Form/choice_widget.html.php", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\choice_widget.html.php");
     }
 }

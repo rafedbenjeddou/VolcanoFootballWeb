@@ -193,6 +193,6 @@ class __TwigTemplate_069e71f8f2cd975f5575725c48ec6a965ec743dadca048c549fe6462ebe
         {% block body '' %}
     </body>
 </html>
-", "@WebProfiler/Profiler/base.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base.html.twig");
+", "@WebProfiler/Profiler/base.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\VolcanoFootball-main\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\base.html.twig");
     }
 }

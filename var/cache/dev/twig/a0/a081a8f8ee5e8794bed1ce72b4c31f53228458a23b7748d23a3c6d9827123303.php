@@ -349,6 +349,6 @@ class=active
 
 
 
-", "produit/afficherFront.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\templates\\produit\\afficherFront.html.twig");
+", "produit/afficherFront.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\templates\\produit\\afficherFront.html.twig");
     }
 }

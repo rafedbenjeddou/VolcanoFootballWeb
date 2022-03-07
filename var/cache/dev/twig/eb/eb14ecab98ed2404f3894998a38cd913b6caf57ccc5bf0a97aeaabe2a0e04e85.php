@@ -360,6 +360,6 @@ $context["role"], "ROLE_ADMIN"))) {
     </script>
 
 {% endblock %}
-", "user/afficher.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\templates\\user\\afficher.html.twig");
+", "user/afficher.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\templates\\user\\afficher.html.twig");
     }
 }

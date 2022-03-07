@@ -93,15 +93,16 @@ return [
                     .')'
                     .'|t\\-password/reset(?:/([^/]++))?(*:632)'
                 .')'
+                .'|/pay/([^/]++)/([^/]++)(*:663)'
                 .'|/stade/(?'
-                    .'|deleteStade/([^/]++)(*:671)'
-                    .'|UpdateStade/([^/]++)(*:699)'
+                    .'|deleteStade/([^/]++)(*:701)'
+                    .'|UpdateStade/([^/]++)(*:729)'
                 .')'
                 .'|/Profil(?'
-                    .'|Back/([^/]++)(*:731)'
-                    .'|/([^/]++)(*:748)'
+                    .'|Back/([^/]++)(*:761)'
+                    .'|/([^/]++)(*:778)'
                 .')'
-                .'|/ConfirmerCompte/([^/]++)(*:782)'
+                .'|/ConfirmerCompte/([^/]++)(*:812)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -128,11 +129,12 @@ return [
         584 => [[['_route' => 'reservationk', '_controller' => 'App\\Controller\\ReservationkController::index'], ['id', 'type'], null, null, false, true, null]],
         592 => [[['_route' => 'offre', '_controller' => 'App\\Controller\\ReservationkController::TypeReservation'], ['id'], null, null, false, true, null]],
         632 => [[['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null]],
-        671 => [[['_route' => 'deleteStade', '_controller' => 'App\\Controller\\StadeController::deleteS'], ['id'], null, null, false, true, null]],
-        699 => [[['_route' => 'UpdateStade', '_controller' => 'App\\Controller\\StadeController::Update'], ['id'], null, null, false, true, null]],
-        731 => [[['_route' => 'ProfilBack', '_controller' => 'App\\Controller\\UserController::ProfilBack'], ['id'], null, null, false, true, null]],
-        748 => [[['_route' => 'Profil', '_controller' => 'App\\Controller\\UserController::Profil'], ['id'], null, null, false, true, null]],
-        782 => [
+        663 => [[['_route' => 'pay', '_controller' => 'App\\Controller\\ReservationkController::pay'], ['id', 'type'], null, null, false, true, null]],
+        701 => [[['_route' => 'deleteStade', '_controller' => 'App\\Controller\\StadeController::deleteS'], ['id'], null, null, false, true, null]],
+        729 => [[['_route' => 'UpdateStade', '_controller' => 'App\\Controller\\StadeController::Update'], ['id'], null, null, false, true, null]],
+        761 => [[['_route' => 'ProfilBack', '_controller' => 'App\\Controller\\UserController::ProfilBack'], ['id'], null, null, false, true, null]],
+        778 => [[['_route' => 'Profil', '_controller' => 'App\\Controller\\UserController::Profil'], ['id'], null, null, false, true, null]],
+        812 => [
             [['_route' => 'ConfirmerCompte', '_controller' => 'App\\Controller\\UserController::confirmerCompte'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

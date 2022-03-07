@@ -1,0 +1,25 @@
+
+{% block content %}
+
+    {% block css %}
+        <link rel=stylesheet href="{{ asset('front-office/vendor.css') }}">
+        <link rel=stylesheet href="{{ asset('front-office/style.css') }}">
+        <link rel=stylesheet type=text/css href="{{ asset('front-office/css/layerslider.css') }}">
+    {% endblock %}
+<section>
+    <div class=container>
+        <div class=row><h2 class=heading>Espace<span>    Vérification</span></h2>
+            <p class=headParagraph></p>
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+            <div  class="feedbackContact-open formcontact clearfix">
+
+                <div class=form-group>
+                </div>
+            </div>
+            {{ form_end(form) }}
+            <button type="submit">submit</button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

@@ -171,6 +171,6 @@ class __TwigTemplate_7dc0a62a6def44f4c71048bf3a36d09f12791d497436b3ec53d86bd5d1a
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\explain.html.twig");
     }
 }

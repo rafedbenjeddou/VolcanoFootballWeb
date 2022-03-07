@@ -434,6 +434,6 @@ class __TwigTemplate_390636440e3041d3fe56e0d6b25033e514b832c13cc7bfa044ec14a5a80
         {% endif %}
     </div>
 {% endblock %}
-", "@WebProfiler/Collector/http_client.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\http_client.html.twig");
+", "@WebProfiler/Collector/http_client.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\VolcanoFootball-main\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\http_client.html.twig");
     }
 }

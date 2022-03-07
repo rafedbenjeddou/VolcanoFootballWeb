@@ -319,6 +319,6 @@ class __TwigTemplate_b4aa034396a12b0d1e302b15cafa8440e23021d071d7b795732c0571d88
     </script>
 
 {% endblock %}
-", "produit/afficher.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\templates\\produit\\afficher.html.twig");
+", "produit/afficher.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\templates\\produit\\afficher.html.twig");
     }
 }

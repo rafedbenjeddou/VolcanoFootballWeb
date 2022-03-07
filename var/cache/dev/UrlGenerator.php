@@ -45,6 +45,7 @@ return [
     'AfficherProduitsFront' => [[], ['_controller' => 'App\\Controller\\ProduitController::AfficherProduitsFront'], [], [['text', '/AfficherProduitsFront']], [], []],
     'reservationk' => [['id', 'type'], ['_controller' => 'App\\Controller\\ReservationkController::index'], [], [['variable', '/', '[^/]++', 'type'], ['variable', '/', '[^/]++', 'id'], ['text', '/reservation']], [], []],
     'offre' => [['id'], ['_controller' => 'App\\Controller\\ReservationkController::TypeReservation'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/reservation']], [], []],
+    'pay' => [['id', 'type'], ['_controller' => 'App\\Controller\\ReservationkController::pay'], [], [['variable', '/', '[^/]++', 'type'], ['variable', '/', '[^/]++', 'id'], ['text', '/pay']], [], []],
     'mesreservation' => [[], ['_controller' => 'App\\Controller\\ReservationkController::Reservation'], [], [['text', '/mesreservation']], [], []],
     'facture' => [['id'], ['_controller' => 'App\\Controller\\ReservationkController::facture'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/facture']], [], []],
     'app_forgot_password_request' => [[], ['_controller' => 'App\\Controller\\ResetPasswordController::request'], [], [['text', '/reset-password']], [], []],

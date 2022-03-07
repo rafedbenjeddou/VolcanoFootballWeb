@@ -81,6 +81,6 @@ class __TwigTemplate_50f8f3d7dc14efa5e18f83edb7a86a0fd65bb8a2bbf220377b307b44c0f
 
 <a href=\"{{ url('ConfirmerCompte', {\"token\": token}) }}\">Cliquer ici pour confirmer votre compte</a>
 
-", "email/inscription.html.twig", "C:\\Users\\jasser\\VolcanoFootball-Utilisateur-Produit-Commande\\templates\\email\\inscription.html.twig");
+", "email/inscription.html.twig", "C:\\Users\\jasser\\Documents\\GitHub\\jasser\\1234\\templates\\email\\inscription.html.twig");
     }
 }
