@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AgenceRepository::class)
@@ -17,23 +18,27 @@ class Agence
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      * *@Assert\Length(
      *     min = 5,
      *    max = 50,
     *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
     *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
      *)
+     
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Nom Arbitre is required")
+     * @Groups("post:read")
 
      *@Assert\Length(
      *     min = 5,
@@ -47,6 +52,7 @@ class Agence
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Nom Arbitre is required")
+     * @Groups("post:read")
 
      * *@Assert\Length(
      *     min = 5,
@@ -59,6 +65,7 @@ class Agence
 
     /**
      * @ORM\OneToMany(targetEntity=Hebergement::class, mappedBy="agence",cascade={"all"},orphanRemoval=true)
+     * 
      */
     private $hebergements;
 

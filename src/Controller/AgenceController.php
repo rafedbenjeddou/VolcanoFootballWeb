@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Form\AgenceType;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class AgenceController extends AbstractController
 {
@@ -100,6 +101,22 @@ class AgenceController extends AbstractController
     ]);
     
 }
+
+
+   /**
+     * @Route("/All", name="AfficheAgenceApi")
+     */
+    public function AfficheApi(AgenceRepository $repo,NormalizerInterface $Normalizer) {
+        $agence=$repo->findAll();
+
+        $jsonContent=$Normalizer->normalize($agence,'json',['groups'=>'post:read']);
+       
+
+        return new Response(json_encode($jsonContent));
+
+    }
+
+
 
 
 }

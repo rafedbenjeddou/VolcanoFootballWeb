@@ -28,6 +28,8 @@
         <link href="{{ asset ('back-office/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">        {% block stylesheets %}{% endblock %}
+   
     {% endblock %}
 </head>
 
@@ -255,6 +257,9 @@
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="AfficheR">Afficher</a></li>
                                 <li><a href="AddR">Ajouter</a></li>
+                                <li><a href="calendar">Calendrier</a></li>
+
+                                
                             </ul>
                         </li>
 
@@ -375,6 +380,8 @@
 
 
     <script src="{{ asset ('back-office/assets/js/app.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js" integrity="sha256-YicH/8aE660iEnJtgll3vT54dJApy3XkYmqNfGVFEzA=" crossorigin="anonymous"></script>
+
 {% endblock %}
 
 

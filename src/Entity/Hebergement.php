@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -18,12 +19,14 @@ class Hebergement
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *  @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Nom Arbitre is required")
+     *  @Groups("post:read")
 
      * *@Assert\Length(
      *     min = 5,
@@ -36,12 +39,14 @@ class Hebergement
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Nom Arbitre is required")
+     *  @Groups("post:read")
 
      * *@Assert\Length(
      *     min = 5,
@@ -57,11 +62,13 @@ class Hebergement
 
     /**
      * @ORM\ManyToOne(targetEntity=Agence::class, inversedBy="hebergements")
+     * 
      */
     private $agence;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Groups("post:read")
      */
     private $photoH;
 

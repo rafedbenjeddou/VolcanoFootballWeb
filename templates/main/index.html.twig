@@ -1,21 +1,17 @@
-{% extends 'calendar.html.twig' %}
+{% extends 'base-back.html.twig' %}
+{% block content %}
 
-{% block title %}Hello MainController!{% endblock %}
 
-{% block stylesheets %}
     <style>
         #calendrier{
             width: 80%;
             margin: auto;
         }
     </style>
-{% endblock %}
-{% block body %}
+
     <div id="calendrier">
     </div>
-{% endblock %}
 
-{% block javascripts %}
 <script>
     window.onload = () => {
         let calendarElt = document.querySelector("#calendrier")
@@ -28,16 +24,25 @@
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek'
             },
-            events: [
-    {
-      start: '2022-01-04T10:00:00',
-      end: '2022-04-04T16:00:00',
-      display: 'background'
-    }
-  ]        
+            events:  {{data|raw}},
+            editable: true,
+            eventResizableFromStart: true
+
+             })    
+    
+             calendar.on('eventChange', (e) => {
+            let url = `/api/${e.event.id}/edit`
+            let donnees = {
+                "title": e.event.hebergement,
+                "description": e.event.extendedProps.user,
+                "start": e.event.dateDebut,
+                "end": e.event.dateFin
+            }
+            
+            let xhr = new XMLHttpRequest
+            xhr.open("PUT", url)
+            xhr.send(JSON.stringify(donnees))
         })
-     
-   
         calendar.render()
     }
 </script>

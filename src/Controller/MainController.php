@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/main", name="main")
+     * @Route("/calendar", name="calendar")
      */
     public function index(ReservationRepository $calendar): Response
     {
@@ -22,10 +22,10 @@ class MainController extends AbstractController
         foreach($events as $event){
             $rdvs[] = [
                 'id' => $event->getId(),
+                'title' => $event->getHebergement()->getNomH(),
                 'start' => $event->getdateDebut()->format('Y-m-d H:i:s'),
                 'end' => $event->getdateFin()->format('Y-m-d H:i:s'),
-                'nom' => $event->getUser(),
-                'hebergement' => $event->getHebergement(),
+                'description' => $event->getUser()->getNom(),
             ];
         }
 

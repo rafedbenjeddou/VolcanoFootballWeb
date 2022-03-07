@@ -173,7 +173,6 @@ class ReservationController extends AbstractController
     function sendEmailHebergement(Mailer $mailer){
 
         $mailer->sendEmailHebergement($this->getUser()->getEmail());
-        $this->addFlash("success", "Réservation effectuée avec succès! Merci de consulter votre mail");
         return  $this->redirectToRoute('AfficheRF');
     }
 }

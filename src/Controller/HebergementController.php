@@ -147,13 +147,12 @@ class HebergementController extends AbstractController
     }  
    
     
-                /**
+     /**
      * @Route("/AfficheRF", name="AfficheRF")
      */
      
     public function AfficheRF(ReservationRepository $repo) {
-       
-        $reservation=$repo->findAll();
+        $reservation=$repo->findBy(["user" => $this->getUser()]);
         return $this->render('hebergement/AfficheRF.html.twig',
         ['reservation'=>$reservation]);
     }
