@@ -26,6 +26,7 @@ class MainController extends AbstractController
                 'start' => $event->getdateDebut()->format('Y-m-d H:i:s'),
                 'end' => $event->getdateFin()->format('Y-m-d H:i:s'),
                 'description' => $event->getUser()->getNom(),
+
             ];
         }
 

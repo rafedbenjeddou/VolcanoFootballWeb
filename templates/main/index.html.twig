@@ -1,7 +1,6 @@
 {% extends 'base-back.html.twig' %}
 {% block content %}
 
-
     <style>
         #calendrier{
             width: 80%;
@@ -11,8 +10,11 @@
 
     <div id="calendrier">
     </div>
+    
+
 
 <script>
+    
     window.onload = () => {
         let calendarElt = document.querySelector("#calendrier")
         let calendar = new FullCalendar.Calendar(calendarElt, {
@@ -28,20 +30,24 @@
             editable: true,
             eventResizableFromStart: true
 
-             })    
-    
+             })     
              calendar.on('eventChange', (e) => {
-            let url = `/api/${e.event.id}/edit`
-            let donnees = {
-                "title": e.event.hebergement,
-                "description": e.event.extendedProps.user,
-                "start": e.event.dateDebut,
-                "end": e.event.dateFin
-            }
+                 let url = `/api/${e.event._def.publicId}/edit`
+                 let donnees = {
+                     "id": e.event._def.publicId,
+                     "title": e.event._def.title,
+                     "description": e.event._def.extendedProps.description,
+                     "start": e.event._instance.range.start,
+                     "end": e.event._instance.range.end
+                    }
+                    
+                    
             
             let xhr = new XMLHttpRequest
             xhr.open("PUT", url)
+            console.log({donnees});
             xhr.send(JSON.stringify(donnees))
+            
         })
         calendar.render()
     }
