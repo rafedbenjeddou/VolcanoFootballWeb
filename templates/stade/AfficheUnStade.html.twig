@@ -1,0 +1,62 @@
+{% extends 'base-front.html.twig' %}
+
+{% block content %}
+
+    <div class=video-container >
+        <iframe
+                src=https://www.youtube.com/embed/ItLwUD-ea94 class=liveVideo
+                allowfullscreen="">
+            <h2 class=bannerHeadline>Qatar<span>2022</span></h2>
+        </iframe>
+    </div>
+
+    <section class=playerDetails02>
+        <div class=container>
+            <div class=row><h2 class=heading><span>Stade Qatar 2022</span></h2>
+                <p class=headParagraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat quisquam
+                    reprehenderit, blanditiis nam debitis libero facilis illum repudiandae eveniet voluptatibus
+                    quibusdam illo ea nisi ipsa accusantium nobis animi asperiores quaerat ,Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit. Fugiat quisquam <reprehe></reprehe>nderit, blanditiis nam debitis libero facilis
+                    illum repudiandae eveniet voluptatibus quibusdam illo ea nisi ipsa accusantium nobis animi
+                    asperiores quaerat .</p>
+                <div>
+                    <aside class=contentinner>
+                        <div class="shop-wrap-slider clearfix" >
+                            <div>
+                                {% for s in stade %}
+                                    <div class="shop01 clearfix">
+                                    <div class=shop-img>
+                                        <div class=bgimg style=background:url({{ asset('uploads/images/') ~ s.photo  }})></div>
+                                    </div>
+                                    <div class=shop_info><h4 class=headline01><a href={{ path('frontkiosque',{'id':s.id}) }}>{{ s.nom }}</a></h4>
+
+                                        <p>{{s.adresse}}</p>
+                                        <div class=headline01> Capacite : {{ s.capacite }}</div>
+                                        <div role=tabpanel class="tab-pane clearfix" id=dateouverture>
+                                            <div class=headline01><h4><p>voila la date d'ouverture du {{ s.nom }}</p> </span>{{ s.dateouverture|date }} </h4>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>{% endfor %}
+
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base-front.html.twig' %}
+
+{% block content %}
+<section class=playerDetails02>
+        <div class="container">
+
+                <div class="col-lg-4 col-md-4">
+                    <div class="heading small">
+                    </div>
+                    <div class="view_chart">
+                        <div class="view_chart_header" >
+                            <div class="ui radio checkbox mt-1">
+                                <input  type="radio" name="example1" checked="">
+                                <label class="chk_method" style="color:#cc8500 !important;">Credit or Debit Cards</label>
+                            </div>
+                            <div class="cards_right">
+                                <img src="{{ asset ('facture/images/cards.png')}}" alt="">
+                            </div>
+                        </div>
+
+                        {{ form_start(form)}}
+                        <div class="pymt_mthd_body">
+                            <div class="paragraph02">
+                                <label class="label15">Card Number*</label>
+
+                                {{ form_widget(form.CardNumber,{'attr':{'placeholder': 'Enter Card Number' ,'class': 'job-input', 'id':'cardnumber' ,'pattern':'.{12}' , 'title' :"Field must be 12 numbers" }})}}
+                                <p class="shippingError error" style="display:none; color:red;" id="cardnumber_error">* Required field</p>
+
+                            </div>
+                            <div class="paragraph02">
+                                <label class="label15">Full Name*</label>
+
+                                {{ form_widget(form.Name,{'attr':{ 'placeholder': 'Enter Full Name' ,'class': 'job-input' , 'id':'name' }})}}
+                                <p class="shippingError error" style="display:none; color:red;" id="name_error">* Required field</p>
+                            </div>
+                            <div class="fdsf452">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="tab-pane active fade in">
+                                            <label >Expiring*</label>
+                                            <input id="date" type="month" class="job-input datepicker-here" data-language="en"  placeholder="Expiring"  required>
+                                            <p class="shippingError error" style="display:none; color:red;" id="date_error">* Required field</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="paragraph02">
+                                            <label class="label15">Cvv*</label>
+                                            {{ form_widget(form.Cvv,{'attr':{ 'placeholder': 'Enter Cvv' ,'class': 'job-input' , 'id':'cvv' , 'pattern':'.{3}' , 'title' :"Field must be 3 numbers" }})}}
+                                            <p class="shippingError error" style="display:none; color:red;" id="cvv_error"> Required field</p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="col-md-12">
+
+                <button class="btn-small btn-green" type="submit" >PROCEED PAYMENT</button>
+
+                {{ form_end(form)}}
+            </div>
+
+
+        </div>
+</section>
+{% endblock %}

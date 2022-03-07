@@ -1,0 +1,27 @@
+{% extends 'base-back.html.twig' %}
+
+{% block content %}
+
+    <div class="row" , style="width: 100%;">
+        <div class="col-12">
+            <div class="card">
+
+
+                <div class="card-body">
+
+                    <h4 class="card-title">Liste Des Kiosque</h4>
+                    <table id="tech-companies-1" class="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        {% for R in reservations %}
+                        <th>
+                            <tr>{{ R.type }}</tr>
+                            <tr>{{ R.getCreatedAt() | date }}</tr>
+                            <tr>{{ R.getKiosque().getNom() }}</tr>
+                        </th>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
