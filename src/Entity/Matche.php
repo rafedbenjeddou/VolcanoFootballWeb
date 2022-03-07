@@ -74,11 +74,13 @@ class Matche
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Image is required")
      */
     private $image1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Assert\NotBlank(message="Image is required")
      */
     private $image2;
 

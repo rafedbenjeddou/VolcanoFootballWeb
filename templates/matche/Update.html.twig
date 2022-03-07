@@ -39,13 +39,14 @@
                             {{ form_widget(form.time) }}
                         </div>
                     </div>
+                    {{ form_row(form.imageFile) }}
+                    {{ form_row(form.imageFile2)}}
 
 
                     {{ form_widget(form.NomArbitre) }}
                     {{ form_widget(form.tour) }}
-
                     {{ form_widget(form.date) }}
-                    {{ form_widget(form.time) }}
+
                     {{ form_end(form) }}
 
                 </div>
@@ -53,3 +54,4 @@
         </div>
     </div>
 {% endblock %}
+
