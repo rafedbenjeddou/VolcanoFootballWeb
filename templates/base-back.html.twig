@@ -27,6 +27,8 @@
         <!-- App Css-->
         <link href="{{ asset ('back-office/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">        {% block stylesheets %}{% endblock %}
+
 
     {% endblock %}
 </head>
@@ -46,7 +48,7 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
-                        <a href="index.html" class="logo logo-dark">
+                        <a href="" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="{{ asset ('back-office/assets/images/logo-sm-dark.png')}}" alt="" height="22">
                                 </span>
@@ -55,7 +57,7 @@
                                 </span>
                         </a>
 
-                        <a href="index.html" class="logo logo-light">
+                        <a href="" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="{{ asset ('back-office/assets/images/logo-sm-light.png')}}" alt="" height="22">
                                 </span>
@@ -160,6 +162,7 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{ path('StatistiquesProduits') }}">Statistiques des Produits</a></li>
+                                <li><a href="{{ path('StatistiquesArtistes') }}">Statistiques des Artistes</a></li>
                             </ul>
                         </li>
                         <!-- END Statistiques -->
@@ -236,19 +239,30 @@
                                 <span>Agence</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficheAgence') }}">Afficher</a></li>
+                                <li><a href="{{ path('AddA') }}">Ajouter</a></li>
                             </ul>
                         </li>
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ri-store-2-line"></i>
                                 <span>Hebergement</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficheH') }}">Afficher</a></li>
+                                <li><a href="{{ path('AddH') }}">Ajouter</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-store-2-line"></i>
+                                <span>Reservation</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{ path('AfficheR') }}">Afficher</a></li>
+                                <li><a href="{{ path('AddR') }}">Ajouter</a></li>
+                                <li><a href={{ path('calendar') }}>Calendrier</a></li>
+
                             </ul>
                         </li>
 
@@ -262,8 +276,8 @@
                                 <span>Match</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficheMatche') }}">Afficher</a></li>
+                                <li><a href="{{ path('ajouterMatch') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -273,8 +287,8 @@
                                 <span>Billet</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficheBillet') }}">Afficher</a></li>
+                                <li><a href="{{ path('ajouterBillet') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -288,8 +302,8 @@
                                 <span>Stade</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficheStade') }}">Afficher</a></li>
+                                <li><a href="{{ path('AddStade') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -299,8 +313,8 @@
                                 <span>Restaurent</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficheKiosque') }}">Afficher</a></li>
+                                <li><a href="{{ path('AddKiosque') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -314,8 +328,8 @@
                                 <span>Evenement</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficherEvenements') }}">Afficher</a></li>
+                                <li><a href="{{ path('AjouterEvenement') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -325,8 +339,8 @@
                                 <span>Artiste</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Afficher</a></li>
-                                <li><a href="#">Ajouter</a></li>
+                                <li><a href="{{ path('AfficherArtistes') }}">Afficher</a></li>
+                                <li><a href="{{ path('AjouterArtiste') }}">Ajouter</a></li>
                             </ul>
                         </li>
 
@@ -369,6 +383,9 @@
 
 
     <script src="{{ asset ('back-office/assets/js/app.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js" integrity="sha256-YicH/8aE660iEnJtgll3vT54dJApy3XkYmqNfGVFEzA=" crossorigin="anonymous"></script>
+
 {% endblock %}
 
 

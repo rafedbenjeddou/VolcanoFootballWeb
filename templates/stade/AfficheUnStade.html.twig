@@ -1,5 +1,10 @@
 {% extends 'base-front.html.twig' %}
 
+{% block activeStades %}
+    class=active
+{% endblock %}
+
+
 {% block content %}
 
     <div class=video-container >
@@ -39,6 +44,7 @@
                                         </div>
                                     </div>
                                     </div>{% endfor %}
+                                <a style="" href="{{ path("MapStade") }}"> maps </a>
 
                             </div>
                         </div>

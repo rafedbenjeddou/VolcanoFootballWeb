@@ -1,7 +1,7 @@
 {% extends 'base-back.html.twig' %}
 
 {% block user %}
-    {{ app.user.nom }}
+    {{ app.user.username }}
 {% endblock %}
 
 {% block content %}
@@ -36,7 +36,7 @@
                     <div class="form-group row">
                         <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.type) }}</label>
                         <div class="col-md-10">
-                            <input class="form-control" {{ form_widget(form.type) }}
+                            {{ form_widget(form.type) }}
                         </div>
                     </div>
 

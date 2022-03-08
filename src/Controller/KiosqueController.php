@@ -32,73 +32,32 @@ class KiosqueController extends AbstractController
      */
     public function Affiche(KiosqueRepository $repo) {
 
-        $kiosque=$repo->findAll();
-        return $this->render('kiosque/Affiche.html.twig',
-            ['kiosque'=>$kiosque]);
+        if($this->getUser()->isAdmin())
+        {
+            $kiosque=$repo->findAll();
+            return $this->render('kiosque/Affiche.html.twig',
+                ['kiosque'=>$kiosque]);
+        }
+
+        return $this->redirectToRoute('app_login');
+
+
     }
     /**
      * @param Request $request
      * @Route("kiosque/AddKiosque", name="AddKiosque")
      */
     function Add(Request $request){
-        $kiosque=new Kiosque();
-        $form=$this->createForm(KiosqueType::class,$kiosque);
-        $form->add('ajouter',SubmitType::class);
 
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $file = $kiosque->getPhoto();
-            $uploads_directory = $this->getParameter('upload_directory');
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $uploads_directory,
-                $fileName
-            );
+        if($this->getUser()->isAdmin())
+        {
+            $kiosque=new Kiosque();
+            $form=$this->createForm(KiosqueType::class,$kiosque);
+            $form->add('ajouter',SubmitType::class);
 
-            $kiosque->setPhoto($fileName);
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($kiosque);
-            $em->flush();
-            $this->get('session')->getFlashBag()->add(
-                'Message',
-                'Kiosque Ajouteé'
-            );
-
-            return $this->redirectToRoute('AfficheKiosque');
-        }
-        return $this->render('kiosque/Add.html.twig',[
-            'form'=>$form->createView()]);
-    }
-
-
-
-    /**
-     * @Route("kiosque/deleteKiosque/{id}",name="deleteKiosque")
-     */
-    function deleteS($id, KiosqueRepository $repo){
-        $kiosque=$repo->find($id);
-        $em=$this->getDoctrine()->getManager();
-        $em->remove($kiosque);
-        $em->flush();
-        $this->get('session')->getFlashBag()->add(
-            'Alerte',
-            'Kiosque Supprimée !'
-        );
-        return $this->redirectToRoute('AfficheKiosque');
-    }
-    /**
-     * @Route("kiosque/UpdateKiosque/{id}",name="UpdateKiosque")
-     */
-    function Update(KiosqueRepository $repo, $id,Request $request){
-        $kiosque=$repo->find($id);
-        $form=$this->createForm(KiosqueEditType::class,$kiosque);
-        $form->add('Update', SubmitType::class);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $file = $form['photo']->getData();
-
-            if($file)
-            {
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                $file = $kiosque->getPhoto();
                 $uploads_directory = $this->getParameter('upload_directory');
                 $fileName = md5(uniqid()).'.'.$file->guessExtension();
                 $file->move(
@@ -107,21 +66,92 @@ class KiosqueController extends AbstractController
                 );
 
                 $kiosque->setPhoto($fileName);
+                $em=$this->getDoctrine()->getManager();
+                $em->persist($kiosque);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'Message',
+                    'Kiosque Ajouteé'
+                );
+
+                return $this->redirectToRoute('AfficheKiosque');
             }
-            else
-            {
-                $kiosque->setPhoto($kiosque->getPhoto());
-            }
+            return $this->render('kiosque/Add.html.twig',[
+                'form'=>$form->createView()]);
+        }
+
+        return $this->redirectToRoute('app_login');
+
+
+    }
+
+
+
+    /**
+     * @Route("kiosque/deleteKiosque/{id}",name="deleteKiosque")
+     */
+    function deleteS($id, KiosqueRepository $repo){
+
+        if($this->getUser()->isAdmin())
+        {
+            $kiosque=$repo->find($id);
             $em=$this->getDoctrine()->getManager();
+            $em->remove($kiosque);
             $em->flush();
             $this->get('session')->getFlashBag()->add(
-                'Message',
+                'Alerte',
                 'Kiosque Supprimée !'
             );
             return $this->redirectToRoute('AfficheKiosque');
         }
-        return $this->render('kiosque/Update.html.twig',[
-            'f'=>$form->createView()]);
+
+        return $this->redirectToRoute('app_login');
+
+    }
+    /**
+     * @Route("kiosque/UpdateKiosque/{id}",name="UpdateKiosque")
+     */
+    function Update(KiosqueRepository $repo, $id,Request $request){
+
+        if($this->getUser()->isAdmin())
+        {
+            $kiosque=$repo->find($id);
+            $form=$this->createForm(KiosqueEditType::class,$kiosque);
+            $form->add('Update', SubmitType::class);
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                $file = $form['photo']->getData();
+
+                if($file)
+                {
+                    $uploads_directory = $this->getParameter('upload_directory');
+                    $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                    $file->move(
+                        $uploads_directory,
+                        $fileName
+                    );
+
+                    $kiosque->setPhoto($fileName);
+                }
+                else
+                {
+                    $kiosque->setPhoto($kiosque->getPhoto());
+                }
+                $em=$this->getDoctrine()->getManager();
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'Message',
+                    'Kiosque Supprimée !'
+                );
+                return $this->redirectToRoute('AfficheKiosque');
+            }
+            return $this->render('kiosque/Update.html.twig',[
+                'f'=>$form->createView()]);
+        }
+
+        return $this->redirectToRoute('app_login');
+
+
 
     }
     /**

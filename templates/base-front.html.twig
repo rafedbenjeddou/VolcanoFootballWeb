@@ -51,13 +51,13 @@
                                                 <span></span> <span></span></a></li>
                                         <li><a href="{{ path('AfficheUneEquipe') }}" {% block activeEquipes %}{% endblock %}>Equipes <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeMatches %}{% endblock %}>Matches <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheUnMatche') }}" {% block activeMatches %}{% endblock %}>Matches <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeStades %}{% endblock %}>Stades <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheUnStade') }}" {% block activeStades %}{% endblock %}>Stades <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeHebergements %}{% endblock %}>Hébergements <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheAgenceAF') }}" {% block activeHebergements %}{% endblock %}>Hébergements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeEvenements %}{% endblock %}>Evenements <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficherEvenementsFront') }}" {% block activeEvenements %}{% endblock %}>Evenements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
                                         <li><a {% block activeBoutique %}{% endblock %} href="{{ path('AfficherProduitsFront') }}">Boutique <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
@@ -80,6 +80,7 @@
     {% block js %}
         <script src={{ asset('front-office/js/vendor/vendor.js') }}></script>
         <script src={{ asset('front-office/js/main.js') }}></script>
+
     {% endblock %}
     {% block content %}
 

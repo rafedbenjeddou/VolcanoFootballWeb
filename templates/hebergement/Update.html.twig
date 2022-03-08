@@ -1,0 +1,23 @@
+{% extends 'base-back.html.twig' %}
+{% block user %}
+    {{ app.user.username }}
+{% endblock %}
+
+{% block content %}
+{% form_theme f 'bootstrap_4_layout.html.twig' %}
+
+<div class="row" style="width: 100%;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+<h1>modifier Hébergement</h1>
+
+{{ form_start(f) }}
+ {{ form_widget(f) }}
+ 
+{{ form_end(f) }}
+</div>
+</div> <!-- end col -->
+</div>
+</div>
+{% endblock %}

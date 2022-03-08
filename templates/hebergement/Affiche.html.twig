@@ -1,0 +1,82 @@
+{% extends 'base-back.html.twig' %}
+{% block user %}
+    {{ app.user.username }}
+{% endblock %}
+
+{% block content %}
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+                <!--<h4 class="mb-0">Responsive Table</h4>-->
+
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hebergement</a></li>
+                        <li class="breadcrumb-item active">Afficher</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title-desc"></p>
+
+                    <h4 class="card-title">Tableau Des Hebergements</h4>
+                    <p class="card-title-desc"></p>
+
+                    <div class="table-rep-plugin">
+                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                            <table id="tech-companies-1" class="table">
+                                <thead class="thead-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>photo </th>
+                        <th>Nom </th>
+                        <th>type </th>
+                        <th>adresse </th>
+                        <th style="width: 120px;">agence</th>
+
+                        <th>Actions</th>
+            
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr {% for h in hebergement %}>
+                        <td>{{ h.id }}</td>
+                         <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ h.photoH }}"/>  </td>                     
+                         <td> {{ h.nomH }}</td>
+                        <td>{{ h.type }}</td>
+                        <td>{{ h.adresse }}</td>
+                        <td>{{ h.agence.Nom }}</td>
+
+                        <td><a href="{{ path('UpdateH',{'id':h.id}) }}"><i class="ri-pencil-fill"></i></a>     <a href="{{ path('deleteH',{'id':h.id}) }}"><i class="ri-delete-bin-fill"></i></a></td>
+
+                    </tr{% endfor %}>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+</div>
+</div> <!-- end col -->
+</div>
+<!-- end row -->
+
+<script>
+$('#tech-companies-1').DataTable();
+</script>
+
+{% endblock %}

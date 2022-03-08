@@ -47,7 +47,7 @@ class Stade
     private $dateouverture;
 
     /**
-     * @ORM\OneToMany(targetEntity=Kiosque::class, mappedBy="stade" , cascade={"all"},orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Kiosque::class, mappedBy="stade" , cascade={"all"}, orphanRemoval=true)
      */
     private $kiosque;
 
@@ -56,11 +56,17 @@ class Stade
      */
     private $photo;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="stade", cascade={"all"}, orphanRemoval=true)
+     */
+    private $evenements;
+
 
 
     public function __construct()
     {
         $this->kiosque = new ArrayCollection();
+        $this->evenements = new ArrayCollection();
 
     }
 
@@ -172,6 +178,36 @@ class Stade
 
     public function _toString(): string
     {
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evenement[]
+     */
+    public function getEvenements(): Collection
+    {
+        return $this->evenements;
+    }
+
+    public function addEvenement(Evenement $evenement): self
+    {
+        if (!$this->evenements->contains($evenement)) {
+            $this->evenements[] = $evenement;
+            $evenement->setStade($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvenement(Evenement $evenement): self
+    {
+        if ($this->evenements->removeElement($evenement)) {
+            // set the owning side to null (unless already changed)
+            if ($evenement->getStade() === $this) {
+                $evenement->setStade(null);
+            }
+        }
+
         return $this;
     }
 

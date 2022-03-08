@@ -1,0 +1,44 @@
+{% extends 'base-front.html.twig' %}
+{% block activeHebergements %}
+    class=active
+{% endblock %}
+
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline><span>Agence</span></h2></div>
+    </div>
+
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row>
+                    <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
+                        {% for h in hebergement %}
+
+                            <li class=gallery-list><a class=column_g><span class=image_g
+                                                                           style=background:url(front-office/images/gallery/gallery02.jpg)></span>
+                
+
+                                    <div class=gallery-info><h6> {{ h.nom }}  </h6>
+                
+                                        <p>type: {{ h.type }}
+                                            adresse : {{ h.adresse }}
+                                            adresse : {{ h.agence.Nom }}
+                                            photoH : {{ h.photoH }}
+
+                                        </p></div>
+                                </a></li>
+                                {% endfor %}
+
+                    </ul>
+                
+            </div>
+        </div>
+    </section>
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}

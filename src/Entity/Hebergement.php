@@ -3,7 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\HebergementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=HebergementRepository::class)
@@ -14,64 +19,84 @@ class Hebergement
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *  @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Nom Arbitre is required")
+     *  @Groups("post:read")
+
+     * *@Assert\Length(
+     *     min = 5,
+     *    max = 50,
+    *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
+    *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     *)
      */
-    private $nom;
+    private $nomH;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Nom Arbitre is required")
+     *  @Groups("post:read")
+
+     * *@Assert\Length(
+     *     min = 5,
+     *    max = 50,
+    *minMessage = " Le nom d'un article comporter au moins {{ limit }} caractères",
+    *maxMessage="Le nom d'un article doit comporter au plus {{ limit }} caractères"
+     *)
      */
     private $adresse;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $idAgence;
+
+    
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Agence::class, inversedBy="hebergements")
+     * 
      */
-
-    private $dateDebut;
+    private $agence;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Groups("post:read")
      */
-    private $dateFin;
+    private $photoH;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="hebergement",cascade={"all"},orphanRemoval=true)
+     */
+    private $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
-    public function getIdAgence(): ?int
-    {
-        return $this->idAgence;
-    }
-    public function setIdAgence(int $idAgence): self
-    {
-        $this->idAgence = $idAgence;
+    
 
-        return $this;
+
+    public function getNomH(): ?string
+    {
+        return $this->nomH;
     }
 
-
-    public function getNom(): ?string
+    public function setNomH(string $nomH): self
     {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
+        $this->nomH = $nomH;
 
         return $this;
     }
@@ -100,26 +125,58 @@ class Hebergement
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+
+
+    public function getAgence(): ?Agence
     {
-        return $this->dateDebut;
+        return $this->agence;
     }
 
-    public function setDateDebut(\DateTimeInterface $dateDebut): self
+    public function setAgence(?Agence $agence): self
     {
-        $this->dateDebut = $dateDebut;
+        $this->agence = $agence;
 
         return $this;
     }
 
-    public function getDateFin(): ?\DateTimeInterface
+    public function getPhotoH()
     {
-        return $this->dateFin;
+        return $this->photoH;
     }
 
-    public function setDateFin(\DateTimeInterface $dateFin): self
+    public function setPhotoH( $photoH): self
     {
-        $this->dateFin = $dateFin;
+        $this->photoH = $photoH;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setHebergement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getHebergement() === $this) {
+                $reservation->setHebergement(null);
+            }
+        }
 
         return $this;
     }

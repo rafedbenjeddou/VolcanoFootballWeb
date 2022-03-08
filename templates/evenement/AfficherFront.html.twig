@@ -1,0 +1,48 @@
+{% extends 'base-front.html.twig' %}
+{% block activeEvenements %}
+    class=active
+{% endblock %}
+
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div   class=innerbanner><h2 class=bannerHeadline><span>   Evenements  </span> </h2></div>
+    </div>
+    <section class=playerDetails02>
+        <div class=container>
+            <div class=row>
+                <div class="matchSchedule_details row">
+                    <div class=match_next>
+                        <div class="wrap_match_next right-triangle">
+                            <div class=right-padding><h4 class=headline03> Table des Evenements</h4>
+
+                                </div>
+                        </div>
+                    </div>
+                    <div class=match_versus-wrap>
+                        <div class=wrap_match-innerdetails>
+                            <ul class="point_table scrollable">
+                                {% for e in evenements %}
+                                    <li class=clearfix>
+                                        <div class=subPoint_table>
+                                            <div class="ticketInner_info paragraph02 clearfix"><p> Nom: {{ e.nom }} </p>   <p>Stade: {{ e.stade.nom }}  </p><p>     </p><p> Date: {{ e.date|date('Y-m-d') }}   </p> </div>
+
+                                        </div>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,42 @@
+
+{% extends 'base-front.html.twig' %}
+{% block activeHebergements %}
+    class=active
+{% endblock %}
+
+{% block content %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+    <section class=playerDetails02>
+        <div class=container>
+            <div class=row>
+                <ul class="gallery
+<div class="row" style="width: 100%;">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="headline01 clearfix">
+                            <h1 >Je Reserve</h1>
+                            <div class="headline01 largepoint"> {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                {{ form_end(form) }}
+                            </div>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div>
+            </ul>
+        </div>
+        </div>
+
+
+
+
+    </section>
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+
+{% endblock %}

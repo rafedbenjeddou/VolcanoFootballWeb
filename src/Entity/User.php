@@ -160,6 +160,17 @@ class User implements UserInterface
      */
     private $favoris;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $code;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ReservationKiosque::class, mappedBy="user", cascade={"all"}, orphanRemoval=true)
+     */
+    private $reservationKiosques;
+
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -414,5 +425,48 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(?string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ReservationKiosque[]
+     */
+    public function getReservationKiosques(): Collection
+    {
+        return $this->reservationKiosques;
+    }
+
+    public function addReservationKiosque(ReservationKiosque $reservationKiosque): self
+    {
+        if (!$this->reservationKiosques->contains($reservationKiosque)) {
+            $this->reservationKiosques[] = $reservationKiosque;
+            $reservationKiosque->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservationKiosque(ReservationKiosque $reservationKiosque): self
+    {
+        if ($this->reservationKiosques->removeElement($reservationKiosque)) {
+            // set the owning side to null (unless already changed)
+            if ($reservationKiosque->getUser() === $this) {
+                $reservationKiosque->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 }

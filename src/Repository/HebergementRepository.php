@@ -47,4 +47,13 @@ class HebergementRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    function ListHebergementByAgence($id){ // function by QueryBuilder 
+        return $this-> createQueryBuilder('h')
+        ->join('h.agence' , 'a')
+        ->addSelect('a')
+        ->where('a.id=:id')
+        ->setParameter('id',$id)
+        ->getQuery()->getResult();
+    }
 }
