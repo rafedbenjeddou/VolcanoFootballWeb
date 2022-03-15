@@ -1,0 +1,107 @@
+{% extends 'base-back.html.twig' %}
+
+{% block user %}
+    {{ user }}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Statistiques des Produits Par Rapport la Taille</h4>
+                    <div id="pie_chart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Statistiques des Produits Par Rapport le Type</h4>
+
+                    <div id="donut_chart" class="apex-charts"  dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        {%  set XS = 0 %}
+        {%  set S = 0 %}
+        {%  set M = 0 %}
+        {%  set L = 0 %}
+        {%  set XL = 0 %}
+
+        {% for p in produit %}
+
+            {% if p.taille == "XS" %}
+                {%  set XS = XS + 1 %}
+             {% elseif p.taille == "S" %}
+                {%  set S = S + 1 %}
+            {% elseif p.taille == "M" %}
+                {%  set M = M + 1 %}
+            {% elseif p.taille == "L" %}
+                {%  set L = L + 1 %}
+            {% elseif p.taille == "XL" %}
+                {%  set XL = XL + 1 %}
+            {% endif %}
+
+        {% endfor %}
+
+        {%  set Chapeau = 0 %}
+        {%  set Lunette = 0 %}
+        {%  set Maillot = 0 %}
+        {%  set Jaquette = 0 %}
+        {%  set Chaussure = 0 %}
+
+        {% for p in produit %}
+
+        {% if p.type == 'Chapeau' %}
+        {%  set Chapeau = Chapeau + 1 %}
+        {% elseif p.type == 'Lunette' %}
+        {%  set Lunette = Lunette + 1 %}
+        {% elseif p.type == 'Maillot' %}
+        {%  set Maillot = Maillot + 1 %}
+        {% elseif p.type == 'Jaquette' %}
+        {%  set Jaquette = Jaquette + 1 %}
+        {% elseif p.type == 'Chaussure' %}
+        {%  set Chaussure = Chaussure + 1 %}
+        {% endif %}
+
+        {% endfor %}
+
+        {%  set et1 = 0 %}
+        {%  set et2 = 0 %}
+        {%  set et3 = 0 %}
+        {%  set et4 = 0 %}
+        {%  set et5 = 0 %}
+
+
+        {% for p in produit %}
+
+        {% if p.nbrEtoiles == 1 %}
+        {%  set et1 = et1 + 1 %}
+        {% elseif p.nbrEtoiles == 2 %}
+        {%  set et2 = et2 + 1 %}
+        {% elseif p.nbrEtoiles == 3 %}
+        {%  set et3 = et3 + 1 %}
+        {% elseif p.nbrEtoiles == 4 %}
+        {%  set et4 = et4 + 1 %}
+        {% elseif p.nbrEtoiles == 5 %}
+        {%  set et5 = et5 + 1 %}
+        {% endif %}
+
+        {% endfor %}
+
+
+
+        options={chart:{height:320,type:"pie"},series:[{{ XS }},{{ S }},{{ M }},{{ L }},{{ XL }}],labels:["XS","S","M","L","XL"],colors:["#1cbb8c","#5664d2","#fcb92c","#4aa3ff","#ff3d60"],legend:{show:!0,position:"bottom",horizontalAlign:"center",verticalAlign:"middle",floating:!1,fontSize:"14px",offsetX:0,offsetY:5},responsive:[{breakpoint:600,options:{chart:{height:240},legend:{show:!1}}}]};(chart=new ApexCharts(document.querySelector("#pie_chart"),options)).render();
+        options={chart:{height:320,type:"donut"},series:[{{ Chapeau }},{{ Lunette }},{{ Maillot }},{{ Jaquette }},{{ Chaussure }}],labels:["Chapeau","Lunette","Maillot","Jaquette","Chaussure"],colors:["#1cbb8c","#5664d2","#fcb92c","#4aa3ff","#ff3d60"],legend:{show:!0,position:"bottom",horizontalAlign:"center",verticalAlign:"middle",floating:!1,fontSize:"14px",offsetX:0,offsetY:5},responsive:[{breakpoint:600,options:{chart:{height:240},legend:{show:!1}}}]};(chart=new ApexCharts(document.querySelector("#donut_chart"),options)).render();
+    </script>
+
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base-front.html.twig' %}
+
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>mot de passe  <span>oublié</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>RÉINITIALISER VOTRE <span>MOT DE PASSE</span></h2>
+
+                <p class=headParagraph></p>
+
+                {% for flashError in app.flashes('reset_password_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                {% endfor %}
+
+                {{ form_start(requestForm,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    {{ form_label(requestForm.email) }}
+                    <input style="height: 60px" {{ form_widget(requestForm.email) }}
+
+                    <h5 style="margin: 15px 0px">Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.</h5>
+
+                    <button class="btn btn-red">Envoyer</button>
+
+                {{ form_end(requestForm) }}
+
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+
+
+

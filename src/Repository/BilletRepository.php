@@ -47,4 +47,12 @@ class BilletRepository extends ServiceEntityRepository
         ;
     }
     */
+    function ListBilletByMatche($id){                                                      // function by QueryBuilder
+        return $this-> createQueryBuilder('b')                                        //pour afficher la liste des billets
+            ->join('b.matche' , 'm')
+            ->addSelect('m')
+            ->where('m.id=:id')
+            ->setParameter('id',$id)                //pour definir un parametre
+            ->getQuery()->getResult();                  //recuperer l'objet query , retourner un tableau d'objet contenant le resultat
+    }
 }

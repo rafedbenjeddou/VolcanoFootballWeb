@@ -1,0 +1,47 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+<div class=innerbannerwrap>
+    <div class=content></div>
+    <div   class=innerbanner><h2 class=bannerHeadline><span>    Mes Réservations  </span> </h2></div>
+</div>
+    <section class="matchSchedule countryclub">
+    <div class=container>
+        <div class=row>
+            <li class=clearfix>
+                <div>
+                    <div>
+                        <div class=fig01>
+                            
+                        
+            
+                        <div class="bg-black01 fig02">
+                            <h6 class="uppercaseheading red"><p class=paragraph02>Voucher  {{ reservation.id }}</p></h6>
+            
+                           <div > <p >Notre Client {{ reservation.user.nom }} à reservé dans l'hotel {{ reservation.hebergement.NomH }} depuis notre agence {{ reservation.hebergement.agence.Nom }} </p></div>   
+            
+                           <p>The FIFA World Cup Qatar 2022™ is less than a year away. Your host country, Qatar, offers an exciting range of accommodation – available to book soon..</p>
+
+                           <p >Experience a FIFA World Cup™like no other.</p>                       
+                            <div ><p>la durée de reservation est de  : {{ reservation.dateDebut|date('d-m-Y') }} jusqua : {{ reservation.dateFin|date('d-m-Y') }}</p></div>
+                                
+                        </div>
+                        <div class="bg-redcolor fig02"><p><a class="uppercaseheading green">Imprimer</a></p></div>
+            
+                    </div>
+                </div>
+            
+            </li>
+            </div>
+        </div>
+        
+                        
+        
+        
+        </section>
+        <script type=text/javascript>
+            $(function () {
+                $('#da_gallery .gallery-list ').hoverdir();
+            });
+        </script>
+{% endblock %}
+

@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\BilletRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=BilletRepository::class)
  */
@@ -19,23 +21,32 @@ class Billet
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Categorie is required")
+     * @Assert\NotEqualTo(
+     *      value = 0,
+     *     message = "le prix d'un billet ne doit pas étre égale à 0 "
+     * )
      */
     private $prix;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Categorie is required")
      */
     private $categorie;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idMatch;
+
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\ManyToOne(targetEntity=Matche::class, inversedBy="billets")
      */
-    private $dateAchat;
+    private $matche;
+
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -66,27 +77,48 @@ class Billet
         return $this;
     }
 
-    public function getIdMatch(): ?int
+
+    public function getMatche(): ?Matche
     {
-        return $this->idMatch;
+        return $this->matche;
     }
 
-    public function setIdMatch(int $idMatch): self
+    public function setMatche(?Matche $matche): self
     {
-        $this->idMatch = $idMatch;
+        $this->matche = $matche;
 
         return $this;
     }
 
-    public function getDateAchat(): ?\DateTimeInterface
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategories(): Collection
     {
-        return $this->dateAchat;
+        return $this->categories;
     }
 
-    public function setDateAchat(\DateTimeInterface $dateAchat): self
+    public function addCategory(Categorie $category): self
     {
-        $this->dateAchat = $dateAchat;
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->setBillet($this);
+        }
 
         return $this;
     }
+
+    public function removeCategory(Categorie $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getBillet() === $this) {
+                $category->setBillet(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

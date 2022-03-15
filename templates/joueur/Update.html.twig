@@ -1,6 +1,8 @@
 
 {% extends 'base-back.html.twig' %}
-
+{% block user %}
+    {{ app.user.username }}
+{% endblock %}
 {% block content %}
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
     <div class="row" style="width: 100%;">

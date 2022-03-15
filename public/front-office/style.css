@@ -2352,7 +2352,6 @@ output {
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
-  font-family: "Open Sans", sans-serif;
   line-height: 1.428571429;
   color: #979da0;
   background-color: transparent;
@@ -4488,7 +4487,7 @@ a.label:focus {
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #777777;
+  background-color: red;
   border-radius: 10px; }
   .badge:empty {
     display: none; }
@@ -6580,7 +6579,7 @@ h6 {
   @media (min-width: 992px) {
     .header-main .menubar {
       float: left;
-      width: 66.6666666667%; } }
+      width: 100%; } }
 
 .header-main .sub-menu {
   list-style-type: none;
@@ -10167,9 +10166,7 @@ ul.slick-dots {
         top: 8px; }
   .player02fig {
     position: relative;
-    overflow: hidden;
-    height: 636px;
-    width: 6px;}
+    overflow: hidden; }
     .player02fig .imgplayer {
       transition: all 0.4s ease-in-out; }
   .player02 .playersocial {
@@ -11395,3 +11392,10 @@ ul.slick-dots {
     .mail-cart button:hover {
       color: #63aa3d;
       background: white; }
+.br{
+  color: black;
+}
+.br:hover {
+  color: red;
+ }
+

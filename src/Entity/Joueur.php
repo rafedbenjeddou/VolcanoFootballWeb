@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\JoueurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=JoueurRepository::class)
@@ -15,12 +16,14 @@ class Joueur
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("equipe")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="name is required")
+     * @Groups("equipe")
      */
     private $nom_joueur;
 
@@ -32,22 +35,25 @@ class Joueur
      *     minMessage = "Le prenom d'un joueur doit comporter au moins {{ limit }} caractéres",
      *      minMessage = "Le prenom d'un joueur doit comporter au plus {{ limit }} caractéres"
      *     )
+     * @Groups("equipe")
      */
     private $prenom_joueur;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="age is required")
+     * @Groups("equipe")
      */
     private $age;
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="position is required")
+     * @Groups("equipe")
      */
     private $position;
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-
+     * @Groups("equipe")
      */
     private $photo;
 
@@ -64,6 +70,7 @@ class Joueur
      *     minMessage = "La description d'un joueur doit comporter au moins {{ limit }} caractéres",
      *     minMessage = "La description d'un joueur doit comporter au plus {{ limit }} caractéres"
      *     )
+     * @Groups("equipe")
      */
     private $Description;
 

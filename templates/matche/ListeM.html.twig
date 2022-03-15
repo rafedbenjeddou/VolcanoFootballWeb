@@ -1,0 +1,44 @@
+
+{% block title %}<h1 align="center">Liste Des Matchs </h1> <hr> {% endblock %}
+{% block head %}
+
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <table id="jolie" class="centre" >
+        <tr bgcolor="#CA9999">
+            <td width="50"><strong>ID</strong></td>
+            <td width="50"><strong>NomMatche</strong></td>
+            <td width="50"><strong>NomArbitre</strong></td>
+            <td width="30"><strong>Stade</strong></td>
+            <td width="50"><strong>Date</strong></td>
+            <td width="50"><strong>Tour</strong></td>
+        </tr>
+
+
+        <tbody>
+        <tr {% for m in matche %}>
+        <tr bgcolor="#A6A6A6">
+            <td>{{ m.id }}</td>
+            <td>{{ m.NomMatche }}</td>
+            <td>{{ m.NomArbitre }}</td>
+            <td>{{ m.stade.nom }}</td>
+            <td>{{ m.date|date('d-m-Y') }}</td>
+            <td>{{ m.tour }}</td>
+        </tr>
+
+        </tr {% endfor %}>
+        </tbody>
+    </table>
+
+    <script>
+        //   $('#datatable-buttons').DataTable()
+    </script>
+{% endblock %}

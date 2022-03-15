@@ -1,0 +1,48 @@
+{% extends 'base-front.html.twig' %}
+{% block activeHebergements %}
+    class=active
+{% endblock %}
+
+{% block content %}
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>Nos <span>Agences</span></h2> </div>
+    </div>
+
+    <section class=playerDetails02>
+        <div class=container>
+            <div class=row>
+                    <ul class="galleryPage gallerycolumn03 clearfix" id=da_gallery>
+
+                        {% for a in agence %}
+
+                            <li class=gallery-list><a class=column_g><span class=image_g style=background:url(front-office/images/gallery/masonry/cercle.PNG)></span>
+                
+                                        <div class=gallery-info>
+                                            <div class="headline01 clearfix"><span> {{ a.nom }} </span></div>
+
+                                            <p class=match_dtls>{{ a.adresse }}</span></p>
+                                            <div class="ticketInner_info paragraph02 clearfix"><span>   {{ a.numTel }}</span></div>
+                                            <div class="ticketInner_info paragraph02 clearfix"><span>   {% for i in 0..a.NbEtoiles %}
+                                                <i class="fa fa-star"></i>
+                                            {% endfor %}</span></div>
+
+                                            <a  href={{ path('ListByAgence',{'id':a.id}) }} class="btn-small01 btn-blue">Accéder</a>
+
+                                        </p></div>
+                                </a></li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                
+            </div>
+        </div>
+    </section>
+
+    <script type=text/javascript>
+        $(function () {
+            $('#da_gallery .gallery-list ').hoverdir();
+        });
+    </script>
+{% endblock %}
+

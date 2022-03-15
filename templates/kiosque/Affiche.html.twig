@@ -1,0 +1,67 @@
+{% extends 'base-back.html.twig' %}
+
+{% block user %}
+    {{ app.user.username }}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+    <div class="row" , style="width: 100%;">
+        <div class="col-12">
+            <div class="card">
+
+
+                <div class="card-body">
+
+                    <h4 class="card-title">Liste Des Kiosque</h4>
+                    <table id="tech-companies-1" class="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        {% for flashMessage in app.session.flashbag.get('Message') %}
+                            <div class="alert alert-success">
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
+                        {% for flashMessage in app.session.flashbag.get('Alerte') %}
+                            <div class="alert alert-danger">
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Stade</th>
+                            <th>Nom </th>
+                            <th>Type</th>
+                            <th>Photo Kiosque</th>
+                            <th>Update /Delete</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr {% for k in kiosque %}>
+                            <td>{{ k.id }}</td>
+                            <td>{{ k.getStade().getNom() }}</td>
+                            <td>{{ k.Nom }}</td>
+                            <td>{{ k.Type }}</td>
+                            <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ k.photo }}"/></td>
+
+
+                            <td><a href="{{ path('UpdateKiosque',{'id':k.id})}}"><i class="ri-pencil-fill"></i></a><a href="{{ path('deleteKiosque',{'id':k.id})}}"><i class="ri-delete-bin-fill"></i></a></td>
+
+                        </tr{% endfor %}>
+                        <li><a href="http://127.0.0.1:8000/kiosque/AddKiosque">Add Kiosque</a></li>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+    <script>
+        $('#tech-companies-1').DataTable();
+    </script>
+{% endblock %}

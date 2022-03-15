@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Stylesheets -->
+    <link href="{{ asset('Facture/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/css/datepicker.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/css/jquery.range.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/OwlCarousel/assets/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{ asset('Facture/vendor/OwlCarousel/assets/owl.theme.default.min.css')}}" rel="stylesheet">
+
+    <!-- Semantic Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('Facture/vendor/semantic/semantic.min.css')}}">
+
+</head>
+<body class="main_invoice">
+<!-- Header Start -->
+<div class="invc_header">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 col-sm-12">
+                <div class="">
+                    <div class="header_logo">
+                        <img src="{{ asset('Facture/images/logo.PNG')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Invoice Body Start -->
+<section class="invoice_section">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8">
+                <div class="invoice_body">
+                    <div class="nvdate_dt">
+                        <div class="nvde_dt45">
+
+                        </div>
+                        <div class="nvde_dt46">
+                            <ul class="in11448">
+                                <li><div class="vdt-list"><span>Date :</span>{{ facture.getCreatedAt()|date }}</div></li>
+                                <li><div class="vdt-list"><span>Invoice No :</span>IVIP12023598</div></li>
+                                <li><div class="vdt-list"><span>Order ID :</span>1258963487</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h3 class="dff474">Invoice</h3>
+                    <div class="jike145">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="vhls140">
+                                    <h4>Customer</h4>
+                                    <ul>
+                                        <li><div class="vdt-list">{{ app.user.nom }}</div></li>
+                                        <li><div class="vdt-list">{{ app.user.prenom }}</div></li>
+                                        <li><div class="vdt-list">{{ app.user.age }} ANS</div></li>
+                                        <li><div class="vdt-list">{{ app.user.email }}</div></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invoice_table">
+                        <div class="table-responsive-md">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Vat(20%)</th>
+                                    <th scope="col">Total Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <div class="user_dt_trans">
+                                            <p>{{ facture.type  }}</p>
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="user_dt_trans">
+                                            <p>{{ facture.prix }} TND</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="user_dt_trans">
+                                            <p>20.00 TND</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="user_dt_trans">
+                                            <p>100 TND</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td colspan="3">
+                                        <div class="user_dt_trans jsk1145">
+                                            <div class="totalinv2">Invoice Total : TND 100</div>
+                                            <p>Paid via Carte</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="invoice_footer">
+                        <div class="leftfooter">
+                            <p>Thanks for buying.</p>
+                        </div>
+                        <div class="righttfooter">
+                            <a class="print_btn" href="javascript:window.print();">Print</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Invoice Body End -->
+
+<!-- Scroll to Top Button Start -->
+<button onclick="topFunction()" id="pageup" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+<!-- Scroll to Top Button End -->
+
+<!-- Scripts js -->
+<script src="{{ asset('Facture/js/jquery.min.js')}}"></script>
+<script src="{{ asset('Facture/js/datepicker.min.js')}}"></script>
+<script src="{{ asset('Facture/js/i18n/datepicker.en.js')}}"></script>
+<script src="{{ asset('Facture/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('Facture/vendor/OwlCarousel/owl.carousel.js')}}"></script>
+<script src={{ asset('Facture/"vendor/semantic/semantic.min.js"')}}></script>
+<script src="{{ asset('Facture/js/jquery.range-min.js')}}"></script>
+<script src="{{ asset('Facture/js/custom1.js')}}"></script>
+
+
+</body>
+
+</html>

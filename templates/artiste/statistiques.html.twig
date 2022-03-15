@@ -1,0 +1,47 @@
+{% extends 'base-back.html.twig' %}
+
+{% block user %}
+    {{ app.user.username }}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Statistiques des Artistes Par Rapport le Type</h4>
+                    <div id="pie_chart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        {%  set Musicien = 0 %}
+        {%  set Chanteur = 0 %}
+        {%  set Danseur = 0 %}
+
+        {% for a in artistes %}
+
+        {% if a.type == "Musicien" %}
+        {%  set Musicien = Musicien + 1 %}
+        {% elseif a.type == "Chanteur" %}
+        {%  set Chanteur = Chanteur + 1 %}
+        {% elseif a.type == "Danseur" %}
+        {%  set Danseur = Danseur + 1 %}
+        {% endif %}
+
+        {% endfor %}
+
+
+
+        options={chart:{height:320,type:"pie"},series:[{{ Musicien }},{{ Chanteur }},{{ Danseur }}],labels:["Musicien","Chanteur","Danseur"],colors:["#1cbb8c","#5664d2","#fcb92c"],legend:{show:!0,position:"bottom",horizontalAlign:"center",verticalAlign:"middle",floating:!1,fontSize:"14px",offsetX:0,offsetY:5},responsive:[{breakpoint:600,options:{chart:{height:240},legend:{show:!1}}}]};(chart=new ApexCharts(document.querySelector("#pie_chart"),options)).render();
+    </script>
+
+
+
+{% endblock %}

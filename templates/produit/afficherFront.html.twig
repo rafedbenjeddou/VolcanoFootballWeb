@@ -1,0 +1,119 @@
+{% extends 'base-front.html.twig' %}
+
+{% block activeBoutique %}
+class=active
+{% endblock %}
+
+{% block panier %}
+
+    <li><a href="{{ path('EnrichirPanier') }}"><i class="fa fa-shopping-cart"></i> <span>cart(<span>
+                        {% if panier|length > 0 %}
+                            {{ panier|length }}
+                        {% else %}
+                            0
+                        {% endif %}
+                </span>)</span></a></li>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class=innerbannerwrap>
+        <div class=content></div>
+        <div class=innerbanner><h2 class=bannerHeadline>Notre <span>Boutique</span></h2></div>
+    </div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>Meilleur Boutique <span>d'Accessoires de Football</span></h2>
+
+                <p class=headParagraph></p>
+
+                <div class=innerWrapper>
+                    <aside class="widgetinner clearfix">
+                        <div class=widgetinfowrap>
+                            <div class=bg-blackimg>Chercher par Couleur</div>
+                            <div class=sizepic>
+
+                                <a title="Noir" href="{{ path('AfficherProduitsCouleur',{'couleur':'Noir'}) }}" style="background-color: black"></a>
+                                <a title="Gris" href="{{ path('AfficherProduitsCouleur',{'couleur':'Gris'}) }}" style="background-color: grey"></a>
+                                <a title="Marron" href="{{ path('AfficherProduitsCouleur',{'couleur':'Marron'}) }}" style="background-color: saddlebrown"></a>
+                                <a title="Vert" href="{{ path('AfficherProduitsCouleur',{'couleur':'Vert'}) }}" style="background-color: green"></a>
+                                <a title="Bleu" href="{{ path('AfficherProduitsCouleur',{'couleur':'Bleu'}) }}" style="background-color: blue"></a>
+                                <a title="Rouge" href="{{ path('AfficherProduitsCouleur',{'couleur':'Rouge'}) }}" style="background-color: red"></a>
+                                <a title="Violet" href="{{ path('AfficherProduitsCouleur',{'couleur':'Violet'}) }}" style="background-color: darkviolet"></a>
+                                <a title="Rose" href="{{ path('AfficherProduitsCouleur',{'couleur':'Rose'}) }}" style="background-color: #F33A6A"></a>
+                                <a title="Orange" href="{{ path('AfficherProduitsCouleur',{'couleur':'Orange'}) }}" style="background-color: #FF5F1F"></a>
+                                <a title="Jaune" href="{{ path('AfficherProduitsCouleur',{'couleur':'Jaune'}) }}" style="background-color: yellow"></a>
+                                <a title="Blanc" href="{{ path('AfficherProduitsCouleur',{'couleur':'Blanc'}) }}" style="background-color: white"></a>
+
+                            </div>
+                        </div>
+                        <div class=widgetinfowrap>
+                            <div class=bg-blackimg>Chercher par Taille</div>
+                            <div class=sizepic>
+                                <a href="{{ path('AfficherProduitsTaille',{'taille':'XS'}) }}">XS</a>
+                                <a href="{{ path('AfficherProduitsTaille',{'taille':'S'}) }}">S</a>
+                                <a href="{{ path('AfficherProduitsTaille',{'taille':'M'}) }}">M</a>
+                                <a href="{{ path('AfficherProduitsTaille',{'taille':'L'}) }}">L</a>
+                                <a href="{{ path('AfficherProduitsTaille',{'taille':'XL'}) }}">XL</a>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside class=contentinner>
+                        <div class="bg-red shop_select clearfix">
+                            <div class=select_shopping>
+                                    <div class=form-group style="width: 100%">
+                                        <label class=headline01 style="width: 20%">Trier par :</label>
+                                        <a href="{{ path('AfficherProduitsTrierPrixASC') }}" class=headline01>Prix ASC</a>
+                                        &ensp;&ensp;
+                                        <a href="{{ path('AfficherProduitsTrierPrixASC') }}" class=headline01>Prix DESC</a>
+                                        &ensp;&ensp;
+                                        <a href="{{ path('AfficherProduitsTrierNbrEtoilesASC') }}" class=headline01>Nombre d'Etoiles ASC</a>
+                                        &ensp;&ensp;
+                                        <a href="{{ path('AfficherProduitsTrierNbrEtoilesDESC') }}" class=headline01>Nombre d'Etoiles DESC</a>
+
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="shop-wrap-slider clearfix">
+                            <div class=shop_detais>
+                                {% for p in produit %}
+
+                                    <div class="shop01 clearfix">
+                                        <div class=shop-img>
+                                            <div class=bgimg style=background:url({{ asset('uploads/images/') ~ p.photo }})></div>
+                                        </div>
+                                        <div class=shop_info><h4 class=headline01><a href='#'>{{ p.nom }}</a></h4>
+
+                                            <div class=star>
+                                                {% for i in 0..p.nbrEtoiles-1 %}
+                                                    <i class="fa fa-star"></i>
+                                                {% endfor %}
+                                            </div>
+                                            <p>Taille: {{ p.taille }}</p>
+                                            <p>{{ p.description }}</p>
+
+                                            <div class=headline01>${{ p.prix }}</div>
+                                            <div class=addcart-wrap>
+                                                <a href="{{ path('AjouterAuPanier',{'id':p.id}) }}" class="btn-addcart" style="width: 200px">Ajouter au panier</a>
+                                                <a href="{{ path('AjouterFavori',{'id':p.id}) }}" class=btn-fav style="width: 300px"><div style="margin-left: 25px">Ajouter à la liste de souhaits</div></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+
+

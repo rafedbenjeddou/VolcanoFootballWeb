@@ -12,6 +12,7 @@
         <link rel=stylesheet href="{{ asset('front-office/vendor.css') }}">
         <link rel=stylesheet href="{{ asset('front-office/style.css') }}">
         <link rel=stylesheet type=text/css href="{{ asset('front-office/css/layerslider.css') }}">
+
     {% endblock %}
     <script src={{ asset('front-office/js/vendor/modernizr.js') }}></script>
 </head>
@@ -24,9 +25,9 @@
                     <ul>
                         <li>
                             {% if is_granted('ROLE_USER') %}
-                                <a href="#">déconnecter</a>
+                                <a href="{{ path('app_logout') }}">déconnecter</a>
                             {% else %}
-                                <a href="#">S'INSCRIRE/SE CONNECTER</a>
+                                <a href="{{ path('app_login') }}">S'INSCRIRE/SE CONNECTER</a>
                             {% endif %}
                         </li>
                         {% block panier %}{% endblock %}
@@ -35,8 +36,8 @@
             </div>
         </div>
         <div class="header-lower clearfix">
-            <div class=container>
-                <div class=row><h1 class=logo><a href=index-2.html><img src={{ asset('front-office/images/logo.png') }} alt=image style="width: 150px"></a></h1>
+            <div class=container style="width: 92%">
+                <div class=row style="margin-bottom:5px; margin-top: 5px"><h1 class=logo><a href=""><img src={{ asset('front-office/images/logo.png') }} alt=image></a></h1>
                     <div class=menubar>
                         <nav class=navbar>
                             <div class=nav-wrapper>
@@ -44,24 +45,26 @@
                                     <button type=button class=navbar-toggle><span class=sr-only>Toggle navigation</span>
                                         <span class=icon-bar></span></button>
                                 </div>
-                                <div class=nav-menu style="margin-left: 20px; margin-bottom:2px">
+                                <div class=nav-menu >
                                     <ul class="nav navbar-nav menu-bar">
-                                        <li><a href="#" {% block activeAccueil %}{% endblock %}>Accueil <span></span> <span></span>
+                                        <li><a href="{{ path('home') }}" {% block activeAccueil %}{% endblock %}>Accueil <span></span> <span></span>
                                                 <span></span> <span></span></a></li>
-                                        <li><a href="{% block activeEquipes %}{% endblock %}{{ path('AfficheUneEquipe') }}" >Equipes <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheUneEquipe') }}" {% block activeEquipes %}{% endblock %}>Equipes <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeMatches %}{% endblock %}>Matches <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheUnMatche') }}" {% block activeMatches %}{% endblock %}>Matches <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeStades %}{% endblock %}>Stades <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheUnStade') }}" {% block activeStades %}{% endblock %}>Stades <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeHebergements %}{% endblock %}>Hébergements <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficheAgenceAF') }}" {% block activeHebergements %}{% endblock %}>Hébergements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a href="#" {% block activeEvenements %}{% endblock %}>Evenements <span></span> <span></span> <span></span>
+                                        <li><a href="{{ path('AfficherEvenementsFront') }}" {% block activeEvenements %}{% endblock %}>Evenements <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
-                                        <li><a {% block activeBoutique %}{% endblock %} href="#">Boutique <span></span> <span></span> <span></span>
+                                        <li><a {% block activeBoutique %}{% endblock %} href="{{ path('AfficherProduitsFront') }}">Boutique <span></span> <span></span> <span></span>
                                                 <span></span></a></li>
                                         {% if is_granted('ROLE_USER') %}
-                                            <li><a href="#" {% block activeProfil %}{% endblock %}>Profil <span></span> <span></span> <span></span>
+                                            <li><a href="{{ path('Profil') }}" {% block activeProfil %}{% endblock %}>Mes Informations <span></span> <span></span> <span></span>
+                                                    <span></span></a></li>
+                                            <li><a href="{{ path('ListeFavoris') }}" {% block activeSouhaits %}{% endblock %}>Mes Souhaits <span></span> <span></span> <span></span>
                                                     <span></span></a></li>
                                         {% endif %}
                                     </ul>
@@ -71,12 +74,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+      </div>
     </header>
 
     {% block js %}
         <script src={{ asset('front-office/js/vendor/vendor.js') }}></script>
         <script src={{ asset('front-office/js/main.js') }}></script>
+
     {% endblock %}
     {% block content %}
 

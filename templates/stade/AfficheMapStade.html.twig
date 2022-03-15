@@ -1,0 +1,94 @@
+{% block title %}
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Location</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div id="map"></div>
+    <script>
+        function initMap() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var myLatLng = { lat: 25.31262442778921, lng: 51.13993868150395 };
+            var AlJanoubStadium = { lat: 25.162558301351424, lng: 51.57370335187378 };
+            var Jasminbinahmed = { lat: 25.26764737100803, lng: 51.48435032174067 };
+
+
+            var map = new google.maps.Map(
+                document.getElementById("map") ,
+                {
+                    zoom: 6,
+                    center: myLatLng,
+                }
+            );
+
+            var marker= new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: "Qatar",
+            });
+            var marker= new google.maps.Marker({
+                position: AlJanoubStadium,
+                map: map,
+                title: "Al Janoub Stadium",
+            });
+            var marker= new google.maps.Marker({
+                position: Jasminbinahmed,
+                map: map,
+                title: "Jasmin Stadium",
+            });
+        }
+    </script>
+    <script async w9c
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTdxaUb10x75S1mZehuzEAjEu5rzTFxCo&callback=initMap&v=weekly">
+    </script>
+{% endblock %}

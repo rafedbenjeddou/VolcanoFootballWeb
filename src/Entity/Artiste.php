@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArtisteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArtisteRepository::class)
@@ -18,45 +19,44 @@ class Artiste
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $idEvenement;
-
-    /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom d'artiste est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "10",
+     * minMessage = "Le nom d'artiste doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le nom d'artiste ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenom;
-
-    /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="L'age est obligatoire.")
      */
     private $age;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="artistes")
+     */
+    private $evenement;
+
+    /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le type d'artiste est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "10",
+     * minMessage = "Le type d'artiste doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le type d'artiste ne peut pas être plus long que {{ limit }} caractères"
+     * )
+
      */
     private $type;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdEvenement(): ?int
-    {
-        return $this->idEvenement;
-    }
-
-    public function setIdEvenement(int $idEvenement): self
-    {
-        $this->idEvenement = $idEvenement;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -71,18 +71,6 @@ class Artiste
         return $this;
     }
 
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
     public function getAge(): ?int
     {
         return $this->age;
@@ -91,6 +79,18 @@ class Artiste
     public function setAge(int $age): self
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getEvenement(): ?Evenement
+    {
+        return $this->evenement;
+    }
+
+    public function setEvenement(?Evenement $evenement): self
+    {
+        $this->evenement = $evenement;
 
         return $this;
     }
