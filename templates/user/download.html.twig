@@ -15,11 +15,7 @@
             <th >Username</th>
             <th >Nom</th>
             <th >Prenom</th>
-            <th >Genre</th>
-            <th >Age</th>
-            <th >Pays</th>
             <th >Email</th>
-            <th >Numéro de Téléphone</th>
             <th >Role</th>
         </tr>
     </thead>
@@ -30,11 +26,7 @@
                 <td>{{ u.username }}</td>
                 <td>{{ u.nom }}</td>
                 <td>{{ u.prenom }}</td>
-                <td>{{ u.genre }}</td>
-                <td>{{ u.age }}</td>
-                <td>{{ u.pays }}</td>
                 <td>{{ u.email }}</td>
-                <td>{{ u.numTel }}</td>
                 <td>
                     {% for role in u.roles %}
                         {% if role == "ROLE_USER" %}

@@ -6,6 +6,8 @@ use App\Repository\CommandeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
@@ -16,33 +18,39 @@ class Commande
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     * @Groups("post:read")
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="commandes")
+     * @Groups("post:read")
      */
     private $produit;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $quantite;
 
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
+     * @Groups("post:read")
      */
     private $dateAjout;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="L'adresse est obligatoire.")
+     * @Groups("post:read")
      */
     private $adresse;
 

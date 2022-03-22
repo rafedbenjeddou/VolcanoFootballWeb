@@ -38,34 +38,6 @@ class UserType extends AbstractType
                 ]
             ])
 
-            ->add('genre',ChoiceType::class,[
-                'choices'  => [
-                    'Homme' => 'homme',
-                    'Femme' => 'femme'
-
-                ],
-
-                'label'=>"Genre",
-
-                'expanded' => false,
-                'multiple' => false
-
-            ])
-
-            ->add('age',TextType::class,[
-                'label'=>"Age",
-                'attr'=>[
-                    'placeholder'=>"Age",
-                ]
-            ])
-            ->add('pays',CountryType::class,[
-
-                'preferred_choices' => array('TN'),
-                'choice_translation_locale' => null,
-                'expanded' => false,
-                'multiple' => false
-
-            ])
             ->add('email',TextType::class,[
                 'label'=>"Email",
                 'attr'=>[
@@ -85,12 +57,6 @@ class UserType extends AbstractType
                 ]
             ])
 
-            ->add('numTel',TextType::class,[
-                'label'=>"Numéro de Téléphone",
-                'attr'=>[
-                    'placeholder'=>"Numéro de Téléphone",
-                ]
-            ])
             ->add('roles',ChoiceType::class,[
                 'choices'  => [
                     'Utilisateur' => 'ROLE_USER',

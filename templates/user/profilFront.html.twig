@@ -29,25 +29,10 @@
                         <h4 style="display: inline;color: black">Votre Prenom:</h4>
                         <h4 style="display: inline">{{ profil.prenom }}</h4>
                     </div>
-                    <div class=form-group>
-                        <h4 style="display: inline;color: black">Votre Genre:</h4>
-                        <h4 style="display: inline">{{ profil.genre }}</h4>
-                    </div>
-                    <div class=form-group>
-                        <h4 style="display: inline;color: black">Votre Age:</h4>
-                        <h4 style="display: inline">{{ profil.age }}</h4>
-                    </div>
-                    <div class=form-group>
-                        <h4 style="display: inline;color: black">Votre Pays:</h4>
-                        <h4 style="display: inline">{{ profil.pays }}</h4>
-                    </div>
+
                     <div class=form-group>
                         <h4 style="display: inline;color: black">Votre Email:</h4>
                         <h4 style="display: inline">{{ profil.email }}</h4>
-                    </div>
-                    <div class=form-group>
-                        <h4 style="display: inline;color: black">Votre Numéro du Téléphone:</h4>
-                        <h4 style="display: inline">{{ profil.numTel }}</h4>
                     </div>
 
                     <a class="btn" style="margin-top: 50px" href="{{ path('ModifierProfil',{'id':profil.id}) }}">Modifier mes Informations</a>
