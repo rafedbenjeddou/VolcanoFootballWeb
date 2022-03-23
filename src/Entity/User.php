@@ -94,46 +94,12 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("post:read")
-     */
-    private $genre;
-
-
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="L'age est obligatoire.")
-     * @Groups("post:read")
-     */
-    private $age;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Le pays est obligatoire.")
-     * @Groups("post:read")
-     */
-    private $pays;
-
-    /**
-     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="L'email est obligatoire.")
      * @Assert\Email(message = "Ce e-mail n'est pas valide.")
      * @Groups("post:read")
      */
     private $email;
 
-
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Le numéro de téléphone est obligatoire.")
-     * @Assert\Length(
-     * min = "5",
-     * max = "30",
-     * minMessage = "Le numéro de téléphone doit faire au moins {{ limit }} nombres.",
-     * maxMessage = "Le numéro de téléphone ne peut pas être plus long que {{ limit }} nombres."
-     * )
-     * @Groups("post:read")
-     */
-    private $numTel;
 
     /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user", cascade={"all"}, orphanRemoval=true)
@@ -147,11 +113,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("post:read")
      */
     private $token;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("post:read")
      */
     private $enabled;
 
@@ -277,42 +245,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getGenre(): ?string
-    {
-        return $this->genre;
-    }
-
-    public function setGenre(string $genre): self
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    public function getAge(): ?int
-    {
-        return $this->age;
-    }
-
-    public function setAge(int $age): self
-    {
-        $this->age = $age;
-
-        return $this;
-    }
-
-    public function getPays(): ?string
-    {
-        return $this->pays;
-    }
-
-    public function setPays(string $pays): self
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
     public function getEmail(): ?string
     {
         return $this->email;
@@ -321,18 +253,6 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getNumTel(): ?int
-    {
-        return $this->numTel;
-    }
-
-    public function setNumTel(int $numTel): self
-    {
-        $this->numTel = $numTel;
 
         return $this;
     }

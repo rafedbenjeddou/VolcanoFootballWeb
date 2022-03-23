@@ -40,43 +40,6 @@ class UserRegisterType extends AbstractType
                 ]
             ])
 
-            ->add('genre',ChoiceType::class,[
-                'label'=>" ",
-                'choices'  => [
-                    'Homme' => 'homme',
-                    'Femme' => 'femme'
-
-                ],
-
-                'attr'=>[
-                    "style"=>"height: 60px",
-                    "disabled"
-                ],
-
-                'expanded' => false,
-                'multiple' => false
-
-            ])
-
-            ->add('age',TextType::class,[
-                'label'=>" ",
-                'attr'=>[
-                    'placeholder'=>"Age",
-                ]
-            ])
-            ->add('pays',CountryType::class,[
-
-                'attr'=>[
-                    "style"=>"height: 60px",
-                    "disabled"
-                ],
-
-                'preferred_choices' => array('TN'),
-                'choice_translation_locale' => null,
-                'expanded' => false,
-                'multiple' => false
-
-            ])
             ->add('email',TextType::class,[
                 'label'=>" ",
                 'attr'=>[
@@ -96,13 +59,6 @@ class UserRegisterType extends AbstractType
                 ]
             ])
 
-            ->add('numTel',TextType::class,[
-                'label'=>" ",
-                'attr'=>[
-                    'placeholder'=>"Numéro de Téléphone",
-                ]
-            ])
-
         ;
     }
 
@@ -113,4 +69,3 @@ class UserRegisterType extends AbstractType
         ]);
     }
 }
-

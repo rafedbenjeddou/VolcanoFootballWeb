@@ -53,7 +53,7 @@ class EquipeController extends AbstractController
         $equipe=$paginator->paginate(
             $repository->findAll(),
             $request->query->getInt('page',1),
-            1
+            6
         );
         return $this->render('equipe/Afficheruneequipe.html.twig',
             ['equipe'=>$equipe]);
